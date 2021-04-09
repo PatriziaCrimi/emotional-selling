@@ -6,26 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateVotesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('votes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('votes', function (Blueprint $table) {
+      $table->id();
+      $table->integer('value')->unsigned()->nullable();
+      $table->timestamps();
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('votes');
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::dropIfExists('votes');
+  }
 }
