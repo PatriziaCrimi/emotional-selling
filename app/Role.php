@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-  protected $fillable = ['type'];
+  protected $fillable = ['type', 'round_id'];
 
   // Many to Many between Users and Roles tables
   public function users() {

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-  protected $fillable = ['name'];
+  protected $fillable = ['name', 'round_id'];
 
   // Many to Many between Users and Groups tables
   public function users() {

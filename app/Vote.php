@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vote extends Model
 {
-  protected $fillable = ['value'];
+  protected $fillable = ['value', 'voter_id', 'user_voted_id', 'team_id', 'round_id'];
 
   // One to Many between Rounds and Votes tables
   public function round() {
