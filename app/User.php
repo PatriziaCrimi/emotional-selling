@@ -16,7 +16,7 @@ class User extends Authenticatable
    * @var array
    */
   protected $fillable = [
-      'name', 'lastname', 'username', 'password', 'team_id',
+    'name', 'lastname', 'username', 'password', 'team_id',
   ];
 
   /**
@@ -28,14 +28,14 @@ class User extends Authenticatable
     'password', 'remember_token',
   ];
 
-  // Many to Many between Users and Roles tables
-  public function roles() {
-    return $this->belongsToMany('App\Role');
+  // One to Many between Users and Roles tables
+  public function role() {
+    return $this->belongsTo('App\Role');
   }
 
-  // Many to Many between Users and Groups tables
-  public function groups() {
-    return $this->belongsToMany('App\Group');
+  // One to Many between Users and Groups tables
+  public function group() {
+    return $this->belongsTo('App\Group');
   }
 
   // One to Many between Users and Teams tables
@@ -43,9 +43,9 @@ class User extends Authenticatable
     return $this->belongsTo('App\Team');
   }
 
-  // One to Many between Users and Votes tables
+  // Many to Many between Users and Votes tables
   public function votes() {
-    return $this->hasMany('App\Vote');
+    return $this->belongsToMany('App\Vote');
   }
   /**
    * The attributes that should be cast to native types.

@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vote extends Model
 {
-  protected $fillable = ['value', 'voter_id', 'user_voted_id', 'team_id', 'round_id'];
+  protected $fillable = [
+    'value',
+    'comment',
+    'category_id',
+    'info_voter_id',
+    'info_voted_id',
+  ];
 
   // One to Many between Rounds and Votes tables
   public function round() {
@@ -20,6 +26,11 @@ class Vote extends Model
 
   // One to Many between Users and Votes tables
   public function user() {
-    return $this->belongsTo('App\Vote');
+    return $this->belongsTo('App\User');
+  }
+
+  // One to Many between Votes and Categories tables
+  public function categories() {
+    return $this->hasMany('App\Category');
   }
 }

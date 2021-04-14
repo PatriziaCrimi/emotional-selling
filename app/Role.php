@@ -6,15 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-  protected $fillable = ['type', 'round_id'];
+  protected $fillable = ['name'];
 
-  // Many to Many between Users and Roles tables
+  // One to Many between Users and Roles tables
   public function users() {
-    return $this->belongsToMany('App\User');
-  }
-
-  // One to Many between Rounds and Roles tables
-  public function round() {
-    return $this->belongsTo('App\Round');
+    return $this->hasMany('App\User');
   }
 }

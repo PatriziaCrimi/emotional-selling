@@ -1,0 +1,17 @@
+<?php
+
+  return [
+
+    [
+      "name" => "Categoria 1"
+    ],
+    [
+      "name" => "Categoria 2"
+    ],
+    [
+      "name" => "Categoria 3"
+    ],
+
+  ];
+
+?>

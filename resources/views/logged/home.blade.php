@@ -19,5 +19,13 @@
             </div>
         </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="text-center">
+          <p>Clicca il pulsante per vedere i tuoi dettagli nei vari Round</p>
+          <a class="btn btn-dark" href="{{route('logged.groups')}}">Your Details</a>
+        </div>
+      </div>
+    </div>
 </div>
 @endsection

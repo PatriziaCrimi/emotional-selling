@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// ------------------- PUBLIC ROUTES -------------------
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'HomeController@index')->name('index');
+
+// ------------------- AUTHENTICATION ROUTES -------------------
+Auth::routes(['register' => false]);
+
+Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.')->group(function(){
+  Route::get('/', 'HomeController@index')->name('index');
+  Route::get('/groups', 'GroupController@index')->name('groups');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
