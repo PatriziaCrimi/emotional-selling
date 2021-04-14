@@ -14,7 +14,7 @@ class VoteController extends Controller
      */
     public function index()
     {
-        //
+        //PROVA BRANCH
     }
 
     /**
