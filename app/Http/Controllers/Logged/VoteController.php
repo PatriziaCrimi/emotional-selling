@@ -24,7 +24,7 @@ class VoteController extends Controller
      */
     public function create()
     {
-        //
+        // Prova branch pat
     }
 
     /**
