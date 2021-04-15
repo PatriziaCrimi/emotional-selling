@@ -12,4 +12,16 @@ class HomeController extends Controller
     // Visualizzo il pulsante --> al click del pulsante si inizia il round
     return view('logged.home');
   }
+
+  public function rankings()
+  {
+    // logica della visualizzazione classifica
+    return view('logged.rankings');
+  }
+
+  public function final()
+  {
+    // view di saluti e ringraziamenti
+    return view('logged.final');
+  }
 }

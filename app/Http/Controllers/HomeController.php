@@ -29,16 +29,4 @@ class HomeController extends Controller
     // Welcome e pulsante /link per reindirizzare al form del login
     return view('auth.login');
   }
-
-  public function rankings()
-  {
-    // logica della visualizzazione classifica
-    return view('logged.rankings');
-  }
-
-  public function final()
-  {
-    // view di saluti e ringraziamenti
-    return view('logged.final');
-  }
 }
