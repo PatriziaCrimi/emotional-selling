@@ -20,6 +20,7 @@ class GroupRoleRoundUsersTableSeeder extends Seeder
       $new_current_grru_obj->group_id = $current_grru['group_id'];
       $new_current_grru_obj->role_id = $current_grru['role_id'];
       $new_current_grru_obj->round_id = $current_grru['round_id'];
+      $new_current_grru_obj->team_id = $current_grru['team_id'];
       $new_current_grru_obj->save();
     }
   }
