@@ -25,5 +25,17 @@ Auth::routes(['register' => false]);
 
 Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.')->group(function(){
   Route::get('/', 'HomeController@index')->name('index');
-  Route::get('/groups', 'GroupController@index')->name('groups');
+  Route::get('/', 'HomeController@final')->name('final');
+
+  // Groups
+  Route::get('/groups', 'GroupController@index')->name('groups.index');
+
+  // Votes
+  Route::get('/votes', 'VoteController@index')->name('votes.index');
+  Route::get('/votes/{id} ', 'VoteController@showUser')->name('votes.formUser');
+  Route::get('/votes/{id} ', 'VoteController@showTeam')->name('votes.formTeam');
+  Route::post('/voted', 'VoteController@store')->name('voted');
+
+  //Rankings
+  Route::get('/rankings', 'HomeController@rankings')->name('rankings');
 });
