@@ -22,8 +22,8 @@
     <div class="row">
       <div class="col-12">
         <div class="text-center">
-          <p>Clicca il pulsante per vedere i tuoi dettagli nei vari Round</p>
-          <a class="btn btn-dark" href="{{route('logged.groups')}}">Your Details</a>
+          <p>Clicca il pulsante per iniziare il Round</p>
+          <a class="btn btn-dark" href="{{route('logged.groups.index')}}">Start Round</a>
         </div>
       </div>
     </div>

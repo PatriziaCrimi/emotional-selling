@@ -9,6 +9,7 @@ class HomeController extends Controller
 {
   public function index()
   {
+    // Visualizzo il pulsante --> al click del pulsante si inizia il round
     return view('logged.home');
   }
 }
