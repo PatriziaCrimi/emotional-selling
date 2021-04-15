@@ -11,5 +11,6 @@ class GroupRoleRoundUser extends Model
     'group_id',
     'role_id',
     'round_id',
+    'team_id'
   ];
 }
