@@ -37,11 +37,9 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
   Route::post('/voteduser', 'VoteController@userStore')->name('user.voted');
   Route::post('/votedteam', 'VoteController@teamStore')->name('team.voted');
 
-
   //Rankings
   Route::get('/rankings', 'HomeController@rankings')->name('rankings');
 
   //Round
-
   Route::post('/round','Admin\RoundController@update')->name('round.update');
 });

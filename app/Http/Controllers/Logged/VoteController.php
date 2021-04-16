@@ -13,11 +13,7 @@ use App\Vote;
 
 class VoteController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
+
   public function index()
   {
     $round = Round::find(4); // valore del round
@@ -97,35 +93,31 @@ class VoteController extends Controller
   **/
   public function formUser($id)
   {
-    $round = Round::find(4);
+    $round = Round::find(4); // valore round attuale
     $user = GroupRoleRoundUser::where('user_id',$id)->where('round_id',$round->name)->first(); // info utente votato
     $idAuth = Auth::user()->id; // info votante
     $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
-    // dd($idComboAuth);
-    // il form dello user da votare con le domande
+
     return view('logged.votes.show',compact('user','comboAuth'));
   }
 
   public function formTeam($id)
   {
-    $round = Round::find(4);
-    $user = null;
-    $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get();
-    // dd($team);
-    // il form del team da votare con le domande
-    return view('logged.votes.show',compact('team','user','id'));
+    $round = Round::find(4); // valore round attuale
+    $user = null; // user null per controllo view votes.show
+    $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
+    $idAuth = Auth::user()->id; // info votante
+    $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
+
+    return view('logged.votes.show',compact('team','user','id','comboAuth'));
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
   public function userStore(Request $request)
   {
 
     $data = $request->all();
+
+    // voto domanda 1
 
     $newVote1 = new Vote();
     $newVote1-> info_voter_id = $data['info_voter_id'];
@@ -136,6 +128,8 @@ class VoteController extends Controller
 
     $newVote1->save();
 
+    // voto domanda 2
+
     $newVote2 = new Vote();
     $newVote2-> info_voter_id = $data['info_voter_id'];
     $newVote2-> info_voted_id = $data['info_voted_id'];
@@ -145,13 +139,15 @@ class VoteController extends Controller
 
     $newVote2->save();
 
+    // voto domanda 3
+
     $newVote3 = new Vote();
     $newVote3-> info_voter_id = $data['info_voter_id'];
     $newVote3-> info_voted_id = $data['info_voted_id'];
     $newVote3-> category_id = $data['category3'];
     $newVote3-> value = $data['votesUser3'];
     $newVote3-> comment = $data['comment3'];
-    
+
     $newVote3->save();
 
     return Redirect::route('logged.votes.index');
@@ -161,8 +157,42 @@ class VoteController extends Controller
   {
 
     $data = $request->all();
-    dd($data);
-    // le logiche per salvare i dati
+    $round = Round::find(4);
+    $teamMembers = GroupRoleRoundUser::where('team_id',$data['team_id'])->where('round_id',$round->name)->get();
+    // membri del team che si sta votando
+
+    foreach ($teamMembers as $i => $member) {
+
+      // per ogni membro del team creo 3 voti
+
+      $newVote1 = new Vote();
+      $newVote1-> info_voter_id = $data['info_voter_id'];
+      $newVote1-> info_voted_id = $member -> id;
+      $newVote1-> category_id = $data['category1'];
+      $newVote1-> value = $data['votesTeam1'];
+      $newVote1-> comment = $data['comment1'];
+
+      $newVote1->save();
+
+      $newVote2 = new Vote();
+      $newVote2-> info_voter_id = $data['info_voter_id'];
+      $newVote2-> info_voted_id = $member -> id;
+      $newVote2-> category_id = $data['category2'];
+      $newVote2-> value = $data['votesTeam2'];
+      $newVote2-> comment = $data['comment2'];
+
+      $newVote2->save();
+
+      $newVote3 = new Vote();
+      $newVote3-> info_voter_id = $data['info_voter_id'];
+      $newVote3-> info_voted_id = $member -> id;
+      $newVote3-> category_id = $data['category3'];
+      $newVote3-> value = $data['votesTeam3'];
+      $newVote3-> comment = $data['comment3'];
+
+      $newVote3->save();
+    }
+  
     return Redirect::route('logged.votes.index');
   }
 }

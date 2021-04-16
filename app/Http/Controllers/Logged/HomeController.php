@@ -7,23 +7,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\GroupRoleRoundUser;
 use App\Round;
+use App\Vote;
+use DB;
 
 class HomeController extends Controller
 {
   public function index()
   {
-    // Visualizzo il pulsante --> al click del pulsante si inizia il round
+
     $auth = Auth::user();
     $user = GroupRoleRoundUser::where('user_id',$auth -> id)->first();
     $round = Round::find(4);
-    // dd($user);
+
     return view('logged.home',compact('user','round'));
   }
 
   public function rankings()
   {
-    // logica della visualizzazione classifica
-    return view('logged.rankings');
+
+    $votesCount = DB::table('votes')
+    ->select(DB::raw('sum(value) as valore , info_voted_id'))
+    ->groupBy('info_voted_id')
+    ->orderBy('valore','DESC')
+    ->get();
+
+    return view('logged.rankings',compact('votesCount'));
   }
 
   public function final()

@@ -6,6 +6,7 @@
     <div class="col-12">
       <h1 class="text-center">Classifica Provvisoria</h1>
     </div>
+
   </div>
   <div class="">
     <p>classifica visualizzabile da tutti</p>
