@@ -73,7 +73,15 @@
    </div>
 
     @endforeach
-    <a class="btn btn-dark" href="{{route('logged.votes.index')}}">Vota</a>
+    {{-- Se sono ISF o MEDICI  --}}
+    @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
+
+      <a class="btn btn-dark" href="{{route('logged.votes.index')}}">Continua</a>
+
+    @else
+      <a class="btn btn-dark" href="{{route('logged.votes.index')}}">Vota</a>
+    @endif
+
 
   </div>
 

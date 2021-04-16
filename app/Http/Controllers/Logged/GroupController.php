@@ -15,17 +15,19 @@ class GroupController extends Controller
   {
     $round = Round::find(4); // valore del round
     $idAuth = Auth::user()->id; // mi prendo l'id dell'utente autenticato
-    $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first(); // valore combo auth id
+   // valore combo auth id
 
     // Filtro per round
     if ($round -> name == 1) {
       // Filtro per ruolo  ( Sede:2)
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
           $usersGroups = GroupRoleRoundUser::where('round_id',1)->where('role_id','!=',2)->where('role_id','!=',1)->get()->groupBy(['group_id','team_id']);
 
       }else {
-
+        // Filtro autenticato giocatore
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',1)->get();
 
         foreach ($userrow as $user) {
@@ -38,11 +40,16 @@ class GroupController extends Controller
 
     if ($round -> name == 2) {
 
+      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
           $usersGroups = GroupRoleRoundUser::where('round_id',2)->where('role_id','!=',2)->where('role_id','!=',1)->get()->groupBy(['group_id','team_id']);
 
       }else {
+
+        // Filtro autenticato giocatore
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
 
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',2)->get();
 
@@ -55,11 +62,16 @@ class GroupController extends Controller
 
     if ($round -> name == 3) {
 
+      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
           $usersGroups = GroupRoleRoundUser::where('round_id',3)->where('role_id','!=',2)->where('role_id','!=',1)->get()->groupBy(['group_id','team_id']);
 
       }else {
+
+        // Filtro autenticato giocatore
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
 
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',3)->get();
 
