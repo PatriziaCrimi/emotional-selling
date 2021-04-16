@@ -8,6 +8,8 @@ use Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\GroupRoleRoundUser;
 use App\Round;
+use App\User;
+use App\Vote;
 
 class VoteController extends Controller
 {
@@ -95,14 +97,23 @@ class VoteController extends Controller
   **/
   public function formUser($id)
   {
+    $round = Round::find(4);
+    $user = GroupRoleRoundUser::where('user_id',$id)->where('round_id',$round->name)->first(); // info utente votato
+    $idAuth = Auth::user()->id; // info votante
+    $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+    // dd($idComboAuth);
     // il form dello user da votare con le domande
-    return view('logged.votes.show');
+    return view('logged.votes.show',compact('user','comboAuth'));
   }
 
   public function formTeam($id)
   {
+    $round = Round::find(4);
+    $user = null;
+    $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get();
+    // dd($team);
     // il form del team da votare con le domande
-    return view('logged.votes.show');
+    return view('logged.votes.show',compact('team','user','id'));
   }
 
   /**
@@ -111,8 +122,25 @@ class VoteController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function userStore(Request $request)
   {
+
+    $data = $request->all();
+    // dd($data);
+
+    $newVote = new Vote();
+    $newVote->fill($data);
+    // dd($newVote);
+    $newVote->save();
+
+    return Redirect::route('logged.votes.index');
+  }
+
+  public function teamStore(Request $request)
+  {
+
+    $data = $request->all();
+    dd($data);
     // le logiche per salvare i dati
     return Redirect::route('logged.votes.index');
   }

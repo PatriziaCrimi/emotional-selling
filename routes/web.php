@@ -32,9 +32,11 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
 
   // Votes
   Route::get('/votes', 'VoteController@index')->name('votes.index');
-  Route::get('/votes/{id} ', 'VoteController@showUser')->name('votes.formUser');
-  Route::get('/votes/{id} ', 'VoteController@showTeam')->name('votes.formTeam');
-  Route::post('/voted', 'VoteController@store')->name('voted');
+  Route::get('/votes/user/{id} ', 'VoteController@formUser')->name('votes.formUser');
+  Route::get('/votes/team/{id} ', 'VoteController@formTeam')->name('votes.formTeam');
+  Route::post('/voteduser', 'VoteController@userStore')->name('user.voted');
+  Route::post('/votedteam', 'VoteController@teamStore')->name('team.voted');
+
 
   //Rankings
   Route::get('/rankings', 'HomeController@rankings')->name('rankings');

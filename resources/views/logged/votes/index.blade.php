@@ -40,7 +40,7 @@
 
             @foreach ($users as $key => $user)
 
-              <form action="#" style="margin:30px;">
+              <form action="{{ route('logged.votes.formTeam',$key)}}" style="margin:30px;">
                 <input type="submit" value="Vota il Team {{$key}}" />
               </form>
 
@@ -72,7 +72,7 @@
                                 <th scope="row">{{$n+1}}</th>
                                 <td>{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
                                 <td>{{ $player -> role -> name}}</td>
-                                <td><a href="#">Vota</a></td>
+                                <td><a href="{{ route('logged.votes.formUser',$player -> user -> id)}}">Vota</a></td>
                               @endif
 
                            </tbody>
