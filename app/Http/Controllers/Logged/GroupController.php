@@ -20,7 +20,7 @@ class GroupController extends Controller
     // Filtro per round
     if ($round -> name == 1) {
       // Filtro per ruolo  ( Sede:2)
-      if ($auth -> role_id == 2) {
+      if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
           $usersGroups = GroupRoleRoundUser::where('round_id',1)->where('role_id','!=',2)->where('role_id','!=',1)->get()->groupBy(['group_id','team_id']);
 
@@ -38,7 +38,7 @@ class GroupController extends Controller
 
     if ($round -> name == 2) {
 
-      if ($auth -> role_id == 2) {
+      if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
           $usersGroups = GroupRoleRoundUser::where('round_id',2)->where('role_id','!=',2)->where('role_id','!=',1)->get()->groupBy(['group_id','team_id']);
 
@@ -49,14 +49,13 @@ class GroupController extends Controller
         foreach ($userrow as $user) {
             $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',2)->get()->groupBy(['group_id','team_id']);
           }
-
       }
 
     }
 
     if ($round -> name == 3) {
 
-      if ($auth -> role_id == 2) {
+      if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
           $usersGroups = GroupRoleRoundUser::where('round_id',3)->where('role_id','!=',2)->where('role_id','!=',1)->get()->groupBy(['group_id','team_id']);
 

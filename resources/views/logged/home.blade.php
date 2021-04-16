@@ -23,7 +23,9 @@
       <div class="col-12">
         <div class="text-center">
           <p>Clicca il pulsante per iniziare il Round</p>
-          <a class="btn btn-dark" href="{{route('logged.groups.index')}}">Start Round</a>
+          <a class="btn btn-dark" href="{{route('logged.groups.index')}}">
+            Start Round {{$round->name}}
+          </a>
         </div>
       </div>
     </div>
