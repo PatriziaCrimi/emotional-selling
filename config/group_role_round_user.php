@@ -2250,91 +2250,30 @@
       "user_id" => 100,  // Pucci
       "group_id" => null,
       "role_id" => 1,
-      "round_id" => 1,
+      "round_id" => null,
       "team_id" => null
     ],
     [
       "user_id" => 101,  // Crimi
       "group_id" => null,
       "role_id" => 1,
-      "round_id" => 1,
+      "round_id" => null,
       "team_id" => null
     ],
     [
       "user_id" => 102,  // Fabrizio (alessia)
       "group_id" => null,
       "role_id" => 1,
-      "round_id" => 1,
+      "round_id" => null,
       "team_id" => null
     ],
     [
       "user_id" => 103,  // Valentini
       "group_id" => null,
       "role_id" => 1,
-      "round_id" => 1,
+      "round_id" => null,
       "team_id" => null
     ],
 
-    // ------------------- Round 2 -------------------
-
-    [
-      "user_id" => 100,  // Pucci
-      "group_id" => null,
-      "role_id" => 1,
-      "round_id" => 2,
-      "team_id" => null
-    ],
-    [
-      "user_id" => 101,  // Crimi
-      "group_id" => null,
-      "role_id" => 1,
-      "round_id" => 2,
-      "team_id" => null
-    ],
-    [
-      "user_id" => 102,  // Fabrizio (alessia)
-      "group_id" => null,
-      "role_id" => 1,
-      "round_id" => 2,
-      "team_id" => null
-    ],
-    [
-      "user_id" => 103,  // Valentini
-      "group_id" => null,
-      "role_id" => 1,
-      "round_id" => 2,
-      "team_id" => null
-    ],
-
-    // ------------------- Round 3 -------------------
-
-    [
-      "user_id" => 100,  // Pucci
-      "group_id" => null,
-      "role_id" => 1,
-      "round_id" => 3,
-      "team_id" => null
-    ],
-    [
-      "user_id" => 101,  // Crimi
-      "group_id" => null,
-      "role_id" => 1,
-      "round_id" => 3,
-      "team_id" => null
-    ],
-    [
-      "user_id" => 102,  // Fabrizio (alessia)
-      "group_id" => null,
-      "role_id" => 1,
-      "round_id" => 3,
-      "team_id" => null
-    ],
-    [
-      "user_id" => 103,  // Valentini
-      "group_id" => null,
-      "role_id" => 1,
-      "round_id" => 3,
-      "team_id" => null
-    ],
   ];
 ?>

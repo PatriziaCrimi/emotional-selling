@@ -52,6 +52,27 @@
                                       {{ Auth::user()->name }}
                                   </a>
 
+                                  {{-- Controllo cambio round Admin --}}
+
+                                  @if ( (Auth::user()->username == "pucci") ||
+                                        (Auth::user()->username == "crimi") ||
+                                        (Auth::user()->username == "fabrizio") ||
+                                        (Auth::user()->username == "valentini") )
+
+                                    <form class="" action="{{ route('logged.round.update')}}" method="post">
+                                      @csrf
+                                      @method('post')
+                                      <select class="" name="round">
+                                        <option  value="1" {{ $round->name == 1 ? 'selected' : '' }}>Round 1</option>
+                                        <option  value="2"{{ $round->name == 2 ? 'selected' : '' }}>Round 2</option>
+                                        <option  value="3"{{ $round->name == 3 ? 'selected' : '' }}>Round 3</option>
+                                      </select>
+
+                                      <input type="submit" name="" value="Inizia">
+                                    </form>
+
+                                  @endif
+
                                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                       <a class="dropdown-item" href="{{ route('logout') }}"
                                          onclick="event.preventDefault();

@@ -13,4 +13,16 @@ class GroupRoleRoundUser extends Model
     'round_id',
     'team_id'
   ];
+
+  public function user(){
+    return $this->belongsTo('App\User');
+  }
+
+  public function role(){
+    return $this->belongsTo('App\Role');
+  }
+
+  public function group(){
+    return $this->belongsTo('App\Group');
+  }
 }
