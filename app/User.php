@@ -47,6 +47,11 @@ class User extends Authenticatable
   public function votes() {
     return $this->belongsToMany('App\Vote');
   }
+
+  // one to Many between Users and GroupRoleRoundUser tables
+  public function grouproleroundusers() {
+    return $this->hasMany('App\GroupRoleRoundUser');
+  }
   /**
    * The attributes that should be cast to native types.
    *

@@ -25,7 +25,7 @@ Auth::routes(['register' => false]);
 
 Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.')->group(function(){
   Route::get('/', 'HomeController@index')->name('index');
-  Route::get('/', 'HomeController@final')->name('final');
+  Route::get('/final', 'HomeController@final')->name('final');
 
   // Groups
   Route::get('/groups', 'GroupController@index')->name('groups.index');
@@ -38,4 +38,8 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
 
   //Rankings
   Route::get('/rankings', 'HomeController@rankings')->name('rankings');
+
+  //Round
+
+  Route::post('/round','Admin\RoundController@update')->name('round.update');
 });
