@@ -126,12 +126,33 @@ class VoteController extends Controller
   {
 
     $data = $request->all();
-    // dd($data);
 
-    $newVote = new Vote();
-    $newVote->fill($data);
-    // dd($newVote);
-    $newVote->save();
+    $newVote1 = new Vote();
+    $newVote1-> info_voter_id = $data['info_voter_id'];
+    $newVote1-> info_voted_id = $data['info_voted_id'];
+    $newVote1-> category_id = $data['category1'];
+    $newVote1-> value = $data['votesUser1'];
+    $newVote1-> comment = $data['comment1'];
+
+    $newVote1->save();
+
+    $newVote2 = new Vote();
+    $newVote2-> info_voter_id = $data['info_voter_id'];
+    $newVote2-> info_voted_id = $data['info_voted_id'];
+    $newVote2-> category_id = $data['category2'];
+    $newVote2-> value = $data['votesUser2'];
+    $newVote2-> comment = $data['comment2'];
+
+    $newVote2->save();
+
+    $newVote3 = new Vote();
+    $newVote3-> info_voter_id = $data['info_voter_id'];
+    $newVote3-> info_voted_id = $data['info_voted_id'];
+    $newVote3-> category_id = $data['category3'];
+    $newVote3-> value = $data['votesUser3'];
+    $newVote3-> comment = $data['comment3'];
+    
+    $newVote3->save();
 
     return Redirect::route('logged.votes.index');
   }
