@@ -49847,31 +49847,29 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 var app = new Vue({
   el: '#app',
-  data: {
-    userArray: [],
-    teamArray: [],
-    showUserForm: false,
-    showTeamForm: false
+  data: {// userArray: [],
+    // teamArray: [],
+    // showUserForm: false,
+    // showTeamForm: false
   },
-  methods: {
-    getUser: function getUser(id) {
-      var _this = this;
-
-      axios.get("/logged/votes/user/" + id).then(function (response) {
-        _this.showUserForm = !_this.showUserForm;
-        _this.userArray = response.data;
-        console.log(_this.userArray.user, id);
-      });
-    },
-    getTeam: function getTeam(id) {
-      var _this2 = this;
-
-      axios.get("/logged/votes/team/" + id).then(function (response) {
-        _this2.showTeamForm = !_this2.showTeamForm;
-        _this2.teamArray = response.data;
-        console.log("team", _this2.teamArray.team[0].team_id, _this2.teamArray.comboAuth.id);
-      });
-    }
+  methods: {// getUser(id){
+    //     axios
+    //       .get("/logged/votes/user/" + id ).
+    //       then(response => {
+    //         this.showUserForm = !this.showUserForm;
+    //         this.userArray = response.data;
+    //         console.log(this.userArray.user, id);
+    //     });
+    // },
+    // getTeam(id){
+    //   axios.
+    //     get("/logged/votes/team/" + id ).
+    //     then(response => {
+    //       this.showTeamForm = !this.showTeamForm;
+    //       this.teamArray = response.data;
+    //       console.log("team",this.teamArray.team[0].team_id,this.teamArray.comboAuth.id);
+    //   });
+    // }
   }
 });
 

@@ -24,14 +24,22 @@ class HomeController extends Controller
 
   public function rankings()
   {
-
+    $round = Round::find(4);
     $votesCount = DB::table('votes')
-    ->select(DB::raw('sum(value) as valore , info_voted_id'))
+    ->join('group_role_round_users','group_role_round_users.id','=','votes.info_voted_id')
+    ->where('role_id','!=','2')
+    ->where('role_id','!=','1')
+    ->where('role_id','!=','3')
+    ->join('users','users.id','=','group_role_round_users.user_id')
+    ->select(DB::raw('sum(value) as valore , votes.info_voted_id'),'group_role_round_users.user_id','users.name','users.lastname')
     ->groupBy('info_voted_id')
     ->orderBy('valore','DESC')
     ->get();
 
-    return view('logged.rankings',compact('votesCount'));
+    $votesRank = json_decode(json_encode($votesCount),true);
+    dd($votesRank);
+
+    return view('logged.rankings',compact('votesRank','round'));
   }
 
   public function final()
