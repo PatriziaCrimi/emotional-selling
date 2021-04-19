@@ -49847,12 +49847,50 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 var app = new Vue({
   el: '#app',
-  data: {// userArray: [],
+  data: {
+    showComment1: false,
+    showComment2: false,
+    showComment3: false,
+    commentMessage: '' // userArray: [],
     // teamArray: [],
     // showUserForm: false,
     // showTeamForm: false
+
   },
   methods: {
+    checkVoteComment1: function checkVoteComment1(voteValue) {
+      if (voteValue <= 5) {
+        this.showComment1 = true;
+        this.commentMessage = 'Il tuo voto è molto basso, è richiesta una motivazione.';
+      } else if (voteValue >= 9) {
+        this.showComment1 = true;
+        this.commentMessage = 'Il tuo voto è molto alto, è richiesta una motivazione.';
+      } else {
+        this.showComment1 = false;
+      }
+    },
+    checkVoteComment2: function checkVoteComment2(voteValue) {
+      if (voteValue <= 5) {
+        this.showComment2 = true;
+        this.commentMessage = 'Il tuo voto è molto basso, è richiesta una motivazione.';
+      } else if (voteValue >= 9) {
+        this.showComment2 = true;
+        this.commentMessage = 'Il tuo voto è molto alto, è richiesta una motivazione.';
+      } else {
+        this.showComment2 = false;
+      }
+    },
+    checkVoteComment3: function checkVoteComment3(voteValue) {
+      if (voteValue <= 5) {
+        this.showComment3 = true;
+        this.commentMessage = 'Il tuo voto è molto basso, è richiesta una motivazione.';
+      } else if (voteValue >= 9) {
+        this.showComment3 = true;
+        this.commentMessage = 'Il tuo voto è molto alto, è richiesta una motivazione.';
+      } else {
+        this.showComment3 = false;
+      }
+    },
     alertVoted: function alertVoted() {
       Swal.fire({
         position: 'center',
