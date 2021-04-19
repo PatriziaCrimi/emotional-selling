@@ -32,7 +32,6 @@
     </div>
     {{-- Groups List --}}
     <div class="">
-      <h1>PER MODIFICARE IL FATTO DI HAI VOTATO BISOGNEREBBE AGGIUNGERE 2 COLONNE CHE SE IL VOTO è DI TEAM O SINGOLO E CONTROLLARE I TEAM PERCHE FORSE HO VISTO 2 TEAM UGUALI IN UN ROUND ( TEAM 11 ROUND 2)</h1>
       @foreach ($usersGroups as $userGroup => $users)
 
         <div  class="container">
@@ -50,7 +49,6 @@
               @endphp
               {{-- SE NON é NULL HAI GIA VOTATO ALTRIMENTI NO --}}
               @if (!is_null($idTeamVoted))
-
 
                 <a class="btn btn-primary" style="margin:30px;"> Hai Votato il Team {{$key}}
                 </a>

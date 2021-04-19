@@ -81,7 +81,6 @@ class GroupController extends Controller
 
       }
     }
-
     return view('logged.groups.index',compact('usersGroups','round','auth'));
   }
 }

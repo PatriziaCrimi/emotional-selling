@@ -49852,7 +49852,16 @@ var app = new Vue({
     // showUserForm: false,
     // showTeamForm: false
   },
-  methods: {// getUser(id){
+  methods: {
+    alertVoted: function alertVoted() {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Il tuo voto è stato salvato',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    } // getUser(id){
     //     axios
     //       .get("/logged/votes/user/" + id ).
     //       then(response => {
@@ -49870,6 +49879,7 @@ var app = new Vue({
     //       console.log("team",this.teamArray.team[0].team_id,this.teamArray.comboAuth.id);
     //   });
     // }
+
   }
 });
 

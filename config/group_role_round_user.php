@@ -765,7 +765,7 @@
 
     // Osservatore
     [
-      "user_id" => 74,  // Masoni
+      "user_id" => 47,  // Masoni
       "group_id" => 1,
       "role_id" => 3,
       "round_id" => 2,

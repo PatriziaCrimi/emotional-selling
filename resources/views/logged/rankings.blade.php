@@ -9,7 +9,7 @@
     </div>
 
   </div>
-  {​​​​​​​{​​​​​​​-- @foreach ($votesRank as $key => $value)
+  @foreach ($votesRank as $key => $value)
 
     <div class="card" style="width: 18rem;">
       <ul class="list-group list-group-flush">
@@ -21,16 +21,16 @@
       </ul>
     </div>
 
-  @endforeach --}​​​​​​​}​​​​​​​
+  @endforeach
   <canvas id="myChart" width="400" height="400"></canvas>
   <div class="">
 
     <p>classifica visualizzabile da tutti</p>
 
     @if ($round->name == 3)
-     <a class="btn btn-dark" href="{​​​​​​​{​​​​​​​route('logged.final')}​​​​​​​}​​​​​​​">Clicca per uscire</a>
+      <a class="btn btn-dark" href="{{route('logged.final')}}">Clicca per uscire</a>
     @else
-     <a class="btn btn-dark" href="{​​​​​​​{​​​​​​​route('logged.index')}​​​​​​​}​​​​​​​">Vai al prossimo round</a>
+      <a class="btn btn-dark" href="{{route('logged.index')}}">Vai al prossimo round</a>
     @endif
 
   </div>
