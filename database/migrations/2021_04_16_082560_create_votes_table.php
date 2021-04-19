@@ -16,7 +16,7 @@ class CreateVotesTable extends Migration
     Schema::create('votes', function (Blueprint $table) {
       $table->id();
       $table->tinyInteger('value')->unsigned()->nullable();
-      $table->text('comment')->nullable();
+      $table->string('comment')->nullable();
       $table->boolean('team_vote')->unsigned()->nullable();
       $table->timestamps();
     });
