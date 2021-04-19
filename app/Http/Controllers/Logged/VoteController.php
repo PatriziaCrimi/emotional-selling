@@ -20,6 +20,7 @@ class VoteController extends Controller
     $idAuth = Auth::user()->id; // mi prendo l'id dell'utente autenticato
      // valore combo auth id
 
+
     // Filtro per round
     if ($round -> name == 1) {
       // Filtro per ruolo  ( Sede:2)
@@ -67,7 +68,7 @@ class VoteController extends Controller
 
     if ($round -> name == 3) {
 
-      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
 
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
@@ -76,6 +77,7 @@ class VoteController extends Controller
       }else {
 
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
+        // dd($auth);
 
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',3)->get();
 
@@ -85,7 +87,19 @@ class VoteController extends Controller
 
       }
     }
-    return view('logged.votes.index',compact('usersGroups','round','auth'));
+    // dd($auth);
+
+    ///// AGGIUNTO QUESTO PEZZO PER PORTARMI AL CONTROLLO HAI GIA VOTATO
+    $voteCheck = Vote::where('info_voter_id',$auth->id)->first();
+    if(!is_null($voteCheck)){
+      $voteCheckId = $voteCheck -> info_voter_id;
+      return view('logged.votes.index',compact('voteCheck','voteCheckId','usersGroups','round','auth'));
+    }else {
+      $voteCheckId = 0;
+      return view('logged.votes.index',compact('voteCheckId','usersGroups','round','auth'));
+    }
+    // dd($voteCheckId);
+
   }
 
   /**
@@ -97,8 +111,15 @@ class VoteController extends Controller
     $user = GroupRoleRoundUser::where('user_id',$id)->where('round_id',$round->name)->first(); // info utente votato
     $idAuth = Auth::user()->id; // info votante
     $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+    $userName = User::where('id',$id)->first();
+    // dd($userName);
 
-    return view('logged.votes.show',compact('user','comboAuth'));
+    // return view('logged.votes.show',compact('user','comboAuth'));
+
+
+    //// CAMBIATI I RETURN IN JSON!!!!
+    return  response()->json(compact('user','comboAuth','userName'), 200);
+
   }
 
   public function formTeam($id)
@@ -109,14 +130,15 @@ class VoteController extends Controller
     $idAuth = Auth::user()->id; // info votante
     $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
 
-    return view('logged.votes.show',compact('team','user','id','comboAuth'));
+    /// CAMBIATI I RETUNR IN JSONN!!!!
+    return  response()->json(compact('team','user','id','comboAuth'), 200);
   }
 
   public function userStore(Request $request)
   {
 
     $data = $request->all();
-
+    // dd($data);
     // voto domanda 1
 
     $newVote1 = new Vote();
@@ -125,6 +147,8 @@ class VoteController extends Controller
     $newVote1-> category_id = $data['category1'];
     $newVote1-> value = $data['votesUser1'];
     $newVote1-> comment = $data['comment1'];
+    $newVote1-> team_vote = 0;
+    $newVote1-> user_vote = 1;
 
     $newVote1->save();
 
@@ -136,6 +160,8 @@ class VoteController extends Controller
     $newVote2-> category_id = $data['category2'];
     $newVote2-> value = $data['votesUser2'];
     $newVote2-> comment = $data['comment2'];
+    $newVote2-> team_vote = 0;
+    $newVote2-> user_vote = 1;
 
     $newVote2->save();
 
@@ -147,16 +173,20 @@ class VoteController extends Controller
     $newVote3-> category_id = $data['category3'];
     $newVote3-> value = $data['votesUser3'];
     $newVote3-> comment = $data['comment3'];
+    $newVote3-> team_vote = 0;
+    $newVote3-> user_vote = 1;
 
     $newVote3->save();
 
-    return Redirect::route('logged.votes.index');
+    return redirect()->back();
+    // Redirect::route('logged.votes.index')
   }
 
   public function teamStore(Request $request)
   {
 
     $data = $request->all();
+    // dd($data);
     $round = Round::find(4);
     $teamMembers = GroupRoleRoundUser::where('team_id',$data['team_id'])->where('round_id',$round->name)->get();
     // membri del team che si sta votando
@@ -171,6 +201,8 @@ class VoteController extends Controller
       $newVote1-> category_id = $data['category1'];
       $newVote1-> value = $data['votesTeam1'];
       $newVote1-> comment = $data['comment1'];
+      $newVote1-> team_vote = 1;
+      $newVote1-> user_vote = 0;
 
       $newVote1->save();
 
@@ -180,6 +212,8 @@ class VoteController extends Controller
       $newVote2-> category_id = $data['category2'];
       $newVote2-> value = $data['votesTeam2'];
       $newVote2-> comment = $data['comment2'];
+      $newVote2-> team_vote = 1;
+      $newVote2-> user_vote = 0;
 
       $newVote2->save();
 
@@ -189,10 +223,13 @@ class VoteController extends Controller
       $newVote3-> category_id = $data['category3'];
       $newVote3-> value = $data['votesTeam3'];
       $newVote3-> comment = $data['comment3'];
+      $newVote3-> team_vote = 1;
+      $newVote3-> user_vote = 0;
 
       $newVote3->save();
     }
-  
-    return Redirect::route('logged.votes.index');
+
+    return redirect()->back();
+
   }
 }
