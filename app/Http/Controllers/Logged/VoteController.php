@@ -147,8 +147,7 @@ class VoteController extends Controller
     $newVote1-> category_id = $data['category1'];
     $newVote1-> value = $data['votesUser1'];
     $newVote1-> comment = $data['comment1'];
-    $newVote1-> team_vote = 0;
-    $newVote1-> user_vote = 1;
+    $newVote1-> team_vote = 0;  // è stato votato lo user
 
     $newVote1->save();
 
@@ -160,8 +159,7 @@ class VoteController extends Controller
     $newVote2-> category_id = $data['category2'];
     $newVote2-> value = $data['votesUser2'];
     $newVote2-> comment = $data['comment2'];
-    $newVote2-> team_vote = 0;
-    $newVote2-> user_vote = 1;
+    $newVote2-> team_vote = 0; // è stato votato lo user
 
     $newVote2->save();
 
@@ -173,8 +171,7 @@ class VoteController extends Controller
     $newVote3-> category_id = $data['category3'];
     $newVote3-> value = $data['votesUser3'];
     $newVote3-> comment = $data['comment3'];
-    $newVote3-> team_vote = 0;
-    $newVote3-> user_vote = 1;
+    $newVote3-> team_vote = 0; // è stato votato lo user
 
     $newVote3->save();
 
@@ -201,8 +198,7 @@ class VoteController extends Controller
       $newVote1-> category_id = $data['category1'];
       $newVote1-> value = $data['votesTeam1'];
       $newVote1-> comment = $data['comment1'];
-      $newVote1-> team_vote = 1;
-      $newVote1-> user_vote = 0;
+      $newVote1-> team_vote = 1;  // è stato votato il team
 
       $newVote1->save();
 
@@ -212,8 +208,7 @@ class VoteController extends Controller
       $newVote2-> category_id = $data['category2'];
       $newVote2-> value = $data['votesTeam2'];
       $newVote2-> comment = $data['comment2'];
-      $newVote2-> team_vote = 1;
-      $newVote2-> user_vote = 0;
+      $newVote2-> team_vote = 1; // è stato votato il team
 
       $newVote2->save();
 
@@ -223,8 +218,7 @@ class VoteController extends Controller
       $newVote3-> category_id = $data['category3'];
       $newVote3-> value = $data['votesTeam3'];
       $newVote3-> comment = $data['comment3'];
-      $newVote3-> team_vote = 1;
-      $newVote3-> user_vote = 0;
+      $newVote3-> team_vote = 1; // è stato votato il team
 
       $newVote3->save();
     }

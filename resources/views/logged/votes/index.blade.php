@@ -81,7 +81,7 @@
                            <tbody>
 {{-- AGGIUNTO CONTROLLO SE HAI GIA VOTATO L'UTENTE SINGOLO --}}
                              @php
-                               $idUserVoted = \App\Vote::where('info_voter_id',$voteCheckId)->where('info_voted_id',$player->id)->where('user_vote',1)->first();
+                               $idUserVoted = \App\Vote::where('info_voter_id',$voteCheckId)->where('info_voted_id',$player->id)->where('team_vote',0)->first();
                                // dd($player);
                              @endphp
 

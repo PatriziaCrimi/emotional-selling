@@ -18,7 +18,6 @@ class CreateVotesTable extends Migration
       $table->tinyInteger('value')->unsigned()->nullable();
       $table->text('comment')->nullable();
       $table->boolean('team_vote')->unsigned()->nullable();
-      $table->boolean('user_vote')->unsigned()->nullable();
       $table->timestamps();
     });
   }

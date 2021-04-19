@@ -12,6 +12,7 @@ class Vote extends Model
     'category_id',
     'info_voter_id',
     'info_voted_id',
+    'team_vote'
   ];
 
   // One to Many between Rounds and Votes tables
