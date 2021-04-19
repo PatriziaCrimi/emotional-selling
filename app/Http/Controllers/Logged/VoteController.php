@@ -112,13 +112,11 @@ class VoteController extends Controller
     $idAuth = Auth::user()->id; // info votante
     $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
     $userName = User::where('id',$id)->first();
-    // dd($userName);
 
-    // return view('logged.votes.show',compact('user','comboAuth'));
-
+    return view('logged.votes.show',compact('user','comboAuth'));
 
     //// CAMBIATI I RETURN IN JSON!!!!
-    return  response()->json(compact('user','comboAuth','userName'), 200);
+    // return  response()->json(compact('user','comboAuth','userName'), 200);
 
   }
 
@@ -130,60 +128,84 @@ class VoteController extends Controller
     $idAuth = Auth::user()->id; // info votante
     $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
 
+    return view('logged.votes.show',compact('team','user','id','comboAuth'));
+
     /// CAMBIATI I RETUNR IN JSONN!!!!
-    return  response()->json(compact('team','user','id','comboAuth'), 200);
+    // return  response()->json(compact('team','user','id','comboAuth'), 200);
   }
 
   public function userStore(Request $request)
   {
-
+    // Validating all form data received
+    $request->validate([
+      'info_voter_id' => 'integer|exists:group_role_round_users,id',
+      'info_voted_id' => 'integer|exists:group_role_round_users,id',
+      'category1_id' => 'integer|exists:categories,id',
+      'category2_id' => 'integer|exists:categories,id',
+      'category3_id' => 'integer|exists:categories,id',
+      'voteUser1' => 'nullable|integer|between:0,10',
+      'voteUser2' => 'nullable|integer|between:0,10',
+      'voteUser3' => 'nullable|integer|between:0,10',
+      'comment1' => 'nullable|string|max:255',
+      'comment2' => 'nullable|string|max:255',
+      'comment3' => 'nullable|string|max:255',
+    ]);
+    // Storing all form data received
     $data = $request->all();
-    // dd($data);
-    // voto domanda 1
 
+    // New Instance: voto domanda 1
     $newVote1 = new Vote();
     $newVote1-> info_voter_id = $data['info_voter_id'];
     $newVote1-> info_voted_id = $data['info_voted_id'];
-    $newVote1-> category_id = $data['category1'];
-    $newVote1-> value = $data['votesUser1'];
+    $newVote1-> category_id = $data['category1_id'];
+    $newVote1-> value = $data['voteUser1'];
     $newVote1-> comment = $data['comment1'];
     $newVote1-> team_vote = 0;  // è stato votato lo user
 
     $newVote1->save();
 
-    // voto domanda 2
-
+    // New Instance: voto domanda 2
     $newVote2 = new Vote();
     $newVote2-> info_voter_id = $data['info_voter_id'];
     $newVote2-> info_voted_id = $data['info_voted_id'];
-    $newVote2-> category_id = $data['category2'];
-    $newVote2-> value = $data['votesUser2'];
+    $newVote2-> category_id = $data['category2_id'];
+    $newVote2-> value = $data['voteUser2'];
     $newVote2-> comment = $data['comment2'];
     $newVote2-> team_vote = 0; // è stato votato lo user
 
     $newVote2->save();
 
-    // voto domanda 3
-
+    // New Instance: voto domanda 3
     $newVote3 = new Vote();
     $newVote3-> info_voter_id = $data['info_voter_id'];
     $newVote3-> info_voted_id = $data['info_voted_id'];
-    $newVote3-> category_id = $data['category3'];
-    $newVote3-> value = $data['votesUser3'];
+    $newVote3-> category_id = $data['category3_id'];
+    $newVote3-> value = $data['voteUser3'];
     $newVote3-> comment = $data['comment3'];
     $newVote3-> team_vote = 0; // è stato votato lo user
 
     $newVote3->save();
 
-    return redirect()->back();
-    // Redirect::route('logged.votes.index')
+    return Redirect::route('logged.votes.index');
   }
 
   public function teamStore(Request $request)
   {
-
+    // Validating all form data received
+    $request->validate([
+      'info_voter_id' => 'integer|exists:group_role_round_users,id',
+      'category1_id' => 'integer|exists:categories,id',
+      'category2_id' => 'integer|exists:categories,id',
+      'category3_id' => 'integer|exists:categories,id',
+      'voteTeam1' => 'nullable|integer|between:0,10',
+      'voteTeam2' => 'nullable|integer|between:0,10',
+      'voteTeam3' => 'nullable|integer|between:0,10',
+      'comment1' => 'nullable|string|max:255',
+      'comment2' => 'nullable|string|max:255',
+      'comment3' => 'nullable|string|max:255',
+    ]);
+    // Storing all form data received
     $data = $request->all();
-    // dd($data);
     $round = Round::find(4);
     $teamMembers = GroupRoleRoundUser::where('team_id',$data['team_id'])->where('round_id',$round->name)->get();
     // membri del team che si sta votando
@@ -195,8 +217,8 @@ class VoteController extends Controller
       $newVote1 = new Vote();
       $newVote1-> info_voter_id = $data['info_voter_id'];
       $newVote1-> info_voted_id = $member -> id;
-      $newVote1-> category_id = $data['category1'];
-      $newVote1-> value = $data['votesTeam1'];
+      $newVote1-> category_id = $data['category1_id'];
+      $newVote1-> value = $data['voteTeam1'];
       $newVote1-> comment = $data['comment1'];
       $newVote1-> team_vote = 1;  // è stato votato il team
 
@@ -205,8 +227,8 @@ class VoteController extends Controller
       $newVote2 = new Vote();
       $newVote2-> info_voter_id = $data['info_voter_id'];
       $newVote2-> info_voted_id = $member -> id;
-      $newVote2-> category_id = $data['category2'];
-      $newVote2-> value = $data['votesTeam2'];
+      $newVote2-> category_id = $data['category2_id'];
+      $newVote2-> value = $data['voteTeam2'];
       $newVote2-> comment = $data['comment2'];
       $newVote2-> team_vote = 1; // è stato votato il team
 
@@ -215,15 +237,14 @@ class VoteController extends Controller
       $newVote3 = new Vote();
       $newVote3-> info_voter_id = $data['info_voter_id'];
       $newVote3-> info_voted_id = $member -> id;
-      $newVote3-> category_id = $data['category3'];
-      $newVote3-> value = $data['votesTeam3'];
+      $newVote3-> category_id = $data['category3_id'];
+      $newVote3-> value = $data['voteTeam3'];
       $newVote3-> comment = $data['comment3'];
       $newVote3-> team_vote = 1; // è stato votato il team
 
       $newVote3->save();
     }
 
-    return redirect()->back();
-
+    return Redirect::route('logged.votes.index');
   }
 }

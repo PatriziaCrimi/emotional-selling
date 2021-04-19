@@ -49857,7 +49857,7 @@ var app = new Vue({
     getUser: function getUser(id) {
       var _this = this;
 
-      axios.get("votes/user/" + id).then(function (response) {
+      axios.get("/logged/votes/user/" + id).then(function (response) {
         _this.showUserForm = !_this.showUserForm;
         _this.userArray = response.data;
         console.log(_this.userArray.user, id);
@@ -49866,7 +49866,7 @@ var app = new Vue({
     getTeam: function getTeam(id) {
       var _this2 = this;
 
-      axios.get("votes/team/" + id).then(function (response) {
+      axios.get("/logged/votes/team/" + id).then(function (response) {
         _this2.showTeamForm = !_this2.showTeamForm;
         _this2.teamArray = response.data;
         console.log("team", _this2.teamArray.team[0].team_id, _this2.teamArray.comboAuth.id);

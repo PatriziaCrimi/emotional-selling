@@ -2,159 +2,319 @@
 
 @section('content')
   <div id="app" class="content" style="height:500px;">
-                  <div class="">
-                  <a href="#">indietro</a>
-                  </div>
-                  <div class="title m-b-md">
-                      Laravel
-                  </div>
+    <div class="">
+      <a href="#">indietro</a>
+    </div>
+    <div class="title m-b-md">
+      Laravel
+    </div>
 
-                  @if (!is_null($user))
+    @if (!is_null($user))
+      {{-- VOTAZIONE AL GIOCATORE --}}
+      <h3>
+        Stai votando l'utente {{$user -> user -> name}} {{$user -> user -> lastname}}
+      </h3>
 
-                      <h3>Stai votando l'utente {{$user -> user -> name}} {{$user -> user -> lastname}}</h3>
+      <form id="form" class="form" action="{{ route('logged.user.voted')}}" method="post">
+        @csrf
+        @method('post')
 
-                    <form id="form" class="form" action="{{ route('logged.user.voted')}}" method="post">
-                      @csrf
-                      @method('post')
+        <div class="form-group">
+          <label for="info_voter_id"></label>
+          <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}" class="form-control @error('info_voter_id') is-invalid @enderror">
+          @error('info_voter_id')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      {{-- Voto Categoria 1 --}}
+        <div class="form-group">
+          <label for="info_voted_id"></label>
+          <input type="hidden" name="info_voted_id" value="{{$user->id}}" class="form-control @error('info_voted_id') is-invalid @enderror">
+          @error('info_voted_id')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      <label for="votesUser1[]"></label>
+        {{-- Voto UTENTE Categoria 1 --}}
 
-                      <input type="hidden" name="category1" value="1">
-                      <input type="hidden" name="info_voted_id" value="{{$user->id}}">
-                      <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}">
-                      <input type="hidden" class="input" name="votesUser1" value="0">
-                      <input type="checkbox" class="input" name="votesUser1" value="1">1
-                      <input type="checkbox" class="input" name="votesUser1" value="2">2
-                      <input type="checkbox" class="input" name="votesUser1" value="3">3
-                      <input type="checkbox" class="input" name="votesUser1" value="4">4
-                      <input type="checkbox" class="input" name="votesUser1" value="5">5
-                      <input type="checkbox" class="input" name="votesUser1" value="6">6
-                      <input type="checkbox" class="input" name="votesUser1" value="7">7
-                      <input type="checkbox" class="input" name="votesUser1" value="8">8
-                      <input type="checkbox" class="input" name="votesUser1" value="9">9
-                      <input type="checkbox" class="input" name="votesUser1" value="10">10<br>
-                      <textarea name="comment1" rows="8" cols="80"></textarea><br>
+        <h3>Come valuti la domanda 1?</h3>
+        <div class="form-group">
+          <label for="category1_id"></label>
+          <input type="hidden" name="category1_id" value="1" class="form-control @error('category1_id') is-invalid @enderror">
+          @error('category1_id')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      <label for="votesUser2[]"></label>
+        <div class="form-group">
+          <label for="voteUser1"></label>
+          <input type="hidden" class="input" name="voteUser1" value="0">
+          <div v-for="index in 10" :key="index" class="d-inline-block">
+            <input type="radio" name="voteUser1" :value="index">
+            <span>@{{index}}</span>
+          </div>
+          @error('voteUser1')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      {{-- Voto Categoria 2 --}}
+        <div class="form-group">
+          <label for="comment1"></label>
+          <textarea name="comment1" rows="8" cols="80" class="form-control @error('comment1') is-invalid @enderror">{{ old('comment1')}}</textarea><br>
+          @error('comment1')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      <input type="hidden" name="category2" value="2">
-                      <input type="hidden" class="input" name="votesUser2" value="0">
-                      <input type="checkbox" class="input" name="votesUser2" value="1">1
-                      <input type="checkbox" class="input" name="votesUser2" value="2">2
-                      <input type="checkbox" class="input" name="votesUser2" value="3">3
-                      <input type="checkbox" class="input" name="votesUser2" value="4">4
-                      <input type="checkbox" class="input" name="votesUser2" value="5">5
-                      <input type="checkbox" class="input" name="votesUser2" value="6">6
-                      <input type="checkbox" class="input" name="votesUser2" value="7">7
-                      <input type="checkbox" class="input" name="votesUser2" value="8">8
-                      <input type="checkbox" class="input" name="votesUser2" value="9">9
-                      <input type="checkbox" class="input" name="votesUser2" value="10">10<br>
-                      <textarea name="comment2" rows="8" cols="80"></textarea><br>
+        {{-- Voto UTENTE Categoria 2 --}}
 
+        <h3>Come valuti la domanda 2?</h3>
+        <div class="form-group">
+          <label for="category2_id"></label>
+          <input type="hidden" name="category2_id" value="2" class="form-control @error('category2_id') is-invalid @enderror">
+          @error('category2_id')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      <label for="votesUser3[]"></label>
+        <div class="form-group">
+          <label for="voteUser2"></label>
+          <input type="hidden" class="input" name="voteUser2" value="0">
+          <div v-for="index in 10" :key="index" class="d-inline-block">
+            <input type="radio" name="voteUser2" :value="index">
+            <span>@{{index}}</span>
+          </div>
+          @error('voteUser2')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      {{-- Voto Categoria 3 --}}
-                      <input type="hidden" name="category3" value="3">
-                      <input type="hidden" class="input" name="votesUser3" value="0">
-                      <input type="checkbox" class="input" name="votesUser3" value="1">1
-                      <input type="checkbox" class="input" name="votesUser3" value="2">2
-                      <input type="checkbox" class="input" name="votesUser3" value="3">3
-                      <input type="checkbox" class="input" name="votesUser3" value="4">4
-                      <input type="checkbox" class="input" name="votesUser3" value="5">5
-                      <input type="checkbox" class="input" name="votesUser3" value="6">6
-                      <input type="checkbox" class="input" name="votesUser3" value="7">7
-                      <input type="checkbox" class="input" name="votesUser3" value="8">8
-                      <input type="checkbox" class="input" name="votesUser3" value="9">9
-                      <input type="checkbox" class="input" name="votesUser3" value="10">10<br>
-                      <textarea name="comment3" rows="8" cols="80"></textarea>
+        <div class="form-group">
+          <label for="comment2"></label>
+          <textarea name="comment2" rows="8" cols="80" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
+          @error('comment2')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      <input style="margin-top:50px;" class="submit" type="submit" name="" value="Salva">
-                    </form>
-                  {{-- @endforeach --}}
-                  @else
-                      <h1>Stai votando il Team {{$id}}</h1>
-                    @foreach ($team as $key => $player)
-                      <h3>{{$player -> user -> name}} {{$player -> user -> lastname}}</h3>
-                    @endforeach
+        {{-- Voto UTENTE Categoria 3 --}}
 
-                    <form  class="form" action="{{ route('logged.team.voted')}}" method="post">
-                      @csrf
-                      @method('post')
-                      <label for="votesTeam1[]"></label>
+        <h3>Come valuti la domanda 3?</h3>
+        <div class="form-group">
+          <label for="category3_id"></label>
+          <input type="hidden" name="category3_id" value="3" class="form-control @error('category3_id') is-invalid @enderror">
+          @error('category3_id')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      <h3>Come valuti la domanda 1?</h3>
+        <div class="form-group">
+          <label for="voteUser3"></label>
+          <input type="hidden" class="input" name="voteUser3" value="0">
+          <div v-for="index in 10" :key="index" class="d-inline-block">
+            <input type="radio" name="voteUser3" :value="index">
+            <span>@{{index}}</span>
+          </div>
+          @error('voteUser3')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      <input type="hidden" name="category1" value="1">
-                      <input type="hidden" name="team_id" value="{{$id}}">
-                      <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}">
-                      <input type="hidden" class="input" name="votesTeam1" value="0">
-                      <input type="checkbox" class="input" name="votesTeam1" value="1">1
-                      <input type="checkbox" class="input" name="votesTeam1" value="2">2
-                      <input type="checkbox" class="input" name="votesTeam1" value="3">3
-                      <input type="checkbox" class="input" name="votesTeam1" value="4">4
-                      <input type="checkbox" class="input" name="votesTeam1" value="5">5
-                      <input type="checkbox" class="input" name="votesTeam1" value="6">6
-                      <input type="checkbox" class="input" name="votesTeam1" value="7">7
-                      <input type="checkbox" class="input" name="votesTeam1" value="8">8
-                      <input type="checkbox" class="input" name="votesTeam1" value="9">9
-                      <input type="checkbox" class="input" name="votesTeam1" value="10">10<br><br>
-                      <textarea name="comment1" rows="8" cols="80"></textarea><br>
+        <div class="form-group">
+          <label for="comment3"></label>
+          <textarea name="comment3" rows="4" cols="80" class="form-control @error('comment3') is-invalid @enderror">{{ old('comment3')}}</textarea>
+          @error('comment3')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      <label for="votesTeam2[]"></label>
+        <input style="margin-top:50px;" class="submit" type="submit" name="" value="Salva">
+      </form>
+    {{-- @endforeach --}}
+    @else
 
-                      <h3>Come valuti la domanda 2?</h3>
-                      <input type="hidden" name="category2" value="2">
-                      {{-- <input type="hidden" name="info_voted_id" value="{{$user->id}}"> --}}
-                      <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}">
-                      <input type="hidden" class="input" name="votesTeam2" value="0">
-                      <input type="checkbox" class="input" name="votesTeam2" value="1">1
-                      <input type="checkbox" class="input" name="votesTeam2" value="2">2
-                      <input type="checkbox" class="input" name="votesTeam2" value="3">3
-                      <input type="checkbox" class="input" name="votesTeam2" value="4">4
-                      <input type="checkbox" class="input" name="votesTeam2" value="5">5
-                      <input type="checkbox" class="input" name="votesTeam2" value="6">6
-                      <input type="checkbox" class="input" name="votesTeam2" value="7">7
-                      <input type="checkbox" class="input" name="votesTeam2" value="8">8
-                      <input type="checkbox" class="input" name="votesTeam2" value="9">9
-                      <input type="checkbox" class="input" name="votesTeam2" value="10">10<br>
-                      <textarea name="comment2" rows="8" cols="80"></textarea><br>
+      {{-- VOTAZIONE AL TEAM --}}
 
+        <h1>Stai votando il Team {{$id}}</h1>
+      @foreach ($team as $key => $player)
+        <h3>{{$player -> user -> name}} {{$player -> user -> lastname}}</h3>
+      @endforeach
 
-                      <label for="votesTeam3[]"></label>
+      <form  class="form" action="{{ route('logged.team.voted')}}" method="post">
+        @csrf
+        @method('post')
 
-                      <h3>Come valuti la domanda 3?</h3>
+        <div class="form-group">
+          <label for="info_voter_id"></label>
+          <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}" class="form-control @error('info_voter_id') is-invalid @enderror">
+          @error('info_voter_id')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                      <input type="hidden" name="category3" value="3">
-                      {{-- <input type="hidden" name="info_voted_id" value="{{$user->id}}"> --}}
-                      <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}">
-                      <input type="hidden" class="input" name="votesTeam3" value="0">
-                      <input type="checkbox" class="input" name="votesTeam3" value="1">1
-                      <input type="checkbox" class="input" name="votesTeam3" value="2">2
-                      <input type="checkbox" class="input" name="votesTeam3" value="3">3
-                      <input type="checkbox" class="input" name="votesTeam3" value="4">4
-                      <input type="checkbox" class="input" name="votesTeam3" value="5">5
-                      <input type="checkbox" class="input" name="votesTeam3" value="6">6
-                      <input type="checkbox" class="input" name="votesTeam3" value="7">7
-                      <input type="checkbox" class="input" name="votesTeam3" value="8">8
-                      <input type="checkbox" class="input" name="votesTeam3" value="9">9
-                      <input type="checkbox" class="input" name="votesTeam3" value="10">10<br>
-                      <textarea name="comment3" rows="8" cols="80"></textarea><br>
+        {{-- Voto TEAM Categoria 1 --}}
 
-                      <input style="margin-top:50px;"id="submit" type="submit" class="submit" name="" value="Salva">
-                    </form>
+        <div class="form-group">
+          <label for="category1_id"></label>
+          <input type="hidden" name="category1_id" value="1" class="form-control @error('category1_id') is-invalid @enderror">
+          @error('category1_id')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                  @endif
+        <div class="form-group">
+          <label for="team_id"></label>
+          <input type="hidden" name="team_id" value="{{$id}}">
+        </div>
 
-              </div>
-  {{-- Groups List --}}
-  <div class="">
-    <a href="{{route('logged.rankings')}}">Vai alla classifica provvisoria</a>
+        <h3>Come valuti la domanda 1?</h3>
+        <div class="form-group">
+          <label for="voteTeam1"></label>
+          <input type="hidden" class="input" name="voteTeam1" value="0">
+          <div v-for="index in 10" :key="index" class="d-inline-block">
+            <input type="radio" name="voteTeam1" :value="index">
+            <span>@{{index}}</span>
+          </div>
+          @error('voteTeam1')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="comment1"></label>
+          <textarea name="comment1" rows="8" cols="80" class="form-control @error('comment1') is-invalid @enderror">{{ old('comment1')}}</textarea><br>
+          @error('comment1')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
+        {{-- Voto TEAM Categoria 2 --}}
+
+        <h3>Come valuti la domanda 2?</h3>
+
+        <h3>Come valuti la domanda 2?</h3>
+        <div class="form-group">
+          <label for="category2_id"></label>
+          <input type="hidden" name="category2_id" value="2" class="form-control @error('category2_id') is-invalid @enderror">
+          @error('category2_id')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="voteTeam2"></label>
+          <input type="hidden" class="input" name="voteTeam2" value="0">
+          <div v-for="index in 10" :key="index" class="d-inline-block">
+            <input type="radio" name="voteTeam2" :value="index">
+            <span>@{{index}}</span>
+          </div>
+          @error('voteTeam2')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="comment2"></label>
+          <textarea name="comment2" rows="8" cols="80" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
+          @error('comment2')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="comment2"></label>
+          <textarea name="comment2" rows="8" cols="80" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
+          @error('comment2')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
+        {{-- Voto TEAM Categoria 3 --}}
+
+        <h3>Come valuti la domanda 3?</h3>
+
+        <h3>Come valuti la domanda 3?</h3>
+        <div class="form-group">
+          <label for="category3_id"></label>
+          <input type="hidden" name="category3_id" value="3" class="form-control @error('category3_id') is-invalid @enderror">
+          @error('category3_id')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="voteTeam3"></label>
+          <input type="hidden" class="input" name="voteTeam3" value="0">
+          <div v-for="index in 10" :key="index" class="d-inline-block">
+            <input type="radio" name="voteTeam3" :value="index">
+            <span>@{{index}}</span>
+          </div>
+          @error('voteTeam3')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="comment3"></label>
+          <textarea name="comment3" rows="4" cols="80" class="form-control @error('comment3') is-invalid @enderror">{{ old('comment3')}}</textarea>
+          @error('comment3')
+            <div class="alert alert-danger">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
+        <input style="margin-top:50px;"id="submit" type="submit" class="submit" name="" value="Salva">
+      </form>
+
+    @endif
+
+    </div>
+    <div class="">
+      <a href="{{route('logged.rankings')}}">Vai alla classifica provvisoria</a>
+    </div>
+
   </div>
-
-</div>
 @endsection

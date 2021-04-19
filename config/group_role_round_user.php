@@ -732,35 +732,35 @@
       "group_id" => 1,
       "role_id" => 4,
       "round_id" => 2,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
     [
       "user_id" => 6, // Ioannucci
       "group_id" => 1,
       "role_id" => 4,
       "round_id" => 2,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
     [
       "user_id" => 51,  // Del Curto
       "group_id" => 1,
       "role_id" => 4,
       "round_id" => 2,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
     [
       "user_id" => 3, // Chiozzi
       "group_id" => 1,
       "role_id" => 4,
       "round_id" => 2,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
     [
       "user_id" => 82,  // Costa
       "group_id" => 1,
       "role_id" => 4,
       "round_id" => 2,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
 
     // Osservatore
@@ -1449,35 +1449,35 @@
       "group_id" => 1,
       "role_id" => 3,
       "round_id" => 3,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
     [
       "user_id" => 6, // Ioannucci
       "group_id" => 1,
       "role_id" => 3,
       "round_id" => 3,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
     [
       "user_id" => 51,  // Del Curto
       "group_id" => 1,
       "role_id" => 3,
       "round_id" => 3,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
     [
       "user_id" => 3, // Chiozzi
       "group_id" => 1,
       "role_id" => 3,
       "round_id" => 3,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
     [
       "user_id" => 82,  // Costa
       "group_id" => 1,
       "role_id" => 3,
       "round_id" => 3,
-      "team_id" => 11  // Team 11
+      "team_id" => 1  // Team 1
     ],
 
     //  -------- Gruppo 2 --------
