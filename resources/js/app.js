@@ -14,6 +14,15 @@ const app = new Vue({
     // showTeamForm: false
   },
   methods:{
+    alertVoted(){
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Il tuo voto è stato salvato',
+          showConfirmButton: false,
+          timer: 1500
+        })
+    },
     // getUser(id){
     //     axios
     //       .get("/logged/votes/user/" + id ).

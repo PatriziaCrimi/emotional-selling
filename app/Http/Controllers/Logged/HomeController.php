@@ -37,7 +37,6 @@ class HomeController extends Controller
     ->get();
 
     $votesRank = json_decode(json_encode($votesCount),true);
-    dd($votesRank);
 
     return view('logged.rankings',compact('votesRank','round'));
   }

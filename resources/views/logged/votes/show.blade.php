@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scripts')
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@endsection
+
 @section('content')
   <div id="app" class="content" style="height:500px;">
     <div class="">
@@ -68,7 +72,7 @@
 
         <div class="form-group">
           <label for="comment1"></label>
-          <textarea name="comment1" rows="8" cols="80" class="form-control @error('comment1') is-invalid @enderror">{{ old('comment1')}}</textarea><br>
+          <textarea name="comment1" rows="8" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment1') is-invalid @enderror">{{ old('comment1')}}</textarea><br>
           @error('comment1')
             <div class="alert alert-danger">
               {{ $message }}
@@ -105,7 +109,7 @@
 
         <div class="form-group">
           <label for="comment2"></label>
-          <textarea name="comment2" rows="8" cols="80" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
+          <textarea name="comment2" rows="8" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
           @error('comment2')
             <div class="alert alert-danger">
               {{ $message }}
@@ -142,7 +146,7 @@
 
         <div class="form-group">
           <label for="comment3"></label>
-          <textarea name="comment3" rows="4" cols="80" class="form-control @error('comment3') is-invalid @enderror">{{ old('comment3')}}</textarea>
+          <textarea name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment3') is-invalid @enderror">{{ old('comment3')}}</textarea>
           @error('comment3')
             <div class="alert alert-danger">
               {{ $message }}
@@ -150,7 +154,7 @@
           @enderror
         </div>
 
-        <input style="margin-top:50px;" class="submit" type="submit" name="" value="Salva">
+        <input style="margin-top:50px;" class="submit" type="submit" name="" value="Salva" @click="alertVoted()">
       </form>
     {{-- @endforeach --}}
     @else
@@ -210,7 +214,7 @@
 
         <div class="form-group">
           <label for="comment1"></label>
-          <textarea name="comment1" rows="8" cols="80" class="form-control @error('comment1') is-invalid @enderror">{{ old('comment1')}}</textarea><br>
+          <textarea name="comment1" rows="8" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment1') is-invalid @enderror">{{ old('comment1')}}</textarea><br>
           @error('comment1')
             <div class="alert alert-danger">
               {{ $message }}
@@ -219,8 +223,6 @@
         </div>
 
         {{-- Voto TEAM Categoria 2 --}}
-
-        <h3>Come valuti la domanda 2?</h3>
 
         <h3>Come valuti la domanda 2?</h3>
         <div class="form-group">
@@ -249,17 +251,7 @@
 
         <div class="form-group">
           <label for="comment2"></label>
-          <textarea name="comment2" rows="8" cols="80" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
-          @error('comment2')
-            <div class="alert alert-danger">
-              {{ $message }}
-            </div>
-          @enderror
-        </div>
-
-        <div class="form-group">
-          <label for="comment2"></label>
-          <textarea name="comment2" rows="8" cols="80" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
+          <textarea name="comment2" rows="8" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
           @error('comment2')
             <div class="alert alert-danger">
               {{ $message }}
@@ -268,8 +260,6 @@
         </div>
 
         {{-- Voto TEAM Categoria 3 --}}
-
-        <h3>Come valuti la domanda 3?</h3>
 
         <h3>Come valuti la domanda 3?</h3>
         <div class="form-group">
@@ -298,7 +288,7 @@
 
         <div class="form-group">
           <label for="comment3"></label>
-          <textarea name="comment3" rows="4" cols="80" class="form-control @error('comment3') is-invalid @enderror">{{ old('comment3')}}</textarea>
+          <textarea name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment3') is-invalid @enderror">{{ old('comment3')}}</textarea>
           @error('comment3')
             <div class="alert alert-danger">
               {{ $message }}
@@ -306,7 +296,7 @@
           @enderror
         </div>
 
-        <input style="margin-top:50px;"id="submit" type="submit" class="submit" name="" value="Salva">
+        <input style="margin-top:50px;"id="submit" type="submit" class="submit" name="" value="Salva" @click="alertVoted()">
       </form>
 
     @endif
