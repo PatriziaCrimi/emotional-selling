@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-  <div id="app" class="content" style="height:500px;">
+  <div class="content" style="height:500px;">
     <div class="">
       <a href="#">indietro</a>
     </div>
@@ -45,7 +45,7 @@
 
         {{-- Voto UTENTE Categoria 1 --}}
 
-        <h3>Come valuti la domanda 1?</h3>
+        <h3>Come valuti la categoria 1?</h3>
         <div class="form-group">
           <label for="category1_id"></label>
           <input type="hidden" name="category1_id" value="1" class="form-control @error('category1_id') is-invalid @enderror">
@@ -60,7 +60,7 @@
           <label for="voteUser1"></label>
           <input type="hidden" class="input" name="voteUser1" value="0">
           <div v-for="index in 10" :key="index" class="d-inline-block">
-            <input type="radio" name="voteUser1" :value="index">
+            <input type="radio" name="voteUser1" :value="index" @click="checkVoteComment1(index)">
             <span>@{{index}}</span>
           </div>
           @error('voteUser1')
@@ -70,7 +70,8 @@
           @enderror
         </div>
 
-        <div class="form-group">
+        <div v-if="showComment1" class="form-group">
+          <p style="color: red">@{{commentMessage}}</p>
           <label for="comment1"></label>
           <textarea name="comment1" rows="8" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment1') is-invalid @enderror">{{ old('comment1')}}</textarea><br>
           @error('comment1')
@@ -82,7 +83,7 @@
 
         {{-- Voto UTENTE Categoria 2 --}}
 
-        <h3>Come valuti la domanda 2?</h3>
+        <h3>Come valuti la categoria 2?</h3>
         <div class="form-group">
           <label for="category2_id"></label>
           <input type="hidden" name="category2_id" value="2" class="form-control @error('category2_id') is-invalid @enderror">
@@ -97,7 +98,7 @@
           <label for="voteUser2"></label>
           <input type="hidden" class="input" name="voteUser2" value="0">
           <div v-for="index in 10" :key="index" class="d-inline-block">
-            <input type="radio" name="voteUser2" :value="index">
+            <input type="radio" name="voteUser2" :value="index" @click="checkVoteComment2(index)">
             <span>@{{index}}</span>
           </div>
           @error('voteUser2')
@@ -107,7 +108,8 @@
           @enderror
         </div>
 
-        <div class="form-group">
+        <div v-if="showComment2" class="form-group">
+          <p style="color: red">@{{commentMessage}}</p>
           <label for="comment2"></label>
           <textarea name="comment2" rows="8" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
           @error('comment2')
@@ -119,7 +121,7 @@
 
         {{-- Voto UTENTE Categoria 3 --}}
 
-        <h3>Come valuti la domanda 3?</h3>
+        <h3>Come valuti la categoria 3?</h3>
         <div class="form-group">
           <label for="category3_id"></label>
           <input type="hidden" name="category3_id" value="3" class="form-control @error('category3_id') is-invalid @enderror">
@@ -134,7 +136,7 @@
           <label for="voteUser3"></label>
           <input type="hidden" class="input" name="voteUser3" value="0">
           <div v-for="index in 10" :key="index" class="d-inline-block">
-            <input type="radio" name="voteUser3" :value="index">
+            <input type="radio" name="voteUser3" :value="index" @click="checkVoteComment3(index)">
             <span>@{{index}}</span>
           </div>
           @error('voteUser3')
@@ -144,7 +146,8 @@
           @enderror
         </div>
 
-        <div class="form-group">
+        <div v-if="showComment3" class="form-group">
+          <p style="color: red">@{{commentMessage}}</p>
           <label for="comment3"></label>
           <textarea name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment3') is-invalid @enderror">{{ old('comment3')}}</textarea>
           @error('comment3')
@@ -197,12 +200,12 @@
           <input type="hidden" name="team_id" value="{{$id}}">
         </div>
 
-        <h3>Come valuti la domanda 1?</h3>
+        <h3>Come valuti la categoria 1?</h3>
         <div class="form-group">
           <label for="voteTeam1"></label>
           <input type="hidden" class="input" name="voteTeam1" value="0">
           <div v-for="index in 10" :key="index" class="d-inline-block">
-            <input type="radio" name="voteTeam1" :value="index">
+            <input type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)">
             <span>@{{index}}</span>
           </div>
           @error('voteTeam1')
@@ -212,7 +215,8 @@
           @enderror
         </div>
 
-        <div class="form-group">
+        <div v-if="showComment1" class="form-group">
+          <p style="color: red">@{{commentMessage}}</p>
           <label for="comment1"></label>
           <textarea name="comment1" rows="8" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment1') is-invalid @enderror">{{ old('comment1')}}</textarea><br>
           @error('comment1')
@@ -224,7 +228,7 @@
 
         {{-- Voto TEAM Categoria 2 --}}
 
-        <h3>Come valuti la domanda 2?</h3>
+        <h3>Come valuti la categoria 2?</h3>
         <div class="form-group">
           <label for="category2_id"></label>
           <input type="hidden" name="category2_id" value="2" class="form-control @error('category2_id') is-invalid @enderror">
@@ -239,7 +243,7 @@
           <label for="voteTeam2"></label>
           <input type="hidden" class="input" name="voteTeam2" value="0">
           <div v-for="index in 10" :key="index" class="d-inline-block">
-            <input type="radio" name="voteTeam2" :value="index">
+            <input type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)">
             <span>@{{index}}</span>
           </div>
           @error('voteTeam2')
@@ -249,7 +253,8 @@
           @enderror
         </div>
 
-        <div class="form-group">
+        <div v-if="showComment2" class="form-group">
+          <p style="color: red">@{{commentMessage}}</p>
           <label for="comment2"></label>
           <textarea name="comment2" rows="8" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment2') is-invalid @enderror">{{ old('comment2')}}</textarea><br>
           @error('comment2')
@@ -261,7 +266,7 @@
 
         {{-- Voto TEAM Categoria 3 --}}
 
-        <h3>Come valuti la domanda 3?</h3>
+        <h3>Come valuti la categoria 3?</h3>
         <div class="form-group">
           <label for="category3_id"></label>
           <input type="hidden" name="category3_id" value="3" class="form-control @error('category3_id') is-invalid @enderror">
@@ -276,7 +281,7 @@
           <label for="voteTeam3"></label>
           <input type="hidden" class="input" name="voteTeam3" value="0">
           <div v-for="index in 10" :key="index" class="d-inline-block">
-            <input type="radio" name="voteTeam3" :value="index">
+            <input type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)">
             <span>@{{index}}</span>
           </div>
           @error('voteTeam3')
@@ -286,7 +291,8 @@
           @enderror
         </div>
 
-        <div class="form-group">
+        <div v-if="showComment3" class="form-group">
+          <p style="color: red">@{{commentMessage}}</p>
           <label for="comment3"></label>
           <textarea name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control @error('comment3') is-invalid @enderror">{{ old('comment3')}}</textarea>
           @error('comment3')

@@ -19,11 +19,9 @@
           Stai Votando per il Round {{$round -> name}}
           @if ($auth -> role_id == 2)
            <span>
-
               <p> {{$auth -> user -> name}}</p>
               <p> {{$auth -> user -> lastname}}:</p>
               <p> {{$auth -> role -> name}}</p>
-
            </span>
           @endif
 
