@@ -15,19 +15,22 @@ const app = new Vue({
       showTeamForm: false
     },
     methods:{
-
         getUser(id){
-            axios.get("/logged/votes/user/" + id ).then(response => {
-              this.showUserForm = !this.showUserForm;
-            this.userArray = response.data;
-            console.log(this.userArray.user, id);
+            axios
+              .get("/logged/votes/user/" + id ).
+              then(response => {
+                this.showUserForm = !this.showUserForm;
+                this.userArray = response.data;
+                console.log(this.userArray.user, id);
             });
         },
         getTeam(id){
-          axios.get("/logged/votes/team/" + id ).then(response => {
-          this.showTeamForm = !this.showTeamForm;
-          this.teamArray = response.data;
-          console.log("team",this.teamArray.team[0].team_id,this.teamArray.comboAuth.id);
+          axios.
+            get("/logged/votes/team/" + id ).
+            then(response => {
+              this.showTeamForm = !this.showTeamForm;
+              this.teamArray = response.data;
+              console.log("team",this.teamArray.team[0].team_id,this.teamArray.comboAuth.id);
           });
         }
     }
