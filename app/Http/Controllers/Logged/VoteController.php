@@ -88,23 +88,39 @@ class VoteController extends Controller
 
     // Controllo che il parametro nell'url (ossia l'id dello user) esista nella tabella Users
     if ($user != null) {
-      // Se esiste, controllo che il form sia votabile dall'utente autenticato
+      // Se esiste, controllo che l'utente autenticato abbia i permessi per votare quel giocatore
       $idAuth = Auth::user()->id; // info votante
       // Filtro autenticato giocatore
       $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
 
-      // Il gruppo ID dell'utente autenticato è lo stesso del gruppo ID dell'utente cliccato?
-      if(($auth->group_id == $user->group_id) && ($user->role_id != 3)) {
-        // Se è lo stesso procedo
+      // Controllo se l'utente è Sede o Admin
+      if($auth->role_id !== 2 && $auth->role_id !== 1) {
+
+        // L'utente non è né Sede né Admin
+        // Controllo che il gruppo ID dell'utente autenticato è lo stesso del gruppo ID dell'utente cliccato
+        if(($auth->group_id == $user->group_id) && ($user->role_id != 3)) {
+          // Se è lo stesso procedo
+          $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+          $userName = User::where('id',$id)->first();
+
+          return view('logged.votes.show',compact('user','comboAuth'));
+
+        } else {
+          // Se l'utente non è votabile (non è del mio gruppo o è un Osservatore o è Sede) esce un 403
+          abort(403);
+        }
+
+      } else if(($user->role_id !== 2)) {
+        // Se l'utente cliccato non è Sede lo puoi votare
         $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
         $userName = User::where('id',$id)->first();
 
         return view('logged.votes.show',compact('user','comboAuth'));
-
       } else {
-        // Se l'utente non è votabile (non è del mio gruppo o è un Osservatore o è Sede) esce un 403
+        // Se l'utente non è votabile (è un altro membro della Sede) esce un 403
         abort(403);
       }
+
     } else {
       // Se l'id non esiste l'errore è un 404
       abort(404);
@@ -118,14 +134,36 @@ class VoteController extends Controller
 
     // Controllo che il parametro nell'url (ossia l'id del team) esista nella tabella Teams
     if ($team_exist != null) {
-      // Se esiste
-      $user = null; // user null per controllo view votes.show
-      $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
+      // Se esiste, controllo che l'utente autenticato abbia i permessi per votare quel Team
       $idAuth = Auth::user()->id; // info votante
-      $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
+      // Filtro autenticato giocatore
+      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
 
-      return view('logged.votes.show',compact('team','user','id','comboAuth'));
+      // Controllo se l'utente è Sede o Admin
+      if($auth->role_id !== 2 && $auth->role_id !== 1) {
+        // #CASO 1. L'utente non è né Sede né Admin
+        // Il gruppo ID dell'utente autenticato è lo stesso dei membri dei Team
+        if(($auth->group_id == $team_exist->group_id) && ($team_exist->role_id != 3)) {
+          $user = null; // user null per controllo view votes.show
+          $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
+          $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
 
+          return view('logged.votes.show',compact('team','user','id','comboAuth'));
+
+        } else {
+          // Se il team non è votabile (non è nel Round dell'utente loggato) esce un 403
+          abort(403);
+        }
+
+      } else {
+        // #CASO 2. L'utente è Sede o Admin
+        // Se l'utente cliccato non è Sede lo puoi votare
+        $user = null; // user null per controllo view votes.show
+        $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
+        $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
+
+        return view('logged.votes.show',compact('team','user','id','comboAuth'));
+      }
     } else {
       // Se l'id non esiste l'errore è un 404
       abort(404);
