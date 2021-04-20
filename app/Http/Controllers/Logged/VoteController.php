@@ -24,7 +24,7 @@ class VoteController extends Controller
     // Filtro per round
     if ($round -> name == 1) {
       // Filtro per ruolo  ( Sede:2)
-      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
 
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
@@ -47,7 +47,8 @@ class VoteController extends Controller
 
     if ($round -> name == 2) {
 
-      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+      // dd($auth);
 
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
@@ -91,6 +92,7 @@ class VoteController extends Controller
 
     ///// AGGIUNTO QUESTO PEZZO PER PORTARMI AL CONTROLLO HAI GIA VOTATO
     $voteCheck = Vote::where('info_voter_id',$auth->id)->first();
+    // dd($voteCheck,$auth->id);
     if(!is_null($voteCheck)){
       $voteCheckId = $voteCheck -> info_voter_id;
       return view('logged.votes.index',compact('voteCheck','voteCheckId','usersGroups','round','auth'));
