@@ -109,7 +109,7 @@
       @endforeach
 
       @if ($round -> name == 3)
-        <a class="btn btn-dark" href="#">Termina il gioco</a>
+        <a class="btn btn-dark" href="{{ route('logged.final')}}">Termina il gioco</a>
       @else
         <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica parziale</a>
       @endif
