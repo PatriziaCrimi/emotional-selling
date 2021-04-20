@@ -20,75 +20,51 @@ class VoteController extends Controller
     $idAuth = Auth::user()->id; // mi prendo l'id dell'utente autenticato
      // valore combo auth id
 
-
     // Filtro per round
+
+    // ------------------------- ROUND 1 -------------------------
     if ($round -> name == 1) {
       // Filtro per ruolo  ( Sede:2)
       $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-
-          $usersGroups = GroupRoleRoundUser::where('round_id',1)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
-
-      }else {
-
+        $usersGroups = GroupRoleRoundUser::where('round_id',1)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
+      } else {
         // Filtro autenticato giocatore
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',1)->get();
-
         foreach ($userrow as $user) {
-            $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',1)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
-          }
-
+          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',1)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
+        }
       }
-
     }
 
+    // ------------------------- ROUND 2 -------------------------
     if ($round -> name == 2) {
-
       $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
-      // dd($auth);
-
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-
           $usersGroups = GroupRoleRoundUser::where('round_id',2)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
-
-      }else {
-
+      } else {
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',2)->get();
-
         foreach ($userrow as $user) {
-            $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',2)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
-          }
+          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',2)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
+        }
       }
-
     }
 
+    // ------------------------- ROUND 3 -------------------------
     if ($round -> name == 3) {
-
       $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
-
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-
           $usersGroups = GroupRoleRoundUser::where('round_id',3)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
-
-      }else {
-
+      } else {
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-        // dd($auth);
-
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',3)->get();
-
         foreach ($userrow as $user) {
-            $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',3)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
-          }
-
+          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',3)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
+        }
       }
     }
-    // dd($auth);
 
     ///// AGGIUNTO QUESTO PEZZO PER PORTARMI AL CONTROLLO HAI GIA VOTATO
     $voteCheck = Vote::where('info_voter_id',$auth->id)->first();
@@ -100,8 +76,6 @@ class VoteController extends Controller
       $voteCheckId = 0;
       return view('logged.votes.index',compact('voteCheckId','usersGroups','round','auth'));
     }
-    // dd($voteCheckId);
-
   }
 
   /**
@@ -111,29 +85,51 @@ class VoteController extends Controller
   {
     $round = Round::find(4); // valore round attuale
     $user = GroupRoleRoundUser::where('user_id',$id)->where('round_id',$round->name)->first(); // info utente votato
-    $idAuth = Auth::user()->id; // info votante
-    $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
-    $userName = User::where('id',$id)->first();
 
-    return view('logged.votes.show',compact('user','comboAuth'));
+    // Controllo che il parametro nell'url (ossia l'id dello user) esista nella tabella Users
+    if ($user != null) {
+      // Se esiste, controllo che il form sia votabile dall'utente autenticato
+      $idAuth = Auth::user()->id; // info votante
+      // Filtro autenticato giocatore
+      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
 
-    //// CAMBIATI I RETURN IN JSON!!!!
-    // return  response()->json(compact('user','comboAuth','userName'), 200);
+      // Il gruppo ID dell'utente autenticato è lo stesso del gruppo ID dell'utente cliccato?
+      if(($auth->group_id == $user->group_id) && ($user->role_id != 3)) {
+        // Se è lo stesso procedo
+        $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+        $userName = User::where('id',$id)->first();
 
+        return view('logged.votes.show',compact('user','comboAuth'));
+
+      } else {
+        // Se l'utente non è votabile (non è del mio gruppo o è un Osservatore o è Sede) esce un 403
+        abort(403);
+      }
+    } else {
+      // Se l'id non esiste l'errore è un 404
+      abort(404);
+    }
   }
 
   public function formTeam($id)
   {
     $round = Round::find(4); // valore round attuale
-    $user = null; // user null per controllo view votes.show
-    $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
-    $idAuth = Auth::user()->id; // info votante
-    $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
+    $team_exist = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->first();
 
-    return view('logged.votes.show',compact('team','user','id','comboAuth'));
+    // Controllo che il parametro nell'url (ossia l'id del team) esista nella tabella Teams
+    if ($team_exist != null) {
+      // Se esiste
+      $user = null; // user null per controllo view votes.show
+      $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
+      $idAuth = Auth::user()->id; // info votante
+      $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
 
-    /// CAMBIATI I RETUNR IN JSONN!!!!
-    // return  response()->json(compact('team','user','id','comboAuth'), 200);
+      return view('logged.votes.show',compact('team','user','id','comboAuth'));
+
+    } else {
+      // Se l'id non esiste l'errore è un 404
+      abort(404);
+    }
   }
 
   public function userStore(Request $request)
