@@ -172,113 +172,120 @@ class VoteController extends Controller
 
   public function userStore(Request $request)
   {
-    // Validating all form data received
-    $request->validate([
-      'info_voter_id' => 'integer|exists:group_role_round_users,id',
-      'info_voted_id' => 'integer|exists:group_role_round_users,id',
-      'category1_id' => 'integer|exists:categories,id',
-      'category2_id' => 'integer|exists:categories,id',
-      'category3_id' => 'integer|exists:categories,id',
-      'voteUser1' => 'nullable|integer|between:0,10',
-      'voteUser2' => 'nullable|integer|between:0,10',
-      'voteUser3' => 'nullable|integer|between:0,10',
-      'comment1' => 'nullable|string|max:255',
-      'comment2' => 'nullable|string|max:255',
-      'comment3' => 'nullable|string|max:255',
-    ]);
     // Storing all form data received
     $data = $request->all();
 
-    // New Instance: voto domanda 1
-    $newVote1 = new Vote();
-    $newVote1-> info_voter_id = $data['info_voter_id'];
-    $newVote1-> info_voted_id = $data['info_voted_id'];
-    $newVote1-> category_id = $data['category1_id'];
-    $newVote1-> value = $data['voteUser1'];
-    $newVote1-> comment = $data['comment1'];
-    $newVote1-> team_vote = 0;  // è stato votato lo user
+    // Controllo se il valore del voto della Categoria 1 non è nullo (è stata votata)
+    if($request->voteUser1) {
+      // New Instance: voto domanda 1
+      $newVote1 = new Vote();
+      $newVote1-> info_voter_id = $data['info_voter_id'];
+      $newVote1-> info_voted_id = $data['info_voted_id'];
+      $newVote1-> category_id = $data['category1_id'];
+      $newVote1-> value = $data['voteUser1'];
+      if($request->comment1) {
+        $newVote1-> comment = $data['comment1'];
+      };
+      $newVote1-> team_vote = 0;  // è stato votato lo user
 
-    $newVote1->save();
+      $newVote1->save();
+    };
 
-    // New Instance: voto domanda 2
-    $newVote2 = new Vote();
-    $newVote2-> info_voter_id = $data['info_voter_id'];
-    $newVote2-> info_voted_id = $data['info_voted_id'];
-    $newVote2-> category_id = $data['category2_id'];
-    $newVote2-> value = $data['voteUser2'];
-    $newVote2-> comment = $data['comment2'];
-    $newVote2-> team_vote = 0; // è stato votato lo user
+    // Controllo se il valore del voto della Categoria 2 non è nullo (è stata votata)
+    if($request->voteUser2) {
+      // New Instance: voto domanda 2
+      $newVote2 = new Vote();
+      $newVote2-> info_voter_id = $data['info_voter_id'];
+      $newVote2-> info_voted_id = $data['info_voted_id'];
+      $newVote2-> category_id = $data['category2_id'];
+      $newVote2-> value = $data['voteUser2'];
+      if($request->comment2) {
+        $newVote2-> comment = $data['comment2'];
+      };
+      $newVote2-> team_vote = 0; // è stato votato lo user
 
-    $newVote2->save();
+      $newVote2->save();
+    }
 
-    // New Instance: voto domanda 3
-    $newVote3 = new Vote();
-    $newVote3-> info_voter_id = $data['info_voter_id'];
-    $newVote3-> info_voted_id = $data['info_voted_id'];
-    $newVote3-> category_id = $data['category3_id'];
-    $newVote3-> value = $data['voteUser3'];
-    $newVote3-> comment = $data['comment3'];
-    $newVote3-> team_vote = 0; // è stato votato lo user
+    // Controllo se il valore del voto della Categoria 3 non è nullo (è stata votata)
+    if($request->voteUser3) {
+      // New Instance: voto domanda 3
+      $newVote3 = new Vote();
+      $newVote3-> info_voter_id = $data['info_voter_id'];
+      $newVote3-> info_voted_id = $data['info_voted_id'];
+      $newVote3-> category_id = $data['category3_id'];
+      $newVote3-> value = $data['voteUser3'];
+      if($request->comment3) {
+        $newVote3-> comment = $data['comment3'];
+      };
+      $newVote3-> team_vote = 0; // è stato votato lo user
 
-    $newVote3->save();
+      $newVote3->save();
+    }
 
     return Redirect::route('logged.votes.index');
   }
 
   public function teamStore(Request $request)
   {
-    // Validating all form data received
-    $request->validate([
-      'info_voter_id' => 'integer|exists:group_role_round_users,id',
-      'category1_id' => 'integer|exists:categories,id',
-      'category2_id' => 'integer|exists:categories,id',
-      'category3_id' => 'integer|exists:categories,id',
-      'voteTeam1' => 'nullable|integer|between:0,10',
-      'voteTeam2' => 'nullable|integer|between:0,10',
-      'voteTeam3' => 'nullable|integer|between:0,10',
-      'comment1' => 'nullable|string|max:255',
-      'comment2' => 'nullable|string|max:255',
-      'comment3' => 'nullable|string|max:255',
-    ]);
     // Storing all form data received
     $data = $request->all();
     $round = Round::find(4);
     $teamMembers = GroupRoleRoundUser::where('team_id',$data['team_id'])->where('round_id',$round->name)->get();
     // membri del team che si sta votando
 
-    foreach ($teamMembers as $i => $member) {
+    // Controllo se il valore del voto della Categoria 1 non è nullo (è stata votata)
+    if($request->voteTeam1) {
+      // per ogni membro del team creo il voto della Categoria 1
+      foreach ($teamMembers as $i => $member) {
+        $newVote1 = new Vote();
+        $newVote1-> info_voter_id = $data['info_voter_id'];
+        $newVote1-> info_voted_id = $member -> id;
+        $newVote1-> category_id = $data['category1_id'];
+        $newVote1-> value = $data['voteTeam1'];
+        if($request->comment1) {
+          $newVote1-> comment = $data['comment1'];
+        };
+        $newVote1-> team_vote = 1;  // è stato votato il team
 
-      // per ogni membro del team creo 3 voti
+        $newVote1->save();
+      }
+    }
 
-      $newVote1 = new Vote();
-      $newVote1-> info_voter_id = $data['info_voter_id'];
-      $newVote1-> info_voted_id = $member -> id;
-      $newVote1-> category_id = $data['category1_id'];
-      $newVote1-> value = $data['voteTeam1'];
-      $newVote1-> comment = $data['comment1'];
-      $newVote1-> team_vote = 1;  // è stato votato il team
+    // Controllo se il valore del voto della Categoria 2 non è nullo (è stata votata)
+    if($request->voteTeam2) {
+      // per ogni membro del team creo il voto della Categoria 2
+      foreach ($teamMembers as $i => $member) {
+        $newVote2 = new Vote();
+        $newVote2-> info_voter_id = $data['info_voter_id'];
+        $newVote2-> info_voted_id = $member -> id;
+        $newVote2-> category_id = $data['category2_id'];
+        $newVote2-> value = $data['voteTeam2'];
+        if($request->comment2) {
+          $newVote2-> comment = $data['comment2'];
+        };
+        $newVote2-> team_vote = 1; // è stato votato il team
 
-      $newVote1->save();
+        $newVote2->save();
+      }
+    }
 
-      $newVote2 = new Vote();
-      $newVote2-> info_voter_id = $data['info_voter_id'];
-      $newVote2-> info_voted_id = $member -> id;
-      $newVote2-> category_id = $data['category2_id'];
-      $newVote2-> value = $data['voteTeam2'];
-      $newVote2-> comment = $data['comment2'];
-      $newVote2-> team_vote = 1; // è stato votato il team
+    // Controllo se il valore del voto della Categoria 3 non è nullo (è stata votata)
+    if($request->voteTeam3) {
+      // per ogni membro del team creo il voto della Categoria 1
+      foreach ($teamMembers as $i => $member) {
+        $newVote3 = new Vote();
+        $newVote3-> info_voter_id = $data['info_voter_id'];
+        $newVote3-> info_voted_id = $member -> id;
+        $newVote3-> category_id = $data['category3_id'];
+        $newVote3-> value = $data['voteTeam3'];
+        if($request->comment3) {
+          $newVote3-> comment = $data['comment3'];
+        };
+        $newVote3-> team_vote = 1; // è stato votato il team
 
-      $newVote2->save();
-
-      $newVote3 = new Vote();
-      $newVote3-> info_voter_id = $data['info_voter_id'];
-      $newVote3-> info_voted_id = $member -> id;
-      $newVote3-> category_id = $data['category3_id'];
-      $newVote3-> value = $data['voteTeam3'];
-      $newVote3-> comment = $data['comment3'];
-      $newVote3-> team_vote = 1; // è stato votato il team
-
-      $newVote3->save();
+        $newVote3->save();
+      }
     }
 
     return Redirect::route('logged.votes.index');

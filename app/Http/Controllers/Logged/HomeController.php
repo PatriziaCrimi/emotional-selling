@@ -31,8 +31,8 @@ class HomeController extends Controller
     ->where('role_id','!=','1')
     ->where('role_id','!=','3')
     ->join('users','users.id','=','group_role_round_users.user_id')
-    ->select(DB::raw('sum(value) as valore , votes.info_voted_id'),'group_role_round_users.user_id','users.name','users.lastname')
-    ->groupBy('info_voted_id')
+    ->select(DB::raw('sum(value) as valore, votes.info_voted_id'),'group_role_round_users.user_id','users.name','users.lastname')
+    ->groupBy('info_voted_id','group_role_round_users.user_id','users.name','users.lastname')
     ->orderBy('valore','DESC')
     ->get();
 

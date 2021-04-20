@@ -49851,13 +49851,30 @@ var app = new Vue({
     showComment1: false,
     showComment2: false,
     showComment3: false,
-    commentMessage: '' // userArray: [],
+    commentMessage: '',
+    radio1: '',
+    radio2: '',
+    radio3: '',
+    textarea1: '',
+    textarea2: '',
+    textarea3: '' // userArray: [],
     // teamArray: [],
     // showUserForm: false,
     // showTeamForm: false
 
   },
   methods: {
+    cancelVotes: function cancelVotes() {
+      this.radio1 = '';
+      this.radio2 = '';
+      this.radio3 = '';
+      this.textarea1 = '';
+      this.textarea2 = '';
+      this.textarea3 = '';
+      this.showComment1 = false;
+      this.showComment2 = false;
+      this.showComment3 = false;
+    },
     checkVoteComment1: function checkVoteComment1(voteValue) {
       if (voteValue <= 5) {
         this.showComment1 = true;
@@ -50055,8 +50072,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
