@@ -97,5 +97,6 @@
               @yield('content')
           </main>
       </div>
+      @yield('chart')
   </body>
 </html>
