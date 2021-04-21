@@ -19,6 +19,7 @@ const app = new Vue({
     textarea1: '',
     textarea2: '',
     textarea3: '',
+    isDisabled: true,
     // userArray: [],
     // teamArray: [],
     // showUserForm: false,

@@ -49857,7 +49857,8 @@ var app = new Vue({
     radio3: '',
     textarea1: '',
     textarea2: '',
-    textarea3: '' // userArray: [],
+    textarea3: '',
+    isDisabled: true // userArray: [],
     // teamArray: [],
     // showUserForm: false,
     // showTeamForm: false
