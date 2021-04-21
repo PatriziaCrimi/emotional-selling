@@ -298,7 +298,7 @@
       "team_id" => 15
     ],
     [
-      "name" => "stefania",
+      "name" => "Stefania",
       "lastname" => "Fasanelli",
       "username" => "fasanelli",
       "password" => "stefania.fasanelli76",
@@ -586,7 +586,7 @@
     ],
     [
       "name" => "Andrea",
-      "lastname" => "Lusa,",
+      "lastname" => "Lusa",
       "username" => "lusa",
       "password" => "andrea.lusa66",
       "team_id" => 4
