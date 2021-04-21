@@ -18,30 +18,8 @@ const app = new Vue({
     textarea2: '',
     textarea3: '',
     isDisabled: true,
-    // isClicked1: '',
-    // isClicked2: '',
-    // isClicked3: '',
-    // userArray: [],
-    // teamArray: [],
-    // showUserForm: false,
-    // showTeamForm: false
   },
   methods: {
-    // isActive1: function(radioIndex1) {
-    //   if(radioIndex1 == this.radio1) {
-    //     this.isClicked1 = radioIndex1;
-    //   }
-    // },
-    // isActive2: function(radioIndex2) {
-    //   if(radioIndex1 == this.radio1) {
-    //     this.isClicked2 = radioIndex2;
-    //   }
-    // },
-    // isActive3: function(radioIndex3) {
-    //   if(radioIndex3 == this.radio3) {
-    //     this.isClicked3 = radioIndex3;
-    //   }
-    // },
     cancelVotes: function() {
       this.radio1 = '';
       this.radio2 = '';

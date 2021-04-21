@@ -11,6 +11,13 @@
   {{-- Se sono ISF o MEDICI  --}}
   @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
    <h1>NON PUOI VOTARE</h1>
+
+   @if ($round -> name == 3)
+     <a class="btn btn-dark" href="{{ route('logged.final')}}">Termina il gioco</a>
+   @else
+     <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica provvisoria</a>
+   @endif
+   
   @else
 
   {{-- Se SONO SEDE SEDE O OSSERVATORE --}}
@@ -104,7 +111,7 @@
       @if ($round -> name == 3)
         <a class="btn btn-dark" href="{{ route('logged.final')}}">Termina il gioco</a>
       @else
-        <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica parziale</a>
+        <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica provvisoria</a>
       @endif
 
     </div>
