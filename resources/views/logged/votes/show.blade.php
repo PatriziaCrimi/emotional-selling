@@ -19,7 +19,7 @@
         Stai votando l'utente {{$user -> user -> name}} {{$user -> user -> lastname}}
       </h3>
 
-      <form id="form" class="form" action="{{ route('logged.user.voted')}}" method="post">
+      <form @submit="alertVoted()" @change="isFormEmpty()" id="form" class="form" action="{{ route('logged.user.voted')}}" method="post">
         @csrf
         @method('post')
 
@@ -66,7 +66,6 @@
 
         <div class="form-group">
           <label for="voteUser2"></label>
-          {{-- <input type="hidden" class="input" name="voteUser2" value="0"> --}}
           <div v-for="index in 10" :key="index" class="d-inline-block">
             <input type="radio" name="voteUser2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
             <span>@{{index}}</span>
@@ -102,7 +101,9 @@
           <textarea :required="showComment1 ? true : false" v-model="textarea3" name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control">{{ old('comment3')}}</textarea>
         </div>
 
-        <input :disabled="isDisabled ? true : false" style="margin-top:50px;" class="submit" type="submit" name="" value="Salva" @click="alertVoted()">
+        <button :disabled="isDisabled ? true : false" style="margin-top:50px;" class="submit" type="submit">
+          Salva
+        </button>
       </form>
       <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
       <button class="btn btn-primary" @click="cancelVotes()">Cancella voti</button>
@@ -116,7 +117,7 @@
         <h3>{{$player -> user -> name}} {{$player -> user -> lastname}}</h3>
       @endforeach
 
-      <form  class="form" action="{{ route('logged.team.voted')}}" method="post">
+      <form @submit="alertVoted()" @change="isFormEmpty()" class="form" action="{{ route('logged.team.voted')}}" method="post">
         @csrf
         @method('post')
 
@@ -199,7 +200,7 @@
           <textarea :required="showComment3 ? true : false" v-model="textarea3" name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control">{{ old('comment3')}}</textarea>
         </div>
 
-        <input :disabled="isDisabled ? true : false" style="margin-top:50px;"id="submit" type="submit" class="submit" name="" value="Salva" @click="alertVoted()">
+        <button :disabled="isDisabled ? true : false" style="margin-top:50px;"id="submit" type="submit" class="submit">Salva</button>
       </form>
       <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
       <button class="btn btn-primary" @click="cancelVotes()">Cancella voti</button>
