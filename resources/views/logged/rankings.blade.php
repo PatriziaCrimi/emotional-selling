@@ -24,7 +24,6 @@
   @endforeach
   <canvas id="myChart" width="400" height="400"></canvas>
   <div class="">
-    <p>classifica visualizzabile da tutti</p>
     @if ($round->name == 3)
       <a href="{{route('logged.final')}}" class="btn btn-dark">Clicca per uscire</a>
     @else

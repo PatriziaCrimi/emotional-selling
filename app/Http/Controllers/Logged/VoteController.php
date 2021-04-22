@@ -18,14 +18,26 @@ class VoteController extends Controller
   {
     $round = Round::find(4); // valore del round
     $idAuth = Auth::user()->id; // mi prendo l'id dell'utente autenticato
-     // valore combo auth id
+
+    // Salvo in un array tutti gli id degli Admin
+    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    foreach ($idAdmins as $key => $admin) {
+      $idAdminsArray[] = $admin->user_id;
+    }
 
     // Filtro per round
 
     // ------------------------- ROUND 1 -------------------------
     if ($round -> name == 1) {
-      // Filtro per ruolo  ( Sede:2)
-      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
+
+      // Controllo se l'utente loggato è un Admin
+      if(in_array($idAuth, $idAdminsArray)) {
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+      } else {
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
+      }
+
+      // Filtro per ruolo  ( Sede:2, Admin:1)
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
         $usersGroups = GroupRoleRoundUser::where('round_id',1)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
       } else {
@@ -40,7 +52,14 @@ class VoteController extends Controller
 
     // ------------------------- ROUND 2 -------------------------
     if ($round -> name == 2) {
-      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+      // Controllo se l'utente loggato è un Admin
+      if(in_array($idAuth, $idAdminsArray)) {
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+      } else {
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+      }
+
+      // Filtro per ruolo  ( Sede:2, Admin:1)
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
           $usersGroups = GroupRoleRoundUser::where('round_id',2)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
       } else {
@@ -54,7 +73,14 @@ class VoteController extends Controller
 
     // ------------------------- ROUND 3 -------------------------
     if ($round -> name == 3) {
-      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+      // Controllo se l'utente loggato è un Admin
+      if(in_array($idAuth, $idAdminsArray)) {
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+      } else {
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+      }
+
+      // Filtro per ruolo  ( Sede:2, Admin:1)
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
           $usersGroups = GroupRoleRoundUser::where('round_id',3)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->get()->groupBy(['group_id','team_id']);
       } else {
@@ -86,17 +112,27 @@ class VoteController extends Controller
     $round = Round::find(4); // valore round attuale
     $user = GroupRoleRoundUser::where('user_id',$id)->where('round_id',$round->name)->first(); // info utente votato
 
+    // Salvo in un array tutti gli id degli Admin
+    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    foreach ($idAdmins as $key => $admin) {
+      $idAdminsArray[] = $admin->user_id;
+    }
+
     // Controllo che il parametro nell'url (ossia l'id dello user) esista nella tabella Users
     if ($user != null) {
       // Se esiste, controllo che l'utente autenticato abbia i permessi per votare quel giocatore
       $idAuth = Auth::user()->id; // info votante
-      // Filtro autenticato giocatore
-      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
 
-      // Controllo se l'utente è Sede o Admin
+      // Controllo se l'utente loggato è un Admin
+      if(in_array($idAuth, $idAdminsArray)) {
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+      } else {
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
+      }
+
+      // Controllo se l'utente è un semplice giocatore (né Sede né Admin)
       if($auth->role_id !== 2 && $auth->role_id !== 1) {
 
-        // L'utente non è né Sede né Admin
         // Controllo che il gruppo ID dell'utente autenticato è lo stesso del gruppo ID dell'utente cliccato
         if(($auth->group_id == $user->group_id) && ($user->role_id != 3)) {
           // Se è lo stesso procedo
@@ -112,10 +148,18 @@ class VoteController extends Controller
 
       } else if(($user->role_id !== 2)) {
         // Se l'utente cliccato non è Sede lo puoi votare
-        $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
-        $userName = User::where('id',$id)->first();
 
-        return view('logged.votes.show',compact('user','comboAuth'));
+        // Controllo se l'utente loggato è un Admin
+        if(in_array($idAuth, $idAdminsArray)) {
+          // Se è Admin ha round NULL
+          $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+        } else {
+          // Se è Sede
+          $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
+        }
+
+        $userName = User::where('id',$id)->first();
+        return view('logged.votes.show',compact('user','comboAuth', 'round'));
       } else {
         // Se l'utente non è votabile (è un altro membro della Sede) esce un 403
         abort(403);
@@ -132,20 +176,34 @@ class VoteController extends Controller
     $round = Round::find(4); // valore round attuale
     $team_exist = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->first();
 
+    // Salvo in un array tutti gli id degli Admin
+    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    foreach ($idAdmins as $key => $admin) {
+      $idAdminsArray[] = $admin->user_id;
+    }
+
     // Controllo che il parametro nell'url (ossia l'id del team) esista nella tabella Teams
     if ($team_exist != null) {
       // Se esiste, controllo che l'utente autenticato abbia i permessi per votare quel Team
       $idAuth = Auth::user()->id; // info votante
-      // Filtro autenticato giocatore
-      $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
 
-      // Controllo se l'utente è Sede o Admin
+      // Controllo se l'utente loggato è un Admin
+      if(in_array($idAuth, $idAdminsArray)) {
+        // Se è Admin ha round NULL
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+      } else {
+        // Se è Sede
+        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
+      }
+
+      // Controllo se l'utente è un semplice giocatore (né Sede né Admin)
       if($auth->role_id !== 2 && $auth->role_id !== 1) {
-        // #CASO 1. L'utente non è né Sede né Admin
-        // Il gruppo ID dell'utente autenticato è lo stesso dei membri dei Team
+
+        // Controllo che il gruppo ID dell'utente autenticato è lo stesso dei membri del Team cliccato
         if(($auth->group_id == $team_exist->group_id) && ($team_exist->role_id != 3)) {
           $user = null; // user null per controllo view votes.show
           $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
+
           $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
 
           return view('logged.votes.show',compact('team','user','id','comboAuth'));
@@ -156,13 +214,21 @@ class VoteController extends Controller
         }
 
       } else {
-        // #CASO 2. L'utente è Sede o Admin
+        // #CASO "ELSE": l'utente autenticato è Sede o Admin
         // Se l'utente cliccato non è Sede lo puoi votare
         $user = null; // user null per controllo view votes.show
         $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
-        $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
 
-        return view('logged.votes.show',compact('team','user','id','comboAuth'));
+        // Controllo se l'utente loggato è un Admin
+        if(in_array($idAuth, $idAdminsArray)) {
+          // Se è Admin ha round NULL
+          $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+        } else {
+          // Se è Sede
+          $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
+        }
+
+        return view('logged.votes.show',compact('team','user','id','comboAuth', 'round'));
       }
     } else {
       // Se l'id non esiste l'errore è un 404
