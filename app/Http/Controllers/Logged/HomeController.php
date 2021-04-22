@@ -43,7 +43,8 @@ class HomeController extends Controller
 
   public function final()
   {
-    // view di saluti e ringraziamenti
-    return view('logged.final');
+    $round = Round::find(4);
+
+    return view('logged.final',compact('round'));
   }
 }

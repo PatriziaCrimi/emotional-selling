@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
-@section('scripts')
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="{{ asset('js/action.js') }}" type="text/javascript"></script>
-@endsection
+{{-- Controllo se l'utente loggato è Sede o Admin per attivare funzione jQuery per visualizzare i gruppi solo al click --}}
+@if (($auth->role_id == 2) || ($auth->role_id == 1))
+  @section('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/action.js') }}" type="text/javascript"></script>
+  @endsection
+@endif
+
 
 @section('content')
 {{-- <div class="container"> --}}
@@ -12,12 +16,14 @@
   @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
    <h1>NON PUOI VOTARE</h1>
 
+   <h3>Fine Votazione</h3>
+
    @if ($round -> name == 3)
      <a class="btn btn-dark" href="{{ route('logged.final')}}">Termina il gioco</a>
    @else
      <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica provvisoria</a>
    @endif
-   
+
   @else
 
   {{-- Se SONO SEDE SEDE O OSSERVATORE --}}
@@ -107,6 +113,8 @@
           </div>
         </div>
       @endforeach
+
+      <h3>Fine Votazione</h3>
 
       @if ($round -> name == 3)
         <a class="btn btn-dark" href="{{ route('logged.final')}}">Termina il gioco</a>

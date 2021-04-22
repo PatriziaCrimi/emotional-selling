@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
-@section('scripts')
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="{{ asset('js/action.js') }}" type="text/javascript"></script>
-@endsection
+{{-- Controllo se l'utente loggato è Sede o Admin per attivare funzione jQuery per visualizzare i gruppi solo al click --}}
+@if (($auth->role_id == 2) || ($auth->role_id == 1))
+  @section('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/action.js') }}" type="text/javascript"></script>
+  @endsection
+@endif
 
 @section('content')
 {{-- <div class="container"> --}}
