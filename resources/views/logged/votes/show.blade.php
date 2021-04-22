@@ -107,14 +107,12 @@
                   <textarea :required="showComment1 ? true : false" v-model="textarea3" name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control">{{ old('comment3')}}</textarea>
                 </div>
 
-                <button :disabled="isDisabled ? true : false" style="margin-top:50px;" class="submit" type="submit">
-                  Salva
-                </button>
-              </form>
-              <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
-              <button class="btn btn-primary" @click="cancelVotes()">Cancella voti</button>
-              {{-- @endforeach --}}
-            @else
+        <input :disabled="isDisabled ? true : false" style="margin-top:50px;" class="submit" type="submit" name="" value="Salva" @click="alertVoted()">
+      </form>
+      <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
+      <button class="btn btn-primary" @click="cancelVotes()">Cancella voti</button>
+    {{-- @endforeach --}}
+    @else
 
               {{-- VOTAZIONE AL TEAM --}}
 
@@ -123,9 +121,9 @@
                 <h3>{{$player -> user -> name}} {{$player -> user -> lastname}}</h3>
               @endforeach
 
-              <form @submit="alertVoted()" @change="isFormEmpty()" class="form" action="{{ route('logged.team.voted')}}" method="post">
-                @csrf
-                @method('post')
+      <form  class="form" action="{{ route('logged.team.voted')}}" method="post">
+        @csrf
+        @method('post')
 
                 <div class="form-group">
                   <label for="info_voter_id"></label>
@@ -205,13 +203,10 @@
                   </div>
                 </div>
 
-                <div v-if="showComment3" class="form-group">
-                  <p style="color: red">
-                    @{{commentMessage}}
-                  </p>
-                  <label for="comment3"></label>
-                  <textarea :required="showComment3 ? true : false" v-model="textarea3" name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control">{{ old('comment3')}}</textarea>
-                </div>
+        <input :disabled="isDisabled ? true : false" style="margin-top:50px;"id="submit" type="submit" class="submit" name="" value="Salva" @click="alertVoted()">
+      </form>
+      <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
+      <button class="btn btn-primary" @click="cancelVotes()">Cancella voti</button>
 
                 <button :disabled="isDisabled ? true : false" style="margin-top:50px;"id="submit" type="submit" class="submit">Salva</button>
               </form>

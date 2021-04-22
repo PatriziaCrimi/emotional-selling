@@ -31,7 +31,11 @@ class Vote extends Model
   }
 
   // One to Many between Votes and Categories tables
-  public function categories() {
-    return $this->hasMany('App\Category');
+  public function category() {
+    return $this->belongsTo('App\Category');
+  }
+
+  public function grouprolerounduser() {
+    return $this->belongsTo('App\GroupRoleRoundUser');
   }
 }

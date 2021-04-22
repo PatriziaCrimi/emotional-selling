@@ -42,4 +42,9 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
 
   //Round
   Route::post('/round','Admin\RoundController@update')->name('round.update');
+
+  Route::get('/csvfile','Admin\CsvfileController@index')->name('csvfile');
+
+  // Route::get('csvfile/export','Admin\CsvfileController@csv_export')->name('export');
+  Route::get('/csvfile/export', 'Admin\CsvfileController@exportCsv')->name('export2');
 });
