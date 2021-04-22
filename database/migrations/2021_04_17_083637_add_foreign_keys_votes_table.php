@@ -23,6 +23,9 @@ class AddForeignKeysVotesTable extends Migration
       // FK constraint Info-Votato table
       $table->unsignedBigInteger('info_voted_id')->after('info_voter_id')->nullable();
       $table->foreign('info_voted_id')->references('id')->on('group_role_round_users')->onDelete('set null');
+      // FK constraint Team-id utente votato table
+      $table->unsignedBigInteger('team_id')->after('info_voted_id')->nullable();
+      $table->foreign('team_id')->references('id')->on('teams')->onDelete('set null');
     });
   }
 
@@ -44,6 +47,9 @@ class AddForeignKeysVotesTable extends Migration
       // Removing FK constraint Info-Votato table
       $table->dropForeign('group_role_round_users_info_voted_id_foreign');
       $table->dropColumn('info_voted_id');
+      // Removing FK constraint Team_id utente votato table
+      $table->dropForeign('group_role_round_users_team_id_foreign');
+      $table->dropColumn('team_id');
     });
   }
 }

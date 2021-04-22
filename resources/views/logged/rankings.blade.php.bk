@@ -23,7 +23,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
                     @php
-                    echo $value['name'].':'.$value['valore'];
+                    echo $value['name'].' '.$value['lastname'].':'.$value['valore'];
                     @endphp
                   </li>
                 </ul>
@@ -51,6 +51,8 @@
       foreach ($votesRank as $key => $value) {
         echo "'".
         $value['name'].
+        " ".
+        $value['lastname'].
         "'".
         ',';
       }

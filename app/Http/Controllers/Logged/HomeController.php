@@ -30,18 +30,33 @@ class HomeController extends Controller
     $round = Round::find(4);
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
-    $votesCount = DB::table('votes')
-    ->join('group_role_round_users','group_role_round_users.id','=','votes.info_voted_id')
-    ->where('role_id','!=','2')
-    ->where('role_id','!=','1')
-    ->where('role_id','!=','3')
-    ->join('users','users.id','=','group_role_round_users.user_id')
-    ->select(DB::raw('sum(value) as valore, votes.info_voted_id'),'group_role_round_users.user_id','users.name','users.lastname')
-    ->groupBy('info_voted_id','group_role_round_users.user_id','users.name','users.lastname')
-    ->orderBy('valore','DESC')
-    ->get();
 
-    $votesRank = json_decode(json_encode($votesCount),true);
+    /////////// QUERY PER USER ////////
+
+    // $votesCount = DB::table('votes')
+    // ->join('group_role_round_users','group_role_round_users.id','=','votes.info_voted_id')
+    // ->where('role_id','!=','2')
+    // ->where('role_id','!=','1')
+    // ->where('role_id','!=','3')
+    // ->join('users','users.id','=','group_role_round_users.user_id')
+    // ->select(DB::raw('sum(value) as valore, votes.info_voted_id'),'group_role_round_users.user_id','users.name','users.lastname')
+    // ->groupBy('info_voted_id','group_role_round_users.user_id','users.name','users.lastname')
+    // ->orderBy('valore','DESC')
+    // ->get();
+    //
+    // $votesRank = json_decode(json_encode($votesCount),true);
+
+     //////////QUERY PER TEAM /////////
+
+     $votesCount = DB::table('votes')
+     ->join('teams','teams.id','=','votes.team_id')
+     ->select(DB::raw('sum(value) as valore, votes.team_id'),'teams.name')
+     ->groupBy('team_id','teams.name')
+     ->orderBy('valore','DESC')
+     ->get();
+
+     $votesRank = json_decode(json_encode($votesCount),true);
+     // dd($votesRank);
 
     return view('logged.rankings',compact('votesRank','round','button1','button2'));
   }
