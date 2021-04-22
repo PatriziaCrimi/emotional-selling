@@ -79,7 +79,7 @@
                                       @csrf
                                       @method('post')
                                       <select class="" name="button1">
-                                        <label for="">Attivazione Votazione</label>
+                                        <span>Attivazione Votazione</span>
                                         <option  value="0" {{ $button1->status == 0 ? 'selected' : '' }}>Non visibile</option>
                                         <option  value="1"{{ $button1->status == 1 ? 'selected' : '' }}>Visibile</option>
                                       </select>
@@ -92,7 +92,7 @@
                                       @csrf
                                       @method('post')
                                       <select class="" name="button2">
-                                        <label for="">Stop votazione</label>
+                                        <span>Stop votazione</span>
                                         <option  value="0" {{ $button2->status == 0 ? 'selected' : '' }}>Non visibile</option>
                                         <option  value="1"{{ $button2->status == 1 ? 'selected' : '' }}>Visibile</option>
                                       </select>
