@@ -247,7 +247,7 @@ class VoteController extends Controller
   {
     // Storing all form data received
     $data = $request->all();
-
+    $userCombo = GroupRoleRoundUser::where('id',$data['info_voted_id'])->first();
     // Controllo se il valore del voto della Categoria 1 non è nullo (è stata votata)
     if($request->voteUser1) {
       // New Instance: voto domanda 1
@@ -260,6 +260,7 @@ class VoteController extends Controller
         $newVote1-> comment = $data['comment1'];
       };
       $newVote1-> team_vote = 0;  // è stato votato lo user
+      $newVote1-> team_id = $userCombo -> team_id; // team_id utente votato
 
       $newVote1->save();
     };
@@ -276,6 +277,7 @@ class VoteController extends Controller
         $newVote2-> comment = $data['comment2'];
       };
       $newVote2-> team_vote = 0; // è stato votato lo user
+      $newVote2-> team_id = $userCombo -> team_id; // team_id utente votato
 
       $newVote2->save();
     }
@@ -292,6 +294,7 @@ class VoteController extends Controller
         $newVote3-> comment = $data['comment3'];
       };
       $newVote3-> team_vote = 0; // è stato votato lo user
+      $newVote3-> team_id = $userCombo -> team_id; // team_id utente votato
 
       $newVote3->save();
     }
@@ -320,6 +323,7 @@ class VoteController extends Controller
           $newVote1-> comment = $data['comment1'];
         };
         $newVote1-> team_vote = 1;  // è stato votato il team
+        $newVote1-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote1->save();
       }
@@ -338,6 +342,7 @@ class VoteController extends Controller
           $newVote2-> comment = $data['comment2'];
         };
         $newVote2-> team_vote = 1; // è stato votato il team
+        $newVote2-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote2->save();
       }
@@ -356,6 +361,7 @@ class VoteController extends Controller
           $newVote3-> comment = $data['comment3'];
         };
         $newVote3-> team_vote = 1; // è stato votato il team
+        $newVote3-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote3->save();
       }
