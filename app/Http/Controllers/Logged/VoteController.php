@@ -164,7 +164,7 @@ class VoteController extends Controller
         }
 
         $userName = User::where('id',$id)->first();
-        return view('logged.votes.show',compact('user','comboAuth', 'round'));
+        return view('logged.votes.show',compact('user','comboAuth', 'round', 'button1','button2'));
       } else {
         // Se l'utente non è votabile (è un altro membro della Sede) esce un 403
         abort(403);
@@ -213,7 +213,7 @@ class VoteController extends Controller
 
           $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
 
-          return view('logged.votes.show',compact('team','user','id','comboAuth'));
+          return view('logged.votes.show',compact('team','user','id','comboAuth', 'button1','button2'));
 
         } else {
           // Se il team non è votabile (non è nel Round dell'utente loggato) esce un 403
