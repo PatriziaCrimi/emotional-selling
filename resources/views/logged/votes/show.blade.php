@@ -107,37 +107,36 @@
                   <textarea :required="showComment1 ? true : false" v-model="textarea3" name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control">{{ old('comment3')}}</textarea>
                 </div>
 
-        <input :disabled="isDisabled ? true : false" style="margin-top:50px;" class="submit" type="submit" name="" value="Salva" @click="alertVoted()">
-      </form>
-      <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
-      <button class="btn btn-primary" @click="cancelVotes()">Cancella voti</button>
-    {{-- @endforeach --}}
-    @else
+              <input :disabled="isDisabled ? true : false" style="margin-top:50px;" class="submit" type="submit" name="" value="Salva" @click="alertVoted()">
+            </form>
+            <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
+            <a class="btn btn-primary" @click="cancelVotes()">Cancella voti</a>
+          @else
 
-              {{-- VOTAZIONE AL TEAM --}}
+            {{-- VOTAZIONE AL TEAM --}}
 
-              <h1>Stai votando il Team {{$id}}</h1>
-              @foreach ($team as $key => $player)
-                <h3>{{$player -> user -> name}} {{$player -> user -> lastname}}</h3>
-              @endforeach
+            <h1>Stai votando il Team {{$id}}</h1>
+            @foreach ($team as $key => $player)
+              <h3>{{$player -> user -> name}} {{$player -> user -> lastname}}</h3>
+            @endforeach
 
-      <form  class="form" action="{{ route('logged.team.voted')}}" method="post">
-        @csrf
-        @method('post')
+            <form @submit="alertVoted()" @change="isFormEmpty()" class="form" action="{{ route('logged.team.voted')}}" method="post">
+              @csrf
+              @method('post')
 
-                <div class="form-group">
+                <div class="d-none form-group">
                   <label for="info_voter_id"></label>
                   <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}" class="form-control">
                 </div>
 
                 {{-- Voto TEAM Categoria 1 --}}
 
-                <div class="form-group">
+                <div class="d-none form-group">
                   <label for="category1_id"></label>
                   <input type="hidden" name="category1_id" value="1" class="form-control">
                 </div>
 
-                <div class="form-group">
+                <div class="d-none form-group">
                   <label for="team_id"></label>
                   <input type="hidden" name="team_id" value="{{$id}}">
                 </div>
@@ -164,7 +163,7 @@
                 {{-- Voto TEAM Categoria 2 --}}
 
                 <h3>Come valuti la categoria 2?</h3>
-                <div class="form-group">
+                <div class="d-none form-group">
                   <label for="category2_id"></label>
                   <input type="hidden" name="category2_id" value="2" class="form-control">
                 </div>
@@ -189,7 +188,7 @@
                 {{-- Voto TEAM Categoria 3 --}}
 
                 <h3>Come valuti la categoria 3?</h3>
-                <div class="form-group">
+                <div class="d-none form-group">
                   <label for="category3_id"></label>
                   <input type="hidden" name="category3_id" value="3" class="form-control">
                 </div>
@@ -203,16 +202,18 @@
                   </div>
                 </div>
 
-        <input :disabled="isDisabled ? true : false" style="margin-top:50px;"id="submit" type="submit" class="submit" name="" value="Salva" @click="alertVoted()">
-      </form>
-      <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
-      <button class="btn btn-primary" @click="cancelVotes()">Cancella voti</button>
+                <div v-if="showComment3" class="form-group">
+                  <p style="color: red">
+                    @{{commentMessage}}
+                  </p>
+                  <label for="comment3"></label>
+                  <textarea :required="showComment3 ? true : false" v-model="textarea3" name="comment3" rows="8" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control">{{ old('comment3')}}</textarea><br>
+                </div>
 
                 <button :disabled="isDisabled ? true : false" style="margin-top:50px;"id="submit" type="submit" class="submit">Salva</button>
               </form>
               <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
-              <button class="btn btn-primary" @click="cancelVotes()">Cancella voti</button>
-
+              <a class="btn btn-primary" @click="cancelVotes()">Cancella voti</a>
             @endif
 
           </div>

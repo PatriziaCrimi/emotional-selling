@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\GroupRoleRoundUser;
+use App\Round;
+use App\Button;
 
 class HomeController extends Controller
 {
@@ -26,7 +30,6 @@ class HomeController extends Controller
    */
   public function index()
   {
-    // Welcome e pulsante /link per reindirizzare al form del login
     return view('auth.login');
   }
 }
