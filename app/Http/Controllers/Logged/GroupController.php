@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\GroupRoleRoundUser;
 use App\Round;
+use App\Button;
 
 
 class GroupController extends Controller
@@ -14,6 +15,9 @@ class GroupController extends Controller
   public function index()
   {
     $round = Round::find(4); // valore del round
+    $button1 = Button::find(1); // attivazione votazione
+    $button2 = Button::find(2); // stop votazione
+
     $idAuth = Auth::user()->id; // mi prendo l'id dell'utente autenticato
    // valore combo auth id
 
@@ -81,6 +85,6 @@ class GroupController extends Controller
 
       }
     }
-    return view('logged.groups.index',compact('usersGroups','round','auth'));
+    return view('logged.groups.index',compact('usersGroups','round','auth','button1','button2'));
   }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\GroupRoleRoundUser;
 use App\Round;
 use App\Vote;
+use App\Button;
 use DB;
 
 class HomeController extends Controller
@@ -18,13 +19,17 @@ class HomeController extends Controller
     $auth = Auth::user();
     $user = GroupRoleRoundUser::where('user_id',$auth -> id)->first();
     $round = Round::find(4);
+    $button1 = Button::find(1); // attivazione votazione
+    $button2 = Button::find(2); // stop votazione
 
-    return view('logged.home',compact('user','round'));
+    return view('logged.home',compact('user','round','button1','button2'));
   }
 
   public function rankings()
   {
     $round = Round::find(4);
+    $button1 = Button::find(1); // attivazione votazione
+    $button2 = Button::find(2); // stop votazione
     $votesCount = DB::table('votes')
     ->join('group_role_round_users','group_role_round_users.id','=','votes.info_voted_id')
     ->where('role_id','!=','2')
@@ -38,13 +43,15 @@ class HomeController extends Controller
 
     $votesRank = json_decode(json_encode($votesCount),true);
 
-    return view('logged.rankings',compact('votesRank','round'));
+    return view('logged.rankings',compact('votesRank','round','button1','button2'));
   }
 
   public function final()
   {
     $round = Round::find(4);
+    $button1 = Button::find(1); // attivazione votazione
+    $button2 = Button::find(2); // stop votazione
 
-    return view('logged.final',compact('round'));
+    return view('logged.final',compact('round','button1','button2'));
   }
 }
