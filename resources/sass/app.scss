@@ -1,17 +1,22 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// Mixins
-@import 'mixins';
-
 // Partials
+@import 'partials/variables';
+@import 'partials/mixins';
 @import 'partials/common';
-@import 'partials/header';
-@import 'partials/formVotes';
-@import 'partials/footer';
+
+// Layouts
+@import 'layouts/header';
+@import 'layouts/footer';
+
+// Sections
+@import 'sections/home';
+@import 'sections/groups';
+@import 'sections/votesIndex';
+@import 'sections/votesForm';
+@import 'sections/rankings';
+@import 'sections/final';
