@@ -2,22 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// ------------------- PUBLIC ROUTES -------------------
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', 'HomeController@index')->name('index');
 
 // ------------------- AUTHENTICATION ROUTES -------------------
@@ -43,8 +27,12 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
   //Round
   Route::post('/round','Admin\RoundController@update')->name('round.update');
 
-  Route::get('/csvfile','Admin\CsvfileController@index')->name('csvfile');
+  //Button
+  Route::post('/startvote','Admin\ButtonController@updateStartVote')->name('button.updateStartVote');
+  Route::post('/stopvote','Admin\ButtonController@updateStopVote')->name('button.updateStopVote');
 
-  // Route::get('csvfile/export','Admin\CsvfileController@csv_export')->name('export');
+
+  //Csvfile
+  Route::get('/csvfile','Admin\CsvfileController@index')->name('csvfile');
   Route::get('/csvfile/export', 'Admin\CsvfileController@exportCsv')->name('export2');
 });

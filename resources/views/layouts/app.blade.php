@@ -61,6 +61,8 @@
                                         (Auth::user()->username == "fabrizio") ||
                                         (Auth::user()->username == "valentini") )
 
+                                  {{-- Selezione Round --}}
+
                                     <form class="" action="{{ route('logged.round.update')}}" method="post">
                                       @csrf
                                       @method('post')
@@ -71,6 +73,31 @@
                                       </select>
 
                                       <input type="submit" name="" value="Inizia">
+                                    </form>
+                                  {{-- Bottone Attivazione Votazione --}}
+                                    <form class="" action="{{ route('logged.button.updateStartVote')}}" method="post">
+                                      @csrf
+                                      @method('post')
+                                      <select class="" name="button1">
+                                        <label for="">Attivazione Votazione</label>
+                                        <option  value="0" {{ $button1->status == 0 ? 'selected' : '' }}>Non visibile</option>
+                                        <option  value="1"{{ $button1->status == 1 ? 'selected' : '' }}>Visibile</option>
+                                      </select>
+
+                                      <input type="submit" name="" value="Salva">
+                                    </form>
+
+                                    {{-- Bottone Stop Botazione --}}
+                                    <form class="" action="{{ route('logged.button.updateStopVote')}}" method="post">
+                                      @csrf
+                                      @method('post')
+                                      <select class="" name="button2">
+                                        <label for="">Stop votazione</label>
+                                        <option  value="0" {{ $button2->status == 0 ? 'selected' : '' }}>Non visibile</option>
+                                        <option  value="1"{{ $button2->status == 1 ? 'selected' : '' }}>Visibile</option>
+                                      </select>
+
+                                      <input type="submit" name="" value="Salva">
                                     </form>
 
                                   @endif

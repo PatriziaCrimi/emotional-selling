@@ -84,10 +84,19 @@
     {{-- Se sono ISF o MEDICI  --}}
     @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
 
-      <a class="btn btn-dark" href="{{route('logged.votes.index')}}">Continua</a>
+      @if ($button1 -> status == 0)
+         <h2>Attendi per proceere</h2>
+      @else
+        <a class="btn btn-dark" href="{{route('logged.votes.index')}}">Continua</a>
+      @endif
 
     @else
-      <a class="btn btn-dark" href="{{route('logged.votes.index')}}">Vota</a>
+
+      @if ($button1 -> status == 0)
+         <h2>Attendi per procedere alla votazione</h2>
+      @else
+        <a class="btn btn-dark" href="{{route('logged.votes.index')}}">Vota</a>
+      @endif
     @endif
 
 

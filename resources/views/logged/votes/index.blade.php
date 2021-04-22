@@ -8,21 +8,13 @@
   @endsection
 @endif
 
-
 @section('content')
 {{-- <div class="container"> --}}
 
   {{-- Se sono ISF o MEDICI  --}}
   @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
+
    <h1>NON PUOI VOTARE</h1>
-
-   <h3>Fine Votazione</h3>
-
-   @if ($round -> name == 3)
-     <a class="btn btn-dark" href="{{ route('logged.final')}}">Termina il gioco</a>
-   @else
-     <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica provvisoria</a>
-   @endif
 
   @else
 
@@ -114,15 +106,20 @@
         </div>
       @endforeach
 
-      <h3>Fine Votazione</h3>
-
-      @if ($round -> name == 3)
-        <a class="btn btn-dark" href="{{ route('logged.final')}}">Termina il gioco</a>
-      @else
-        <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica provvisoria</a>
-      @endif
-
     </div>
   @endif
+
+  @if ($button2 -> status == 0)
+     <h2>Attendi per proceere</h2>
+  @else
+    <h3>Fine Votazione</h3>
+    @if ($round -> name == 3)
+      <a class="btn btn-dark" href="{{ route('logged.final')}}">Termina il gioco</a>
+    @else
+      <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica provvisoria</a>
+    @endif
+
+  @endif
 {{-- </div> --}}
+
 @endsection

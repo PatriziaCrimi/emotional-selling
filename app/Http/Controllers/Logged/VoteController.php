@@ -10,6 +10,7 @@ use App\GroupRoleRoundUser;
 use App\Round;
 use App\User;
 use App\Vote;
+use App\Button;
 
 class VoteController extends Controller
 {
@@ -17,6 +18,8 @@ class VoteController extends Controller
   public function index()
   {
     $round = Round::find(4); // valore del round
+    $button1 = Button::find(1); // attivazione votazione
+    $button2 = Button::find(2); // stop votazione
     $idAuth = Auth::user()->id; // mi prendo l'id dell'utente autenticato
 
     // Salvo in un array tutti gli id degli Admin
@@ -97,10 +100,10 @@ class VoteController extends Controller
     // dd($voteCheck,$auth->id);
     if(!is_null($voteCheck)){
       $voteCheckId = $voteCheck -> info_voter_id;
-      return view('logged.votes.index',compact('voteCheck','voteCheckId','usersGroups','round','auth'));
+      return view('logged.votes.index',compact('voteCheck','voteCheckId','usersGroups','round','auth','button1','button2'));
     }else {
       $voteCheckId = 0;
-      return view('logged.votes.index',compact('voteCheckId','usersGroups','round','auth'));
+      return view('logged.votes.index',compact('voteCheckId','usersGroups','round','auth','button1','button2'));
     }
   }
 
@@ -110,6 +113,8 @@ class VoteController extends Controller
   public function formUser($id)
   {
     $round = Round::find(4); // valore round attuale
+    $button1 = Button::find(1); // attivazione votazione
+    $button2 = Button::find(2); // stop votazione
     $user = GroupRoleRoundUser::where('user_id',$id)->where('round_id',$round->name)->first(); // info utente votato
 
     // Salvo in un array tutti gli id degli Admin
@@ -139,7 +144,7 @@ class VoteController extends Controller
           $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
           $userName = User::where('id',$id)->first();
 
-          return view('logged.votes.show',compact('user','comboAuth'));
+          return view('logged.votes.show',compact('user','comboAuth','button1','button2'));
 
         } else {
           // Se l'utente non è votabile (non è del mio gruppo o è un Osservatore o è Sede) esce un 403
@@ -174,6 +179,8 @@ class VoteController extends Controller
   public function formTeam($id)
   {
     $round = Round::find(4); // valore round attuale
+    $button1 = Button::find(1); // attivazione votazione
+    $button2 = Button::find(2); // stop votazione
     $team_exist = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->first();
 
     // Salvo in un array tutti gli id degli Admin
@@ -228,7 +235,7 @@ class VoteController extends Controller
           $comboAuth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first(); //valore riga colonna combo per utente autorizzato
         }
 
-        return view('logged.votes.show',compact('team','user','id','comboAuth', 'round'));
+        return view('logged.votes.show',compact('team','user','id','comboAuth', 'round','button1','button2'));
       }
     } else {
       // Se l'id non esiste l'errore è un 404
