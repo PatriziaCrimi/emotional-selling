@@ -5,18 +5,24 @@
 @endsection
 
 @section('content')
-  <section id="votes-forms">
+  <section id="votes-form">
     <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="content" style="height:500px;">
+      @if (!is_null($user))
 
-            @if (!is_null($user))
-              {{-- VOTAZIONE AL GIOCATORE --}}
-              <h3>
-                Stai votando l'utente {{$user -> user -> name}} {{$user -> user -> lastname}}
-              </h3>
+        {{-- VOTAZIONE AL GIOCATORE --}}
 
+        <div class="row">
+          <div class="col-12">
+            <h3 class="text-center">
+              Stai votando l'utente {{$user -> user -> name}} {{$user -> user -> lastname}}
+            </h3>
+          </div>
+        </div>
+
+        {{-- FORM USER --}}
+        <div class="row">
+          <div class="col-12">
+            <div class="form-wrapper text-center">
               <form @submit="alertVoted()" @change="isFormEmpty()" id="form" class="form" action="{{ route('logged.user.voted')}}" method="post">
                 @csrf
                 @method('post')
@@ -107,22 +113,53 @@
                   <textarea :required="showComment1 ? true : false" v-model="textarea3" name="comment3" rows="4" cols="80" maxlength="255" placeholder="Inserisci qui la tua motivazione" class="form-control">{{ old('comment3')}}</textarea>
                 </div>
 
-              <input :disabled="isDisabled ? true : false" style="margin-top:50px;" class="submit" type="submit" name="" value="Salva" @click="alertVoted()">
-            </form>
-            <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
-            <a class="btn btn-primary" @click="cancelVotes()">Cancella voti</a>
-          @else
+                <button :disabled="isDisabled ? true : false" style="margin-top:50px;" class="submit" type="submit" @click="alertVoted()">
+                  Salva
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
 
-            {{-- VOTAZIONE AL TEAM --}}
+        <div class="row">
+          <div class="col-12">
+            <div class="buttons-wrapper text-center">
+              <a class="btn btn-success" href="{{route('logged.votes.index')}}">
+                Torna indietro
+              </a>
+              <a class="btn btn-primary" @click="cancelVotes()">
+                Cancella voti
+              </a>
+            </div>
+          </div>
+        </div>
+      @else
 
-            <h1>Stai votando il Team {{$id}}</h1>
-            @foreach ($team as $key => $player)
-              <h3>{{$player -> user -> name}} {{$player -> user -> lastname}}</h3>
-            @endforeach
+        {{-- VOTAZIONE AL TEAM --}}
 
-            <form @submit="alertVoted()" @change="isFormEmpty()" class="form" action="{{ route('logged.team.voted')}}" method="post">
-              @csrf
-              @method('post')
+        <div class="row">
+          <div class="col-12">
+            <h1 class="text-center">Stai votando il Team {{$id}}</h1>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="players-wrapper text-center">
+              @foreach ($team as $key => $player)
+                <h3>{{$player -> user -> name}} {{$player -> user -> lastname}}</h3>
+              @endforeach
+            </div>
+          </div>
+        </div>
+
+        {{-- FORM TEAM --}}
+        <div class="row">
+          <div class="col-12">
+            <div class="form-wrapper text-center">
+              <form @submit="alertVoted()" @change="isFormEmpty()" class="form" action="{{ route('logged.team.voted')}}" method="post">
+                @csrf
+                @method('post')
 
                 <div class="d-none form-group">
                   <label for="info_voter_id"></label>
@@ -212,13 +249,23 @@
 
                 <button :disabled="isDisabled ? true : false" style="margin-top:50px;"id="submit" type="submit" class="submit">Salva</button>
               </form>
-              <a class="btn btn-success" href="{{route('logged.votes.index')}}">Torna indietro</a>
-              <a class="btn btn-primary" @click="cancelVotes()">Cancella voti</a>
-            @endif
-
+            </div>
           </div>
         </div>
-      </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="buttons-wrapper text-center">
+              <a class="btn btn-success" href="{{route('logged.votes.index')}}">
+                Torna indietro
+              </a>
+              <a class="btn btn-primary" @click="cancelVotes()">
+                Cancella voti
+              </a>
+            </div>
+          </div>
+        </div>
+      @endif
     </div>  {{-- Closing Container --}}
   </section>
 @endsection

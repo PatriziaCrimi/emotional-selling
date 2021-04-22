@@ -1,0 +1,18 @@
+main {
+
+  section#groups {
+    background-color: lightgreen;
+
+    .groups-wrapper {
+      padding: $padding_unit *2 0;
+
+      h2 {
+        padding: $padding_unit / 2 0;
+      }
+
+      .table-wrapper {
+        padding: $padding_unit 0;
+      }
+    }
+  }
+}

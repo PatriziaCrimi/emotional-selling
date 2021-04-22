@@ -9,98 +9,97 @@
 @endif
 
 @section('content')
-{{-- <div class="container"> --}}
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <h1 class="text-center">
-
-        Stai iniziando il Round {{$round -> name}}
-        @if ($auth -> role_id == 2)
-         <span>
-
-            <p> {{$auth -> user -> name}}</p>
-            <p> {{$auth -> user -> lastname}}:</p>
-            <p> {{$auth -> role -> name}}</p>
-
-         </span>
-        @endif
-
-      </h1>
-    </div>
-  </div>
-  {{-- Groups List --}}
-  <div class="">
-    @foreach ($usersGroups as $userGroup => $users)
-
-      <div  class="container">
-        <h2 class="show">Gruppo {{ $userGroup }}</h2>
-      <div class="content watch">
-
-          @foreach ($users as $key => $user)
-
-              <div>
-
-                <div style="margin:50px;">
-
+  <section id="groups">
+    <div class="container">
+      <div class="row justify-content-center">
+        {{-- Title --}}
+        <div class="col-12">
+          <h1 class="text-center">
+            Stai iniziando il Round {{$round -> name}}
+            @if ($auth -> role_id == 2)
+             <span>
+                <p> {{$auth -> user -> name}}</p>
+                <p> {{$auth -> user -> lastname}}:</p>
+                <p> {{$auth -> role -> name}}</p>
+             </span>
+            @endif
+          </h1>
+        </div>
+      </div>
+      {{-- Groups List --}}
+      <div class="row">
+        <div class="col-12">
+          <div class="groups-wrapper">
+            @foreach ($usersGroups as $userGroup => $users)
+              <h2 class="show text-center">
+                Gruppo {{ $userGroup }}
+              </h2>
+              <div class="content watch">
+                @foreach ($users as $key => $user)
+                  <div class="table-wrapper">
                     <table class="table table-dark">
-                        <thead>
+                      <thead>
 
-                          <tr>
-                            <th scope="col">Team {{$key}}</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Ruolo</th>
-                          </tr>
+                        <tr>
+                          <th scope="col">Team {{$key}}</th>
+                          <th scope="col">Nome</th>
+                          <th scope="col">Ruolo</th>
+                        </tr>
 
-                        </thead>
-                        @foreach ($user as $n => $player)
-                         <tbody>
+                      </thead>
+                      @foreach ($user as $n => $player)
+                        <tbody>
 
+                          @if ($player -> user -> id == Auth::user() -> id)
+                            <th scope="row" style="color:yellow;">{{$n+1}}</th>
+                            <td style="color:yellow;">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
+                            <td style="color:yellow;">{{ $player -> role -> name}}</td>
+                          @else
+                            <th scope="row">{{$n+1}}</th>
+                            <td>{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
+                            <td>{{ $player -> role -> name}}</td>
+                          @endif
 
-                            @if ($player -> user -> id == Auth::user() -> id)
-                              <th scope="row" style="color:yellow;">{{$n+1}}</th>
-                              <td style="color:yellow;">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
-                              <td style="color:yellow;">{{ $player -> role -> name}}</td>
-                            @else
-                              <th scope="row">{{$n+1}}</th>
-                              <td>{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
-                              <td>{{ $player -> role -> name}}</td>
-                            @endif
+                        </tbody>
 
-                         </tbody>
-
-                        @endforeach
+                      @endforeach
 
                     </table>
-
-                </div>
+                  </div>
+                @endforeach
               </div>
-
-          @endforeach
+            @endforeach
+          </div>
+        </div>
       </div>
 
-   </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center">
+            {{-- Se sono ISF o MEDICI  --}}
+            @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
 
-    @endforeach
-    {{-- Se sono ISF o MEDICI  --}}
-    @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
+              @if ($button1 -> status == 0)
+                <h2>Attendi per procedere</h2>
+              @else
+                  <a class="btn btn-dark" href="{{route('logged.votes.index')}}">
+                    Continua
+                  </a>
+              @endif
 
-      @if ($button1 -> status == 0)
-         <h2>Attendi per proceere</h2>
-      @else
-        <a class="btn btn-dark" href="{{route('logged.votes.index')}}">Continua</a>
-      @endif
+            @else
 
-    @else
-
-      @if ($button1 -> status == 0)
-         <h2>Attendi per procedere alla votazione</h2>
-      @else
-        <a class="btn btn-dark" href="{{route('logged.votes.index')}}">Vota</a>
-      @endif
-    @endif
-
-
-  </div>
-
-{{-- </div> --}}
+              @if ($button1 -> status == 0)
+                <h2>Attendi per procedere alla votazione</h2>
+              @else
+                <a class="btn btn-dark" href="{{route('logged.votes.index')}}">
+                  Vota
+                </a>
+              @endif
+            @endif
+          </div>
+        </div>
+      </div>
+    </div> {{-- Closing Container --}}
+  </section>
 @endsection
