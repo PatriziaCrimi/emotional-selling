@@ -111,7 +111,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\js\action.js */"./resources/js/action.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\js\action.js */"./resources/js/action.js");
 
 
 /***/ })

@@ -10048,6 +10048,13 @@ a:hover {
 /* Breakpoint Medium 768px md */
 /* Breakpoint Large 992px lg */
 /* Breakpoint Extra Large 1200px xl */
+header nav.navbar .img-logo {
+  max-width: 200px;
+}
+header nav.navbar .img-logo img {
+  width: 100%;
+  height: auto;
+}
 header nav.navbar .admin-select {
   padding-right: 40px;
   text-align: center;
@@ -10062,17 +10069,35 @@ header nav.navbar .admin-select form input[type=submit] {
 }
 
 main section#login {
-  background-image: url("../storage/img/sfondo_login.png");
+  background-image: url("../storage/img/sfondo_login_tablet.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
+/* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+  main section#login {
+    background-image: url("../storage/img/sfondo_login_desktop.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
 main section#home {
-  background-image: url("../storage/img/sfondo_generale.png");
+  background-image: url("../storage/img/sfondo_generale_tablet.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
+/* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+  main section#login {
+    background-image: url("../storage/img/sfondo_login_desktop.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
 main section#groups .groups-wrapper {
   padding: 40px 0;
 }
