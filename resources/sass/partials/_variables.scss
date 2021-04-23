@@ -23,12 +23,14 @@ $cyan: #6cb2eb;
 // ------------------------- Variables --------------------------
 
 // Fonts
-$primary_font: 'Nunito', sans-serif;
+$primary_font: 'D-din', sans-serif;
 $font_awesome: 'Font Awesome 5 Free';
 
 // Colors
 $primary_color: blue;
+$secondary_color: green;
 $primary_bg_color: lightgrey;
+$secondary_bg_color: lightblue;
 
 // Dimensions
 
@@ -38,3 +40,19 @@ $margin_unit: 10px;
 
 // Transition times
 $hover_time: 0.25s;
+
+/* ------------------------ FONTS ------------------------ */
+
+$font-path: "storage/fonts";
+
+@font-face {
+  font-family: D-din;
+  font-weight: normal;
+  src: url("#{font-path}/D-DIN.otf") format("opentype");
+}
+
+@font-face {
+  font-family: D-din;
+  font-weight: bold;
+  src: url("#{font-path}/D-DIN-Bold.otf") format("opentype");
+}
