@@ -367,6 +367,45 @@ class VoteController extends Controller
       }
     }
 
+    $newVote1 = new Vote();
+    $newVote1-> info_voter_id = $data['info_voter_id'];
+    $newVote1-> info_voted_id = null;
+    $newVote1-> category_id = $data['category1_id'];
+    $newVote1-> value = $data['voteTeam1'];
+    if($request->comment1) {
+      $newVote1-> comment = $data['comment1'];
+    };
+    $newVote1-> team_vote = 2;  // è stato votato il team
+    $newVote1-> team_id = $data['team_id']; // team_id del team votato
+
+    $newVote1->save();
+
+    $newVote2 = new Vote();
+    $newVote2-> info_voter_id = $data['info_voter_id'];
+    $newVote2-> info_voted_id = null;
+    $newVote2-> category_id = $data['category2_id'];
+    $newVote2-> value = $data['voteTeam2'];
+    if($request->comment1) {
+      $newVote2-> comment = $data['comment2'];
+    };
+    $newVote2-> team_vote = 2;  // è stato votato il team
+    $newVote2-> team_id = $data['team_id']; // team_id del team votato
+
+    $newVote2->save();
+
+    $newVote3 = new Vote();
+    $newVote3-> info_voter_id = $data['info_voter_id'];
+    $newVote3-> info_voted_id = null;
+    $newVote3-> category_id = $data['category3_id'];
+    $newVote3-> value = $data['voteTeam3'];
+    if($request->comment1) {
+      $newVote3-> comment = $data['comment3'];
+    };
+    $newVote3-> team_vote = 2;  // è stato votato il team
+    $newVote3-> team_id = $data['team_id']; // team_id del team votato
+
+    $newVote3->save();
+
     return Redirect::route('logged.votes.index');
   }
 }
