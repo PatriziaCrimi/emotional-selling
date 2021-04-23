@@ -1,3 +1,19 @@
+@mixin background-img($img) {
+  background-image: $img;
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+  // background-position: center;
+  // min-height: calc(100vh - 200px);
+}
+
+@mixin vote-buttons {
+  background: $blue;
+  background: -webkit-linear-gradient(left, $blue, $light_blue);
+  background: -moz-linear-gradient(left, $blue, $light_blue);
+  background: linear-gradient(to right, $blue, $light_blue);
+}
+
 @mixin display-flex {
   display: -ms-flexbox;
   display: -webkit-flex;

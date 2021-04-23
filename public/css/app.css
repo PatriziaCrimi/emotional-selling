@@ -10021,7 +10021,7 @@ h3 {
 
 body {
   font-family: "D-din", sans-serif;
-  color: blue;
+  color: #1b4298;
 }
 
 main,
@@ -10033,7 +10033,6 @@ main section {
 
 main section {
   padding: 40px;
-  background-color: lightgrey;
 }
 
 ul li {
@@ -10049,12 +10048,6 @@ a:hover {
 /* Breakpoint Medium 768px md */
 /* Breakpoint Large 992px lg */
 /* Breakpoint Extra Large 1200px xl */
-header nav.navbar {
-  background-color: lightblue;
-}
-header nav.navbar .dropdown-menu {
-  background-color: lightblue;
-}
 header nav.navbar .admin-select {
   padding-right: 40px;
   text-align: center;
@@ -10066,6 +10059,14 @@ header nav.navbar .admin-select form input[type=submit] {
 }
 header nav.navbar .admin-select form input[type=submit] {
   padding: 0 10px;
+}
+
+main section#login {
+  background-image: url("../storage/img/sfondo_login.png");
+}
+
+main section#home {
+  background-image: url("../storage/img/sfondo_generale.png");
 }
 
 main section#groups .groups-wrapper {
