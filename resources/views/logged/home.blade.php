@@ -30,8 +30,8 @@
       <div class="row">
         <div class="offset-sm-2 col-sm-8">
           <a class="btn btn-dark btn-block" href="{{route('logged.groups.index')}}">
-            Start Round
-            {{$round->name}}
+            Visualizza il Round in corso
+            {{-- {{$round->name}} --}}
           </a>
         </div>
       </div>

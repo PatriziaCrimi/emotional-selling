@@ -10063,10 +10063,14 @@ header nav.navbar .admin-select form input[type=submit] {
 
 main section#login {
   background-image: url("../storage/img/sfondo_login.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 main section#home {
   background-image: url("../storage/img/sfondo_generale.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 main section#groups .groups-wrapper {

@@ -28,11 +28,11 @@
             <h1 class="text-center">
               Stai Votando per il Round {{$round -> name}}
               @if ($auth -> role_id == 2)
-               <span>
-                  <p> {{$auth -> user -> name}}</p>
-                  <p> {{$auth -> user -> lastname}}:</p>
-                  <p> {{$auth -> role -> name}}</p>
-               </span>
+               <div>
+                  <span> {{$auth -> user -> name}}</span>
+                  <span> {{$auth -> user -> lastname}}:</span>
+                  <span> {{$auth -> role -> name}}</span>
+               </div>
               @endif
             </h1>
           </div>
@@ -41,7 +41,7 @@
         <div class="row">
           <div class="col-12">
             @foreach ($usersGroups as $userGroup => $users)
-              <h2 class="show">
+              <h2 class="show text-center">
                 Gruppo {{ $userGroup }}
               </h2>
               <div class="content watch">
@@ -70,7 +70,7 @@
                             <th scope="col">Team {{$key}}</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Ruolo</th>
-                            <th scope="col"></th>
+                            {{-- <th scope="col"></th> --}}
                           </tr>
                         </thead>
                         @foreach ($user as $n => $player)
@@ -83,21 +83,25 @@
                             @if ($player -> user -> id == Auth::user() -> id)
                               <th scope="row" style="color:yellow;">{{$n+1}}</th>
                               <td style="color:yellow;">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
-                              <td style="color:yellow;">{{ $player -> role -> name}}</td>
-                              <td><a href="#">Vota</a></td>
+                              {{-- <td style="color:yellow;">
+                                {{ $player -> role -> name}}
+                              </td>
+                              <td>
+                                <a href="#">Vota</a>
+                              </td> --}}
                             @else
                               <th scope="row">{{$n+1}}</th>
                               <td>{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
                               <td>{{ $player -> role -> name}}</td>
                               {{-- SE è NULL FA IN UN MODO ALTRIMENTI IN UN ALTRO!!!! --}}
                               @if (is_null($idUserVoted))
-                                <td>
+                                {{-- <td>
                                   <a href="{{route('logged.votes.formUser', $player->user->id)}}">
                                     Vota
                                   </a>
-                                </td>
+                                </td> --}}
                               @else
-                                <td>Hai già votato</td>
+                                {{-- <td>Hai già votato</td> --}}
                               @endif
                             @endif
                             {{-- {{ route('logged.votes.formUser',$player -> user -> id)}} --}}
@@ -117,16 +121,17 @@
         <div class="col-12">
           <div class="text-center">
             @if ($button2 -> status == 0)
-              <h2>Attendi per proceere</h2>
+              <h2>Attendi per procedere</h2>
             @else
-
-              <h3>Fine Votazione</h3>
-
               <div class="buttons-wrapper">
                 @if ($round -> name == 3)
                   <a class="btn btn-dark" href="{{ route('logged.final')}}">Termina il gioco</a>
                 @else
-                  <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica provvisoria</a>
+                  @if ($auth -> role_id == 1)
+                    <a class="btn btn-dark" href="{{ route('logged.rankings')}}">Guarda la classifica provvisoria</a>
+                  @else
+                    <a href="{{route('logged.index')}}" class="btn btn-dark">Vai al prossimo round</a>
+                  @endif
                 @endif
               </div>
 
