@@ -6,17 +6,19 @@
 
 // Partials
 @import 'partials/variables';
-@import 'partials/mixins';
 @import 'partials/common';
+@import 'partials/mixins';
 
 // Layouts
 @import 'layouts/header';
 @import 'layouts/footer';
 
 // Sections
+@import 'sections/login';
 @import 'sections/home';
 @import 'sections/groups';
 @import 'sections/votesIndex';
 @import 'sections/votesForm';
 @import 'sections/rankings';
 @import 'sections/final';
+@import 'sections/errors';

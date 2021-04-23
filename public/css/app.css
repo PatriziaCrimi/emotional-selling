@@ -10002,8 +10002,25 @@ h3 {
     border-color: #dee2e6;
   }
 }
+/* ------------------------ FONTS ------------------------ */
+@font-face {
+  font-family: D-din;
+  font-weight: normal;
+  src: url("font-path/D-DIN.otf") format("opentype");
+}
+@font-face {
+  font-family: D-din;
+  font-weight: bold;
+  src: url("font-path/D-DIN-Bold.otf") format("opentype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "D-din", sans-serif;
   color: blue;
 }
 
@@ -10011,7 +10028,12 @@ main,
 main section {
   width: 100%;
   height: 100%;
-  padding: 40px 0;
+  min-height: 100vh;
+}
+
+main section {
+  padding: 40px;
+  background-color: lightgrey;
 }
 
 ul li {
@@ -10027,17 +10049,25 @@ a:hover {
 /* Breakpoint Medium 768px md */
 /* Breakpoint Large 992px lg */
 /* Breakpoint Extra Large 1200px xl */
-header {
-  background-color: lightgrey;
+header nav.navbar {
+  background-color: lightblue;
+}
+header nav.navbar .dropdown-menu {
+  background-color: lightblue;
+}
+header nav.navbar .admin-select {
+  padding-right: 40px;
+  text-align: center;
+}
+header nav.navbar .admin-select form select,
+header nav.navbar .admin-select form input[type=submit] {
+  border: none;
+  border-radius: 5px;
+}
+header nav.navbar .admin-select form input[type=submit] {
+  padding: 0 10px;
 }
 
-main section#home {
-  background-color: lightgrey;
-}
-
-main section#groups {
-  background-color: lightgreen;
-}
 main section#groups .groups-wrapper {
   padding: 40px 0;
 }
@@ -10048,9 +10078,6 @@ main section#groups .groups-wrapper .table-wrapper {
   padding: 20px 0;
 }
 
-main section#votes-index {
-  background-color: lightyellow;
-}
 main section#votes-index .buttons-wrapper {
   padding: 20px 0;
 }
@@ -10086,12 +10113,4 @@ main section#votes-form .form-wrapper form .radio-toolbar label.radio-label:hove
 }
 main section#votes-form .buttons-wrapper {
   padding: 20px 0;
-}
-
-main section#rankings {
-  background-color: lightblue;
-}
-
-main section#final {
-  background-color: lightcoral;
 }
