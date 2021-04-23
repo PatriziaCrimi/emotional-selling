@@ -48,16 +48,27 @@ class HomeController extends Controller
 
      //////////QUERY PER TEAM /////////
 
-     $votesCount = DB::table('votes')
-     ->join('teams','teams.id','=','votes.team_id')
-     ->select(DB::raw('sum(value) as valore, votes.team_id'),'teams.name')
-     ->groupBy('team_id','teams.name')
-     ->orderBy('valore','DESC')
-     ->get();
-
-     $votesRank = json_decode(json_encode($votesCount),true);
+     // $votesCount = DB::table('votes')
+     // ->join('teams','teams.id','=','votes.team_id')
+     // ->join('group_role_round_users','group_role_round_users.id','=','votes.info_voted_id')
+     // ->select(DB::raw('sum(value) as valore, votes.team_id'),'teams.name','group_role_round_users.round_id')
+     // ->groupBy('team_id','teams.name','group_role_round_users.round_id')
+     // ->orderBy('valore','DESC')
+     // ->get();
+     // //
+     // $votesRank = json_decode(json_encode($votesCount),true);
      // dd($votesRank);
 
+     // QUERY MODIFICATA PER SOMMA TEAM 
+
+     $votesCount = DB::table("votes")
+     ->join('teams','teams.id','=','votes.team_id')
+     ->select(DB::raw('sum(value) as valore','votes.team_id'),'teams.name')
+     ->where('team_vote',2)->groupBy('votes.team_id','teams.name')
+     ->orderBy('valore','DESC')->get();
+     $votesRank = json_decode(json_encode($votesCount),true);
+
+     // dd($votesRank);
     return view('logged.rankings',compact('votesRank','round','button1','button2'));
   }
 
