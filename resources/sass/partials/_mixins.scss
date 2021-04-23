@@ -1,10 +1,7 @@
 @mixin background-img($img) {
   background-image: $img;
-  // background-size: contain;
-  // background-repeat: no-repeat;
-  // background-attachment: fixed;
-  // background-position: center;
-  // min-height: calc(100vh - 200px);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 @mixin vote-buttons {

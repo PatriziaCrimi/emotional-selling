@@ -1,6 +1,6 @@
 main {
 
   section#login {
-    background-image: $bg_login_path;
+    @include background-img($bg_login_path);
   }
 }
