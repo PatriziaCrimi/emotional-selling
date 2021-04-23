@@ -9,7 +9,7 @@
 
 body {
   font-family: $primary_font;
-  color: $primary_color;
+  color: $blue;
 }
 
 main,
@@ -21,7 +21,6 @@ main section {
 
 main section {
   padding: $padding_unit * 2;
-  background-color: $primary_bg_color;
 }
 
 ul li {

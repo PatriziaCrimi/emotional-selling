@@ -27,12 +27,16 @@ $primary_font: 'D-din', sans-serif;
 $font_awesome: 'Font Awesome 5 Free';
 
 // Colors
-$primary_color: blue;
-$secondary_color: green;
-$primary_bg_color: lightgrey;
-$secondary_bg_color: lightblue;
+$blue: #1b4298;
+$grey: #585b5c;
+$fuxia: #e20177;
+$green: #54b948;
+$light_blue: #009dcc;
 
-// Dimensions
+// Images paths
+$bg_login_path: url("../storage/img/sfondo_login.png");
+$bg_general_path: url("../storage/img/sfondo_generale.png");
+$logo_path: url("../storage/img/logo-emotional-selling.png");
 
 // Margins & Padding
 $padding_unit: 20px;

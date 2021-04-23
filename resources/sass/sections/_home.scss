@@ -1,6 +1,6 @@
 main {
 
   section#home {
-    //
+    @include background-img($bg_general_path);
   }
 }
