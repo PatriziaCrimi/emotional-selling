@@ -2,6 +2,15 @@ header {
 
   nav.navbar {
 
+    .img-logo {
+      max-width: 200px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
     .admin-select {
       padding-right: $padding_unit * 2;
       text-align: center;

@@ -1,6 +1,20 @@
 main {
 
   section#home {
-    @include background-img($bg_general_path);
+    @include background-img($bg_general_tablet);
   }
+}
+
+/* ------------------- MEDIA QUERY ------------------- */
+
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+
+  main {
+
+    section#login {
+      @include background-img($bg_login_desktop);
+    }
+  }
+
 }
