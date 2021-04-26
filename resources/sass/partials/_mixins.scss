@@ -4,7 +4,13 @@
   background-repeat: no-repeat;
 }
 
-@mixin vote-buttons {
+@mixin input-button($color) {
+  background-color: $color;
+  color: #fff;
+  opacity: 1;
+}
+
+@mixin vote-button {
   background: $blue;
   background: -webkit-linear-gradient(left, $blue, $light_blue);
   background: -moz-linear-gradient(left, $blue, $light_blue);
