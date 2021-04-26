@@ -10046,6 +10046,7 @@ a:hover {
 /* ------------------- MEDIA QUERY ------------------- */
 /* Breakpoint Small 576px sm */
 /* Breakpoint Medium 768px md */
+/* ------------------- MEDIA QUERY ------------------- */
 /* Breakpoint Large 992px lg */
 /* Breakpoint Extra Large 1200px xl */
 header nav.navbar .img-logo {
@@ -10069,7 +10070,7 @@ header nav.navbar .admin-select form input[type=submit] {
 }
 
 main section#login {
-  background-image: url("../storage/img/sfondo_login_tablet.png");
+  background-image: url("../storage/img/sfondo_login_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -10078,13 +10079,13 @@ main section#login {
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
   main section#login {
-    background-image: url("../storage/img/sfondo_login_desktop.png");
+    background-image: url("../storage/img/sfondo_login_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
 }
 main section#home {
-  background-image: url("../storage/img/sfondo_generale_tablet.png");
+  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -10092,11 +10093,16 @@ main section#home {
 /* ------------------- MEDIA QUERY ------------------- */
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
-  main section#login {
-    background-image: url("../storage/img/sfondo_login_desktop.png");
+  main section#home {
+    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
+}
+main section#groups {
+  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 main section#groups .groups-wrapper {
   padding: 40px 0;
@@ -10108,10 +10114,38 @@ main section#groups .groups-wrapper .table-wrapper {
   padding: 20px 0;
 }
 
+/* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+  main section#groups {
+    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+main section#votes-index {
+  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 main section#votes-index .buttons-wrapper {
   padding: 20px 0;
 }
 
+/* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+  main section#votes-index {
+    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+main section#votes-form {
+  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 main section#votes-form .players-wrapper {
   padding: 40px 0;
 }
@@ -10143,4 +10177,59 @@ main section#votes-form .form-wrapper form .radio-toolbar label.radio-label:hove
 }
 main section#votes-form .buttons-wrapper {
   padding: 20px 0;
+}
+
+/* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+  main section#votes-form {
+    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+main section#rankings {
+  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+  main section#rankings {
+    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+main section#final {
+  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+  main section#final {
+    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+main section#errors {
+  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+  main section#errors {
+    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }

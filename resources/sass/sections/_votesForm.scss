@@ -1,6 +1,7 @@
 main {
 
   section#votes-form {
+    @include background-img($bg_general_tablet);
 
     .players-wrapper {
       padding: $padding_unit * 2 0;
@@ -48,4 +49,18 @@ main {
       padding: $padding_unit 0;
     }
   }
+}
+
+/* ------------------- MEDIA QUERY ------------------- */
+
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+
+  main {
+
+    section#votes-form {
+      @include background-img($bg_general_desktop);
+    }
+  }
+
 }

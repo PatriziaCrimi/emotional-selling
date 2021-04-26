@@ -12,8 +12,8 @@ main {
 
   main {
 
-    section#login {
-      @include background-img($bg_login_desktop);
+    section#home {
+      @include background-img($bg_general_desktop);
     }
   }
 

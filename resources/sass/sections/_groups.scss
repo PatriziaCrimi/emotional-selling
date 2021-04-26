@@ -1,7 +1,8 @@
 main {
 
   section#groups {
-    
+    @include background-img($bg_general_tablet);
+
     .groups-wrapper {
       padding: $padding_unit *2 0;
 
@@ -14,4 +15,18 @@ main {
       }
     }
   }
+}
+
+/* ------------------- MEDIA QUERY ------------------- */
+
+/* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+
+  main {
+
+    section#groups {
+      @include background-img($bg_general_desktop);
+    }
+  }
+
 }
