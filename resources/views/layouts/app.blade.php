@@ -29,7 +29,7 @@
           <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
               <div class="img-logo">
-                <img src="{{asset('storage/img/logo-emotional-selling.png')}}" alt="logo_organon">
+                <img src="{{asset('storage/img/logo-emotional-selling.png')}}" alt="Logo Strategic Connections">
               </div>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                   <span class="navbar-toggler-icon"></span>
@@ -117,7 +117,15 @@
                   <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                       <span>{{ Auth::user()->name }}</span>
-                      <span class="font-weight-bold"> - Team {{ Auth::user()->team->name }}</span>
+                      @php
+                        $user_id = Auth::user()->id;
+                        $id_combo = \App\GroupRoleRoundUser::where('user_id', $user_id)->first();
+                      @endphp
+                      @if ($id_combo->role_id == 2 || $id_combo->role_id == 1)
+                        <span class="font-weight-bold"> {{$id_combo->role->name}}</span>
+                      @else
+                        <span class="font-weight-bold"> - Team {{ Auth::user()->team->name }}</span>
+                      @endif
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

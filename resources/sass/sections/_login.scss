@@ -2,6 +2,21 @@ main {
 
   section#login {
     @include background-img($bg_login_tablet);
+
+    .logo {
+      width: 100%;
+      padding: $padding_unit * 2;
+    }
+
+    .card {
+      padding: $padding_unit;
+      border-radius: 15px;
+      opacity: 0.8;
+
+      button.btn {
+       @include input-button($fuxia);
+      }
+    }
   }
 }
 
