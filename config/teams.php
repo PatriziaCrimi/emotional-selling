@@ -3,58 +3,58 @@
   return [
 
     [
-      "name" => 'Arcoxia'
+      "name" => 'Arcoxia' // Team 1
     ],
     [
-      "name" => 'Fosavance'
+      "name" => 'Fosavance' // Team 2
     ],
     [
-      "name" => 'Gentalyn'
+      "name" => 'Gentalyn'  // Team 3
     ],
     [
-      "name" => 'Gent.Beta'
+      "name" => 'Gent.Beta' // Team 4
     ],
     [
-      "name" => 'Elocon'
+      "name" => 'Elocon'  // Team 5
     ],
     [
-      "name" => 'Singulair'
+      "name" => 'Singulair' // Team 6
     ],
     [
-      "name" => 'Nasonex'
+      "name" => 'Nasonex' // Team 7
     ],
     [
-      "name" => 'Aerius'
+      "name" => 'Aerius'  // Team 8
     ],
     [
-      "name" => 'Maxalt'
+      "name" => 'Maxalt'  // Team 9
     ],
     [
-      "name" => 'Lortaan'
+      "name" => 'Lortaan' // Team 10
     ],
     [
-      "name" => 'Inegy'
+      "name" => 'Inegy' // Team 11
     ],
     [
-      "name" => 'Ezetrol'
+      "name" => 'Ezetrol' // Team 12
     ],
     [
-      "name" => 'Hyzaar'
+      "name" => 'Hyzaar'  // Team 13
     ],
     [
-      "name" => 'Forzaar'
+      "name" => 'Forzaar' // Team 14
     ],
     [
-      "name" => 'Enafren'
+      "name" => 'Enafren' // Team 15
     ],
     [
-      "name" => 'Vasoretic'
+      "name" => 'Vasoretic' // Team 16
     ],
     [
-      "name" => 'Sinvacor'
+      "name" => 'Sinvacor'  // Team 17
     ],
     [
-      "name" => 'Propecia'
+      "name" => 'Propecia'  // Team 18
     ],
 
   ];

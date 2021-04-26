@@ -36,7 +36,7 @@ class AddForeignKeysVotesTable extends Migration
    */
   public function down()
   {
-    Schema::table('votes', function(Blueprint $table) {
+    Schema::drop('votes', function(Blueprint $table) {
       // Removing the foreign key constraint: NomeTabella_NomeColonna_foreign
       // Removing FK constraint Categories table
       $table->dropForeign('votes_category_id_foreign');
