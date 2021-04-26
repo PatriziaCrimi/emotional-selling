@@ -1,7 +1,9 @@
 main {
+  min-height: 100vh;
 
   section#login {
     @include background-img($bg_login_tablet);
+    min-height: 100vh;
 
     .logo {
       width: 100%;
