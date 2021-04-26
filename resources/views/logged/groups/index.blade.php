@@ -32,7 +32,7 @@
           <div class="groups-wrapper">
             @foreach ($usersGroups as $userGroup => $users)
               <h2 class="show text-center">
-                Gruppo {{ $userGroup }}
+                Room {{ $userGroup }}
               </h2>
               <div class="content watch">
                 @foreach ($users as $key => $user)
