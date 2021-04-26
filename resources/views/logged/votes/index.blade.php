@@ -42,7 +42,11 @@
           <div class="col-12">
             @foreach ($usersGroups as $userGroup => $users)
               <h2 class="show text-center">
-                Room {{ $userGroup }}
+                @php
+                  $group = \App\Group::find($userGroup);
+                  // dd($group);
+                @endphp
+                {{$group -> name}}
               </h2>
               <div class="content watch">
                 @foreach ($users as $key => $user)
@@ -51,15 +55,16 @@
                   $team = \App\GroupRoleRoundUser::where('team_id',$key)->where('round_id',$round->name)->first();
                   $teamUserId = $team->id;
                   $idTeamVoted = \App\Vote::where('info_voter_id',$voteCheckId)->where('info_voted_id',$teamUserId)->where('team_vote',1)->first();
+                  $teamName = \App\Team::find($key);
                   @endphp
                   {{-- SE NON è NULL HAI GIA VOTATO ALTRIMENTI NO --}}
                   @if (!is_null($idTeamVoted))
                     <a class="btn btn-primary" style="margin:30px;">
-                      Hai Votato il Team {{$key}}
+                      Hai Votato il Team {{$teamName -> name }}
                     </a>
                   @else
                     <a class="btn btn-primary" href="{{route('logged.votes.formTeam', $key)}}" style="margin:30px;">
-                      Vota il Team {{$key}}
+                      Vota il Team {{$teamName -> name}}
                     </a>
                   @endif
                   <div>
@@ -67,7 +72,7 @@
                       <table class="table table-dark">
                         <thead>
                           <tr>
-                            <th scope="col">Team {{$key}}</th>
+                            <th scope="col">Team {{$teamName -> name}}</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Ruolo</th>
                             {{-- <th scope="col"></th> --}}

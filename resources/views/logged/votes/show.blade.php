@@ -139,7 +139,10 @@
 
         <div class="row">
           <div class="col-12">
-            <h1 class="text-center">Stai votando il Team {{$id}}</h1>
+            @php
+              $teamName = \App\Team::find($id);
+            @endphp
+            <h1 class="text-center">Stai votando il Team {{$teamName -> name}}</h1>
           </div>
         </div>
 

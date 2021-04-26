@@ -32,16 +32,25 @@
           <div class="groups-wrapper">
             @foreach ($usersGroups as $userGroup => $users)
               <h2 class="show text-center">
-                Room {{ $userGroup }}
+                @php
+                  $group = \App\Group::find($userGroup);
+                  // dd($group);
+                @endphp
+                {{$group -> name}}
               </h2>
               <div class="content watch">
                 @foreach ($users as $key => $user)
+
+                  @php
+                    $team = \App\Team::find($key);
+                    // dd($group);
+                  @endphp
                   <div class="table-wrapper">
                     <table class="table table-dark">
                       <thead>
 
                         <tr>
-                          <th scope="col">Team {{$key}}</th>
+                          <th scope="col">Team {{$team -> name}}</th>
                           <th scope="col">Nome</th>
                           <th scope="col">Ruolo</th>
                         </tr>
