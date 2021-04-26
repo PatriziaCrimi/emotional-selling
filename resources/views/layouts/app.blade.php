@@ -111,15 +111,15 @@
 
                   <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                      <span>{{ Auth::user()->name }}</span>
+                      <span>{{ Auth::user()->name }} - </span>
                       @php
                         $user_id = Auth::user()->id;
                         $id_combo = \App\GroupRoleRoundUser::where('user_id', $user_id)->first();
                       @endphp
                       @if ($id_combo->role_id == 2 || $id_combo->role_id == 1)
-                        <span class="font-weight-bold"> {{$id_combo->role->name}}</span>
+                        <span class="font-weight-bold">{{$id_combo->role->name}}</span>
                       @else
-                        <span class="font-weight-bold"> - Team {{ Auth::user()->team->name }}</span>
+                        <span class="font-weight-bold">Team {{ Auth::user()->team->name }}</span>
                       @endif
                     </a>
 

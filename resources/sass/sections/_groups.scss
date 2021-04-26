@@ -1,18 +1,60 @@
-main {
+main section#groups {
+  @include background-img($bg_general_tablet);
 
-  section#groups {
-    @include background-img($bg_general_tablet);
+  h1 {
+    color: $blue;
+  }
 
-    .groups-wrapper {
-      padding: $padding_unit *2 0;
+  .sede-info {
+    padding: $padding_unit 0;
+    font-size: 18px;
+    color: $blue;
+  }
 
-      h2 {
-        padding: $padding_unit / 2 0;
+  .groups-wrapper {
+    padding: $padding_unit *2 0;
+
+    h2 {
+      padding: $padding_unit / 2 0;
+    }
+
+    table.table {
+      background-color: #fff;
+      border-radius: 15px;
+      opacity: 0.6;
+      color: $blue;
+
+      tr,
+      th,
+      td {
+        border: 0px!important;
       }
 
-      .table-wrapper {
-        padding: $padding_unit 0;
+      thead {
+        text-transform: uppercase;
+        color: $fuxia;
       }
+
+      tbody {
+
+        tr {
+          .active {
+            font-weight: bold;
+            color: $fuxia;
+          }
+        }
+      }
+    }
+  }
+
+  .buttons-wrapper {
+    p {
+      font-size: 24px;
+      padding: $padding_unit 0;
+    }
+
+    a.btn {
+      @include input-button($fuxia);
     }
   }
 }
@@ -22,11 +64,7 @@ main {
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
 
-  main {
-
-    section#groups {
-      @include background-img($bg_general_desktop);
-    }
+main section#groups {
+    @include background-img($bg_general_desktop);
   }
-
 }

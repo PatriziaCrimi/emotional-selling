@@ -8,7 +8,7 @@
           <h1 class="text-center">View Finale</h1>
         </div>
         <div class="">
-          <p>Ringraziamenti e Saluti</p>
+          <p>Saluti</p>
         </div>
       </div>
     </div>  {{-- Closing Container --}}

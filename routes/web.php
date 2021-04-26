@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'HomeController@index')->name('index');
+Route::get('/', 'HomeController@index')->name('home');
 
 // ------------------- AUTHENTICATION ROUTES -------------------
 Auth::routes(['register' => false]);
 
 Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.')->group(function(){
-  Route::get('/', 'HomeController@index')->name('index');
+  Route::get('/', 'HomeController@index')->name('home');
   Route::get('/final', 'HomeController@final')->name('final');
 
   // Groups

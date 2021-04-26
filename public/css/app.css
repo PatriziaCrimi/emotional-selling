@@ -10041,8 +10041,9 @@ a:hover {
 
 .card {
   padding: 20px;
+  background-color: #fff;
   border-radius: 15px;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10084,8 +10085,9 @@ main section#login .logo {
 main section#login .card button.btn {
   background-color: #e20177;
   color: #fff;
-  opacity: 1;
-  z-index: 1;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10114,8 +10116,9 @@ main section#home .card p {
 main section#home .card a.btn {
   background-color: #e20177;
   color: #fff;
-  opacity: 1;
-  z-index: 1;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10132,14 +10135,49 @@ main section#groups {
   background-size: cover;
   background-repeat: no-repeat;
 }
+main section#groups h1 {
+  color: #1b4298;
+}
+main section#groups .sede-info {
+  padding: 20px 0;
+  font-size: 18px;
+  color: #1b4298;
+}
 main section#groups .groups-wrapper {
   padding: 40px 0;
 }
 main section#groups .groups-wrapper h2 {
   padding: 10px 0;
 }
-main section#groups .groups-wrapper .table-wrapper {
+main section#groups .groups-wrapper table.table {
+  background-color: #fff;
+  border-radius: 15px;
+  opacity: 0.6;
+  color: #1b4298;
+}
+main section#groups .groups-wrapper table.table tr,
+main section#groups .groups-wrapper table.table th,
+main section#groups .groups-wrapper table.table td {
+  border: 0px !important;
+}
+main section#groups .groups-wrapper table.table thead {
+  text-transform: uppercase;
+  color: #e20177;
+}
+main section#groups .groups-wrapper table.table tbody tr .active {
+  font-weight: bold;
+  color: #e20177;
+}
+main section#groups .buttons-wrapper p {
+  font-size: 24px;
   padding: 20px 0;
+}
+main section#groups .buttons-wrapper a.btn {
+  background-color: #e20177;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10156,8 +10194,73 @@ main section#votes-index {
   background-size: cover;
   background-repeat: no-repeat;
 }
-main section#votes-index .buttons-wrapper {
+main section#votes-index h1,
+main section#votes-index h1 + p {
+  color: #1b4298;
+  font-size: 24px;
+}
+main section#votes-index .sede-info {
   padding: 20px 0;
+  font-size: 18px;
+  color: #1b4298;
+}
+main section#votes-index .groups-wrapper {
+  padding: 40px 0;
+}
+main section#votes-index .groups-wrapper.sede h2 {
+  color: #1b4298;
+  padding-right: 20px;
+}
+main section#votes-index .groups-wrapper a.btn {
+  margin: 30px 0;
+  background-color: #e20177;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+}
+main section#votes-index .groups-wrapper a.btn.voted {
+  background-color: #54b948;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+}
+main section#votes-index .groups-wrapper a.btn.to-vote {
+  background-color: #1b4298;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+}
+main section#votes-index .groups-wrapper h2 {
+  padding: 10px 0;
+}
+main section#votes-index .groups-wrapper table.table {
+  background-color: #fff;
+  border-radius: 15px;
+  opacity: 0.6;
+  color: #1b4298;
+}
+main section#votes-index .groups-wrapper table.table tr,
+main section#votes-index .groups-wrapper table.table th,
+main section#votes-index .groups-wrapper table.table td {
+  border: 0px !important;
+}
+main section#votes-index .groups-wrapper table.table thead {
+  text-transform: uppercase;
+  color: #e20177;
+}
+main section#votes-index .buttons-wrapper p {
+  font-size: 24px;
+  padding: 20px 0;
+}
+main section#votes-index .buttons-wrapper a.btn {
+  background-color: #e20177;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */

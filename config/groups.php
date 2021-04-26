@@ -3,22 +3,22 @@
   return [
 
     [
-      "name" => "Room 1"
+      "name" => "Room 01"
     ],
     [
-      "name" => "Room 2"
+      "name" => "Room 02"
     ],
     [
-      "name" => "Room 3"
+      "name" => "Room 03"
     ],
     [
-      "name" => "Room 4"
+      "name" => "Room 04"
     ],
     [
-      "name" => "Room 5"
+      "name" => "Room 05"
     ],
     [
-      "name" => "Room 6"
+      "name" => "Room 06"
     ],
 
   ];

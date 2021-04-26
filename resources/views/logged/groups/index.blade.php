@@ -15,26 +15,31 @@
         {{-- Title --}}
         <div class="col-12">
           <h1 class="text-center">
-            Round {{$round -> name}} in corso
-            @if ($auth -> role_id == 2)
-             <div>
-                <span> {{$auth -> user -> name}}</span>
-                <span> {{$auth -> user -> lastname}}:</span>
-                <span> {{$auth -> role -> name}}</span>
-             </div>
-            @endif
+            <span>Round n&deg;</span>
+            <span>
+              {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
+            </span>
+            <span>in corso</span>
           </h1>
         </div>
+        @if ($auth -> role_id == 2)
+          <div class="col-12">
+            <div class="sede-info text-center">
+              <span> {{$auth -> user -> name}}</span>
+              <span> {{$auth -> user -> lastname}}:</span>
+              <span> {{$auth -> role -> name}}</span>
+            </div>
+          </div>
+        @endif
       </div>
       {{-- Groups List --}}
       <div class="row">
         <div class="col-12">
           <div class="groups-wrapper">
             @foreach ($usersGroups as $userGroup => $users)
-              <h2 class="show text-center">
+              <h2 class="show text-center text-uppercase">
                 @php
                   $group = \App\Group::find($userGroup);
-                  // dd($group);
                 @endphp
                 {{$group -> name}}
               </h2>
@@ -43,35 +48,32 @@
 
                   @php
                     $team = \App\Team::find($key);
-                    // dd($group);
                   @endphp
                   <div class="table-wrapper">
-                    <table class="table table-dark">
+                    <table class="table">
                       <thead>
-
                         <tr>
                           <th scope="col">Team {{$team -> name}}</th>
                           <th scope="col">Nome</th>
                           <th scope="col">Ruolo</th>
                         </tr>
-
                       </thead>
-                      @foreach ($user as $n => $player)
-                        <tbody>
 
+                      <tbody>
+                      @foreach ($user as $n => $player)
+                        <tr>
                           @if ($player -> user -> id == Auth::user() -> id)
-                            <th scope="row" style="color:yellow;">{{$n+1}}</th>
-                            <td style="color:yellow;">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
-                            <td style="color:yellow;">{{ $player -> role -> name}}</td>
+                            <th scope="row" class="active">{{$n+1}}</th>
+                            <td class="active">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
+                            <td class="active">{{ $player -> role -> name}}</td>
                           @else
                             <th scope="row">{{$n+1}}</th>
                             <td>{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
                             <td>{{ $player -> role -> name}}</td>
                           @endif
-
-                        </tbody>
-
+                        </tr>
                       @endforeach
+                    </tbody>
 
                     </table>
                   </div>
@@ -84,23 +86,18 @@
 
       <div class="row">
         <div class="col-12">
-          <div class="text-center">
-            {{-- Se sono ISF o MEDICI  --}}
-            @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
-
-              @if ($button1 -> status == 0)
-                <h2>Attendi per procedere</h2>
-              @else
-                  <a class="btn btn-dark" href="{{route('logged.votes.index')}}">
-                    Continua
-                  </a>
-              @endif
-
+          <div class="buttons-wrapper text-center">
+            @if ($button1 -> status == 0)
+              <p>Attendi per procedere</p>
             @else
-
-              @if ($button1 -> status == 0)
-                <h2>Attendi per procedere alla votazione</h2>
+              {{-- Se sono ISF o MEDICI  --}}
+              @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
+                <p>Possono votare solo gli Osservatori</p>
+                <a class="btn" href="{{route('logged.home')}}">
+                  Home
+                </a>
               @else
+              {{-- Se sono OSSERVATORI o SEDE  --}}
                 <a class="btn btn-dark" href="{{route('logged.votes.index')}}">
                   Vota
                 </a>
