@@ -385,7 +385,7 @@ class VoteController extends Controller
     $newVote2-> info_voted_id = null;
     $newVote2-> category_id = $data['category2_id'];
     $newVote2-> value = $data['voteTeam2'];
-    if($request->comment1) {
+    if($request->comment2) {
       $newVote2-> comment = $data['comment2'];
     };
     $newVote2-> team_vote = 2;  // è stato votato il team
@@ -398,7 +398,7 @@ class VoteController extends Controller
     $newVote3-> info_voted_id = null;
     $newVote3-> category_id = $data['category3_id'];
     $newVote3-> value = $data['voteTeam3'];
-    if($request->comment1) {
+    if($request->comment3) {
       $newVote3-> comment = $data['comment3'];
     };
     $newVote3-> team_vote = 2;  // è stato votato il team

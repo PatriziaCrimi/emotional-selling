@@ -1,10 +1,72 @@
-main {
+main section#votes-index {
+  @include background-img($bg_general_tablet);
 
-  section#votes-index {
-    @include background-img($bg_general_tablet);
+  h1,
+  h1 + p {
+    color: $blue;
+    font-size: 24px;
+  }
 
-    .buttons-wrapper {
+  .sede-info {
+    padding: $padding_unit 0;
+    font-size: 18px;
+    color: $blue;
+  }
+
+  .groups-wrapper {
+    padding: $padding_unit *2 0;
+
+    &.sede {
+      h2 {
+        color: $blue;
+        padding-right: $padding_unit;
+      }
+    }
+
+    a.btn {
+      margin: $margin_unit * 3 0;
+      @include input-button($fuxia);
+
+      &.voted {
+        @include input-button($green);
+      }
+
+      &.to-vote {
+        @include input-button($blue);
+      }
+    }
+
+    h2 {
+      padding: $padding_unit / 2 0;
+    }
+
+    table.table {
+      background-color: #fff;
+      border-radius: 15px;
+      opacity: 0.6;
+      color: $blue;
+
+      tr,
+      th,
+      td {
+        border: 0px!important;
+      }
+
+      thead {
+        text-transform: uppercase;
+        color: $fuxia;
+      }
+    }
+  }
+
+  .buttons-wrapper {
+    p {
+      font-size: 24px;
       padding: $padding_unit 0;
+    }
+
+    a.btn {
+      @include input-button($fuxia);
     }
   }
 }
@@ -14,11 +76,7 @@ main {
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
 
-  main {
-
-    section#votes-index {
-      @include background-img($bg_general_desktop);
-    }
+  main section#votes-index {
+    @include background-img($bg_general_desktop);
   }
-
 }

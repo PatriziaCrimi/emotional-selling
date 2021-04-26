@@ -34,7 +34,7 @@
               @if ($round->name == 3)
                 <a href="{{route('logged.final')}}" class="btn btn-dark">Clicca per uscire</a>
               @else
-                <a href="{{route('logged.index')}}" class="btn btn-dark">Vai al prossimo round</a>
+                <a href="{{route('logged.home')}}" class="btn btn-dark">Vai al prossimo round</a>
               @endif
             </div>
           </div>
