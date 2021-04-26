@@ -10069,10 +10069,14 @@ header nav.navbar .admin-select form input[type=submit] {
   padding: 0 10px;
 }
 
+main {
+  min-height: 100vh;
+}
 main section#login {
   background-image: url("../storage/img/sfondo_login_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 100vh;
 }
 main section#login .logo {
   width: 100%;
