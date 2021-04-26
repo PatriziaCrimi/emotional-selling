@@ -8,6 +8,7 @@
   background-color: $color;
   color: #fff;
   opacity: 1;
+  z-index: 1;
 }
 
 @mixin vote-button {

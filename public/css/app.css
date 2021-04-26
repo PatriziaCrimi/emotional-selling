@@ -10021,17 +10021,13 @@ h3 {
 
 body {
   font-family: "D-din", sans-serif;
-  color: #1b4298;
+  color: #585b5c;
 }
 
-main,
 main section {
   width: 100%;
   height: 100%;
   min-height: calc(100vh - 88px);
-}
-
-main section {
   padding: 40px;
 }
 
@@ -10041,6 +10037,12 @@ ul li {
 
 a:hover {
   text-decoration: none;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 15px;
+  opacity: 0.7;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10069,9 +10071,6 @@ header nav.navbar .admin-select form input[type=submit] {
   padding: 0 10px;
 }
 
-main {
-  min-height: 100vh;
-}
 main section#login {
   background-image: url("../storage/img/sfondo_login_tablet.jpg");
   background-size: cover;
@@ -10082,15 +10081,11 @@ main section#login .logo {
   width: 100%;
   padding: 40px;
 }
-main section#login .card {
-  padding: 20px;
-  border-radius: 15px;
-  opacity: 0.8;
-}
 main section#login .card button.btn {
   background-color: #e20177;
   color: #fff;
   opacity: 1;
+  z-index: 1;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10106,6 +10101,21 @@ main section#home {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+}
+main section#home .card {
+  margin-top: 40px;
+}
+main section#home .card h1 {
+  color: #54b948;
+}
+main section#home .card p {
+  padding: 20px 0;
+}
+main section#home .card a.btn {
+  background-color: #e20177;
+  color: #fff;
+  opacity: 1;
+  z-index: 1;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */

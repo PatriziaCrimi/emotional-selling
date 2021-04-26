@@ -1,20 +1,30 @@
-main {
+main section#home {
+  @include background-img($bg_general_tablet);
 
-  section#home {
-    @include background-img($bg_general_tablet);
+  .card {
+    margin-top: $margin_unit * 4;
+
+    h1 {
+      color: $green;
+    }
+
+    p {
+      padding: $padding_unit 0;
+    }
+
+    a.btn {
+      @include input-button($fuxia);
+    }
   }
 }
+
 
 /* ------------------- MEDIA QUERY ------------------- */
 
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
 
-  main {
-
-    section#home {
-      @include background-img($bg_general_desktop);
-    }
+main section#home {
+    @include background-img($bg_general_desktop);
   }
-
 }
