@@ -31,11 +31,7 @@
             @endforeach
 
             <div class="text-center">
-              @if ($round->name == 3)
-                <a href="{{route('logged.final')}}" class="btn btn-dark">Clicca per uscire</a>
-              @else
-                <a href="{{route('logged.home')}}" class="btn btn-dark">Vai al prossimo round</a>
-              @endif
+              <a href="{{route('logged.home')}}" class="btn btn-dark">Torna alla home</a>
             </div>
           </div>
         </div>

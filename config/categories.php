@@ -11,6 +11,9 @@
     [
       "name" => "Categoria 3"
     ],
+    [
+      "name" => "Categoria 4"
+    ],
 
   ];
 

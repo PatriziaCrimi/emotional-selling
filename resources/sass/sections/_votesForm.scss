@@ -1,53 +1,52 @@
-main {
+main section#votes-form {
+  @include background-img($bg_general_tablet);
 
-  section#votes-form {
-    @include background-img($bg_general_tablet);
+  .players-wrapper {
+    padding: $padding_unit * 2 0;
+  }
 
-    .players-wrapper {
-      padding: $padding_unit * 2 0;
-    }
+  .form-wrapper {
 
-    .form-wrapper {
+    padding: $padding_unit * 2 0;
 
-      padding: $padding_unit * 2 0;
+    form {
 
-      form {
+      .radio-toolbar {
 
-        .radio-toolbar {
+        input[type="radio"] {
+          opacity: 0;
+          position: fixed;
+          width: 0;
 
-          input[type="radio"] {
-            opacity: 0;
-            position: fixed;
-            width: 0;
-
-            &:checked + label.radio-label,
-            &:focus + label.radio-label {
-              background-color: blue;
-              color: white!important;
-            }
+          &:checked + label.radio-label,
+          &:focus + label.radio-label {
+            @include voted-button;
           }
+        }
 
-          label.radio-label {
-            background-color: lightblue;
-            color: black!important;
-            border-radius: 5px;
-            font-weight: bold;
-            padding: 5px $padding_unit / 2;
-            cursor: pointer;
-            margin: 0 $margin_unit / 2;
-            @include transition_hover;
+        label.radio-label {
+          width: $vote_button;
+          height: $vote_button;
+          border-radius: $vote_button / 2;
+          font-weight: bold;
+          font-size: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          margin: 0 $margin_unit;
+          @include to-vote-button;
+          @include transition_hover;
 
-            &:hover {
-              background-color: blue;
-              color: white!important;
-            }
+          &:hover {
+            background-color: blue;
           }
         }
       }
     }
-    .buttons-wrapper {
-      padding: $padding_unit 0;
-    }
+  }
+  .buttons-wrapper {
+    padding: $padding_unit 0;
   }
 }
 
@@ -56,11 +55,7 @@ main {
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
 
-  main {
-
-    section#votes-form {
-      @include background-img($bg_general_desktop);
-    }
+  main section#votes-form {
+    @include background-img($bg_general_desktop);
   }
-
 }

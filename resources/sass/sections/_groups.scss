@@ -14,6 +14,15 @@ main section#groups {
   .groups-wrapper {
     padding: $padding_unit *2 0;
 
+    &.sede {
+      h2 {
+        color: $blue;
+        padding-right: $padding_unit;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+
     h2 {
       padding: $padding_unit / 2 0;
     }
@@ -64,7 +73,7 @@ main section#groups {
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
 
-main section#groups {
+  main section#groups {
     @include background-img($bg_general_desktop);
   }
 }

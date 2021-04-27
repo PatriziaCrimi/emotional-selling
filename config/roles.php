@@ -3,19 +3,25 @@
   return [
 
     [
-      "name" => "Admin"
+      "name" => "Admin" // Ruolo 1
     ],
     [
-      "name" => "Sede"
+      "name" => "Sede" // Ruolo 2
     ],
     [
-      "name" => "Osservatore"
+      "name" => "DM" // Ruolo 3
     ],
     [
-      "name" => "Medico"
+      "name" => "DM Junior" // Ruolo 4
     ],
     [
-      "name" => "ISF"      
+      "name" => "Osservatore" // Ruolo 5
+    ],
+    [
+      "name" => "Medico"  // Ruolo 6
+    ],
+    [
+      "name" => "ISF"   // Ruolo 7
     ],
 
   ];

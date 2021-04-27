@@ -49851,26 +49851,40 @@ var app = new Vue({
     showComment1: false,
     showComment2: false,
     showComment3: false,
+    showComment4: false,
     commentMessage: '',
     radio1: '',
     radio2: '',
     radio3: '',
+    radio4: '',
     textarea1: '',
     textarea2: '',
     textarea3: '',
-    isDisabled: true
+    textarea4: '',
+    isDisabled: true,
+    isTeamShown: false
   },
   methods: {
+    showTeams: function showTeams(indexTeam) {
+      // if(indexTeam == ) {
+      console.log(indexTeam);
+      this.isTeamShown = true; // } else {
+      //   this.isTeamShown = false;
+      // }
+    },
     cancelVotes: function cancelVotes() {
       this.radio1 = '';
       this.radio2 = '';
       this.radio3 = '';
+      this.radio4 = '';
       this.textarea1 = '';
       this.textarea2 = '';
       this.textarea3 = '';
+      this.textarea4 = '';
       this.showComment1 = false;
       this.showComment2 = false;
       this.showComment3 = false;
+      this.showComment4 = false;
       this.isDisabled = true;
     },
     checkVoteComment1: function checkVoteComment1(voteValue) {
@@ -49904,6 +49918,17 @@ var app = new Vue({
         this.commentMessage = 'Il tuo voto è molto alto, è richiesta una motivazione.';
       } else {
         this.showComment3 = false;
+      }
+    },
+    checkVoteComment4: function checkVoteComment4(voteValue) {
+      if (voteValue <= 5) {
+        this.showComment4 = true;
+        this.commentMessage = 'Il tuo voto è molto basso, è richiesta una motivazione.';
+      } else if (voteValue >= 9) {
+        this.showComment4 = true;
+        this.commentMessage = 'Il tuo voto è molto alto, è richiesta una motivazione.';
+      } else {
+        this.showComment4 = false;
       }
     },
     alertVoted: function alertVoted() {

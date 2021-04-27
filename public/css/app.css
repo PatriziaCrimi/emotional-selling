@@ -10049,7 +10049,6 @@ a:hover {
 /* ------------------- MEDIA QUERY ------------------- */
 /* Breakpoint Small 576px sm */
 /* Breakpoint Medium 768px md */
-/* ------------------- MEDIA QUERY ------------------- */
 /* Breakpoint Large 992px lg */
 /* Breakpoint Extra Large 1200px xl */
 header nav.navbar .img-logo {
@@ -10062,6 +10061,13 @@ header nav.navbar .img-logo img {
 header nav.navbar .admin-select {
   padding-right: 40px;
   text-align: center;
+}
+header nav.navbar .admin-select.rankings p {
+  margin-bottom: 5px;
+}
+header nav.navbar .admin-select.rankings a.btn {
+  color: black;
+  background-color: #efefef;
 }
 header nav.navbar .admin-select form select,
 header nav.navbar .admin-select form input[type=submit] {
@@ -10145,6 +10151,12 @@ main section#groups .sede-info {
 }
 main section#groups .groups-wrapper {
   padding: 40px 0;
+}
+main section#groups .groups-wrapper.sede h2 {
+  color: #1b4298;
+  padding-right: 20px;
+  font-weight: bold;
+  cursor: pointer;
 }
 main section#groups .groups-wrapper h2 {
   padding: 10px 0;
@@ -10289,22 +10301,28 @@ main section#votes-form .form-wrapper form .radio-toolbar input[type=radio] {
   width: 0;
 }
 main section#votes-form .form-wrapper form .radio-toolbar input[type=radio]:checked + label.radio-label, main section#votes-form .form-wrapper form .radio-toolbar input[type=radio]:focus + label.radio-label {
-  background-color: blue;
-  color: white !important;
+  background: #e20177;
+  border: 2px solid #e20177;
 }
 main section#votes-form .form-wrapper form .radio-toolbar label.radio-label {
-  background-color: lightblue;
-  color: black !important;
-  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
   font-weight: bold;
-  padding: 5px 10px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  margin: 0 5px;
+  margin: 0 10px;
+  color: #fff;
+  border: 2px solid #fff;
+  background: #1b4298;
+  background: linear-gradient(to right, #1b4298, #009dcc);
   transition: all 0.25s ease-in-out;
 }
 main section#votes-form .form-wrapper form .radio-toolbar label.radio-label:hover {
   background-color: blue;
-  color: white !important;
 }
 main section#votes-form .buttons-wrapper {
   padding: 20px 0;
@@ -10329,21 +10347,6 @@ main section#rankings {
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
   main section#rankings {
-    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
-main section#final {
-  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-/* ------------------- MEDIA QUERY ------------------- */
-/* Breakpoint Large 992px lg */
-@media screen and (min-width: 992px) {
-  main section#final {
     background-image: url("../storage/img/sfondo_generale_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;

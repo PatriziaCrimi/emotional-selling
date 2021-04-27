@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 {{-- Controllo se l'utente loggato è Sede o Admin per attivare funzione jQuery per visualizzare i gruppi solo al click --}}
-@if (($auth->role_id == 2) || ($auth->role_id == 1))
+@if ($auth->role->name == 'Admin' || $auth->role->name == 'Sede')
   @section('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/action.js') }}" type="text/javascript"></script>
@@ -22,7 +22,8 @@
             <span>in corso</span>
           </h1>
         </div>
-        @if ($auth -> role_id == 2)
+        {{-- Showing Sede or DM memeber details --}}
+        @if ($auth->role->name == 'Sede' || $auth->role->name == 'DM' || $auth->role->name == 'DM Junior')
           <div class="col-12">
             <div class="sede-info text-center">
               <span> {{$auth -> user -> name}}</span>
@@ -35,7 +36,7 @@
       {{-- Groups List --}}
       <div class="row">
         <div class="col-12">
-          <div class="groups-wrapper">
+          <div class="groups-wrapper {{$auth->role->name == 'Sede' || $auth->role->name == 'Admin' ? 'sede' : ''}}">
             @foreach ($usersGroups as $userGroup => $users)
               <h2 class="show text-center text-uppercase">
                 @php
@@ -91,7 +92,7 @@
               <p>Attendi per procedere</p>
             @else
               {{-- Se sono ISF o MEDICI  --}}
-              @if (($auth -> role_id == 4) || ($auth -> role_id == 5))
+              @if ($auth->role->name == 'ISF' || $auth->role->name == 'Medico')
                 <p>Possono votare solo gli Osservatori</p>
                 <a class="btn" href="{{route('logged.home')}}">
                   Home

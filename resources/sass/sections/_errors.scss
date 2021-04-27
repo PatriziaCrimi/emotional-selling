@@ -1,8 +1,5 @@
-main {
-
-  section#errors {
-    @include background-img($bg_general_tablet);
-  }
+main section#errors {
+  @include background-img($bg_general_tablet);
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10,11 +7,7 @@ main {
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
 
-  main {
-
-    section#errors {
-      @include background-img($bg_general_desktop);
-    }
+  main section#errors {
+    @include background-img($bg_general_desktop);
   }
-
 }

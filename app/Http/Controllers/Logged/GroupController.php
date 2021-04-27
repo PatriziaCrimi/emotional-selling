@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\GroupRoleRoundUser;
 use App\Round;
+use App\Role;
 use App\Button;
 
 
@@ -27,19 +28,17 @@ class GroupController extends Controller
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
-          $usersGroups = GroupRoleRoundUser::where('round_id',1)->where('role_id','!=',2)->where('role_id','!=',1)->get()->groupBy(['group_id','team_id']);
+          $usersGroups = GroupRoleRoundUser::where('round_id',1)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->where('role_id','!=',4)->get()->groupBy(['group_id','team_id']);
 
-      }else {
+      } else {
         // Filtro autenticato giocatore
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',1)->get();
 
         foreach ($userrow as $user) {
-            $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',1)->get()->groupBy(['group_id','team_id']);
-          }
-
+          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',1)->get()->groupBy(['group_id','team_id']);
+        }
       }
-
     }
 
     if ($round -> name == 2) {
@@ -48,7 +47,7 @@ class GroupController extends Controller
 
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
-          $usersGroups = GroupRoleRoundUser::where('round_id',2)->where('role_id','!=',2)->where('role_id','!=',1)->get()->groupBy(['group_id','team_id']);
+          $usersGroups = GroupRoleRoundUser::where('round_id',2)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->where('role_id','!=',4)->get()->groupBy(['group_id','team_id']);
 
       }else {
 
@@ -70,7 +69,7 @@ class GroupController extends Controller
 
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
 
-          $usersGroups = GroupRoleRoundUser::where('round_id',3)->where('role_id','!=',2)->where('role_id','!=',1)->get()->groupBy(['group_id','team_id']);
+          $usersGroups = GroupRoleRoundUser::where('round_id',3)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->where('role_id','!=',4)->get()->groupBy(['group_id','team_id']);
 
       }else {
 
@@ -85,6 +84,7 @@ class GroupController extends Controller
 
       }
     }
-    return view('logged.groups.index',compact('usersGroups','round','auth','button1','button2'));
+
+    return view('logged.groups.index',compact('usersGroups','round','auth', 'button1','button2'));
   }
 }
