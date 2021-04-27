@@ -634,68 +634,105 @@
       "team_id" => 8
     ],
 
+    // DM
+    [
+      "name" => "UnoDM",
+      "lastname" => "Cariati",
+      "username" => "dm.cariati",
+      "password" => "nome.cariati$1",
+      "team_id" => null
+    ],
+    [
+      "name" => "DueDM",
+      "lastname" => "Marino",
+      "username" => "dm.marino",
+      "password" => "nome.marino$2",
+      "team_id" => null
+    ],
+    [
+      "name" => "TreDM",
+      "lastname" => "Sinicato",
+      "username" => "dm.sinicato",
+      "password" => "nome.sinicato$3",
+      "team_id" => null
+    ],
+    [
+      "name" => "QuattroDM",
+      "lastname" => "Carapellucci",
+      "username" => "dm.carapellucci",
+      "password" => "nome.carapellucci$4",
+      "team_id" => null
+    ],
+    [
+      "name" => "CinqueDM",
+      "lastname" => "Leone",
+      "username" => "dm.leone",
+      "password" => "nome.leone$5",
+      "team_id" => null
+    ],
+    [
+      "name" => "SeiDM",
+      "lastname" => "Pittaluga",
+      "username" => "dm.pittaluga",
+      "password" => "nome.pittaluga$6",
+      "team_id" => null
+    ],
+    [
+      "name" => "SetteDM",
+      "lastname" => "Polidori",
+      "username" => "dm.polidori",
+      "password" => "nome.polidori$7",
+      "team_id" => null
+    ],
+    [
+      "name" => "OttoDM",
+      "lastname" => "Ebraico",
+      "username" => "dm.ebraico",
+      "password" => "nome.ebraico$8",
+      "team_id" => null
+    ],
+    [
+      "name" => "NoveDM",
+      "lastname" => "Rizzo",
+      "username" => "dm.rizzo",
+      "password" => "nome.rizzo$9",
+      "team_id" => null
+    ],
+
     // Sede
     [
-      "name" => "Uno Sede",
-      "lastname" => "Carapellucci",
-      "username" => "sede.carapellucci",
-      "password" => "nome.carapellucci#1",
+      "name" => "UnoSede",
+      "lastname" => "Unosedecognome",
+      "username" => "sede.unosede",
+      "password" => "nome.unosede#1",
       "team_id" => null
     ],
     [
-      "name" => "Due Sede",
-      "lastname" => "Cariati",
-      "username" => "sede.cariati",
-      "password" => "nome.cariati#2",
+      "name" => "DueSede",
+      "lastname" => "Duesedecognome",
+      "username" => "sede.duesede",
+      "password" => "nome.duesede#2",
       "team_id" => null
     ],
     [
-      "name" => "Tre Sede",
-      "lastname" => "Ebraico",
-      "username" => "sede.ebraico",
-      "password" => "nome.ebraico#3",
+      "name" => "TreSede",
+      "lastname" => "Tresedecognome",
+      "username" => "sede.tresede",
+      "password" => "nome.tresede#3",
       "team_id" => null
     ],
     [
-      "name" => "Quattro Sede",
-      "lastname" => "Leone",
-      "username" => "sede.leone",
-      "password" => "nome.leone#4",
+      "name" => "QuattroSede",
+      "lastname" => "Quattrosedecognome",
+      "username" => "sede.quattrosede",
+      "password" => "nome.quattrosede#4",
       "team_id" => null
     ],
     [
-      "name" => "Cinque Sede",
-      "lastname" => "Marino",
-      "username" => "sede.marino",
-      "password" => "nome.marino#5",
-      "team_id" => null
-    ],
-    [
-      "name" => "Sei Sede",
-      "lastname" => "Pittaluga",
-      "username" => "sede.pittaluga",
-      "password" => "nome.pittaluga#6",
-      "team_id" => null
-    ],
-    [
-      "name" => "Sette Sede",
-      "lastname" => "Polidori",
-      "username" => "sede.polidori",
-      "password" => "nome.polidori#7",
-      "team_id" => null
-    ],
-    [
-      "name" => "Otto Sede",
-      "lastname" => "Rizzo",
-      "username" => "sede.rizzo",
-      "password" => "nome.rizzo#8",
-      "team_id" => null
-    ],
-    [
-      "name" => "Nove Sede",
-      "lastname" => "Sinicato",
-      "username" => "sede.sinicato",
-      "password" => "nome.sinicato#9",
+      "name" => "CinqueSede",
+      "lastname" => "Cinquesedecognome",
+      "username" => "sede.cinquesede",
+      "password" => "nome.cinquesede#5",
       "team_id" => null
     ],
 

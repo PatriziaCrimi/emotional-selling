@@ -52,12 +52,16 @@
 
                     {{-- Controllo cambio round Admin --}}
 
-                    @if ( (Auth::user()->username == "pucci") ||
-                    (Auth::user()->username == "crimi") ||
-                    (Auth::user()->username == "fabrizio") ||
-                    (Auth::user()->username == "valentini") )
+                    @if ( Auth::user()->username == "pucci" ||
+                    Auth::user()->username == "crimi" ||
+                    Auth::user()->username == "fabrizio" ||
+                    Auth::user()->username == "valentini" )
 
                     <div class="d-flex">
+                      <div class="admin-select rankings">
+                        <p>Vedi Classifica</p>
+                        <a class="btn" href="{{ route('logged.rankings.index')}}">Classifica</a>
+                      </div>
 
                       {{-- Selezione Round --}}
                       <div class="admin-select">
@@ -116,7 +120,11 @@
                         $user_id = Auth::user()->id;
                         $id_combo = \App\GroupRoleRoundUser::where('user_id', $user_id)->first();
                       @endphp
-                      @if ($id_combo->role_id == 2 || $id_combo->role_id == 1)
+                      @if ($id_combo->role->name == 'Sede' ||
+                        $id_combo->role->name == 'Admin' ||
+                        $id_combo->role->name == 'DM' ||
+                        $id_combo->role->name == 'DM Junior')
+
                         <span class="font-weight-bold">{{$id_combo->role->name}}</span>
                       @else
                         <span class="font-weight-bold">Team {{ Auth::user()->team->name }}</span>

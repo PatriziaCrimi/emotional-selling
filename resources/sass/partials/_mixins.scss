@@ -12,11 +12,18 @@
   font-weight: bold;
 }
 
-@mixin vote-button {
+@mixin to-vote-button {
+  color: #fff;
+  border: 2px solid #fff;
   background: $blue;
   background: -webkit-linear-gradient(left, $blue, $light_blue);
   background: -moz-linear-gradient(left, $blue, $light_blue);
   background: linear-gradient(to right, $blue, $light_blue);
+}
+
+@mixin voted-button {
+  background: $fuxia;
+  border: 2px solid $fuxia;
 }
 
 @mixin display-flex {

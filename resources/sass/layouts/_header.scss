@@ -15,6 +15,18 @@ header {
       padding-right: $padding_unit * 2;
       text-align: center;
 
+      &.rankings {
+
+        p {
+          margin-bottom: $margin_unit / 2;
+        }
+
+        a.btn {
+          color: black;
+          background-color: #efefef;
+        }
+      }
+
       form {
 
         select,

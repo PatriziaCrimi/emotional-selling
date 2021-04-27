@@ -7,5 +7,4 @@ use Illuminate\Database\Eloquent\Model;
 class Button extends Model
 {
   protected $fillable = ['status'];
-
 }
