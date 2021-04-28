@@ -1806,7 +1806,7 @@
     [
       "user_id" => 70,  // Rosa
       "group_id" => 4,
-      "role_id" => 4,
+      "role_id" => $medico,
       "round_id" => 3,
       "team_id" => $ezetrol  // Team 12
     ],
