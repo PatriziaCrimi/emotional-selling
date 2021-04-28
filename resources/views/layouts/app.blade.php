@@ -63,6 +63,11 @@
                         <a class="btn" href="{{ route('logged.rankings.index')}}">Classifica</a>
                       </div>
 
+                      <div class="admin-select">
+                        <p>Sede Options</p>
+                        <a class="dropdown-item" href="{{ route('logged.sede.options') }}">Vai</a>
+                      </div>
+
                       {{-- Selezione Round --}}
                       <div class="admin-select">
                         <p>Seleziona Round</p>

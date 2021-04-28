@@ -39,6 +39,10 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
   //Rankings
   Route::get('/admin/rankings', 'Admin\RankingController@index')->name('rankings.index');
 
+  //Sede options
+  Route::get('/admin/sedeoptions','Admin\ButtonController@sedeOptions')->name('sede.options');
+  Route::post('/admin/sedeOptionsReq','Admin\ButtonController@sedeOptionsReq')->name('sede.options.req');
+
   // Csvfile
   Route::get('/admin/csvfile','Admin\CsvfileController@index')->name('csvfile');
   Route::get('/admin/csvfile/export', 'Admin\CsvfileController@exportCsv')->name('export2');
