@@ -10004,14 +10004,14 @@ h3 {
 }
 /* ------------------------ FONTS ------------------------ */
 @font-face {
-  font-family: D-din;
+  font-family: "D-din";
   font-weight: normal;
-  src: url("font-path/D-DIN.otf") format("opentype");
+  src: url("../storage/fonts/D-DIN.otf") format("opentype");
 }
 @font-face {
-  font-family: D-din;
+  font-family: "D-din";
   font-weight: bold;
-  src: url("font-path/D-DIN-Bold.otf") format("opentype");
+  src: url("../storage/fonts/D-DIN-Bold.otf") format("opentype");
 }
 * {
   margin: 0;
@@ -10021,6 +10021,7 @@ h3 {
 
 body {
   font-family: "D-din", sans-serif;
+  font-size: 18px;
   color: #585b5c;
 }
 
@@ -10029,6 +10030,10 @@ main section {
   height: 100%;
   min-height: calc(100vh - 88px);
   padding: 40px;
+}
+
+h1 {
+  font-size: 28px;
 }
 
 ul li {
@@ -10043,7 +10048,6 @@ a:hover {
   padding: 20px;
   background-color: #fff;
   border-radius: 15px;
-  opacity: 0.6;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10091,7 +10095,7 @@ main section#login .logo {
 main section#login .card button.btn {
   background-color: #e20177;
   color: #fff;
-  border: none;
+  border: 1px solid #e20177;
   border-radius: 7px;
   font-weight: bold;
 }
@@ -10122,7 +10126,7 @@ main section#home .card p {
 main section#home .card a.btn {
   background-color: #e20177;
   color: #fff;
-  border: none;
+  border: 1px solid #e20177;
   border-radius: 7px;
   font-weight: bold;
 }
@@ -10146,7 +10150,6 @@ main section#groups h1 {
 }
 main section#groups .sede-info {
   padding: 20px 0;
-  font-size: 18px;
   color: #1b4298;
 }
 main section#groups .groups-wrapper {
@@ -10164,7 +10167,6 @@ main section#groups .groups-wrapper h2 {
 main section#groups .groups-wrapper table.table {
   background-color: #fff;
   border-radius: 15px;
-  opacity: 0.6;
   color: #1b4298;
 }
 main section#groups .groups-wrapper table.table tr,
@@ -10179,6 +10181,7 @@ main section#groups .groups-wrapper table.table thead {
 main section#groups .groups-wrapper table.table tbody tr .active {
   font-weight: bold;
   color: #e20177;
+  background-color: #009dcc;
 }
 main section#groups .buttons-wrapper p {
   font-size: 24px;
@@ -10187,7 +10190,7 @@ main section#groups .buttons-wrapper p {
 main section#groups .buttons-wrapper a.btn {
   background-color: #e20177;
   color: #fff;
-  border: none;
+  border: 1px solid #e20177;
   border-radius: 7px;
   font-weight: bold;
 }
@@ -10209,11 +10212,9 @@ main section#votes-index {
 main section#votes-index h1,
 main section#votes-index h1 + p {
   color: #1b4298;
-  font-size: 24px;
 }
 main section#votes-index .sede-info {
   padding: 20px 0;
-  font-size: 18px;
   color: #1b4298;
 }
 main section#votes-index .groups-wrapper {
@@ -10227,21 +10228,21 @@ main section#votes-index .groups-wrapper a.btn {
   margin: 30px 0;
   background-color: #e20177;
   color: #fff;
-  border: none;
+  border: 1px solid #e20177;
   border-radius: 7px;
   font-weight: bold;
 }
 main section#votes-index .groups-wrapper a.btn.voted {
   background-color: #54b948;
   color: #fff;
-  border: none;
+  border: 1px solid #54b948;
   border-radius: 7px;
   font-weight: bold;
 }
 main section#votes-index .groups-wrapper a.btn.to-vote {
   background-color: #1b4298;
   color: #fff;
-  border: none;
+  border: 1px solid #1b4298;
   border-radius: 7px;
   font-weight: bold;
 }
@@ -10251,7 +10252,6 @@ main section#votes-index .groups-wrapper h2 {
 main section#votes-index .groups-wrapper table.table {
   background-color: #fff;
   border-radius: 15px;
-  opacity: 0.6;
   color: #1b4298;
 }
 main section#votes-index .groups-wrapper table.table tr,
@@ -10270,7 +10270,7 @@ main section#votes-index .buttons-wrapper p {
 main section#votes-index .buttons-wrapper a.btn {
   background-color: #e20177;
   color: #fff;
-  border: none;
+  border: 1px solid #e20177;
   border-radius: 7px;
   font-weight: bold;
 }
@@ -10284,32 +10284,65 @@ main section#votes-index .buttons-wrapper a.btn {
     background-repeat: no-repeat;
   }
 }
-main section#votes-form {
+main section#votes-form,
+main section#votes-show {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
-main section#votes-form .players-wrapper {
+main section#votes-form h1,
+main section#votes-show h1 {
+  color: #1b4298;
+}
+main section#votes-form .players-wrapper,
+main section#votes-show .players-wrapper {
   padding: 40px 0;
 }
-main section#votes-form .form-wrapper {
+main section#votes-form .players-wrapper h3.player-name,
+main section#votes-show .players-wrapper h3.player-name {
+  color: #1b4298;
+}
+main section#votes-form .players-wrapper h3.player-name span,
+main section#votes-show .players-wrapper h3.player-name span {
+  color: #e20177;
+}
+main section#votes-form .form-wrapper,
+main section#votes-show .form-wrapper {
   padding: 40px 0;
 }
-main section#votes-form .form-wrapper form .radio-toolbar input[type=radio] {
+main section#votes-form .form-wrapper form .form-group,
+main section#votes-show .form-wrapper form .form-group {
+  padding-bottom: 20px;
+}
+main section#votes-form .form-wrapper form .form-group h3,
+main section#votes-show .form-wrapper form .form-group h3 {
+  padding-bottom: 20px;
+}
+main section#votes-form .form-wrapper form .form-group p.comment-message,
+main section#votes-show .form-wrapper form .form-group p.comment-message {
+  color: #e20177;
+  margin: 0;
+  padding-top: 10px;
+}
+main section#votes-form .form-wrapper form .form-group .radio-toolbar input[type=radio],
+main section#votes-show .form-wrapper form .form-group .radio-toolbar input[type=radio] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
-main section#votes-form .form-wrapper form .radio-toolbar input[type=radio]:checked + label.radio-label, main section#votes-form .form-wrapper form .radio-toolbar input[type=radio]:focus + label.radio-label {
+main section#votes-form .form-wrapper form .form-group .radio-toolbar input[type=radio]:checked + label.radio-label, main section#votes-form .form-wrapper form .form-group .radio-toolbar input[type=radio]:focus + label.radio-label,
+main section#votes-show .form-wrapper form .form-group .radio-toolbar input[type=radio]:checked + label.radio-label,
+main section#votes-show .form-wrapper form .form-group .radio-toolbar input[type=radio]:focus + label.radio-label {
   background: #e20177;
   border: 2px solid #e20177;
 }
-main section#votes-form .form-wrapper form .radio-toolbar label.radio-label {
+main section#votes-form .form-wrapper form .form-group .radio-toolbar label.radio-label,
+main section#votes-show .form-wrapper form .form-group .radio-toolbar label.radio-label {
   width: 40px;
   height: 40px;
   border-radius: 20px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10319,13 +10352,43 @@ main section#votes-form .form-wrapper form .radio-toolbar label.radio-label {
   border: 2px solid #fff;
   background: #1b4298;
   background: linear-gradient(to right, #1b4298, #009dcc);
-  transition: all 0.25s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-main section#votes-form .form-wrapper form .radio-toolbar label.radio-label:hover {
+main section#votes-form .form-wrapper form .form-group .radio-toolbar label.radio-label:hover,
+main section#votes-show .form-wrapper form .form-group .radio-toolbar label.radio-label:hover {
   background-color: blue;
 }
-main section#votes-form .buttons-wrapper {
+main section#votes-form .form-wrapper form .submit-wrapper,
+main section#votes-show .form-wrapper form .submit-wrapper {
   padding: 20px 0;
+}
+main section#votes-form .form-wrapper form .submit-wrapper button[type=submit],
+main section#votes-show .form-wrapper form .submit-wrapper button[type=submit] {
+  background-color: #e20177;
+  color: #fff;
+  border: 1px solid #e20177;
+  border-radius: 7px;
+  font-weight: bold;
+}
+main section#votes-form .buttons-wrapper a.btn,
+main section#votes-show .buttons-wrapper a.btn {
+  margin: 0 10px;
+}
+main section#votes-form .buttons-wrapper a.btn.btn-back,
+main section#votes-show .buttons-wrapper a.btn.btn-back {
+  background-color: #54b948;
+  color: #fff;
+  border: 1px solid #54b948;
+  border-radius: 7px;
+  font-weight: bold;
+}
+main section#votes-form .buttons-wrapper a.btn.btn-cancel,
+main section#votes-show .buttons-wrapper a.btn.btn-cancel {
+  background-color: #1b4298;
+  color: #fff;
+  border: 1px solid #1b4298;
+  border-radius: 7px;
+  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */

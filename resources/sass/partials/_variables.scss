@@ -46,22 +46,23 @@ $margin_unit: 10px;
 
 // Dimensions
 $vote_button: 40px;
+$font_size: 18px;
+$paragraph_size: 24px;
+$title_size: $font_size + 10;
 
 // Transition times
-$hover_time: 0.25s;
+$hover_time: 0.2s;
 
 /* ------------------------ FONTS ------------------------ */
 
-$font-path: "storage/fonts";
-
 @font-face {
-  font-family: D-din;
+  font-family: 'D-din';
   font-weight: normal;
-  src: url("#{font-path}/D-DIN.otf") format("opentype");
+  src: url("../storage/fonts/D-DIN.otf") format("opentype");
 }
 
 @font-face {
-  font-family: D-din;
+  font-family: 'D-din';
   font-weight: bold;
-  src: url("#{font-path}/D-DIN-Bold.otf") format("opentype");
+  src: url("../storage/fonts/D-DIN-Bold.otf") format("opentype");
 }

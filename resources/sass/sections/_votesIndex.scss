@@ -4,12 +4,10 @@ main section#votes-index {
   h1,
   h1 + p {
     color: $blue;
-    font-size: 24px;
   }
 
   .sede-info {
     padding: $padding_unit 0;
-    font-size: 18px;
     color: $blue;
   }
 
@@ -43,7 +41,6 @@ main section#votes-index {
     table.table {
       background-color: #fff;
       border-radius: 15px;
-      opacity: 0.6;
       color: $blue;
 
       tr,
@@ -61,7 +58,7 @@ main section#votes-index {
 
   .buttons-wrapper {
     p {
-      font-size: 24px;
+      font-size: $paragraph_size;
       padding: $padding_unit 0;
     }
 
