@@ -14,59 +14,7 @@
       <div class="row justify-content-center">
         <div class="col-12">
           {{-- Controllo se l'utente autenticato è Sede o Admin --}}
-          @if ($auth->role->name == 'Sede' || $auth->role->name == 'Admin')
-            <h1 class="font-weight-bold text-center">Votazione sede</h1>
-            <p class="text-center">
-              <span>Round n&deg;</span>
-              <span>
-                {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
-              </span>
-              <span>in corso</span>
-            </p>
-            {{-- Groups List --}}
-            <div class="row">
-              <div class="col-12">
-                <div class="groups-wrapper sede">
-                  @foreach ($usersGroups as $userGroup => $users)
-                    <div class="d-flex justify-content-center align-items-center">
-                      <h2 class="text-center text-uppercase font-weight-bold">
-                        @php
-                        $group = \App\Group::find($userGroup);
-                        $user = \App\User::where('id',$auth->user_id)->first();
-                        @endphp
-                        {{$group -> name}}
-                      </h2>
-                      <a href="{{ route('logged.votes.sedeShowGroups',$group->id)}}" class="btn">
-                        Vota
-                      </a>
-                    </div>
 
-                    {{-- <div v-if="isTeamShown" class="content d-flex justify-content-center">
-                      @foreach ($users as $key => $user)
-
-                        @php
-                        $team = \App\GroupRoleRoundUser::where('team_id',$key)->where('round_id',$round->name)->first();
-                        $teamUserId = $team->id;
-                        $idTeamVoted = \App\Vote::where('info_voter_id',$voteCheckId)->where('info_voted_id',$teamUserId)->where('team_vote',1)->first();
-                        $teamName = \App\Team::find($key);
-                        @endphp
-
-                        @if (!is_null($idTeamVoted))
-                          <a class="btn voted" href="#">
-                            Hai votato il Team {{$teamName -> name }}
-                          </a>
-                        @else
-                          <a class="btn to-vote" href="{{route('logged.votes.formTeam', $key)}}">
-                            Vota il Team {{$teamName -> name}}
-                          </a>
-                        @endif
-                      @endforeach
-                    </div> --}}
-                  @endforeach
-                </div>
-              </div>
-            </div>
-          @else
           {{-- fine sede admin  --}}
           {{-- Se l'utente autenticato non è Sede né Admin --}}
             <h1 class="text-center">
@@ -146,7 +94,7 @@
                 </div>
               </div>
             </div>
-          @endif
+
         </div>
       </div>
 
