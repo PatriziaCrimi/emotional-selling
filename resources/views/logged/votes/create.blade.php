@@ -69,12 +69,12 @@
                   </label>
                 </div>
 
-                <div v-if="showComment1">
+                <div class="text" v-if="showComment1">
                   <p class="comment-message">
-                    @{{commentMessage}}
+                    @{{commentMessage1}}
                   </p>
                   <label for="comment1"></label>
-                  <textarea :required="isRequired1 ? true : false" v-model="textarea1" name="comment1" rows="8" cols="80" maxlength="255" :placeholder="isRequired1 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment1')}}</textarea><br>
+                  <textarea :required="isRequired1 ? true : false" v-model="textarea1" name="comment1" rows="3" cols="80" maxlength="255" :placeholder="isRequired1 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment1')}}</textarea><br>
                 </div>
               </div>
 
@@ -96,10 +96,10 @@
 
                 <div v-if="showComment2">
                   <p class="comment-message">
-                    @{{commentMessage}}
+                    @{{commentMessage2}}
                   </p>
                   <label for="comment2"></label>
-                  <textarea :required="isRequired2 ? true : false" v-model="textarea2" name="comment2" rows="8" cols="80" maxlength="255" :placeholder="isRequired2 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment2')}}</textarea><br>
+                  <textarea :required="isRequired2 ? true : false" v-model="textarea2" name="comment2" rows="3" cols="80" maxlength="255" :placeholder="isRequired2 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment2')}}</textarea><br>
                 </div>
               </div>
 
@@ -121,10 +121,10 @@
 
                 <div v-if="showComment3">
                   <p class="comment-message">
-                    @{{commentMessage}}
+                    @{{commentMessage3}}
                   </p>
                   <label for="comment3"></label>
-                  <textarea :required="isRequired3 ? true : false" v-model="textarea3" name="comment3" rows="8" cols="80" maxlength="255" :placeholder="isRequired3 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment3')}}</textarea><br>
+                  <textarea :required="isRequired3 ? true : false" v-model="textarea3" name="comment3" rows="3" cols="80" maxlength="255" :placeholder="isRequired3 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment3')}}</textarea><br>
                 </div>
               </div>
 
@@ -146,10 +146,10 @@
 
                 <div v-if="showComment4">
                   <p class="comment-message">
-                    @{{commentMessage}}
+                    @{{commentMessage4}}
                   </p>
                   <label for="comment4"></label>
-                  <textarea :required="isRequired4 ? true : false" v-model="textarea4" name="comment4" rows="8" cols="80" maxlength="255" :placeholder="isRequired4 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment4')}}</textarea><br>
+                  <textarea :required="isRequired4 ? true : false" v-model="textarea4" name="comment4" rows="3" cols="80" maxlength="255" :placeholder="isRequired4 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment4')}}</textarea><br>
                 </div>
               </div>
 

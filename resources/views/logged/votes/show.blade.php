@@ -8,6 +8,8 @@
   <section id="votes-show">
     <div class="container">
 
+      <h1 class="text-center font-weight-bold" style="background-color: red; font-size: 60px; color: #fff;">PAGINA IN COSTRUZIONE</h1>
+
       {{-- VOTAZIONE AL TEAM --}}
 
       <div class="row">

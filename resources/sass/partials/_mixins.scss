@@ -7,7 +7,7 @@
 @mixin active-user {
   font-weight: bold;
   color: $fuxia;
-  background-color: $light_blue;
+  background-color: rgba(0, 157, 204, 0.4);
 }
 
 @mixin input-button($color) {

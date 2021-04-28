@@ -33,9 +33,9 @@ a:hover {
 }
 
 .card {
-  padding: $padding_unit;
-  background-color: #fff;
+  background-color: $white_opacity;
   border-radius: 15px;
+  padding: $padding_unit;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */

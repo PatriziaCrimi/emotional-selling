@@ -36,6 +36,11 @@ main section#votes-show, {
           padding-top: $padding_unit / 2;
         }
 
+        .form-control {
+          border-radius: 15px;
+          background-color: $white_opacity;
+        }
+
         .radio-toolbar {
 
           input[type="radio"] {
