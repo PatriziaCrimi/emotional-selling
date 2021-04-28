@@ -29,11 +29,6 @@ class VoteController extends Controller
       $idAdminsArray[] = $admin->user_id;
     }
 
-    // Filtro per round
-
-    // ------------------------- ROUND 1 -------------------------
-    if ($round -> name == 1) {
-
       // Controllo se l'utente loggato è un Admin
       if(in_array($idAuth, $idAdminsArray)) {
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
@@ -43,58 +38,15 @@ class VoteController extends Controller
 
       // Filtro per ruolo  ( Sede:2, Admin:1)
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-        $usersGroups = GroupRoleRoundUser::where('round_id',1)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
+        $usersGroups = GroupRoleRoundUser::where('round_id',$round -> name)->whereIn('role_id',[6,7])->get()->groupBy(['group_id','team_id']);
       } else {
         // Filtro autenticato giocatore
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-        $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',1)->get();
+        $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',$round -> name)->get();
         foreach ($userrow as $user) {
-          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',1)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
+          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',$round -> name)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
         }
       }
-    }
-
-    // ------------------------- ROUND 2 -------------------------
-    if ($round -> name == 2) {
-      // Controllo se l'utente loggato è un Admin
-      if(in_array($idAuth, $idAdminsArray)) {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
-      } else {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
-      }
-
-      // Filtro per ruolo  ( Sede:2, Admin:1)
-      if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-          $usersGroups = GroupRoleRoundUser::where('round_id',2)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
-      } else {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-        $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',2)->get();
-        foreach ($userrow as $user) {
-          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',2)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
-        }
-      }
-    }
-
-    // ------------------------- ROUND 3 -------------------------
-    if ($round -> name == 3) {
-      // Controllo se l'utente loggato è un Admin
-      if(in_array($idAuth, $idAdminsArray)) {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
-      } else {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
-      }
-
-      // Filtro per ruolo  ( Sede:2, Admin:1)
-      if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-          $usersGroups = GroupRoleRoundUser::where('round_id',3)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
-      } else {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-        $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',3)->get();
-        foreach ($userrow as $user) {
-          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',3)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
-        }
-      }
-    }
 
     // Variabili necessarie per il controllo "Hai già votato"
     $voteCheck = Vote::where('info_voter_id',$auth->id)->first();
@@ -120,11 +72,6 @@ class VoteController extends Controller
       $idAdminsArray[] = $admin->user_id;
     }
 
-    // Filtro per round
-
-    // ------------------------- ROUND 1 -------------------------
-    if ($round -> name == 1) {
-
       // Controllo se l'utente loggato è un Admin
       if(in_array($idAuth, $idAdminsArray)) {
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
@@ -134,58 +81,15 @@ class VoteController extends Controller
 
       // Filtro per ruolo  ( Sede:2, Admin:1)
       if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-        $usersGroups = GroupRoleRoundUser::where('round_id',1)->whereIn('role_id',[6,7])->where('group_id',$id)->get()->groupBy(['group_id','team_id']);
+        $usersGroups = GroupRoleRoundUser::where('round_id',$round -> name)->whereIn('role_id',[6,7])->where('group_id',$id)->get()->groupBy(['group_id','team_id']);
       } else {
         // Filtro autenticato giocatore
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-        $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',1)->get();
+        $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',$round -> name)->get();
         foreach ($userrow as $user) {
-          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',1)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
+          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',$round -> name)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
         }
       }
-    }
-
-    // ------------------------- ROUND 2 -------------------------
-    if ($round -> name == 2) {
-      // Controllo se l'utente loggato è un Admin
-      if(in_array($idAuth, $idAdminsArray)) {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
-      } else {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
-      }
-
-      // Filtro per ruolo  ( Sede:2, Admin:1)
-      if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-          $usersGroups = GroupRoleRoundUser::where('round_id',2)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
-      } else {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-        $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',2)->get();
-        foreach ($userrow as $user) {
-          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',2)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
-        }
-      }
-    }
-
-    // ------------------------- ROUND 3 -------------------------
-    if ($round -> name == 3) {
-      // Controllo se l'utente loggato è un Admin
-      if(in_array($idAuth, $idAdminsArray)) {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->first();
-      } else {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round->name)->first();
-      }
-
-      // Filtro per ruolo  ( Sede:2, Admin:1)
-      if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-          $usersGroups = GroupRoleRoundUser::where('round_id',3)->where('role_id','!=',2)->where('role_id','!=',1)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
-      } else {
-        $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
-        $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',3)->get();
-        foreach ($userrow as $user) {
-          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',3)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
-        }
-      }
-    }
 
     // Variabili necessarie per il controllo "Hai già votato"
     $voteCheck = Vote::where('info_voter_id',$auth->id)->first();
