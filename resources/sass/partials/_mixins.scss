@@ -4,10 +4,16 @@
   background-repeat: no-repeat;
 }
 
+@mixin active-user {
+  font-weight: bold;
+  color: $fuxia;
+  background-color: $light_blue;
+}
+
 @mixin input-button($color) {
   background-color: $color;
   color: #fff;
-  border: none;
+  border: 1px solid $color;
   border-radius: 7px;
   font-weight: bold;
 }

@@ -51,7 +51,7 @@
                         @endphp
                         {{-- Se l'utente ha già votato --}}
                         @if (!is_null($idTeamVoted))
-                          <a class="btn voted">
+                          <a class="btn voted" href="#">
                             Hai votato il Team {{$teamName -> name }}
                           </a>
                         @else
@@ -68,8 +68,8 @@
           @else
           {{-- Se l'utente autenticato non è Sede né Admin --}}
             <h1 class="text-center">
-              <span>Stai votando per il Round</span>
-              <span>{{$round -> name}}</span>
+              Stai votando per il Round
+              {{$round -> name}}
             </h1>
             {{-- Groups List --}}
             <div class="row">
@@ -93,7 +93,7 @@
                         @endphp
                         {{-- Se l'utente ha già votato --}}
                         @if (!is_null($idTeamVoted))
-                          <a class="btn voted">
+                          <a class="btn voted" href="{{route('logged.votes.formTeam', $key)}}">
                             Hai votato il Team {{$teamName -> name }}
                           </a>
                         @else
@@ -155,23 +155,16 @@
               <p>Attendi per procedere</p>
             @else
               <div class="buttons-wrapper">
-                {{-- Se è l'ultimo round termina il gioco --}}
-                {{-- @if ($round -> name == 3)
-                  <a class="btn" href="{{ route('logged.final')}}">
-                    Termina il gioco
+                {{-- Se l'utente loggato è Admin --}}
+                @if ($auth->role->name == 'Admin')
+                  <a class="btn" href="{{ route('logged.rankings.index')}}">
+                    Guarda la classifica provvisoria
                   </a>
-                @else --}}
-                  {{-- Se l'utente loggato è Admin --}}
-                  @if ($auth->role->name == 'Admin')
-                    <a class="btn" href="{{ route('logged.rankings.index')}}">
-                      Guarda la classifica provvisoria
-                    </a>
-                  @else
-                    <a href="{{route('logged.home')}}" class="btn btn-dark">
-                      Torna alla home
-                    </a>
-                  @endif
-                {{-- @endif --}}
+                @else
+                  <a href="{{route('logged.home')}}" class="btn btn-dark">
+                    Torna alla home
+                  </a>
+                @endif
               </div>
             @endif
           </div>

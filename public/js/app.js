@@ -49848,10 +49848,17 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
+    lowGradeMessage: 'Il tuo voto è molto basso, è richiesta una motivazione',
+    highGradeMessage: 'Il tuo voto è molto alto, è richiesta una motivazione',
+    normalGradeMessage: 'Puoi aggiungere un commento al tuo voto (facoltativo)',
     showComment1: false,
     showComment2: false,
     showComment3: false,
     showComment4: false,
+    isRequired1: false,
+    isRequired2: false,
+    isRequired3: false,
+    isRequired4: false,
     commentMessage: '',
     radio1: '',
     radio2: '',
@@ -49885,50 +49892,50 @@ var app = new Vue({
       this.showComment2 = false;
       this.showComment3 = false;
       this.showComment4 = false;
-      this.isDisabled = true;
+      this.isRequired1 = false, this.isRequired2 = false, this.isRequired3 = false, this.isRequired4 = false, this.isDisabled = true;
     },
     checkVoteComment1: function checkVoteComment1(voteValue) {
+      this.showComment1 = true;
+
       if (voteValue <= 5) {
-        this.showComment1 = true;
-        this.commentMessage = 'Il tuo voto è molto basso, è richiesta una motivazione.';
+        this.isRequired1 = true, this.commentMessage = this.lowGradeMessage;
       } else if (voteValue >= 9) {
-        this.showComment1 = true;
-        this.commentMessage = 'Il tuo voto è molto alto, è richiesta una motivazione.';
+        this.isRequired1 = true, this.commentMessage = this.highGradeMessage;
       } else {
-        this.showComment1 = false;
+        this.isRequired1 = false, this.commentMessage = this.normalGradeMessage;
       }
     },
     checkVoteComment2: function checkVoteComment2(voteValue) {
+      this.showComment2 = true;
+
       if (voteValue <= 5) {
-        this.showComment2 = true;
-        this.commentMessage = 'Il tuo voto è molto basso, è richiesta una motivazione.';
+        this.isRequired2 = true, this.commentMessage = this.lowGradeMessage;
       } else if (voteValue >= 9) {
-        this.showComment2 = true;
-        this.commentMessage = 'Il tuo voto è molto alto, è richiesta una motivazione.';
+        this.isRequired2 = true, this.commentMessage = this.highGradeMessage;
       } else {
-        this.showComment2 = false;
+        this.isRequired2 = false, this.commentMessage = this.normalGradeMessage;
       }
     },
     checkVoteComment3: function checkVoteComment3(voteValue) {
+      this.showComment3 = true;
+
       if (voteValue <= 5) {
-        this.showComment3 = true;
-        this.commentMessage = 'Il tuo voto è molto basso, è richiesta una motivazione.';
+        this.isRequired3 = true, this.commentMessage = this.lowGradeMessage;
       } else if (voteValue >= 9) {
-        this.showComment3 = true;
-        this.commentMessage = 'Il tuo voto è molto alto, è richiesta una motivazione.';
+        this.isRequired3 = true, this.commentMessage = this.highGradeMessage;
       } else {
-        this.showComment3 = false;
+        this.isRequired3 = false, this.commentMessage = this.normalGradeMessage;
       }
     },
     checkVoteComment4: function checkVoteComment4(voteValue) {
+      this.showComment4 = true;
+
       if (voteValue <= 5) {
-        this.showComment4 = true;
-        this.commentMessage = 'Il tuo voto è molto basso, è richiesta una motivazione.';
+        this.isRequired4 = true, this.commentMessage = this.lowGradeMessage;
       } else if (voteValue >= 9) {
-        this.showComment4 = true;
-        this.commentMessage = 'Il tuo voto è molto alto, è richiesta una motivazione.';
+        this.isRequired4 = true, this.commentMessage = this.highGradeMessage;
       } else {
-        this.showComment4 = false;
+        this.isRequired4 = false, this.commentMessage = this.normalGradeMessage;
       }
     },
     alertVoted: function alertVoted() {
