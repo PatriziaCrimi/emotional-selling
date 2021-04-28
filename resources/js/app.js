@@ -31,14 +31,14 @@ const app = new Vue({
     isTeamShown: false
   },
   methods: {
-    showTeams: function(indexTeam) {
-      // if(indexTeam == ) {
-        console.log(indexTeam);
-        this.isTeamShown = true;
-      // } else {
-      //   this.isTeamShown = false;
-      // }
-    },
+    // showTeams: function(indexTeam) {
+    //   // if(indexTeam == ) {
+    //     console.log(indexTeam);
+    //     this.isTeamShown = true;
+    //   // } else {
+    //   //   this.isTeamShown = false;
+    //   // }
+    // },
     cancelVotes: function() {
       this.radio1 = '';
       this.radio2 = '';

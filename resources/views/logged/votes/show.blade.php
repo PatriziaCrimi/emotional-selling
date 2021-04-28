@@ -49,7 +49,7 @@
                     <h3>Come valuti la categoria 1?</h3>
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                       <input readonly :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" v-model="radio1">
-                      <label readonly class="radio-label" :for="'radio1'+index" {{ $vote->value == '@{{index}}' ? 'checked=checked' : ''}}>
+                      <label readonly class="radio-label"  :for="'radio1'+index" {{ $vote->value == 6 ? 'checked=checked' : ''}}>
                         @{{index}}
                       </label>
                     </div>
