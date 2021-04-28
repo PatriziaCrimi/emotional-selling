@@ -36,9 +36,13 @@
                         @endphp
                         {{$group -> name}}
                       </h2>
-                      <a href="{{ route('logged.votes.sedeShowGroups',$group->id)}}" class="btn">
-                        Vota
-                      </a>
+                      @foreach ($user -> groups as $group)
+                       @if ($group -> id == $userGroup)
+                         <a href="{{ route('logged.votes.sedeShowGroups',$group->id)}}" class="btn">
+                           Vota
+                         </a>
+                       @endif
+                      @endforeach
                     </div>
 
                     {{-- <div v-if="isTeamShown" class="content d-flex justify-content-center">

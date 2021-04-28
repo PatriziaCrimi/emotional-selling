@@ -34,8 +34,8 @@ class User extends Authenticatable
   }
 
   // One to Many between Users and Groups tables
-  public function group() {
-    return $this->belongsTo('App\Group');
+  public function groups() {
+    return $this->belongsToMany('App\Group');
   }
 
   // One to Many between Users and Teams tables
