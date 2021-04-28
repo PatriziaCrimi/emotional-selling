@@ -56,13 +56,17 @@
                       </label>
                     </div>
 
-                    <div>
-                      <p class="comment-message">
-                        @{{commentMessage}}
-                      </p>
-                      <label for="comment1"></label>
-                      <textarea readonly v-model="textarea1" name="comment1" rows="8" cols="80" maxlength="255" :placeholder="isRequired1 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment1', $vote->comment)}}</textarea><br>
-                    </div>
+                    @if ($vote->comment)
+                      <div>
+                        <p class="comment-message">
+                          @{{commentMessage}}
+                        </p>
+                        <label for="comment1"></label>
+                        <textarea readonly name="comment1" rows="8" cols="80" maxlength="255" :placeholder="isRequired1 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ $vote->comment }}</textarea><br>
+                      </div>
+                    @else
+                      <p>Non hai aggiunto alcun commento.</p>
+                    @endif
                   </div>
 
                 {{-- Voto TEAM Categoria 2 --}}
@@ -77,13 +81,17 @@
                       </label>
                     </div>
 
-                    <div v-if="showComment2">
-                      <p class="comment-message">
-                        @{{commentMessage}}
-                      </p>
-                      <label for="comment2"></label>
-                      <textarea readonly :required="isRequired2 ? true : false" v-model="textarea2" name="comment2" rows="8" cols="80" maxlength="255" :placeholder="isRequired2 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment2', $vote->comment)}}</textarea><br>
-                    </div>
+                    @if ($vote->comment)
+                      <div>
+                        <p class="comment-message">
+                          @{{commentMessage}}
+                        </p>
+                        <label for="comment2"></label>
+                        <textarea readonly :required="isRequired2 ? true : false" name="comment2" rows="3" cols="80" maxlength="255" :placeholder="isRequired2 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ $vote->comment }}</textarea><br>
+                      </div>
+                    @else
+                      <p>Non hai aggiunto alcun commento.</p>
+                    @endif
                   </div>
 
                 {{-- Voto TEAM Categoria 3 --}}
@@ -98,13 +106,17 @@
                       </label>
                     </div>
 
-                    <div v-if="showComment3">
-                      <p class="comment-message">
-                        @{{commentMessage}}
-                      </p>
-                      <label for="comment3"></label>
-                      <textarea readonly :required="isRequired3 ? true : false" v-model="textarea3" name="comment3" rows="8" cols="80" maxlength="255" :placeholder="isRequired3 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment3', $vote->comment)}}</textarea><br>
-                    </div>
+                    @if ($vote->comment)
+                      <div>
+                        <p class="comment-message">
+                          @{{commentMessage}}
+                        </p>
+                        <label for="comment3"></label>
+                        <textarea readonly :required="isRequired3 ? true : false" name="comment3" rows="3" cols="80" maxlength="255" :placeholder="isRequired3 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ $vote->comment }}</textarea><br>
+                      </div>
+                    @else
+                      <p>Non hai aggiunto alcun commento.</p>
+                    @endif
                   </div>
 
                 {{-- Voto TEAM Categoria 4 --}}
@@ -119,13 +131,17 @@
                       </label>
                     </div>
 
-                    <div v-if="showComment4">
-                      <p class="comment-message">
-                        @{{commentMessage}}
-                      </p>
-                      <label for="comment4"></label>
-                      <textarea readonly :required="isRequired4 ? true : false" v-model="textarea4" name="comment4" rows="8" cols="80" maxlength="255" :placeholder="isRequired4 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment4', $vote->comment)}}</textarea><br>
-                    </div>
+                    @if ($vote->comment)
+                      <div>
+                        <p class="comment-message">
+                          @{{commentMessage}}
+                        </p>
+                        <label for="comment4"></label>
+                        <textarea readonly :required="isRequired4 ? true : false" name="comment4" rows="3" cols="80" maxlength="255" :placeholder="isRequired4 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{$vote->comment}}</textarea><br>
+                      </div>
+                    @else
+                      <p>Non hai aggiunto alcun commento.</p>
+                    @endif
                   </div>
                 @endif
               @endforeach

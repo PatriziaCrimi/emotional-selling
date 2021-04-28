@@ -518,7 +518,7 @@
       "name" => "Fabio",
       "lastname" => "Brattina",
       "username" => "brattina",
-      "password" => "fabio.brsttina85",
+      "password" => "fabio.brattina85",
       "team_id" => 18
     ],
     [
