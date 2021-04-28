@@ -49848,6 +49848,10 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
+    commentMessage1: '',
+    commentMessage2: '',
+    commentMessage3: '',
+    commentMessage4: '',
     lowGradeMessage: 'Il tuo voto è molto basso, è richiesta una motivazione',
     highGradeMessage: 'Il tuo voto è molto alto, è richiesta una motivazione',
     normalGradeMessage: 'Puoi aggiungere un commento al tuo voto (facoltativo)',
@@ -49859,7 +49863,6 @@ var app = new Vue({
     isRequired2: false,
     isRequired3: false,
     isRequired4: false,
-    commentMessage: '',
     radio1: '',
     radio2: '',
     radio3: '',
@@ -49899,44 +49902,44 @@ var app = new Vue({
       this.showComment1 = true;
 
       if (voteValue <= 5) {
-        this.isRequired1 = true, this.commentMessage = this.lowGradeMessage;
+        this.isRequired1 = true, this.commentMessage1 = this.lowGradeMessage;
       } else if (voteValue >= 9) {
-        this.isRequired1 = true, this.commentMessage = this.highGradeMessage;
+        this.isRequired1 = true, this.commentMessage1 = this.highGradeMessage;
       } else {
-        this.isRequired1 = false, this.commentMessage = this.normalGradeMessage;
+        this.isRequired1 = false, this.commentMessage1 = this.normalGradeMessage;
       }
     },
     checkVoteComment2: function checkVoteComment2(voteValue) {
       this.showComment2 = true;
 
       if (voteValue <= 5) {
-        this.isRequired2 = true, this.commentMessage = this.lowGradeMessage;
+        this.isRequired2 = true, this.commentMessage2 = this.lowGradeMessage;
       } else if (voteValue >= 9) {
-        this.isRequired2 = true, this.commentMessage = this.highGradeMessage;
+        this.isRequired2 = true, this.commentMessage2 = this.highGradeMessage;
       } else {
-        this.isRequired2 = false, this.commentMessage = this.normalGradeMessage;
+        this.isRequired2 = false, this.commentMessage2 = this.normalGradeMessage;
       }
     },
     checkVoteComment3: function checkVoteComment3(voteValue) {
       this.showComment3 = true;
 
       if (voteValue <= 5) {
-        this.isRequired3 = true, this.commentMessage = this.lowGradeMessage;
+        this.isRequired3 = true, this.commentMessage3 = this.lowGradeMessage;
       } else if (voteValue >= 9) {
-        this.isRequired3 = true, this.commentMessage = this.highGradeMessage;
+        this.isRequired3 = true, this.commentMessage3 = this.highGradeMessage;
       } else {
-        this.isRequired3 = false, this.commentMessage = this.normalGradeMessage;
+        this.isRequired3 = false, this.commentMessage3 = this.normalGradeMessage;
       }
     },
     checkVoteComment4: function checkVoteComment4(voteValue) {
       this.showComment4 = true;
 
       if (voteValue <= 5) {
-        this.isRequired4 = true, this.commentMessage = this.lowGradeMessage;
+        this.isRequired4 = true, this.commentMessage4 = this.lowGradeMessage;
       } else if (voteValue >= 9) {
-        this.isRequired4 = true, this.commentMessage = this.highGradeMessage;
+        this.isRequired4 = true, this.commentMessage4 = this.highGradeMessage;
       } else {
-        this.isRequired4 = false, this.commentMessage = this.normalGradeMessage;
+        this.isRequired4 = false, this.commentMessage4 = this.normalGradeMessage;
       }
     },
     alertVoted: function alertVoted() {
@@ -50106,8 +50109,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
