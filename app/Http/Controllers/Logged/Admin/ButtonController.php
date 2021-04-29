@@ -5,6 +5,7 @@ namespace App\Http\Controllers\logged\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use App\Button;
 use App\Round;
 use App\GroupRoleRoundUser;
@@ -36,12 +37,24 @@ class ButtonController extends Controller
   }
 
   public function sedeOptions(){
-    $round = Round::find(4);
-    $button1 = Button::find(1);
-    $button2 = Button::find(2);
-    $users = GroupRoleRoundUser::where('role_id',2)->where('round_id',$round->name)->get();
-    $groups = Group::all();
-    return view('logged.admin.sedegroups',compact('round','button1','button2','users','groups'));
+    $idAuth = Auth::user()->id;
+    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    foreach ($idAdmins as $key => $admin) {
+      $idAdminsArray[] = $admin->user_id;
+    }
+
+    // Controllo se l'utente loggato è un Admin
+    if(in_array($idAuth, $idAdminsArray)) {
+      $round = Round::find(4);
+      $button1 = Button::find(1);
+      $button2 = Button::find(2);
+      $users = GroupRoleRoundUser::where('role_id',2)->where('round_id',$round->name)->get();
+      $groups = Group::all();
+
+      return view('logged.admin.sedegroups',compact('round','button1','button2','users','groups'));
+    } else {
+      abort(403);
+    }
   }
 
   public function sedeOptionsReq(Request $request) {
