@@ -23,8 +23,17 @@ class VoteController extends Controller
     $button2 = Button::find(2); // stop votazione
     $idAuth = Auth::user()->id; // mi prendo l'id dell'utente autenticato
 
+    // Prendo gli ID dei ruoli
+    $idAdmin = (Role::where('name', 'Admin')->first())->id;
+    $idSede = (Role::where('name', 'Sede')->first())->id;
+    $idDM = (Role::where('name', 'DM')->first())->id;
+    $idDMjunior = (Role::where('name', 'DM Junior')->first())->id;
+    $idOsservatore = (Role::where('name', 'Osservatore')->first())->id;
+    $idMedico = (Role::where('name', 'Medico')->first())->id;
+    $idISF = (Role::where('name', 'ISF')->first())->id;
+
     // Salvo in un array tutti gli id degli Admin
-    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    $idAdmins = GroupRoleRoundUser::where('role_id',$idAdmin)->get();
     foreach ($idAdmins as $key => $admin) {
       $idAdminsArray[] = $admin->user_id;
     }
@@ -37,14 +46,14 @@ class VoteController extends Controller
       }
 
       // Filtro per ruolo  ( Sede:2, Admin:1)
-      if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-        $usersGroups = GroupRoleRoundUser::where('round_id',$round -> name)->whereIn('role_id',[6,7])->get()->groupBy(['group_id','team_id']);
+      if ($auth -> role_id == $idSede || $auth -> role_id == $idAdmin) {
+        $usersGroups = GroupRoleRoundUser::where('round_id',$round -> name)->whereIn('role_id',[$idMedico,$idISF])->get()->groupBy(['group_id','team_id']);
       } else {
         // Filtro autenticato giocatore
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',$round -> name)->get();
         foreach ($userrow as $user) {
-          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',$round -> name)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
+          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',$round -> name)->where('role_id','!=',$idDM)->where('role_id','!=',$idDMjunior)->where('role_id','!=',$idOsservatore)->get()->groupBy(['group_id','team_id']);
         }
       }
 
@@ -60,14 +69,22 @@ class VoteController extends Controller
   }
 
   public function sedeShowGroups($id){
-    // dd($id);
     $round = Round::find(4); // valore del round
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
     $idAuth = Auth::user()->id; // mi prendo l'id dell'utente autenticato
 
+    // Prendo gli ID dei ruoli
+    $idAdmin = (Role::where('name', 'Admin')->first())->id;
+    $idSede = (Role::where('name', 'Sede')->first())->id;
+    $idDM = (Role::where('name', 'DM')->first())->id;
+    $idDMjunior = (Role::where('name', 'DM Junior')->first())->id;
+    $idOsservatore = (Role::where('name', 'Osservatore')->first())->id;
+    $idMedico = (Role::where('name', 'Medico')->first())->id;
+    $idISF = (Role::where('name', 'ISF')->first())->id;
+
     // Salvo in un array tutti gli id degli Admin
-    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    $idAdmins = GroupRoleRoundUser::where('role_id',$idAdmin)->get();
     foreach ($idAdmins as $key => $admin) {
       $idAdminsArray[] = $admin->user_id;
     }
@@ -80,14 +97,14 @@ class VoteController extends Controller
       }
 
       // Filtro per ruolo  ( Sede:2, Admin:1)
-      if ($auth -> role_id == 2 || $auth -> role_id == 1) {
-        $usersGroups = GroupRoleRoundUser::where('round_id',$round -> name)->whereIn('role_id',[6,7])->where('group_id',$id)->get()->groupBy(['group_id','team_id']);
+      if ($auth -> role_id == $idSede || $auth -> role_id == $idAdmin) {
+        $usersGroups = GroupRoleRoundUser::where('round_id',$round -> name)->whereIn('role_id',[$idMedico,$idISF])->where('group_id',$id)->get()->groupBy(['group_id','team_id']);
       } else {
         // Filtro autenticato giocatore
         $auth = GroupRoleRoundUser::where('user_id',$idAuth)->where('round_id',$round -> name)->first();
         $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',$round -> name)->get();
         foreach ($userrow as $user) {
-          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',$round -> name)->where('role_id','!=',3)->where('role_id','!=',4)->where('role_id','!=',5)->get()->groupBy(['group_id','team_id']);
+          $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',$round -> name)->where('role_id','!=',$idDM)->where('role_id','!=',$DMjunior)->where('role_id','!=',$Osservatore)->get()->groupBy(['group_id','team_id']);
         }
       }
 
@@ -113,8 +130,17 @@ class VoteController extends Controller
     $button2 = Button::find(2); // stop votazione
     $team_exist = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->first();
 
+    // Prendo gli ID dei ruoli
+    $idAdmin = (Role::where('name', 'Admin')->first())->id;
+    $idSede = (Role::where('name', 'Sede')->first())->id;
+    $idDM = (Role::where('name', 'DM')->first())->id;
+    $idDMjunior = (Role::where('name', 'DM Junior')->first())->id;
+    $idOsservatore = (Role::where('name', 'Osservatore')->first())->id;
+    $idMedico = (Role::where('name', 'Medico')->first())->id;
+    $idISF = (Role::where('name', 'ISF')->first())->id;
+
     // Salvo in un array tutti gli id degli Admin
-    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    $idAdmins = GroupRoleRoundUser::where('role_id',$idAdmin)->get();
     foreach ($idAdmins as $key => $admin) {
       $idAdminsArray[] = $admin->user_id;
     }
@@ -134,10 +160,10 @@ class VoteController extends Controller
       }
 
       // Controllo se l'utente è un semplice giocatore (né Sede né Admin)
-      if($auth->role_id !== 2 && $auth->role_id !== 1) {
+      if($auth->role_id !== $idSede && $auth->role_id !== $idAdmin) {
 
         // Controllo che il gruppo ID dell'utente autenticato è lo stesso dei membri del Team cliccato
-        if(($auth->group_id == $team_exist->group_id) && ($team_exist->role_id != 3)) {
+        if(($auth->group_id == $team_exist->group_id) && ($team_exist->role_id != $idOsservatore)) {
           $user = null; // user null per controllo view votes.show
           $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
 
@@ -334,8 +360,17 @@ class VoteController extends Controller
     $button2 = Button::find(2); // stop votazione
     $team_exist = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->first();
 
+    // Prendo gli ID dei ruoli
+    $idAdmin = (Role::where('name', 'Admin')->first())->id;
+    $idSede = (Role::where('name', 'Sede')->first())->id;
+    $idDM = (Role::where('name', 'DM')->first())->id;
+    $idDMjunior = (Role::where('name', 'DM Junior')->first())->id;
+    $idOsservatore = (Role::where('name', 'Osservatore')->first())->id;
+    $idMedico = (Role::where('name', 'Medico')->first())->id;
+    $idISF = (Role::where('name', 'ISF')->first())->id;
+
     // Salvo in un array tutti gli id degli Admin
-    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    $idAdmins = GroupRoleRoundUser::where('role_id',$idAdmin)->get();
     foreach ($idAdmins as $key => $admin) {
       $idAdminsArray[] = $admin->user_id;
     }
@@ -357,10 +392,10 @@ class VoteController extends Controller
       }
 
       // Controllo se l'utente è un semplice giocatore (né Sede né Admin)
-      if($auth->role_id !== 2 && $auth->role_id !== 1) {
+      if($auth->role_id !== $idSede && $auth->role_id !== $idAdmin) {
 
         // Controllo che il gruppo ID dell'utente autenticato è lo stesso dei membri del Team cliccato
-        if(($auth->group_id == $team_exist->group_id) && ($team_exist->role_id != 3)) {
+        if(($auth->group_id == $team_exist->group_id) && ($team_exist->role_id != $idOsservatore)) {
           $user = null; // user null per controllo view votes.show
           $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
 

@@ -41,7 +41,6 @@ class ButtonController extends Controller
     $button2 = Button::find(2);
     $users = GroupRoleRoundUser::where('role_id',2)->where('round_id',$round->name)->get();
     $groups = Group::all();
-    // dd($groups);
     return view('logged.admin.sedegroups',compact('round','button1','button2','users','groups'));
   }
 

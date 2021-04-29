@@ -2080,63 +2080,63 @@
 
     [
       "user_id" => 91,  // Cariati
-      "group_id" => null,
+      "group_id" => 1,
       "role_id" => $dm,
       "round_id" => 1,
       "team_id" => null
     ],
     [
       "user_id" => 92,  // Marino
-      "group_id" => null,
+      "group_id" => 2,
       "role_id" => $dm,
       "round_id" => 1,
       "team_id" => null
     ],
     [
       "user_id" => 93,  // Sinicato
-      "group_id" => null,
+      "group_id" => 3,
       "role_id" => $dm,
       "round_id" => 1,
       "team_id" => null
     ],
     [
       "user_id" => 94,  // Carapellucci
-      "group_id" => null,
+      "group_id" => 4,
       "role_id" => $dm,
       "round_id" => 1,
       "team_id" => null
     ],
     [
       "user_id" => 95,  // Leone
-      "group_id" => null,
+      "group_id" => 5,
       "role_id" => $dm,
       "round_id" => 1,
       "team_id" => null
     ],
     [
       "user_id" => 96,  // Pittaluga
-      "group_id" => null,
+      "group_id" => 6,
       "role_id" => $dm,
       "round_id" => 1,
       "team_id" => null
     ],
     [
       "user_id" => 97,  // Polidori
-      "group_id" => null,
+      "group_id" => 1,
       "role_id" => $dm_junior,
       "round_id" => 1,
       "team_id" => null
     ],
     [
       "user_id" => 98,  // Ebraico
-      "group_id" => null,
+      "group_id" => 2,
       "role_id" => $dm_junior,
       "round_id" => 1,
       "team_id" => null
     ],
     [
       "user_id" => 99,  // Rizzo
-      "group_id" => null,
+      "group_id" => 3,
       "role_id" => $dm_junior,
       "round_id" => 1,
       "team_id" => null
@@ -2147,63 +2147,63 @@
     // ------------------- Round 2 -------------------
     [
       "user_id" => 91,  // Cariati
-      "group_id" => null,
+      "group_id" => 1,
       "role_id" => $dm,
       "round_id" => 2,
       "team_id" => null
     ],
     [
       "user_id" => 92,  // Marino
-      "group_id" => null,
+      "group_id" => 2,
       "role_id" => $dm,
       "round_id" => 2,
       "team_id" => null
     ],
     [
       "user_id" => 93,  // Sinicato
-      "group_id" => null,
+      "group_id" => 3,
       "role_id" => $dm,
       "round_id" => 2,
       "team_id" => null
     ],
     [
       "user_id" => 94,  // Carapellucci
-      "group_id" => null,
+      "group_id" => 4,
       "role_id" => $dm,
       "round_id" => 2,
       "team_id" => null
     ],
     [
       "user_id" => 95,  // Leone
-      "group_id" => null,
+      "group_id" => 5,
       "role_id" => $dm,
       "round_id" => 2,
       "team_id" => null
     ],
     [
       "user_id" => 96,  // Pittaluga
-      "group_id" => null,
+      "group_id" => 6,
       "role_id" => $dm,
       "round_id" => 2,
       "team_id" => null
     ],
     [
       "user_id" => 97,  // Polidori
-      "group_id" => null,
+      "group_id" => 1,
       "role_id" => $dm_junior,
       "round_id" => 2,
       "team_id" => null
     ],
     [
       "user_id" => 98,  // Ebraico
-      "group_id" => null,
+      "group_id" => 2,
       "role_id" => $dm_junior,
       "round_id" => 2,
       "team_id" => null
     ],
     [
       "user_id" => 99,  // Rizzo
-      "group_id" => null,
+      "group_id" => 3,
       "role_id" => $dm_junior,
       "round_id" => 2,
       "team_id" => null
@@ -2214,63 +2214,63 @@
     // ------------------- Round 3 -------------------
     [
       "user_id" => 91,  // Cariati
-      "group_id" => null,
+      "group_id" => 1,
       "role_id" => $dm,
       "round_id" => 3,
       "team_id" => null
     ],
     [
       "user_id" => 92,  // Marino
-      "group_id" => null,
+      "group_id" => 2,
       "role_id" => $dm,
       "round_id" => 3,
       "team_id" => null
     ],
     [
       "user_id" => 93,  // Sinicato
-      "group_id" => null,
+      "group_id" => 3,
       "role_id" => $dm,
       "round_id" => 3,
       "team_id" => null
     ],
     [
       "user_id" => 94,  // Carapellucci
-      "group_id" => null,
+      "group_id" => 4,
       "role_id" => $dm,
       "round_id" => 3,
       "team_id" => null
     ],
     [
       "user_id" => 95,  // Leone
-      "group_id" => null,
+      "group_id" => 5,
       "role_id" => $dm,
       "round_id" => 3,
       "team_id" => null
     ],
     [
       "user_id" => 96,  // Pittaluga
-      "group_id" => null,
+      "group_id" => 6,
       "role_id" => $dm,
       "round_id" => 3,
       "team_id" => null
     ],
     [
       "user_id" => 97,  // Polidori
-      "group_id" => null,
+      "group_id" => 1,
       "role_id" => $dm_junior,
       "round_id" => 3,
       "team_id" => null
     ],
     [
       "user_id" => 98,  // Ebraico
-      "group_id" => null,
+      "group_id" => 2,
       "role_id" => $dm_junior,
       "round_id" => 3,
       "team_id" => null
     ],
     [
       "user_id" => 99,  // Rizzo
-      "group_id" => null,
+      "group_id" => 3,
       "role_id" => $dm_junior,
       "round_id" => 3,
       "team_id" => null
