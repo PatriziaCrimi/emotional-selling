@@ -38,7 +38,7 @@
                       </h2>
                       @foreach ($user -> groups as $group)
                        @if ($group -> id == $userGroup)
-                         <a href="{{ route('logged.votes.sedeShowGroups',$group->id)}}" class="btn">
+                         <a href="{{ route('logged.votes.sedeShowGroup',$group->id)}}" class="btn">
                            Vota
                          </a>
                        @endif

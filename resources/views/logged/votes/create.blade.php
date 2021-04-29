@@ -17,7 +17,7 @@
           @endphp
           <h1 class="text-center">
             Stai votando il
-            <spanclass="font-weight-bold">
+            <span class="font-weight-bold">
               Team
               {{$teamName -> name}}
             </span>
