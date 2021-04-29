@@ -10310,39 +10310,47 @@ main section#votes-form .form-wrapper,
 main section#votes-show .form-wrapper {
   padding: 40px 0;
 }
-main section#votes-form .form-wrapper form .form-group,
-main section#votes-show .form-wrapper form .form-group {
+main section#votes-form .form-wrapper form .category-wrapper,
+main section#votes-show .form-wrapper form .category-wrapper {
   padding-bottom: 20px;
 }
-main section#votes-form .form-wrapper form .form-group h3,
-main section#votes-show .form-wrapper form .form-group h3 {
+main section#votes-form .form-wrapper form .category-wrapper h3,
+main section#votes-show .form-wrapper form .category-wrapper h3 {
   padding-bottom: 20px;
 }
-main section#votes-form .form-wrapper form .form-group p.comment-message,
-main section#votes-show .form-wrapper form .form-group p.comment-message {
+main section#votes-form .form-wrapper form .category-wrapper p.comment-message,
+main section#votes-show .form-wrapper form .category-wrapper p.comment-message {
   color: #e20177;
   margin: 0;
   padding-top: 10px;
 }
-main section#votes-form .form-wrapper form .form-group .form-control,
-main section#votes-show .form-wrapper form .form-group .form-control {
+main section#votes-form .form-wrapper form .category-wrapper .form-control,
+main section#votes-show .form-wrapper form .category-wrapper .form-control {
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.5);
 }
-main section#votes-form .form-wrapper form .form-group .radio-toolbar input[type=radio],
-main section#votes-show .form-wrapper form .form-group .radio-toolbar input[type=radio] {
+main section#votes-form .form-wrapper form .category-wrapper .form-control.readonly:focus,
+main section#votes-show .form-wrapper form .category-wrapper .form-control.readonly:focus {
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+main section#votes-form .form-wrapper form .category-wrapper .radio-toolbar input[type=radio],
+main section#votes-show .form-wrapper form .category-wrapper .radio-toolbar input[type=radio] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
-main section#votes-form .form-wrapper form .form-group .radio-toolbar input[type=radio]:checked + label.radio-label, main section#votes-form .form-wrapper form .form-group .radio-toolbar input[type=radio]:focus + label.radio-label,
-main section#votes-show .form-wrapper form .form-group .radio-toolbar input[type=radio]:checked + label.radio-label,
-main section#votes-show .form-wrapper form .form-group .radio-toolbar input[type=radio]:focus + label.radio-label {
+main section#votes-form .form-wrapper form .category-wrapper .radio-toolbar input[type=radio]:checked + label.radio-label, main section#votes-form .form-wrapper form .category-wrapper .radio-toolbar input[type=radio]:focus + label.radio-label, main section#votes-form .form-wrapper form .category-wrapper .radio-toolbar input[type=radio]:checked + label.radio-label-disabled,
+main section#votes-show .form-wrapper form .category-wrapper .radio-toolbar input[type=radio]:checked + label.radio-label,
+main section#votes-show .form-wrapper form .category-wrapper .radio-toolbar input[type=radio]:focus + label.radio-label,
+main section#votes-show .form-wrapper form .category-wrapper .radio-toolbar input[type=radio]:checked + label.radio-label-disabled {
   background: #e20177;
   border: 2px solid #e20177;
 }
-main section#votes-form .form-wrapper form .form-group .radio-toolbar label.radio-label,
-main section#votes-show .form-wrapper form .form-group .radio-toolbar label.radio-label {
+main section#votes-form .form-wrapper form .category-wrapper .radio-toolbar label.radio-label,
+main section#votes-form .form-wrapper form .category-wrapper .radio-toolbar label.radio-label-disabled,
+main section#votes-show .form-wrapper form .category-wrapper .radio-toolbar label.radio-label,
+main section#votes-show .form-wrapper form .category-wrapper .radio-toolbar label.radio-label-disabled {
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -10351,7 +10359,6 @@ main section#votes-show .form-wrapper form .form-group .radio-toolbar label.radi
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   margin: 0 10px;
   color: #fff;
   border: 2px solid #fff;
@@ -10359,9 +10366,11 @@ main section#votes-show .form-wrapper form .form-group .radio-toolbar label.radi
   background: linear-gradient(to right, #1b4298, #009dcc);
   transition: all 0.2s ease-in-out;
 }
-main section#votes-form .form-wrapper form .form-group .radio-toolbar label.radio-label:hover,
-main section#votes-show .form-wrapper form .form-group .radio-toolbar label.radio-label:hover {
-  background-color: blue;
+main section#votes-form .form-wrapper form .category-wrapper .radio-toolbar label.radio-label:hover,
+main section#votes-show .form-wrapper form .category-wrapper .radio-toolbar label.radio-label:hover {
+  cursor: pointer;
+  background: #e20177;
+  border: 2px solid #e20177;
 }
 main section#votes-form .form-wrapper form .submit-wrapper,
 main section#votes-show .form-wrapper form .submit-wrapper {

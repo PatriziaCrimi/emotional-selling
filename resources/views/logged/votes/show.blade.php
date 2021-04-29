@@ -8,8 +8,6 @@
   <section id="votes-show">
     <div class="container">
 
-      <h1 class="text-center font-weight-bold" style="background-color: red; font-size: 60px; color: #fff;">PAGINA IN COSTRUZIONE</h1>
-
       {{-- VOTAZIONE AL TEAM --}}
 
       <div class="row">
@@ -18,8 +16,11 @@
             $teamName = \App\Team::find($id);
           @endphp
           <h1 class="text-center">
-            Stai visualizzando i voti del Team
-            {{$teamName -> name}}
+            Stai visualizzando i tuoi voti dati al
+            <span class="font-weight-bold">
+              Team
+              {{$teamName -> name}}
+            </span>
           </h1>
         </div>
       </div>
@@ -43,109 +44,103 @@
           <div class="form-wrapper">
             <form class="form">
 
-              @foreach ($currentVotes as $key => $vote)
+              @php
+                $categories_quantity = (\App\Category::find(\DB::table('categories')->max('id')))->id;
+              @endphp
 
-                {{-- Voto TEAM Categoria 1 --}}
-                @if ($vote->category_id == 1)
-                  <div class="form-group">
-                    <h3>Come valuti la categoria 1?</h3>
+              @if (count($currentVotes) == $categories_quantity)
+
+                {{-- Se l'utente ha votato tutte le Categorie --}}
+                @foreach ($currentVotes as $key => $vote)
+                  <div class="category-wrapper">
+                    <h3> Come valuti
+                      @php
+                      $category = \App\Category::find($key+1);
+                      @endphp
+                      {{$category->name}}
+                    </h3>
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input readonly :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" v-model="radio1">
-                      <label readonly class="radio-label"  :for="'radio1'+index" {{ $vote->value == 6 ? 'checked=checked' : ''}}>
+                      <input disabled="disabled" class="d-none" :id="'radio{{$key+1}}'+index" type="radio" name="voteTeam{{$key+1}}" :value="index" v-model="{{$vote->value}}">
+                      <label class="radio-label-disabled" :for="'radio{{$key+1}}'+index">
                         @{{index}}
                       </label>
                     </div>
-
                     @if ($vote->comment)
-                      <div>
+                      @if ($vote->value <= 5)
                         <p class="comment-message">
-                          @{{commentMessage}}
+                          @{{lowGradeMessage}}
                         </p>
-                        <label for="comment1"></label>
-                        <textarea readonly name="comment1" rows="8" cols="80" maxlength="255" :placeholder="isRequired1 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ $vote->comment }}</textarea><br>
-                      </div>
+                      @elseif ($vote->value >= 9)
+                        <p class="comment-message">
+                          @{{highGradeMessage}}
+                        </p>
+                      @else
+                        <p class="comment-message">
+                          @{{normalGradeMessage}}
+                        </p>
+                      @endif
+                      <textarea readonly rows="3" cols="80" class="form-control readonly">{{ $vote->comment }}</textarea>
                     @else
                       <p>Non hai aggiunto alcun commento.</p>
                     @endif
                   </div>
+                @endforeach
 
-                {{-- Voto TEAM Categoria 2 --}}
-                @elseif($vote->category_id == 2)
+              @else
+              {{-- Se l'utente non ha votato qualche categoria --}}
 
-                  <div class="form-group">
-                    <h3>Come valuti la categoria 2?</h3>
-                    <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input readonly :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
-                      <label class="radio-label" :for="'radio2'+index">
-                        @{{index}}
-                      </label>
-                    </div>
+                @php
+                $idVotedCategories = array();
+                // Mi prendo gli id delle categorie votate
+                foreach ($currentVotes as $key => $vote) {
+                  $idVotedCategories[] = $vote->category_id;
+                }
+                @endphp
 
-                    @if ($vote->comment)
-                      <div>
-                        <p class="comment-message">
-                          @{{commentMessage}}
-                        </p>
-                        <label for="comment2"></label>
-                        <textarea readonly :required="isRequired2 ? true : false" name="comment2" rows="3" cols="80" maxlength="255" :placeholder="isRequired2 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ $vote->comment }}</textarea><br>
+                @for ($i=0; $i < $categories_quantity; $i++)
+                  @php
+                    $index = $i+1;
+                  @endphp
+                    {{dd($i, $index, $currentVotes[$i]->value)}}
+                  @if (in_array($index, $idVotedCategories))
+                    <div class="category-wrapper">
+                      <h3> Come valuti
+                        @php
+                        $category = \App\Category::find($index);
+                        @endphp
+                        {{$category->name}}
+                      </h3>
+                      <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
+                        <input disabled="disabled" class="d-none" :id="'radio{{$index}}'+index" type="radio" name="voteTeam{{$index}}" :value="index" v-model="{{$currentVotes[$i]->value}}">
+                        <label class="radio-label-disabled" :for="'radio{{$index}}'+index">
+                          @{{index}}
+                        </label>
                       </div>
-                    @else
-                      <p>Non hai aggiunto alcun commento.</p>
-                    @endif
-                  </div>
-
-                {{-- Voto TEAM Categoria 3 --}}
-                @elseif($vote->category_id == 3)
-
-                  <div class="form-group">
-                    <h3>Come valuti la categoria 3?</h3>
-                    <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input readonly :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
-                      <label class="radio-label" :for="'radio3'+index">
-                        @{{index}}
-                      </label>
+                      @if ($currentVotes[$i]->comment)
+                        @if ($currentVotes[$i]->value <= 5)
+                          <p class="comment-message">
+                            @{{lowGradeMessage}}
+                          </p>
+                        @elseif ($currentVotes[$i]->value >= 9)
+                          <p class="comment-message">
+                            @{{highGradeMessage}}
+                          </p>
+                        @else
+                          <p class="comment-message">
+                            @{{normalGradeMessage}}
+                          </p>
+                        @endif
+                        <textarea readonly rows="3" cols="80" class="form-control readonly">{{ $currentVotes[$i]->comment }}</textarea>
+                        {{dd($i, $index, $category->name, $currentVotes[$i]->value)}}
+                      @else
+                        <p>Non hai aggiunto alcun commento.</p>
+                      @endif
                     </div>
-
-                    @if ($vote->comment)
-                      <div>
-                        <p class="comment-message">
-                          @{{commentMessage}}
-                        </p>
-                        <label for="comment3"></label>
-                        <textarea readonly :required="isRequired3 ? true : false" name="comment3" rows="3" cols="80" maxlength="255" :placeholder="isRequired3 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ $vote->comment }}</textarea><br>
-                      </div>
-                    @else
-                      <p>Non hai aggiunto alcun commento.</p>
-                    @endif
-                  </div>
-
-                {{-- Voto TEAM Categoria 4 --}}
-                @elseif($vote->category_id == 4)
-
-                  <div class="form-group">
-                    <h3>Come valuti la categoria 4?</h3>
-                    <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input readonly :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
-                      <label class="radio-label" :for="'radio4'+index">
-                        @{{index}}
-                      </label>
-                    </div>
-
-                    @if ($vote->comment)
-                      <div>
-                        <p class="comment-message">
-                          @{{commentMessage}}
-                        </p>
-                        <label for="comment4"></label>
-                        <textarea readonly :required="isRequired4 ? true : false" name="comment4" rows="3" cols="80" maxlength="255" :placeholder="isRequired4 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{$vote->comment}}</textarea><br>
-                      </div>
-                    @else
-                      <p>Non hai aggiunto alcun commento.</p>
-                    @endif
-                  </div>
-                @endif
-              @endforeach
-
+                  @else
+                    <p> voto non esistente</p>
+                  @endif
+                @endfor
+              @endif
             </form>
           </div>
         </div>

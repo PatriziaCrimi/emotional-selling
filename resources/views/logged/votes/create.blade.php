@@ -16,8 +16,11 @@
             $teamName = \App\Team::find($id);
           @endphp
           <h1 class="text-center">
-            Stai votando il Team
-            {{$teamName -> name}}
+            Stai votando il
+            <spanclass="font-weight-bold">
+              Team
+              {{$teamName -> name}}
+            </span>
           </h1>
         </div>
       </div>
@@ -48,128 +51,136 @@
                 <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}" class="form-control">
               </div>
 
-              {{-- Voti TEAM per Categorie --}}
+              {{-- Voto TEAM Categoria 1 --}}
 
-              <div class="d-none form-group">
-                <label for="category1_id"></label>
-                <input type="hidden" name="category1_id" value="1" class="form-control">
-              </div>
-
-              <div class="d-none form-group">
-                <label for="team_id"></label>
-                <input type="hidden" name="team_id" value="{{$id}}">
-              </div>
-
-              <div class="form-group">
-                <h3> Come valuti
-                  @php
-                    $category = \App\Category::find(1);
-                  @endphp
-                  {{$category->name}}
-                </h3>
-                <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                  <input :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
-                  <label class="radio-label" :for="'radio1'+index">
-                    @{{index}}
-                  </label>
+              <div class="category-wrapper">
+                <div class="d-none form-group">
+                  <label for="category1_id"></label>
+                  <input type="hidden" name="category1_id" value="1" class="form-control">
                 </div>
 
-                <div class="text" v-if="showComment1">
-                  <p class="comment-message">
-                    @{{commentMessage1}}
-                  </p>
-                  <label for="comment1"></label>
-                  <textarea :required="isRequired1 ? true : false" v-model="textarea1" name="comment1" rows="3" cols="80" maxlength="450" :placeholder="isRequired1 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment1')}}</textarea>
+                <div class="d-none form-group">
+                  <label for="team_id"></label>
+                  <input type="hidden" name="team_id" value="{{$id}}">
+                </div>
+
+                <div class="form-group">
+                  <h3> Come valuti
+                    @php
+                      $category = \App\Category::find(1);
+                    @endphp
+                    {{$category->name}}
+                  </h3>
+                  <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
+                    <input :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
+                    <label class="radio-label" :for="'radio1'+index">
+                      @{{index}}
+                    </label>
+                  </div>
+
+                  <div class="text" v-if="showComment1">
+                    <p class="comment-message">
+                      @{{commentMessage1}}
+                    </p>
+                    <label for="comment1"></label>
+                    <textarea :required="isRequired1 ? true : false" v-model="textarea1" name="comment1" rows="3" cols="80" maxlength="450" :placeholder="isRequired1 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment1')}}</textarea>
+                  </div>
                 </div>
               </div>
 
               {{-- Voto TEAM Categoria 2 --}}
 
-              <div class="d-none form-group">
-                <label for="category2_id"></label>
-                <input type="hidden" name="category2_id" value="2" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <h3> Come valuti
-                  @php
-                    $category = \App\Category::find(2);
-                  @endphp
-                  {{$category->name}}
-                </h3>
-                <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                  <input :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
-                  <label class="radio-label" :for="'radio2'+index">
-                    @{{index}}
-                  </label>
+              <div class="category-wrapper">
+                <div class="d-none form-group">
+                  <label for="category2_id"></label>
+                  <input type="hidden" name="category2_id" value="2" class="form-control">
                 </div>
 
-                <div v-if="showComment2">
-                  <p class="comment-message">
-                    @{{commentMessage2}}
-                  </p>
-                  <label for="comment2"></label>
-                  <textarea :required="isRequired2 ? true : false" v-model="textarea2" name="comment2" rows="3" cols="80" maxlength="450" :placeholder="isRequired2 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment2')}}</textarea>
+                <div class="form-group">
+                  <h3> Come valuti
+                    @php
+                      $category = \App\Category::find(2);
+                    @endphp
+                    {{$category->name}}
+                  </h3>
+                  <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
+                    <input :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
+                    <label class="radio-label" :for="'radio2'+index">
+                      @{{index}}
+                    </label>
+                  </div>
+
+                  <div v-if="showComment2">
+                    <p class="comment-message">
+                      @{{commentMessage2}}
+                    </p>
+                    <label for="comment2"></label>
+                    <textarea :required="isRequired2 ? true : false" v-model="textarea2" name="comment2" rows="3" cols="80" maxlength="450" :placeholder="isRequired2 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment2')}}</textarea>
+                  </div>
                 </div>
               </div>
 
               {{-- Voto TEAM Categoria 3 --}}
 
-              <div class="d-none form-group">
-                <label for="category3_id"></label>
-                <input type="hidden" name="category3_id" value="3" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <h3> Come valuti
-                  @php
-                    $category = \App\Category::find(3);
-                  @endphp
-                  {{$category->name}}
-                </h3>                
-                <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                  <input :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
-                  <label class="radio-label" :for="'radio3'+index">
-                    @{{index}}
-                  </label>
+              <div class="category-wrapper">
+                <div class="d-none form-group">
+                  <label for="category3_id"></label>
+                  <input type="hidden" name="category3_id" value="3" class="form-control">
                 </div>
 
-                <div v-if="showComment3">
-                  <p class="comment-message">
-                    @{{commentMessage3}}
-                  </p>
-                  <label for="comment3"></label>
-                  <textarea :required="isRequired3 ? true : false" v-model="textarea3" name="comment3" rows="3" cols="80" maxlength="450" :placeholder="isRequired3 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment3')}}</textarea>
+                <div class="form-group">
+                  <h3> Come valuti
+                    @php
+                      $category = \App\Category::find(3);
+                    @endphp
+                    {{$category->name}}
+                  </h3>
+                  <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
+                    <input :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
+                    <label class="radio-label" :for="'radio3'+index">
+                      @{{index}}
+                    </label>
+                  </div>
+
+                  <div v-if="showComment3">
+                    <p class="comment-message">
+                      @{{commentMessage3}}
+                    </p>
+                    <label for="comment3"></label>
+                    <textarea :required="isRequired3 ? true : false" v-model="textarea3" name="comment3" rows="3" cols="80" maxlength="450" :placeholder="isRequired3 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment3')}}</textarea>
+                  </div>
                 </div>
               </div>
 
               {{-- Voto TEAM Categoria 4 --}}
 
-              <div class="d-none form-group">
-                <label for="category4_id"></label>
-                <input type="hidden" name="category4_id" value="4" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <h3> Come valuti
-                  @php
-                    $category = \App\Category::find(4);
-                  @endphp
-                  {{$category->name}}
-                </h3>
-                <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                  <input :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
-                  <label class="radio-label" :for="'radio4'+index">
-                    @{{index}}
-                  </label>
+              <div class="category-wrapper">
+                <div class="d-none form-group">
+                  <label for="category4_id"></label>
+                  <input type="hidden" name="category4_id" value="4" class="form-control">
                 </div>
 
-                <div v-if="showComment4">
-                  <p class="comment-message">
-                    @{{commentMessage4}}
-                  </p>
-                  <label for="comment4"></label>
-                  <textarea :required="isRequired4 ? true : false" v-model="textarea4" name="comment4" rows="3" cols="80" maxlength="450" :placeholder="isRequired4 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment4')}}</textarea>
+                <div class="form-group">
+                  <h3> Come valuti
+                    @php
+                      $category = \App\Category::find(4);
+                    @endphp
+                    {{$category->name}}
+                  </h3>
+                  <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
+                    <input :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
+                    <label class="radio-label" :for="'radio4'+index">
+                      @{{index}}
+                    </label>
+                  </div>
+
+                  <div v-if="showComment4">
+                    <p class="comment-message">
+                      @{{commentMessage4}}
+                    </p>
+                    <label for="comment4"></label>
+                    <textarea :required="isRequired4 ? true : false" v-model="textarea4" name="comment4" rows="3" cols="80" maxlength="450" :placeholder="isRequired4 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment4')}}</textarea>
+                  </div>
                 </div>
               </div>
 
