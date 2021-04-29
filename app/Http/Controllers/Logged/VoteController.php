@@ -204,152 +204,315 @@ class VoteController extends Controller
     // Storing all form data received
     $data = $request->all();
     $round = Round::find(4);
-    $teamMembers = GroupRoleRoundUser::where('team_id',$data['team_id'])->where('round_id',$round->name)->get();
-    // membri del team che si sta votando
 
-    // Controllo se il valore del voto della Categoria 1 non è nullo (è stata votata)
-    if($request->voteTeam1) {
-      // per ogni membro del team creo il voto della Categoria 1
-      foreach ($teamMembers as $i => $member) {
+    // Prendo gli ID dei ruoli DM
+    $idDM = (Role::where('name', 'DM')->first())->id;
+    $idDMjunior = (Role::where('name', 'DM Junior')->first())->id;
+
+    // membri del team che si sta votando
+    $teamMembers = GroupRoleRoundUser::where('team_id',$data['team_id'])->where('round_id',$round->name)->get();
+
+    // Mi prendo l'id della tabella combo del votante dove il ruole è o 6 o 7 (DMjunior o senior)
+    $idComboAuth = GroupRoleRoundUser::where('id',$data['info_voter_id'])->where('round_id',$round->name)->whereIn('role_id', [$idDM,$idDMjunior])->first();
+
+    if (!is_null($idComboAuth)) {
+      //se NON è NULL significa che l'utente loggato è un DM quindi controllo
+      //se esiste un utente che ha il suo stesso gruppo ed ha ruolo DM junior (7)
+      $dmUser = GroupRoleRoundUser::where('role_id',$idDMjunior)->where('round_id',$round->name)->where('group_id',$idComboAuth->group_id)->first();
+    } else {
+      // se è nulla significa che l'utente loggato è qualsiasi tranne un DM
+      //quindi annullo la variabile $dmJunior
+      $dmUser = null;
+    }
+
+    if (!is_null($dmUser)) {  // Votazione se utente è DM
+
+      // Controllo se il valore del voto della Categoria 1 non è nullo (è stata votata)
+      if($request->voteTeam1) {
+        // per ogni membro del team creo il voto della Categoria 1
+        foreach ($teamMembers as $i => $member) {
+          $newVote1 = new Vote();
+          $newVote1-> info_voter_id = $data['info_voter_id'];
+          $newVote1-> info_voted_id = $member -> id;
+          $newVote1-> category_id = $data['category1_id'];
+          $newVote1-> value = $data['voteTeam1'] / 2;
+          if($request->comment1) {
+            $newVote1-> comment = $data['comment1'];
+          };
+          $newVote1-> team_vote = 1;  // è stato votato il team
+          $newVote1-> team_id = $data['team_id']; // team_id del team votato
+          $newVote1->save();
+        }
+      }
+
+      // Controllo se il valore del voto della Categoria 2 non è nullo (è stata votata)
+      if($request->voteTeam2) {
+        // per ogni membro del team creo il voto della Categoria 2
+        foreach ($teamMembers as $i => $member) {
+          $newVote2 = new Vote();
+          $newVote2-> info_voter_id = $data['info_voter_id'];
+          $newVote2-> info_voted_id = $member -> id;
+          $newVote2-> category_id = $data['category2_id'];
+          $newVote2-> value = $data['voteTeam2'] / 2;
+          if($request->comment2) {
+            $newVote2-> comment = $data['comment2'];
+          };
+          $newVote2-> team_vote = 1; // è stato votato il team
+          $newVote2-> team_id = $data['team_id']; // team_id del team votato
+
+          $newVote2->save();
+        }
+      }
+
+      // Controllo se il valore del voto della Categoria 3 non è nullo (è stata votata)
+      if($request->voteTeam3) {
+        // per ogni membro del team creo il voto della Categoria 3
+        foreach ($teamMembers as $i => $member) {
+          $newVote3 = new Vote();
+          $newVote3-> info_voter_id = $data['info_voter_id'];
+          $newVote3-> info_voted_id = $member -> id;
+          $newVote3-> category_id = $data['category3_id'];
+          $newVote3-> value = $data['voteTeam3'] / 2;
+          if($request->comment3) {
+            $newVote3-> comment = $data['comment3'];
+          };
+          $newVote3-> team_vote = 1; // è stato votato il team
+          $newVote3-> team_id = $data['team_id']; // team_id del team votato
+
+          $newVote3->save();
+        }
+      }
+
+      // Controllo se il valore del voto della Categoria 4 non è nullo (è stata votata)
+      if($request->voteTeam4) {
+        // per ogni membro del team creo il voto della Categoria 4
+        foreach ($teamMembers as $i => $member) {
+          $newVote4 = new Vote();
+          $newVote4-> info_voter_id = $data['info_voter_id'];
+          $newVote4-> info_voted_id = $member -> id;
+          $newVote4-> category_id = $data['category4_id'];
+          $newVote4-> value = $data['voteTeam4'] / 2;
+          if($request->comment4) {
+            $newVote4-> comment = $data['comment4'];
+          };
+          $newVote4-> team_vote = 1; // è stato votato il team
+          $newVote4-> team_id = $data['team_id']; // team_id del team votato
+
+          $newVote4->save();
+        }
+      }
+
+      // Queste 4 istanze sono necessarie per la QUERY per la Classifica per Team
+
+      // Controllo se il valore del voto della Categoria 1 non è nullo (è stata votata)
+      if($request->voteTeam1) {
+        // Categoria 1
         $newVote1 = new Vote();
         $newVote1-> info_voter_id = $data['info_voter_id'];
-        $newVote1-> info_voted_id = $member -> id;
+        $newVote1-> info_voted_id = null;
+        $newVote1-> category_id = $data['category1_id'];
+        $newVote1-> value = $data['voteTeam1'] / 2;
+        if($request->comment1) {
+          $newVote1-> comment = $data['comment1'];
+        };
+        $newVote1-> team_vote = 2;  // è stato votato il team
+        $newVote1-> team_id = $data['team_id']; // team_id del team votato
+
+        $newVote1->save();
+      }
+
+      // Categoria 2
+      if($request->voteTeam2) {
+        $newVote2 = new Vote();
+        $newVote2-> info_voter_id = $data['info_voter_id'];
+        $newVote2-> info_voted_id = null;
+        $newVote2-> category_id = $data['category2_id'];
+        $newVote2-> value = $data['voteTeam2'] / 2;
+        if($request->comment2) {
+          $newVote2-> comment = $data['comment2'];
+        };
+        $newVote2-> team_vote = 2;  // è stato votato il team
+        $newVote2-> team_id = $data['team_id']; // team_id del team votato
+
+        $newVote2->save();
+      }
+
+      // Categoria 3
+      if($request->voteTeam3) {
+        $newVote3 = new Vote();
+        $newVote3-> info_voter_id = $data['info_voter_id'];
+        $newVote3-> info_voted_id = null;
+        $newVote3-> category_id = $data['category3_id'];
+        $newVote3-> value = $data['voteTeam3'] / 2;
+        if($request->comment3) {
+          $newVote3-> comment = $data['comment3'];
+        };
+        $newVote3-> team_vote = 2;  // è stato votato il team
+        $newVote3-> team_id = $data['team_id']; // team_id del team votato
+
+        $newVote3->save();
+      }
+
+      // Categoria 4
+      if($request->voteTeam4) {
+        $newVote4 = new Vote();
+        $newVote4-> info_voter_id = $data['info_voter_id'];
+        $newVote4-> info_voted_id = null;
+        $newVote4-> category_id = $data['category4_id'];
+        $newVote4-> value = $data['voteTeam4'] / 2;
+        if($request->comment4) {
+          $newVote4-> comment = $data['comment4'];
+        };
+        $newVote4-> team_vote = 2;  // è stato votato il team
+        $newVote4-> team_id = $data['team_id']; // team_id del team votato
+
+        $newVote4->save();
+      }
+    }else {   // SE L'UTENTE NON E' UN DM
+
+      if($request->voteTeam1) {
+        // per ogni membro del team creo il voto della Categoria 1
+        foreach ($teamMembers as $i => $member) {
+          $newVote1 = new Vote();
+          $newVote1-> info_voter_id = $data['info_voter_id'];
+          $newVote1-> info_voted_id = $member -> id;
+          $newVote1-> category_id = $data['category1_id'];
+          $newVote1-> value = $data['voteTeam1'];
+          if($request->comment1) {
+            $newVote1-> comment = $data['comment1'];
+          };
+          $newVote1-> team_vote = 1;  // è stato votato il team
+          $newVote1-> team_id = $data['team_id']; // team_id del team votato
+
+          $newVote1->save();
+        }
+      }
+
+      // Controllo se il valore del voto della Categoria 2 non è nullo (è stata votata)
+      if($request->voteTeam2) {
+        // per ogni membro del team creo il voto della Categoria 2
+        foreach ($teamMembers as $i => $member) {
+          $newVote2 = new Vote();
+          $newVote2-> info_voter_id = $data['info_voter_id'];
+          $newVote2-> info_voted_id = $member -> id;
+          $newVote2-> category_id = $data['category2_id'];
+          $newVote2-> value = $data['voteTeam2'];
+          if($request->comment2) {
+            $newVote2-> comment = $data['comment2'];
+          };
+          $newVote2-> team_vote = 1; // è stato votato il team
+          $newVote2-> team_id = $data['team_id']; // team_id del team votato
+
+          $newVote2->save();
+        }
+      }
+
+      // Controllo se il valore del voto della Categoria 3 non è nullo (è stata votata)
+      if($request->voteTeam3) {
+        // per ogni membro del team creo il voto della Categoria 3
+        foreach ($teamMembers as $i => $member) {
+          $newVote3 = new Vote();
+          $newVote3-> info_voter_id = $data['info_voter_id'];
+          $newVote3-> info_voted_id = $member -> id;
+          $newVote3-> category_id = $data['category3_id'];
+          $newVote3-> value = $data['voteTeam3'];
+          if($request->comment3) {
+            $newVote3-> comment = $data['comment3'];
+          };
+          $newVote3-> team_vote = 1; // è stato votato il team
+          $newVote3-> team_id = $data['team_id']; // team_id del team votato
+
+          $newVote3->save();
+        }
+      }
+
+      // Controllo se il valore del voto della Categoria 4 non è nullo (è stata votata)
+      if($request->voteTeam4) {
+        // per ogni membro del team creo il voto della Categoria 4
+        foreach ($teamMembers as $i => $member) {
+          $newVote4 = new Vote();
+          $newVote4-> info_voter_id = $data['info_voter_id'];
+          $newVote4-> info_voted_id = $member -> id;
+          $newVote4-> category_id = $data['category4_id'];
+          $newVote4-> value = $data['voteTeam4'];
+          if($request->comment4) {
+            $newVote4-> comment = $data['comment4'];
+          };
+          $newVote4-> team_vote = 1; // è stato votato il team
+          $newVote4-> team_id = $data['team_id']; // team_id del team votato
+
+          $newVote4->save();
+        }
+      }
+
+      // Queste 4 istanze sono necessarie per la QUERY per la Classifica per Team
+
+      // Controllo se il valore del voto della Categoria 1 non è nullo (è stata votata)
+      if($request->voteTeam1) {
+        // Categoria 1
+        $newVote1 = new Vote();
+        $newVote1-> info_voter_id = $data['info_voter_id'];
+        $newVote1-> info_voted_id = null;
         $newVote1-> category_id = $data['category1_id'];
         $newVote1-> value = $data['voteTeam1'];
         if($request->comment1) {
           $newVote1-> comment = $data['comment1'];
         };
-        $newVote1-> team_vote = 1;  // è stato votato il team
+        $newVote1-> team_vote = 2;  // è stato votato il team
         $newVote1-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote1->save();
       }
-    }
 
-    // Controllo se il valore del voto della Categoria 2 non è nullo (è stata votata)
-    if($request->voteTeam2) {
-      // per ogni membro del team creo il voto della Categoria 2
-      foreach ($teamMembers as $i => $member) {
+      // Categoria 2
+      if($request->voteTeam2) {
         $newVote2 = new Vote();
         $newVote2-> info_voter_id = $data['info_voter_id'];
-        $newVote2-> info_voted_id = $member -> id;
+        $newVote2-> info_voted_id = null;
         $newVote2-> category_id = $data['category2_id'];
         $newVote2-> value = $data['voteTeam2'];
         if($request->comment2) {
           $newVote2-> comment = $data['comment2'];
         };
-        $newVote2-> team_vote = 1; // è stato votato il team
+        $newVote2-> team_vote = 2;  // è stato votato il team
         $newVote2-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote2->save();
       }
-    }
 
-    // Controllo se il valore del voto della Categoria 3 non è nullo (è stata votata)
-    if($request->voteTeam3) {
-      // per ogni membro del team creo il voto della Categoria 3
-      foreach ($teamMembers as $i => $member) {
+      // Categoria 3
+      if($request->voteTeam3) {
         $newVote3 = new Vote();
         $newVote3-> info_voter_id = $data['info_voter_id'];
-        $newVote3-> info_voted_id = $member -> id;
+        $newVote3-> info_voted_id = null;
         $newVote3-> category_id = $data['category3_id'];
         $newVote3-> value = $data['voteTeam3'];
         if($request->comment3) {
           $newVote3-> comment = $data['comment3'];
         };
-        $newVote3-> team_vote = 1; // è stato votato il team
+        $newVote3-> team_vote = 2;  // è stato votato il team
         $newVote3-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote3->save();
       }
-    }
 
-    // Controllo se il valore del voto della Categoria 4 non è nullo (è stata votata)
-    if($request->voteTeam4) {
-      // per ogni membro del team creo il voto della Categoria 4
-      foreach ($teamMembers as $i => $member) {
+      // Categoria 4
+      if($request->voteTeam4) {
         $newVote4 = new Vote();
         $newVote4-> info_voter_id = $data['info_voter_id'];
-        $newVote4-> info_voted_id = $member -> id;
+        $newVote4-> info_voted_id = null;
         $newVote4-> category_id = $data['category4_id'];
         $newVote4-> value = $data['voteTeam4'];
         if($request->comment4) {
           $newVote4-> comment = $data['comment4'];
         };
-        $newVote4-> team_vote = 1; // è stato votato il team
+        $newVote4-> team_vote = 2;  // è stato votato il team
         $newVote4-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote4->save();
       }
+
     }
-
-    // Queste 4 istanze sono necessarie per la QUERY per la Classifica per Team
-
-    // Controllo se il valore del voto della Categoria 1 non è nullo (è stata votata)
-    if($request->voteTeam1) {
-      // Categoria 1
-      $newVote1 = new Vote();
-      $newVote1-> info_voter_id = $data['info_voter_id'];
-      $newVote1-> info_voted_id = null;
-      $newVote1-> category_id = $data['category1_id'];
-      $newVote1-> value = $data['voteTeam1'];
-      if($request->comment1) {
-        $newVote1-> comment = $data['comment1'];
-      };
-      $newVote1-> team_vote = 2;  // è stato votato il team
-      $newVote1-> team_id = $data['team_id']; // team_id del team votato
-
-      $newVote1->save();
-    }
-
-    // Categoria 2
-    if($request->voteTeam2) {
-      $newVote2 = new Vote();
-      $newVote2-> info_voter_id = $data['info_voter_id'];
-      $newVote2-> info_voted_id = null;
-      $newVote2-> category_id = $data['category2_id'];
-      $newVote2-> value = $data['voteTeam2'];
-      if($request->comment2) {
-        $newVote2-> comment = $data['comment2'];
-      };
-      $newVote2-> team_vote = 2;  // è stato votato il team
-      $newVote2-> team_id = $data['team_id']; // team_id del team votato
-
-      $newVote2->save();
-    }
-
-    // Categoria 3
-    if($request->voteTeam3) {
-      $newVote3 = new Vote();
-      $newVote3-> info_voter_id = $data['info_voter_id'];
-      $newVote3-> info_voted_id = null;
-      $newVote3-> category_id = $data['category3_id'];
-      $newVote3-> value = $data['voteTeam3'];
-      if($request->comment3) {
-        $newVote3-> comment = $data['comment3'];
-      };
-      $newVote3-> team_vote = 2;  // è stato votato il team
-      $newVote3-> team_id = $data['team_id']; // team_id del team votato
-
-      $newVote3->save();
-    }
-
-    // Categoria 4
-    if($request->voteTeam4) {
-      $newVote4 = new Vote();
-      $newVote4-> info_voter_id = $data['info_voter_id'];
-      $newVote4-> info_voted_id = null;
-      $newVote4-> category_id = $data['category4_id'];
-      $newVote4-> value = $data['voteTeam4'];
-      if($request->comment4) {
-        $newVote4-> comment = $data['comment4'];
-      };
-      $newVote4-> team_vote = 2;  // è stato votato il team
-      $newVote4-> team_id = $data['team_id']; // team_id del team votato
-
-      $newVote4->save();
-    }
-
     return Redirect::route('logged.votes.index');
   }
 

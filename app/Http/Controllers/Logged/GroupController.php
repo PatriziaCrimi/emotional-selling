@@ -43,7 +43,7 @@ class GroupController extends Controller
       $userrow = GroupRoleRoundUser::where('user_id','=',$idAuth)->where('round_id',$round -> name)->get();
 
       foreach ($userrow as $user) {
-        $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',$round->name)->get()->groupBy(['group_id','team_id']);
+        $usersGroups = GroupRoleRoundUser::where('group_id',$user -> group_id)->where('round_id',$round->name)->where('role_id','!=',$idDM)->where('role_id','!=',$idDMjunior)->get()->groupBy(['group_id','team_id']);
       }
     }
 
