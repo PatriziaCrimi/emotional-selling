@@ -23,7 +23,7 @@ main section#votes-show, {
 
     form {
 
-      .form-group {
+      .category-wrapper {
         padding-bottom: $padding_unit;
 
         h3 {
@@ -39,6 +39,11 @@ main section#votes-show, {
         .form-control {
           border-radius: 15px;
           background-color: $white_opacity;
+
+          &.readonly:focus {
+            border: 1px solid #ced4da;
+            box-shadow: none;
+          }
         }
 
         .radio-toolbar {
@@ -49,12 +54,14 @@ main section#votes-show, {
             width: 0;
 
             &:checked + label.radio-label,
-            &:focus + label.radio-label {
+            &:focus + label.radio-label,
+            &:checked + label.radio-label-disabled, {
               @include voted-button;
             }
           }
 
-          label.radio-label {
+          label.radio-label,
+          label.radio-label-disabled {
             width: $vote_button;
             height: $vote_button;
             border-radius: $vote_button / 2;
@@ -63,14 +70,14 @@ main section#votes-show, {
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             margin: 0 $margin_unit;
             @include to-vote-button;
             @include transition_hover;
+          }
 
-            &:hover {
-              background-color: blue;
-            }
+          label.radio-label:hover {
+            cursor: pointer;
+            @include voted-button;
           }
         }
       }
