@@ -2,6 +2,7 @@
   background-image: $img;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 @mixin active-user {
@@ -15,7 +16,6 @@
   color: #fff;
   border: 1px solid $color;
   border-radius: 7px;
-  font-weight: bold;
 }
 
 @mixin to-vote-button {

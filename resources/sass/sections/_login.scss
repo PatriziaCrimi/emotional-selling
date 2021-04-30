@@ -2,15 +2,19 @@ main section#login {
   @include background-img($bg_login_tablet);
   min-height: 100vh;
 
-  .logo {
-    width: 100%;
-    padding: $padding_unit * 2;
-  }
+  .container {
+    height: 100%;
+    min-height: 100vh;
 
-  .card {
+    .logo-wrapper {
+      width: 100%;
+      padding: 0 $padding_unit * 3 $padding_unit* 2;
+    }
 
-    button.btn {
-     @include input-button($fuxia);
+    .card {
+      button.btn {
+        @include input-button($fuxia);
+      }
     }
   }
 }

@@ -10029,7 +10029,6 @@ main section {
   width: 100%;
   height: 100%;
   min-height: calc(100vh - 88px);
-  padding: 40px;
 }
 
 h1 {
@@ -10045,7 +10044,7 @@ a:hover {
 }
 
 .card {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 15px;
   padding: 20px;
 }
@@ -10086,18 +10085,22 @@ main section#login {
   background-image: url("../storage/img/sfondo_login_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   min-height: 100vh;
 }
-main section#login .logo {
-  width: 100%;
-  padding: 40px;
+main section#login .container {
+  height: 100%;
+  min-height: 100vh;
 }
-main section#login .card button.btn {
+main section#login .container .logo-wrapper {
+  width: 100%;
+  padding: 0 60px 40px;
+}
+main section#login .container .card button.btn {
   background-color: #e20177;
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
-  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10107,12 +10110,14 @@ main section#login .card button.btn {
     background-image: url("../storage/img/sfondo_login_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
 }
 main section#home {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 main section#home .card {
   margin-top: 40px;
@@ -10128,7 +10133,6 @@ main section#home .card a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
-  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10138,12 +10142,14 @@ main section#home .card a.btn {
     background-image: url("../storage/img/sfondo_generale_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
 }
 main section#groups {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 main section#groups h1 {
   color: #1b4298;
@@ -10165,7 +10171,7 @@ main section#groups .groups-wrapper h2 {
   padding: 10px 0;
 }
 main section#groups .groups-wrapper table.table {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 15px;
   color: #1b4298;
 }
@@ -10192,7 +10198,6 @@ main section#groups .buttons-wrapper a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
-  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10202,12 +10207,14 @@ main section#groups .buttons-wrapper a.btn {
     background-image: url("../storage/img/sfondo_generale_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
 }
 main section#votes-index {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 main section#votes-index h1,
 main section#votes-index h1 + p {
@@ -10230,27 +10237,24 @@ main section#votes-index .groups-wrapper a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
-  font-weight: bold;
 }
 main section#votes-index .groups-wrapper a.btn.voted {
   background-color: #54b948;
   color: #fff;
   border: 1px solid #54b948;
   border-radius: 7px;
-  font-weight: bold;
 }
 main section#votes-index .groups-wrapper a.btn.to-vote {
   background-color: #1b4298;
   color: #fff;
   border: 1px solid #1b4298;
   border-radius: 7px;
-  font-weight: bold;
 }
 main section#votes-index .groups-wrapper h2 {
   padding: 10px 0;
 }
 main section#votes-index .groups-wrapper table.table {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 15px;
   color: #1b4298;
 }
@@ -10272,7 +10276,6 @@ main section#votes-index .buttons-wrapper a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
-  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10282,6 +10285,7 @@ main section#votes-index .buttons-wrapper a.btn {
     background-image: url("../storage/img/sfondo_generale_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
 }
 main section#votes-form,
@@ -10289,6 +10293,7 @@ main section#votes-show {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 main section#votes-form h1,
 main section#votes-show h1 {
@@ -10327,7 +10332,7 @@ main section#votes-show .form-wrapper form .category-wrapper p.comment-message {
 main section#votes-form .form-wrapper form .category-wrapper .form-control,
 main section#votes-show .form-wrapper form .category-wrapper .form-control {
   border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 main section#votes-form .form-wrapper form .category-wrapper .form-control.readonly:focus,
 main section#votes-show .form-wrapper form .category-wrapper .form-control.readonly:focus {
@@ -10382,7 +10387,6 @@ main section#votes-show .form-wrapper form .submit-wrapper button[type=submit] {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
-  font-weight: bold;
 }
 main section#votes-form .buttons-wrapper a.btn,
 main section#votes-show .buttons-wrapper a.btn {
@@ -10394,7 +10398,6 @@ main section#votes-show .buttons-wrapper a.btn.btn-back {
   color: #fff;
   border: 1px solid #54b948;
   border-radius: 7px;
-  font-weight: bold;
 }
 main section#votes-form .buttons-wrapper a.btn.btn-cancel,
 main section#votes-show .buttons-wrapper a.btn.btn-cancel {
@@ -10402,7 +10405,6 @@ main section#votes-show .buttons-wrapper a.btn.btn-cancel {
   color: #fff;
   border: 1px solid #1b4298;
   border-radius: 7px;
-  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10412,12 +10414,14 @@ main section#votes-show .buttons-wrapper a.btn.btn-cancel {
     background-image: url("../storage/img/sfondo_generale_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
 }
 main section#rankings {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10427,12 +10431,14 @@ main section#rankings {
     background-image: url("../storage/img/sfondo_generale_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
 }
 main section#errors {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   min-height: 100vh;
 }
 main section#errors h1 {
@@ -10444,7 +10450,6 @@ main section#errors a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
-  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10454,5 +10459,6 @@ main section#errors a.btn {
     background-image: url("../storage/img/sfondo_generale_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
 }
