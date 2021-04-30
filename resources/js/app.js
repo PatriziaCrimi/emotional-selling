@@ -45,14 +45,6 @@ const app = new Vue({
     error:false,
   },
   methods: {
-    // showTeams: function(indexTeam) {
-    //   // if(indexTeam == ) {
-    //     console.log(indexTeam);
-    //     this.isTeamShown = true;
-    //   // } else {
-    //   //   this.isTeamShown = false;
-    //   // }
-    // },
     cancelVotes: function() {
       this.radio1 = '';
       this.radio2 = '';
