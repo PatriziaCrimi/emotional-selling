@@ -59,74 +59,81 @@
 
                     <div class="d-flex">
 
-                      <div class="admin-select rankings">
-                        <p>Guarda votazioni</p>
-                        <a class="btn" href="{{ route('logged.admin.votes')}}">Vai</a>
-                      </div>
-
-                      <div class="admin-select rankings">
-                        <p>Guarda votazioni live</p>
-                        <a class="btn" href="{{ route('logged.admin.voting')}}">Vai</a>
-                      </div>
-
-                      <div class="admin-select rankings">
-                        <p>Vedi Classifica</p>
-                        <a class="btn" href="{{ route('logged.rankings.index')}}">Vai</a>
-                      </div>
-
-                      <div class="admin-select rankings">
-                        <p>Sede Options</p>
-                        <a class="dropdown-item" href="{{ route('logged.sede.options') }}">Vai</a>
+                      <div class="dropdown">
+                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Admin Options
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="btn" href="{{ route('logged.admin.votes')}}">Guarda votazioni</a>
+                          <a class="btn" href="{{ route('logged.admin.voting')}}">Guarda votazioni live</a>
+                          <a class="btn" href="{{ route('logged.rankings.index')}}">Guarda classifica</a>
+                          <a class="dropdown-item" href="{{ route('logged.sede.options') }}">Operazioni SEDE</a>
+                        </div>
                       </div>
 
                       {{-- Selezione Round --}}
-                      <div class="admin-select">
-                        <p>Seleziona Round</p>
-                        <form class="round" action="{{ route('logged.round.update')}}" method="post">
-                          @csrf
-                          @method('post')
-                          <select class="" name="round">
-                            <option  value="1" {{ $round->name == 1 ? 'selected' : '' }}>Round 1</option>
-                            <option  value="2"{{ $round->name == 2 ? 'selected' : '' }}>Round 2</option>
-                            <option  value="3"{{ $round->name == 3 ? 'selected' : '' }}>Round 3</option>
-                          </select>
 
-                          <input type="submit" name="" value="Inizia">
-                        </form>
+                      <div class="dropdown admin-select">
+                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Seleziona Round
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <form class="round" action="{{ route('logged.round.update')}}" method="post">
+                            @csrf
+                            @method('post')
+                            <select class="" name="round">
+                              <option  value="1" {{ $round->name == 1 ? 'selected' : '' }}>Round 1</option>
+                              <option  value="2"{{ $round->name == 2 ? 'selected' : '' }}>Round 2</option>
+                              <option  value="3"{{ $round->name == 3 ? 'selected' : '' }}>Round 3</option>
+                            </select>
+
+                            <input type="submit" name="" value="Inizia">
+                          </form>
+                        </div>
                       </div>
 
                       {{-- Select Attivazione Votazione --}}
-                      <div class="admin-select">
-                        <p>Attiva Votazione</p>
-                        <form class="" action="{{ route('logged.button.updateStartVote')}}" method="post">
-                          @csrf
-                          @method('post')
-                          <select class="" name="button1">
-                            <span>Attivazione Votazione</span>
-                            <option  value="0" {{ $button1->status == 0 ? 'selected' : '' }}>Non visibile</option>
-                            <option  value="1"{{ $button1->status == 1 ? 'selected' : '' }}>Visibile</option>
-                          </select>
 
-                          <input type="submit" name="" value="Salva">
-                        </form>
+                      <div class="dropdown admin-select">
+                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Attiva Votazione
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <form class="" action="{{ route('logged.button.updateStartVote')}}" method="post">
+                            @csrf
+                            @method('post')
+                            <select class="" name="button1">
+                              <span>Attivazione Votazione</span>
+                              <option  value="0" {{ $button1->status == 0 ? 'selected' : '' }}>Non visibile</option>
+                              <option  value="1"{{ $button1->status == 1 ? 'selected' : '' }}>Visibile</option>
+                            </select>
+
+                            <input type="submit" name="" value="Salva">
+                          </form>
+                        </div>
                       </div>
 
                       {{-- Select Stop Votazione --}}
-                      <div class="admin-select">
-                        <p>Disattiva Votazione</p>
-                        <form class="" action="{{ route('logged.button.updateStopVote')}}" method="post">
-                          @csrf
-                          @method('post')
-                          <select class="" name="button2">
-                            <span>Stop votazione</span>
-                            <option  value="0" {{ $button2->status == 0 ? 'selected' : '' }}>Non visibile</option>
-                            <option  value="1"{{ $button2->status == 1 ? 'selected' : '' }}>Visibile</option>
-                          </select>
 
-                          <input type="submit" name="" value="Salva">
-                        </form>
+                      <div class="dropdown admin-select">
+                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Disattiva Votazione
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <form class="" action="{{ route('logged.button.updateStopVote')}}" method="post">
+                            @csrf
+                            @method('post')
+                            <select class="" name="button2">
+                              <span>Stop votazione</span>
+                              <option  value="0" {{ $button2->status == 0 ? 'selected' : '' }}>Non visibile</option>
+                              <option  value="1"{{ $button2->status == 1 ? 'selected' : '' }}>Visibile</option>
+                            </select>
+
+                            <input type="submit" name="" value="Salva">
+                          </form>
+                        </div>
                       </div>
-                    </div>
+
                   @endif
 
                   <li class="nav-item dropdown">
