@@ -151,8 +151,9 @@ class ButtonController extends Controller
         $finalArray[] = $array;
       }
     }
- 
+
     return response()->json($finalArray);
 
   }
+
 }
