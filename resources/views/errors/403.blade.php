@@ -8,7 +8,7 @@
           <div class="text-center">
             <h1 class="text-uppercase">Errore 403</h1>
             <h2>Non hai i permessi per navigare questa pagina.</h2>
-            <a class="btn btn-danger" href="{{route('logged.home')}}">
+            <a class="btn" href="{{route('logged.home')}}">
               Torna alla home
             </a>
           </div>

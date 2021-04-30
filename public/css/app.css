@@ -10433,6 +10433,18 @@ main section#errors {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 100vh;
+}
+main section#errors h1 {
+  color: #1b4298;
+  font-weight: bold;
+}
+main section#errors a.btn {
+  background-color: #e20177;
+  color: #fff;
+  border: 1px solid #e20177;
+  border-radius: 7px;
+  font-weight: bold;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */

@@ -1,5 +1,15 @@
 main section#errors {
   @include background-img($bg_general_tablet);
+  min-height: 100vh;
+
+  h1 {
+    color: $blue;
+    font-weight: bold;
+  }
+
+  a.btn {
+    @include input-button($fuxia);
+  }
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
