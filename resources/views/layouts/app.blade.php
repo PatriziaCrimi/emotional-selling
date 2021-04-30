@@ -150,12 +150,12 @@
 
                         <span class="font-weight-bold">{{$id_combo->role->name}}</span>
                       @else
-                        <span class="font-weight-bold">Team {{ Auth::user()->team->name }}</span>
+                        <span class="font-weight-bold team">Team {{ Auth::user()->team->name }}</span>
                       @endif
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ route('logout') }}"
+                      <a class="logout dropdown-item" href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}

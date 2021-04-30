@@ -10096,7 +10096,26 @@ header nav.navbar .admin-select form input[type=submit] {
 header nav.navbar .admin-select form input[type=submit] {
   padding: 0 10px;
 }
+header nav.navbar li.nav-item span {
+  font-size: 13px;
+}
+header nav.navbar li.nav-item span.team {
+  margin-right: 5px;
+}
+header nav.navbar li.nav-item a.logout {
+  font-size: 18px;
+}
 
+/* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Medium 768px md */
+@media screen and (min-width: 768px) {
+  header nav.navbar li.nav-item span {
+    font-size: 21.6666666667px;
+  }
+  header nav.navbar li.nav-item a.logout {
+    font-size: 21.6666666667px;
+  }
+}
 main section#login {
   background-image: url("../storage/img/sfondo_login_tablet.jpg");
   background-size: cover;
@@ -10118,6 +10137,7 @@ main section#login .container .card button.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
+  letter-spacing: 1.5px;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10151,6 +10171,7 @@ main section#home .card a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
+  letter-spacing: 1.5px;
   font-size: 18px;
 }
 
@@ -10244,14 +10265,20 @@ main section#groups .groups-wrapper table.table tbody tr .active {
   color: #e20177;
   background-color: rgba(0, 157, 204, 0.4);
 }
+main section#groups .buttons-wrapper {
+  padding: 20px 0;
+}
 main section#groups .buttons-wrapper p {
   padding: 20px 0;
 }
-main section#groups .buttons-wrapper a.btn {
+main section#groups .buttons-wrapper a.btn.btn-lg, main section#groups .buttons-wrapper .btn-group-lg > a.btn {
   background-color: #e20177;
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
+  letter-spacing: 1.5px;
+  padding-left: 26px;
+  padding-right: 26px;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10272,8 +10299,24 @@ main section#groups .buttons-wrapper a.btn {
 }
 /* Breakpoint Medium 768px md */
 @media screen and (min-width: 768px) {
+  main section#groups h1 {
+    font-size: 36px;
+  }
   main section#groups .groups-wrapper {
     padding: 40px 0;
+  }
+  main section#groups .groups-wrapper h2 {
+    font-size: 30px;
+  }
+  main section#groups .buttons-wrapper a.btn.btn-lg, main section#groups .buttons-wrapper .btn-group-lg > a.btn {
+    background-color: #e20177;
+    color: #fff;
+    border: 1px solid #e20177;
+    border-radius: 7px;
+    letter-spacing: 1.5px;
+    font-size: 36px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 /* Breakpoint Large 992px lg */
@@ -10320,18 +10363,21 @@ main section#votes-index .groups-wrapper a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
+  letter-spacing: 1.5px;
 }
 main section#votes-index .groups-wrapper a.btn.voted {
   background-color: #54b948;
   color: #fff;
   border: 1px solid #54b948;
   border-radius: 7px;
+  letter-spacing: 1.5px;
 }
 main section#votes-index .groups-wrapper a.btn.to-vote {
   background-color: #1b4298;
   color: #fff;
   border: 1px solid #1b4298;
   border-radius: 7px;
+  letter-spacing: 1.5px;
 }
 main section#votes-index .groups-wrapper h2 {
   padding: 10px 0;
@@ -10364,6 +10410,7 @@ main section#votes-index .buttons-wrapper a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
+  letter-spacing: 1.5px;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10490,6 +10537,7 @@ main section#votes-show .form-wrapper form .submit-wrapper button[type=submit] {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
+  letter-spacing: 1.5px;
 }
 main section#votes-form .buttons-wrapper a.btn,
 main section#votes-show .buttons-wrapper a.btn {
@@ -10501,6 +10549,7 @@ main section#votes-show .buttons-wrapper a.btn.btn-back {
   color: #fff;
   border: 1px solid #54b948;
   border-radius: 7px;
+  letter-spacing: 1.5px;
 }
 main section#votes-form .buttons-wrapper a.btn.btn-cancel,
 main section#votes-show .buttons-wrapper a.btn.btn-cancel {
@@ -10508,6 +10557,7 @@ main section#votes-show .buttons-wrapper a.btn.btn-cancel {
   color: #fff;
   border: 1px solid #1b4298;
   border-radius: 7px;
+  letter-spacing: 1.5px;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10553,6 +10603,7 @@ main section#errors a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
+  letter-spacing: 1.5px;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */

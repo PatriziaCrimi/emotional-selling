@@ -109,7 +109,7 @@
                 </a>
               @else
               {{-- Se sono OSSERVATORI o SEDE  --}}
-                <a class="btn" href="{{route('logged.votes.index')}}">
+                <a class="btn btn-lg font-weight-bold" href="{{route('logged.votes.index')}}">
                   Vota
                 </a>
               @endif

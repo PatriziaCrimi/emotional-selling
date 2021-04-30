@@ -39,5 +39,39 @@ header {
         }
       }
     }
+
+    li.nav-item {
+      span {
+        font-size: $mobile_font - 5px;
+
+        &.team {
+          margin-right: $margin_unit / 2;
+        }
+      }
+
+      a.logout {
+        font-size: $mobile_font;
+      }
+    }
+  }
+}
+
+/* ------------------- MEDIA QUERY ------------------- */
+
+/* Breakpoint Medium 768px md */
+@media screen and (min-width: 768px) {
+
+  header  nav.navbar {
+
+    li.nav-item {
+
+      span {
+        font-size: $tablet_font / 1.2;
+      }
+
+      a.logout {
+        font-size: $tablet_font / 1.2;
+      }
+    }
   }
 }
