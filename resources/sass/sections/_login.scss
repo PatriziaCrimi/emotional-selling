@@ -1,6 +1,7 @@
 main section#login {
   @include background-img($bg_login_tablet);
   min-height: 100vh;
+  padding: 0;
 
   .container {
     height: 100%;
