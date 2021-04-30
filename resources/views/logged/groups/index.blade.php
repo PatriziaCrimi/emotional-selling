@@ -68,11 +68,11 @@
                         <tr>
                           @if ($player -> user -> id == Auth::user() -> id)
                             <th scope="row" class="active">{{$n+1}}</th>
-                            <td class="active">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
+                            <td class="active player">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
                             <td class="active">{{ $player -> role -> name}}</td>
                           @else
                             <th scope="row">{{$n+1}}</th>
-                            <td>{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
+                            <td class="player">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
                             <td>{{ $player -> role -> name}}</td>
                           @endif
                         </tr>

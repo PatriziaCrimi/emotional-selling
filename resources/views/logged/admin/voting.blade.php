@@ -11,7 +11,8 @@
 
     <div class="row justify-content-center m-4">
       <form v-on:submit.prevent="getVotesLive" method="POSt">
-
+        @csrf
+        @method('post')
       <div class="form-row">
 
         <select placeholder="Select a Round" v-model="form2.round_id" name="round_id"class="form-control mr-4 col">

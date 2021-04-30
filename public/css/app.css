@@ -10184,6 +10184,15 @@ main section#groups .groups-wrapper table.table thead {
   text-transform: uppercase;
   color: #e20177;
 }
+main section#groups .groups-wrapper table.table tbody tr th {
+  width: 30%;
+}
+main section#groups .groups-wrapper table.table tbody tr td.player {
+  width: 40%;
+}
+main section#groups .groups-wrapper table.table tbody tr td {
+  width: 30%;
+}
 main section#groups .groups-wrapper table.table tbody tr .active {
   font-weight: bold;
   color: #e20177;
@@ -10266,6 +10275,15 @@ main section#votes-index .groups-wrapper table.table td {
 main section#votes-index .groups-wrapper table.table thead {
   text-transform: uppercase;
   color: #e20177;
+}
+main section#votes-index .groups-wrapper table.table tbody tr th {
+  width: 30%;
+}
+main section#votes-index .groups-wrapper table.table tbody tr td.player {
+  width: 40%;
+}
+main section#votes-index .groups-wrapper table.table tbody tr td {
+  width: 30%;
 }
 main section#votes-index .buttons-wrapper p {
   font-size: 24px;

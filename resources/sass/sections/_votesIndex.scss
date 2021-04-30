@@ -53,6 +53,20 @@ main section#votes-index {
         text-transform: uppercase;
         color: $fuxia;
       }
+
+      tbody {
+        tr {
+          th {
+            width: 30%;
+          }
+          td.player {
+            width: 40%;
+          }
+          td {
+            width: 30%;
+          }
+        }
+      }
     }
   }
 

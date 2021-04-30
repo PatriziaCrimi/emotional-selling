@@ -14,6 +14,8 @@
         {{-- <form action="{{route('logged.admin.getList')}}" method="POST">
          @csrf
          @method('post') --}}
+         @csrf
+         @method('post')
       <div class="form-row">
         {{-- <label for="form.user_id">Seleziona un utente</label> --}}
         <select  v-model="form.user_id" name="user_id"class="form-control mr-4 col">

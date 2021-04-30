@@ -99,11 +99,11 @@
                         @endphp
                         {{-- Se l'utente ha già votato --}}
                         @if (!is_null($idTeamVoted))
-                          <a class="btn voted" href="{{route('logged.votes.showVoteTeam', $key)}}">
+                          <a class="btn voted shadow p-3 mb-5" href="{{route('logged.votes.showVoteTeam', $key)}}">
                             Hai votato il Team {{$teamName -> name }}
                           </a>
                         @else
-                          <a class="btn to-vote" href="{{route('logged.votes.formTeam', $key)}}">
+                          <a class="btn to-vote shadow p-3 mb-5" href="{{route('logged.votes.formTeam', $key)}}">
                             Vota il Team {{$teamName -> name}}
                           </a>
                         @endif
@@ -126,7 +126,7 @@
                                   @endphp
 
                                   <th scope="row">{{$n+1}}</th>
-                                  <td>{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
+                                  <td class="player">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
                                   <td>{{ $player -> role -> name}}</td>
                                   {{-- Se il giocatore non è già stato votato --}}
                                   {{-- @if (is_null($idUserVoted))
