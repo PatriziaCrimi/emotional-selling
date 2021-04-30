@@ -49872,7 +49872,18 @@ var app = new Vue({
     textarea3: '',
     textarea4: '',
     isDisabled: true,
-    isTeamShown: false
+    isTeamShown: false,
+    form: {
+      user_id: '',
+      round_id: ''
+    },
+    votesArray: [],
+    form2: {
+      round_id: ''
+    },
+    liveArray: [],
+    success: false,
+    error: false
   },
   methods: {
     // showTeams: function(indexTeam) {
@@ -49951,8 +49962,71 @@ var app = new Vue({
         timer: 1500
       });
     },
+    alertWrong: function alertWrong() {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Qualcosa è andato storto!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    },
+    alertSuccess: function alertSuccess() {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'La tua ricerca è andata a buon fine',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    },
     isFormEmpty: function isFormEmpty() {
       this.isDisabled = false;
+    },
+    getVotes: function getVotes() {
+      var _this = this;
+
+      axios.post("/logged/admin/getList/", this.form).then(function (response) {
+        _this.reset();
+
+        _this.alertSuccess();
+
+        _this.votesArray = response.data;
+        console.log(_this.votesArray);
+      })["catch"](function (error) {
+        _this.reset();
+
+        _this.alertWrong();
+
+        console.log(error);
+      })["finally"](function () {});
+    },
+    getVotesLive: function getVotesLive() {
+      var _this2 = this;
+
+      axios.post("/logged/admin/votingLive/", this.form2).then(function (response) {
+        _this2.reset();
+
+        _this2.liveArray = response.data;
+
+        _this2.alertSuccess();
+
+        console.log(_this2.liveArray);
+      })["catch"](function (error) {
+        _this2.reset();
+
+        _this2.alertWrong();
+
+        console.log(error);
+      })["finally"](function () {});
+    },
+    reset: function reset() {
+      this.form.round_id = '';
+    },
+    resetTable: function resetTable() {
+      this.votesArray = [];
+      this.liveArray = [];
     } // getUser(id){
     //     axios
     //       .get("/logged/votes/user/" + id ).
@@ -50109,8 +50183,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

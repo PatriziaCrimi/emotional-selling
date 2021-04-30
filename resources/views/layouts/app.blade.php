@@ -58,12 +58,23 @@
                     Auth::user()->username == "valentini" )
 
                     <div class="d-flex">
+
                       <div class="admin-select rankings">
-                        <p>Vedi Classifica</p>
-                        <a class="btn" href="{{ route('logged.rankings.index')}}">Classifica</a>
+                        <p>Guarda votazioni</p>
+                        <a class="btn" href="{{ route('logged.admin.votes')}}">Vai</a>
                       </div>
 
-                      <div class="admin-select">
+                      <div class="admin-select rankings">
+                        <p>Guarda votazioni live</p>
+                        <a class="btn" href="{{ route('logged.admin.voting')}}">Vai</a>
+                      </div>
+
+                      <div class="admin-select rankings">
+                        <p>Vedi Classifica</p>
+                        <a class="btn" href="{{ route('logged.rankings.index')}}">Vai</a>
+                      </div>
+
+                      <div class="admin-select rankings">
                         <p>Sede Options</p>
                         <a class="dropdown-item" href="{{ route('logged.sede.options') }}">Vai</a>
                       </div>

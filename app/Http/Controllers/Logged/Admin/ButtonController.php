@@ -11,6 +11,9 @@ use App\Round;
 use App\GroupRoleRoundUser;
 use App\User;
 use App\Group;
+use App\Vote;
+use App\Team;
+use App\Role;
 
 class ButtonController extends Controller
 {
@@ -67,5 +70,89 @@ class ButtonController extends Controller
     $groups = Group::findOrFail($data['groups']);
     $user -> groups() -> sync($groups);
     return redirect()->back();
+  }
+
+  public function showVotes(){
+    $round = Round::find(4);
+    $button1 = Button::find(1);
+    $button2 = Button::find(2);
+    $users = User::orderBy('lastname','ASC')->get();
+    $rounds = Round::where('id','!=',4)->get();
+
+    return view('logged.admin.votes',compact('round','button1','button2','users','rounds'));
+  }
+
+  public function getListVotes(Request $request) {
+    $data = $request->all();
+    $query = GroupRoleRoundUser::where('user_id',$data['user_id'])->where('round_id',$data['round_id'])->first();
+    $votes = Vote::where('info_voter_id',$query->id)->where('team_vote',2)->get();
+    foreach ($votes as $vote) {
+      $array = [];
+      $category = $vote -> category -> name;
+      $info_voter_id = GroupRoleRoundUser::where('id',$vote -> info_voter_id)->first();
+      $role = Role::where('id',$info_voter_id -> role_id)->first();
+      $round = Round::where('id',$info_voter_id -> round_id)->first();
+      $name = User::where('id',$info_voter_id -> user_id)->first();
+      $team = Team::where('id',$vote->team_id)->first();
+      $comment = strlen($vote->comment) > 50 ? substr($vote->comment,0,50)."..." : $vote->comment;
+      $array = array(
+        'id' => $vote -> id,
+        'value' => $vote -> value,
+        'category' => $category,
+        'role' => $role -> name,
+        'round' => $round -> name,
+        'name' => $name -> name,
+        'lastname' => $name -> lastname,
+        'team' => $team -> name,
+        'comment' => $comment,
+        'vote_time' => $vote -> created_at->format('H:i:s m/d'),
+      );
+      $finalArray[] = $array;
+    }
+
+    return response()->json($finalArray);
+
+  }
+
+  public function getVoting(){
+    $round = Round::find(4);
+    $button1 = Button::find(1);
+    $button2 = Button::find(2);
+    $users = User::orderBy('lastname','ASC')->get();
+    $rounds = Round::where('id','!=',4)->get();
+
+    return view('logged.admin.voting',compact('round','button1','button2','users','rounds'));
+  }
+
+  public function getVotingLive(Request $request) {
+    $data = $request -> all();
+    $combo = GroupRoleRoundUser::where('role_id','!=',1)->where('role_id','!=',6)->where('role_id','!=',7)->where('round_id',$data['round_id'])->get();
+    foreach ($combo as $user) {
+      $vote = Vote::where('info_voter_id',$user->id)->first();
+      $utente = User::where('id',$user->user_id)->first();
+      $role = Role::where('id',$user->role_id)->first();
+      if (!is_null($vote)) {
+        $array = array(
+          'name' => $utente -> name,
+          'lastname' => $utente -> lastname,
+          'role' => $role -> name,
+          'vote' => 'Ha votato',
+          'vote_time' => $vote -> created_at->format('H:i:s m/d'),
+        );
+        $finalArray[] = $array;
+      }else {
+        $array = array(
+          'name' => $utente -> name,
+          'lastname' => $utente -> lastname,
+          'role' => $role -> name,
+          'vote' => 'Non ha votato',
+          'vote_time' => 'in attesa',
+        );
+        $finalArray[] = $array;
+      }
+    }
+ 
+    return response()->json($finalArray);
+
   }
 }
