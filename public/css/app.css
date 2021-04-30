@@ -10021,7 +10021,7 @@ h3 {
 
 body {
   font-family: "D-din", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   color: #585b5c;
 }
 
@@ -10029,15 +10029,16 @@ main section {
   width: 100%;
   height: 100%;
   min-height: calc(100vh - 88px);
-  padding-top: 50px;
+  padding: 50px 0;
 }
 
 h1, h2 {
-  font-size: 24px;
+  font-size: 26px;
+  margin: 0 !important;
 }
 
 p {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 ul li {
@@ -10059,13 +10060,13 @@ a:hover {
 /* Breakpoint Medium 768px md */
 @media screen and (min-width: 768px) {
   main section {
-    padding-top: 70px;
+    padding: 70px 0;
   }
 }
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
   main section {
-    padding-top: 100px;
+    padding: 100px 0;
   }
 }
 /* Breakpoint Extra Large 1200px xl */
@@ -10102,6 +10103,7 @@ main section#login {
   background-repeat: no-repeat;
   background-position: center;
   min-height: 100vh;
+  padding: 0;
 }
 main section#login .container {
   height: 100%;
@@ -10139,6 +10141,7 @@ main section#home .card {
 }
 main section#home .card h1 {
   color: #54b948;
+  margin-bottom: 5px;
 }
 main section#home .card p {
   padding: 10px;
@@ -10148,7 +10151,7 @@ main section#home .card a.btn {
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10158,14 +10161,14 @@ main section#home .card a.btn {
     padding: 20px;
   }
   main section#home .card h1, main section#home .card h2 {
-    font-size: 38.4px;
+    font-size: 43.2px;
   }
   main section#home .card p {
-    font-size: 24px;
+    font-size: 26px;
     padding: 20px 0;
   }
   main section#home .card a.btn {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 /* Breakpoint Large 992px lg */
@@ -10177,7 +10180,7 @@ main section#home .card a.btn {
     background-position: center;
   }
   main section#home .card h1, main section#home .card h2 {
-    font-size: 48px;
+    font-size: 54px;
     margin: 10px 0;
   }
   main section#home .card p {
@@ -10200,9 +10203,6 @@ main section#groups .sede-info {
   padding: 20px 0;
   color: #1b4298;
 }
-main section#groups .groups-wrapper {
-  padding: 40px 0;
-}
 main section#groups .groups-wrapper.sede h2 {
   color: #1b4298;
   padding-right: 20px;
@@ -10210,7 +10210,11 @@ main section#groups .groups-wrapper.sede h2 {
   cursor: pointer;
 }
 main section#groups .groups-wrapper h2 {
-  padding: 10px 0;
+  padding-top: 26px;
+  padding-bottom: 20px;
+}
+main section#groups .groups-wrapper table.table_xs {
+  display: block;
 }
 main section#groups .groups-wrapper table.table {
   background-color: rgba(255, 255, 255, 0.6);
@@ -10225,6 +10229,9 @@ main section#groups .groups-wrapper table.table td {
 main section#groups .groups-wrapper table.table thead {
   text-transform: uppercase;
   color: #e20177;
+}
+main section#groups .groups-wrapper table.table tbody tr th.team_xs {
+  display: none;
 }
 main section#groups .groups-wrapper table.table tbody tr td.player {
   width: 40%;
@@ -10248,6 +10255,27 @@ main section#groups .buttons-wrapper a.btn {
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Small 576px sm */
+@media screen and (min-width: 577px) {
+  main section#groups .groups-wrapper h2 {
+    padding-top: 0;
+  }
+  main section#groups .groups-wrapper table {
+    font-size: 26px;
+  }
+  main section#groups .groups-wrapper table.table_xs {
+    display: none;
+  }
+  main section#groups .groups-wrapper table.table tbody tr th.team_xs {
+    display: block;
+  }
+}
+/* Breakpoint Medium 768px md */
+@media screen and (min-width: 768px) {
+  main section#groups .groups-wrapper {
+    padding: 40px 0;
+  }
+}
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
   main section#groups {
@@ -10256,25 +10284,13 @@ main section#groups .buttons-wrapper a.btn {
     background-repeat: no-repeat;
     background-position: center;
   }
-}
-/* Breakpoint Small 576px sm */
-@media screen and (max-width: 576px) {
-  table.table_xs {
-    display: block;
+  main section#groups h1 {
+    font-size: 43.2px;
   }
-
-  table.table tr th.team_xs {
-    display: none;
-  }
-}
-/* Breakpoint From Small 576px sm */
-@media screen and (min-width: 577px) {
-  table.table_xs {
-    display: none;
-  }
-
-  table.table tr th.team_xs {
-    display: block;
+  main section#groups .groups-wrapper h2 {
+    font-size: 36px;
+    padding-top: 20px;
+    padding-bottom: 30px;
   }
 }
 main section#votes-index {
