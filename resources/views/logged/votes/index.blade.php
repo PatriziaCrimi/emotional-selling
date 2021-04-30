@@ -167,7 +167,7 @@
                     Guarda la classifica provvisoria
                   </a>
                 @else
-                  <a href="{{route('logged.home')}}" class="btn btn-dark">
+                  <a href="{{route('logged.home')}}" class="btn btn-lg">
                     Torna alla home
                   </a>
                 @endif

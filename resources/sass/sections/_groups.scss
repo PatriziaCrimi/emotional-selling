@@ -72,12 +72,16 @@ main section#groups {
   }
 
   .buttons-wrapper {
+    padding: $padding_unit 0;
+
     p {
       padding: $padding_unit 0;
     }
 
-    a.btn {
+    a.btn.btn-lg {
       @include input-button($fuxia);
+      padding-left: $padding_unit * 1.3;
+      padding-right: $padding_unit * 1.3;
     }
   }
 }
@@ -117,8 +121,26 @@ main section#groups {
 @media screen and (min-width: 768px) {
   main section#groups {
 
+    h1 {
+      font-size: $title_size;
+    }
+
     .groups-wrapper {
       padding: $padding_unit *2 0;
+
+      h2 {
+        font-size: $title_size / 1.2;
+      }
+    }
+
+    .buttons-wrapper {
+
+      a.btn.btn-lg {
+        @include input-button($fuxia);
+        font-size: $title_size;
+        padding-left: $padding_unit * 1.5;
+        padding-right: $padding_unit * 1.5;
+      }
     }
   }
 }
