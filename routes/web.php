@@ -43,6 +43,13 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
   Route::get('/admin/sedeoptions','Admin\ButtonController@sedeOptions')->name('sede.options');
   Route::post('/admin/sedeOptionsReq','Admin\ButtonController@sedeOptionsReq')->name('sede.options.req');
 
+  //Admin votes
+  Route::get('/admin/votes','Admin\ButtonController@showVotes')->name('admin.votes');
+  Route::post('/admin/getList','Admin\ButtonController@getListVotes')->name('admin.getList');
+  //Admin getVoting
+  Route::get('/admin/voting','Admin\ButtonController@getVoting')->name('admin.voting');
+  Route::post('/admin/votingLive','Admin\ButtonController@getVotingLive')->name('admin.voting.live');
+
   // Csvfile
   Route::get('/admin/csvfile','Admin\CsvfileController@index')->name('csvfile');
   Route::get('/admin/csvfile/export', 'Admin\CsvfileController@exportCsv')->name('export2');

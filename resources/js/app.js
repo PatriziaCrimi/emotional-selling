@@ -31,7 +31,18 @@ const app = new Vue({
     textarea3: '',
     textarea4: '',
     isDisabled: true,
-    isTeamShown: false
+    isTeamShown: false,
+    form:{
+      user_id:'',
+      round_id:''
+    },
+    votesArray: [],
+    form2:{
+      round_id:''
+    },
+    liveArray: [],
+    success:false,
+    error:false,
   },
   methods: {
     // showTeams: function(indexTeam) {
@@ -122,8 +133,65 @@ const app = new Vue({
         timer: 1500
       })
     },
+    alertWrong() {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Qualcosa è andato storto!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    },
+    alertSuccess() {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'La tua ricerca è andata a buon fine',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    },
     isFormEmpty: function() {
       this.isDisabled = false;
+    },
+    getVotes: function(){
+      axios.post("/logged/admin/getList/",this.form).
+      then(response => {
+          this.reset();
+          this.alertSuccess();
+          this.votesArray = response.data;
+          console.log(this.votesArray);
+      }).catch((error) => {
+          this.reset();
+          this.alertWrong();
+          console.log(error);
+      }).finally(() => {
+
+      });
+
+    },
+    getVotesLive: function(){
+      axios.post("/logged/admin/votingLive/",this.form2).
+      then(response => {
+          this.reset();
+          this.liveArray = response.data;
+          this.alertSuccess();
+          console.log(this.liveArray);
+      }).catch((error) => {
+          this.reset();
+          this.alertWrong();
+          console.log(error);
+      }).finally(() => {
+
+      });
+    },
+    reset: function(){
+      this.form.round_id = '';
+    },
+    resetTable: function(){
+      this.votesArray = [];
+      this.liveArray = [];
     },
     // getUser(id){
     //     axios
