@@ -10021,7 +10021,7 @@ h3 {
 
 body {
   font-family: "D-din", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   color: #585b5c;
 }
 
@@ -10029,10 +10029,15 @@ main section {
   width: 100%;
   height: 100%;
   min-height: calc(100vh - 88px);
+  padding-top: 50px;
 }
 
-h1 {
-  font-size: 28px;
+h1, h2 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 16px;
 }
 
 ul li {
@@ -10052,7 +10057,17 @@ a:hover {
 /* ------------------- MEDIA QUERY ------------------- */
 /* Breakpoint Small 576px sm */
 /* Breakpoint Medium 768px md */
+@media screen and (min-width: 768px) {
+  main section {
+    padding-top: 70px;
+  }
+}
 /* Breakpoint Large 992px lg */
+@media screen and (min-width: 992px) {
+  main section {
+    padding-top: 100px;
+  }
+}
 /* Breakpoint Extra Large 1200px xl */
 header nav.navbar .img-logo {
   max-width: 200px;
@@ -10120,22 +10135,39 @@ main section#home {
   background-position: center;
 }
 main section#home .card {
-  margin-top: 40px;
+  padding: 10px;
 }
 main section#home .card h1 {
   color: #54b948;
 }
 main section#home .card p {
-  padding: 20px 0;
+  padding: 10px;
 }
 main section#home .card a.btn {
   background-color: #e20177;
   color: #fff;
   border: 1px solid #e20177;
   border-radius: 7px;
+  font-size: 16px;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Medium 768px md */
+@media screen and (min-width: 768px) {
+  main section#home .card {
+    padding: 20px;
+  }
+  main section#home .card h1, main section#home .card h2 {
+    font-size: 38.4px;
+  }
+  main section#home .card p {
+    font-size: 24px;
+    padding: 20px 0;
+  }
+  main section#home .card a.btn {
+    font-size: 24px;
+  }
+}
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
   main section#home {
@@ -10143,6 +10175,16 @@ main section#home .card a.btn {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+  }
+  main section#home .card h1, main section#home .card h2 {
+    font-size: 48px;
+    margin: 10px 0;
+  }
+  main section#home .card p {
+    padding: 30px 0;
+  }
+  main section#home .card a.btn {
+    font-weight: bold;
   }
 }
 main section#groups {
@@ -10190,7 +10232,6 @@ main section#groups .groups-wrapper table.table tbody tr .active {
   background-color: rgba(0, 157, 204, 0.4);
 }
 main section#groups .buttons-wrapper p {
-  font-size: 24px;
   padding: 20px 0;
 }
 main section#groups .buttons-wrapper a.btn {
@@ -10268,7 +10309,6 @@ main section#votes-index .groups-wrapper table.table thead {
   color: #e20177;
 }
 main section#votes-index .buttons-wrapper p {
-  font-size: 24px;
   padding: 20px 0;
 }
 main section#votes-index .buttons-wrapper a.btn {
@@ -10360,7 +10400,6 @@ main section#votes-show .form-wrapper form .category-wrapper .radio-toolbar labe
   height: 40px;
   border-radius: 20px;
   font-weight: bold;
-  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;

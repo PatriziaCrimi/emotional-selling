@@ -2,18 +2,19 @@ main section#home {
   @include background-img($bg_general_tablet);
 
   .card {
-    margin-top: $margin_unit * 4;
+    padding: $padding_unit / 2;
 
     h1 {
       color: $green;
     }
 
     p {
-      padding: $padding_unit 0;
+      padding: $padding_unit / 2;
     }
 
     a.btn {
       @include input-button($fuxia);
+      font-size: $mobile_font;
     }
   }
 }
@@ -21,10 +22,49 @@ main section#home {
 
 /* ------------------- MEDIA QUERY ------------------- */
 
+/* Breakpoint Medium 768px md */
+@media screen and (min-width: 768px) {
+  main section#home {
+
+    .card {
+      padding: $padding_unit;
+
+      h1, h2 {
+        font-size: $title_size * 1.2;
+      }
+
+      p {
+        font-size: $tablet_font;
+        padding: $padding_unit 0;
+      }
+
+      a.btn {
+        font-size: $tablet_font;
+      }
+    }
+  }
+}
+
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
 
   main section#home {
     @include background-img($bg_general_desktop);
+
+    .card {
+
+      h1, h2 {
+        font-size: $title_size * 1.5;
+        margin: $margin_unit 0;
+      }
+
+      p {
+        padding: $padding_unit * 1.5 0;
+      }
+
+      a.btn {
+        font-weight: bold;
+      }
+    }
   }
 }

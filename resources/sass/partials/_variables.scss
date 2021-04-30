@@ -47,9 +47,9 @@ $margin_unit: 10px;
 
 // Dimensions
 $vote_button: 40px;
-$font_size: 18px;
-$paragraph_size: 24px;
-$title_size: $font_size + 10;
+$mobile_font: 16px;
+$tablet_font: 24px;
+$title_size: $mobile_font * 2;
 
 // Transition times
 $hover_time: 0.2s;
