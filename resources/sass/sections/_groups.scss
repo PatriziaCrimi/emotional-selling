@@ -45,9 +45,6 @@ main section#groups {
       tbody {
 
         tr {
-          th {
-            width: 30%;
-          }
           td.player {
             width: 40%;
           }
@@ -80,5 +77,27 @@ main section#groups {
 
   main section#groups {
     @include background-img($bg_general_desktop);
+  }
+}
+/* Breakpoint Small 576px sm */
+@media screen and (max-width: 576px) {
+  table.table_xs {
+    display:block;
+  }
+  table.table tr {
+    th.team_xs  {
+      display: none;
+    }
+  }
+}
+/* Breakpoint From Small 576px sm */
+@media screen and (min-width: 577px) {
+  table.table_xs {
+    display:none;
+  }
+  table.table tr {
+    th.team_xs  {
+      display:block;
+    }
   }
 }

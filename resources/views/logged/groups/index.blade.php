@@ -54,10 +54,17 @@
                     $team = \App\Team::find($key);
                   @endphp
                   <div class="table-wrapper">
+                    <table class="table table_xs">
+                      <thead>
+                        <tr>
+                          <th>Team {{$team -> name}}</th>
+                        </tr>
+                      </thead>
+                    </table>
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col">Team {{$team -> name}}</th>
+                          <th class="team_xs" scope="col">Team {{$team -> name}}</th>
                           <th scope="col">Nome</th>
                           <th scope="col">Ruolo</th>
                         </tr>
@@ -67,11 +74,11 @@
                       @foreach ($user as $n => $player)
                         <tr>
                           @if ($player -> user -> id == Auth::user() -> id)
-                            <th scope="row" class="active">{{$n+1}}</th>
+                            <th scope="row" class="active team_xs">{{$n+1}}</th>
                             <td class="active player">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
                             <td class="active">{{ $player -> role -> name}}</td>
                           @else
-                            <th scope="row">{{$n+1}}</th>
+                            <th class="team_xs" scope="row">{{$n+1}}</th>
                             <td class="player">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
                             <td>{{ $player -> role -> name}}</td>
                           @endif

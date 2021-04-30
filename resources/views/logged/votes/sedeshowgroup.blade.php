@@ -45,7 +45,7 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col">Team {{$teamName -> name}}</th>
+                          <th class="team_xs" scope="col">Team {{$teamName -> name}}</th>
                           <th scope="col">Nome</th>
                           <th scope="col">Ruolo</th>
                         </tr>
@@ -59,7 +59,7 @@
                             $idUserVoted = \App\Vote::where('info_voter_id',$voteCheckId)->where('info_voted_id',$player->id)->where('team_vote',0)->first();
                             @endphp
 
-                            <th scope="row">{{$n+1}}</th>
+                            <th class="team_xs" scope="row">{{$n+1}}</th>
                             <td>{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
                             <td>{{ $player -> role -> name}}</td>
                             {{-- Se il giocatore non è già stato votato --}}
