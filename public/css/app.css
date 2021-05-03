@@ -10131,11 +10131,22 @@ main section#login .container {
   height: 100%;
   min-height: 100vh;
 }
-main section#login .container .logo-wrapper {
+main section#login .disabled-login {
+  padding: 40px 0;
+}
+main section#login .disabled-login h2 {
+  color: #e20177;
+  padding: 60px 0;
+  text-shadow: 1px 1px #fff;
+}
+main section#login .disabled-login h2 span {
+  padding: 20px 0;
+}
+main section#login .disabled-login .logo-wrapper {
   width: 100%;
   padding: 0 60px 40px;
 }
-main section#login .container .card button.btn {
+main section#login .disabled-login .card button.btn {
   background-color: #e20177;
   color: #fff;
   border: 1px solid #e20177;
@@ -10144,6 +10155,16 @@ main section#login .container .card button.btn {
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Medium 768px md */
+@media screen and (min-width: 768px) {
+  main section#login .disabled-login {
+    padding: 60px 0;
+  }
+  main section#login .disabled-login h2 {
+    padding: 100px 0;
+    font-size: 36px;
+  }
+}
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
   main section#login {
@@ -10151,6 +10172,9 @@ main section#login .container .card button.btn {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+  }
+  main section#login .disabled-login h2 {
+    padding: 120px 0;
   }
 }
 main section#home {

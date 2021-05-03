@@ -18,6 +18,7 @@ class GroupController extends Controller
     $round = Round::find(4); // valore del round
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
+    $button3 = Button::find(3); // inizia Workshop
 
     // Prendo gli ID dei ruoli
     $idAdmin = (Role::where('name', 'Admin')->first())->id;
@@ -47,6 +48,6 @@ class GroupController extends Controller
       }
     }
 
-    return view('logged.groups.index',compact('usersGroups','round','auth', 'button1','button2'));
+    return view('logged.groups.index',compact('usersGroups','round','auth', 'button1','button2', 'button3'));
   }
 }

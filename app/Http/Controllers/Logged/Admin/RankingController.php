@@ -18,6 +18,7 @@ class RankingController extends Controller
     $round = Round::find(4);
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
+    $button3 = Button::find(3); // inizia Workshop
 
     $idAuth = Auth::user() -> id;
     $idCombo = GroupRoleRoundUser::where('user_id',$idAuth)->first();
@@ -65,7 +66,7 @@ class RankingController extends Controller
 
       $votesRank = json_decode(json_encode($votesCount),true);
 
-      return view('logged.admin.rankings',compact('votesRank','round','button1','button2'));
+      return view('logged.admin.rankings',compact('votesRank','round','button1','button2', 'button3'));
 
     } else {
       abort(403);

@@ -17,6 +17,17 @@ use App\Role;
 
 class ButtonController extends Controller
 {
+  public function startWorkshop(Request $request) {
+
+    // Funzione per far comparire in pagina il form del Login
+    $data = $request->input('button3');
+    $button3 = Button::find(3);
+    $button3->status = $data;
+    $button3->save();
+
+    return redirect()->back();
+  }
+
   public function updateStartVote(Request $request) {
 
     // funzione per modificare il round attuale SOLO lato ADMIN
@@ -51,10 +62,11 @@ class ButtonController extends Controller
       $round = Round::find(4);
       $button1 = Button::find(1);
       $button2 = Button::find(2);
+      $button3 = Button::find(3); // inizia Workshop
       $users = GroupRoleRoundUser::where('role_id',2)->where('round_id',$round->name)->get();
       $groups = Group::all();
 
-      return view('logged.admin.sedegroups',compact('round','button1','button2','users','groups'));
+      return view('logged.admin.sedegroups',compact('round','button1','button2', 'button3', 'users','groups'));
     } else {
       abort(403);
     }
@@ -76,10 +88,11 @@ class ButtonController extends Controller
     $round = Round::find(4);
     $button1 = Button::find(1);
     $button2 = Button::find(2);
+    $button3 = Button::find(3); // inizia Workshop
     $users = User::orderBy('lastname','ASC')->get();
     $rounds = Round::where('id','!=',4)->get();
 
-    return view('logged.admin.votes',compact('round','button1','button2','users','rounds'));
+    return view('logged.admin.votes',compact('round','button1','button2', 'button3', 'users','rounds'));
   }
 
   public function getListVotes(Request $request) {
@@ -118,10 +131,11 @@ class ButtonController extends Controller
     $round = Round::find(4);
     $button1 = Button::find(1);
     $button2 = Button::find(2);
+    $button3 = Button::find(3); // inizia Workshop
     $users = User::orderBy('lastname','ASC')->get();
     $rounds = Round::where('id','!=',4)->get();
 
-    return view('logged.admin.voting',compact('round','button1','button2','users','rounds'));
+    return view('logged.admin.voting',compact('round','button1','button2', 'button3', 'users','rounds'));
   }
 
   public function getVotingLive(Request $request) {

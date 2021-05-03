@@ -12,6 +12,11 @@
       "status" => 0
     ],
 
+    // Bottone attivazione Webapp
+    [
+      "status" => 0
+    ],
+
   ];
 
 ?>

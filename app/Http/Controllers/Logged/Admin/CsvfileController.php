@@ -17,6 +17,7 @@ class CsvfileController extends Controller
     $round = Round::find(4);
     $button1 = Button::find(1);
     $button2 = Button::find(2);
+    $button3 = Button::find(3); // inizia Workshop
 
     $idAuth = Auth::user()->id;
     $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
@@ -28,7 +29,7 @@ class CsvfileController extends Controller
     if(in_array($idAuth, $idAdminsArray)) {
       $data = Vote::latest()->paginate(10);
 
-      return view('logged.admin.csv_file_pagination',compact('data','round','button1','button2'))
+      return view('logged.admin.csv_file_pagination',compact('data','round','button1','button2', 'button3'))
              ->with('i',(request()->input('page',1) -1) *10);
     } else {
       abort(403);

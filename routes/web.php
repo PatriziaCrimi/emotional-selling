@@ -32,7 +32,8 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
   // Round
   Route::post('/admin/round','Admin\RoundController@update')->name('round.update');
 
-  // Button
+  // Buttons
+  Route::post('/admin/start-worshop','Admin\ButtonController@startWorkshop')->name('button.startWorkshop');
   Route::post('/admin/startvote','Admin\ButtonController@updateStartVote')->name('button.updateStartVote');
   Route::post('/admin/stopvote','Admin\ButtonController@updateStopVote')->name('button.updateStopVote');
 
