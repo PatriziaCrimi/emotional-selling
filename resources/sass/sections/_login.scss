@@ -6,7 +6,18 @@ main section#login {
   .container {
     height: 100%;
     min-height: 100vh;
+
+    .logo-wrapper {
+      width: 100%;
+      padding: 0 $padding_unit * 3 $padding_unit* 2;
     }
+
+    .card {
+      button.btn {
+        @include input-button($fuxia);
+      }
+    }
+  }
 
   .disabled-login {
     padding: $padding_unit * 2 0;
@@ -18,17 +29,6 @@ main section#login {
 
       span {
         padding: $padding_unit 0;
-      }
-    }
-
-    .logo-wrapper {
-      width: 100%;
-      padding: 0 $padding_unit * 3 $padding_unit* 2;
-    }
-
-    .card {
-      button.btn {
-        @include input-button($fuxia);
       }
     }
   }
@@ -58,6 +58,8 @@ main section#login {
     @include background-img($bg_login_desktop);
 
     .disabled-login {
+      padding-top: $padding_unit * 3;
+      padding-bottom: 0;
 
       h2 {
         padding: $padding_unit * 6 0;
