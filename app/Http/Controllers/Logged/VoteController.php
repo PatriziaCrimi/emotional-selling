@@ -245,7 +245,7 @@ class VoteController extends Controller
           $newVote1-> info_voter_id = $data['info_voter_id'];
           $newVote1-> info_voted_id = $member -> id;
           $newVote1-> category_id = $data['category1_id'];
-          $newVote1-> value = $data['voteTeam1'] / 2;
+          $newVote1-> value = $data['voteTeam1'];
           if($request->comment1) {
             $newVote1-> comment = $data['comment1'];
           };
@@ -263,7 +263,7 @@ class VoteController extends Controller
           $newVote2-> info_voter_id = $data['info_voter_id'];
           $newVote2-> info_voted_id = $member -> id;
           $newVote2-> category_id = $data['category2_id'];
-          $newVote2-> value = $data['voteTeam2'] / 2;
+          $newVote2-> value = $data['voteTeam2'];
           if($request->comment2) {
             $newVote2-> comment = $data['comment2'];
           };
@@ -282,7 +282,7 @@ class VoteController extends Controller
           $newVote3-> info_voter_id = $data['info_voter_id'];
           $newVote3-> info_voted_id = $member -> id;
           $newVote3-> category_id = $data['category3_id'];
-          $newVote3-> value = $data['voteTeam3'] / 2;
+          $newVote3-> value = $data['voteTeam3'];
           if($request->comment3) {
             $newVote3-> comment = $data['comment3'];
           };
@@ -301,7 +301,7 @@ class VoteController extends Controller
           $newVote4-> info_voter_id = $data['info_voter_id'];
           $newVote4-> info_voted_id = $member -> id;
           $newVote4-> category_id = $data['category4_id'];
-          $newVote4-> value = $data['voteTeam4'] / 2;
+          $newVote4-> value = $data['voteTeam4'];
           if($request->comment4) {
             $newVote4-> comment = $data['comment4'];
           };
@@ -321,11 +321,11 @@ class VoteController extends Controller
         $newVote1-> info_voter_id = $data['info_voter_id'];
         $newVote1-> info_voted_id = null;
         $newVote1-> category_id = $data['category1_id'];
-        $newVote1-> value = $data['voteTeam1'] / 2;
+        $newVote1-> value = $data['voteTeam1'];
         if($request->comment1) {
           $newVote1-> comment = $data['comment1'];
         };
-        $newVote1-> team_vote = 2;  // è stato votato il team
+        $newVote1-> team_vote = 3;  // è stato votato il team
         $newVote1-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote1->save();
@@ -337,11 +337,11 @@ class VoteController extends Controller
         $newVote2-> info_voter_id = $data['info_voter_id'];
         $newVote2-> info_voted_id = null;
         $newVote2-> category_id = $data['category2_id'];
-        $newVote2-> value = $data['voteTeam2'] / 2;
+        $newVote2-> value = $data['voteTeam2'];
         if($request->comment2) {
           $newVote2-> comment = $data['comment2'];
         };
-        $newVote2-> team_vote = 2;  // è stato votato il team
+        $newVote2-> team_vote = 3;  // è stato votato il team
         $newVote2-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote2->save();
@@ -353,11 +353,11 @@ class VoteController extends Controller
         $newVote3-> info_voter_id = $data['info_voter_id'];
         $newVote3-> info_voted_id = null;
         $newVote3-> category_id = $data['category3_id'];
-        $newVote3-> value = $data['voteTeam3'] / 2;
+        $newVote3-> value = $data['voteTeam3'];
         if($request->comment3) {
           $newVote3-> comment = $data['comment3'];
         };
-        $newVote3-> team_vote = 2;  // è stato votato il team
+        $newVote3-> team_vote = 3;  // è stato votato il team
         $newVote3-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote3->save();
@@ -369,11 +369,11 @@ class VoteController extends Controller
         $newVote4-> info_voter_id = $data['info_voter_id'];
         $newVote4-> info_voted_id = null;
         $newVote4-> category_id = $data['category4_id'];
-        $newVote4-> value = $data['voteTeam4'] / 2;
+        $newVote4-> value = $data['voteTeam4'];
         if($request->comment4) {
           $newVote4-> comment = $data['comment4'];
         };
-        $newVote4-> team_vote = 2;  // è stato votato il team
+        $newVote4-> team_vote = 3;  // è stato votato il team
         $newVote4-> team_id = $data['team_id']; // team_id del team votato
 
         $newVote4->save();
@@ -562,7 +562,8 @@ class VoteController extends Controller
       }
 
       // Recupero l'array con i voti da visualizzare
-      $currentVotes = Vote::where('team_vote', 2)->where('team_id', $id)->where('info_voter_id', $comboAuth->id)->get();
+      $teamIds = [2, 3];
+      $currentVotes = Vote::whereIn('team_vote', $teamIds)->where('team_id', $id)->where('info_voter_id', $comboAuth->id)->get();
 
       // Controllo se l'utente loggato abbia già votato quel team, sennò non ha i permessi per visualizzare la pagina
       $voteCheck = Vote::where('info_voter_id',$comboAuth->id)->where('team_id',$id)->first();
