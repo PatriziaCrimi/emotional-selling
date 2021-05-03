@@ -18,15 +18,13 @@
             {{-- Grafico --}}
             <canvas id="myChart" width="400" height="400"></canvas>
             {{-- Elenco nomi --}}
-            @foreach ($votesRank as $key => $value)
-              @foreach ($value as $result)
-
-              @endforeach
+            @foreach ($votesRank as $key => $score)
               <div class="card" style="width: 18rem;">
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
                     @php
-                    echo $result['name'].':'.$result['valore'] ;
+                    echo($score['name'] . ':' . $score['score']);
+                    // echo $score['name'].':'.$result['valore'] ;
                     @endphp
                   </li>
                 </ul>
@@ -47,23 +45,19 @@
     type: 'bar',
     data: {
       labels: [@php
-      foreach ($votesRank as $key => $value) {
-        foreach ($value as $result) {
-          echo "'".
-          $result['name'].
-          "'".
-          ',';
-        }
+      foreach ($votesRank as $key => $score) {
+        echo "'".
+        $score['name'] .
+        "'".
+        ',';
       }
       @endphp],
       datasets: [{
         label: 'Voti',
         data: [@php
-        foreach ($votesRank as $key => $value) {
-          foreach ($value as $result) {
-            echo $result['valore'].
-            ',';
-          }
+        foreach ($votesRank as $key => $score) {
+          echo $score['score'].
+          ',';
         }
         @endphp],
         backgroundColor: [
