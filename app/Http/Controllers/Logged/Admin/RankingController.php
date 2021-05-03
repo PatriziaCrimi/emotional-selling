@@ -56,24 +56,43 @@ class RankingController extends Controller
        $votesRank = json_decode(json_encode($votesCount),true);
        */
 
-       $dm = DB::table("votes")
-       ->join('teams','teams.id','=','votes.team_id')
-       ->select(DB::raw('sum(value / 2) as valore','votes.team_id'),'teams.name')
-       ->where('team_vote',3)->groupBy('votes.team_id','teams.name')
-       ->orderBy('valore','DESC')->get();
-
-
+       // $dm = DB::table("votes")
+       // ->join('teams','teams.id','=','votes.team_id')
+       // ->select(DB::raw('sum(value / 2) as valore','votes.team_id'),'teams.name')
+       // ->where('team_vote',3)->groupBy('votes.team_id','teams.name')
+       // ->orderBy('valore','DESC')->get();
 
       // ---------------------- QUERY PER SOMMA TEAM ---------------------- //
 
-      $votesCount = DB::table("votes")
-      ->join('teams','teams.id','=','votes.team_id')
-      ->select(DB::raw('sum(value) as valore','votes.team_id'),'teams.name')
-      ->where('team_vote',2)->groupBy('votes.team_id','teams.name')
-      ->orderBy('valore','DESC')->get();
+      // $votesCount = DB::table("votes")
+      // ->join('teams','teams.id','=','votes.team_id')
+      // ->select(DB::raw('sum(value) as valore','votes.team_id'),'teams.name')
+      // ->where('team_vote',2)->groupBy('votes.team_id','teams.name')
+      // ->orderBy('valore','DESC')->get();
+      //
 
-      $final= [$dm,$votesCount];
-      $votesRank = json_decode(json_encode($final),true);
+      // $final= [$dm,$votesCount];
+      // $votesRank = json_decode(json_encode($final),true);
+
+      $votesCollection = DB::table('votes')
+      ->join('teams','teams.id','=','votes.team_id')
+      ->select('votes.team_id', 'teams.name',
+            DB::raw("SUM(CASE WHEN team_vote = '2' THEN value ELSE 0 END) as `normalVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' THEN value / 2 ELSE 0 END) as `halfVote`", 'votes.team_id')
+        )->groupBy('votes.team_id', 'teams.name')
+      ->get();
+
+      foreach ($votesCollection as $key => $voteTeam) {
+        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
+        $teamName = $voteTeam->name;
+        $scoresArray[$teamName] = array(
+          'team_id' => $voteTeam->team_id,
+          'name' => $teamName,
+          'score' => $sumTeam
+        );
+      }
+
+      $votesRank = json_decode(json_encode($scoresArray),true);
 
       return view('logged.admin.rankings',compact('votesRank','round','button1','button2', 'button3'));
 

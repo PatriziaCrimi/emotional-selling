@@ -10811,6 +10811,23 @@ main section#rankings {
     background-position: center;
   }
 }
+main section.admin {
+  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}
+
+/* ------------------- MEDIA QUERY ------------------- */
+@media screen and (min-width: 992px) {
+  main section.admin {
+    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
 main section#errors {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
