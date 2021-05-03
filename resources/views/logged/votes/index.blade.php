@@ -1,13 +1,5 @@
 @extends('layouts.app')
 
-{{-- Controllo se l'utente loggato è Sede o Admin per attivare funzione jQuery per visualizzare i gruppi solo al click --}}
-{{-- @if ($auth->role->name == 'Admin' || $auth->role->name == 'Sede')
-  @section('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/action.js') }}" type="text/javascript"></script>
-  @endsection
-@endif --}}
-
 @section('content')
   <section id="votes-index">
     <div class="container">
@@ -15,14 +7,12 @@
         <div class="col-12">
           {{-- Controllo se l'utente autenticato è Sede o Admin --}}
           @if ($auth->role->name == 'Sede' || $auth->role->name == 'Admin')
-            <h1 class="font-weight-bold text-center">Votazione sede</h1>
-            <p class="text-center">
-              <span>Round n&deg;</span>
-              <span>
-                {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
-              </span>
-              <span>in corso</span>
-            </p>
+            <h1 class="font-weight-bold text-center sede">Votazione sede</h1>
+            <h2 class="text-center sede">
+              Round n&deg;
+              {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
+              in corso
+            </h2>
             {{-- Groups List --}}
             <div class="row">
               <div class="col-12">
@@ -75,7 +65,7 @@
           {{-- Se l'utente autenticato non è Sede né Admin --}}
             <h1 class="text-center">
               Stai votando per il Round
-              {{$round -> name}}
+              {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
             </h1>
             {{-- Groups List --}}
             <div class="row">
@@ -158,12 +148,12 @@
         <div class="col-12">
           <div class="buttons-wrapper text-center">
             @if ($button2 -> status == 0)
-              <p>Attendi per procedere</p>
+              <p class="font-weight-bold">Attendi per procedere</p>
             @else
               <div class="buttons-wrapper">
                 {{-- Se l'utente loggato è Admin --}}
                 @if ($auth->role->name == 'Admin')
-                  <a class="btn" href="{{ route('logged.rankings.index')}}">
+                  <a class="btn btn-lg" href="{{ route('logged.rankings.index')}}">
                     Guarda la classifica provvisoria
                   </a>
                 @else

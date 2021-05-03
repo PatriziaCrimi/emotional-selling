@@ -26,9 +26,9 @@
         @if ($auth->role->name == 'Sede' || $auth->role->name == 'DM' || $auth->role->name == 'DM Junior')
           <div class="col-12">
             <div class="sede-info text-center">
-              <span> {{$auth -> user -> name}}</span>
-              <span> {{$auth -> user -> lastname}}:</span>
-              <span> {{$auth -> role -> name}}</span>
+              {{$auth -> user -> name}}
+              {{$auth -> user -> lastname}}:
+              {{$auth -> role -> name}}
             </div>
           </div>
         @endif
@@ -99,12 +99,12 @@
         <div class="col-12">
           <div class="buttons-wrapper text-center">
             @if ($button1 -> status == 0)
-              <p>Attendi per procedere</p>
+              <p class="font-weight-bold">Attendi per procedere</p>
             @else
               {{-- Se sono ISF o MEDICI  --}}
               @if ($auth->role->name == 'ISF' || $auth->role->name == 'Medico')
-                <p>Possono votare solo gli Osservatori</p>
-                <a class="btn" href="{{route('logged.home')}}">
+                <p class="font-weight-bold">Possono votare solo gli Osservatori</p>
+                <a class="btn btn-lg" href="{{route('logged.home')}}">
                   Home
                 </a>
               @else

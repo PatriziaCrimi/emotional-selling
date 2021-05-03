@@ -29,10 +29,10 @@
         <div class="col-12">
           <div class="players-wrapper text-center">
             @foreach ($team as $key => $player)
-              <h3 class="player-name d-inline-block font-weight-normal">
+              <h2 class="player-name d-inline-block font-weight-normal">
                 {{$player -> user -> lastname}}
                 <span> {{ $loop->last ? '' : '|' }} </span>
-              </h3>
+              </h2>
             @endforeach
           </div>
         </div>
@@ -71,11 +71,13 @@
                     @endphp
                     {{$category->name}}
                   </h3>
-                  <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                    <input :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
-                    <label class="radio-label" :for="'radio1'+index">
-                      @{{index}}
-                    </label>
+                  <div class="radio-wrapper">
+                    <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
+                      <input :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
+                      <label class="radio-label" :for="'radio1'+index">
+                        @{{index}}
+                      </label>
+                    </div>
                   </div>
 
                   <div class="text" v-if="showComment1">
@@ -103,11 +105,13 @@
                     @endphp
                     {{$category->name}}
                   </h3>
-                  <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                    <input :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
-                    <label class="radio-label" :for="'radio2'+index">
-                      @{{index}}
-                    </label>
+                  <div class="radio-wrapper">
+                    <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
+                      <input :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
+                      <label class="radio-label" :for="'radio2'+index">
+                        @{{index}}
+                      </label>
+                    </div>
                   </div>
 
                   <div v-if="showComment2">
@@ -135,11 +139,13 @@
                     @endphp
                     {{$category->name}}
                   </h3>
-                  <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                    <input :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
-                    <label class="radio-label" :for="'radio3'+index">
-                      @{{index}}
-                    </label>
+                  <div class="radio-wrapper">
+                    <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
+                      <input :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
+                      <label class="radio-label" :for="'radio3'+index">
+                        @{{index}}
+                      </label>
+                    </div>
                   </div>
 
                   <div v-if="showComment3">
@@ -167,11 +173,13 @@
                     @endphp
                     {{$category->name}}
                   </h3>
-                  <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                    <input :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
-                    <label class="radio-label" :for="'radio4'+index">
-                      @{{index}}
-                    </label>
+                  <div class="radio-wrapper">
+                    <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
+                      <input :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
+                      <label class="radio-label" :for="'radio4'+index">
+                        @{{index}}
+                      </label>
+                    </div>
                   </div>
 
                   <div v-if="showComment4">

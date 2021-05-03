@@ -42,7 +42,7 @@ header {
 
     li.nav-item {
       span {
-        font-size: $mobile_font - 5px;
+        font-size: $mobile_font - 2;
 
         &.team {
           margin-right: $margin_unit / 2;
@@ -50,7 +50,7 @@ header {
       }
 
       a.logout {
-        font-size: $mobile_font;
+        font-size: $mobile_font - 2;
       }
     }
   }
@@ -66,11 +66,11 @@ header {
     li.nav-item {
 
       span {
-        font-size: $tablet_font / 1.2;
+        font-size: $tablet_font;
       }
 
       a.logout {
-        font-size: $tablet_font / 1.2;
+        font-size: $tablet_font;
       }
     }
   }
