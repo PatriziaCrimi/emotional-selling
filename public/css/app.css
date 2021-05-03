@@ -10131,6 +10131,17 @@ main section#login .container {
   height: 100%;
   min-height: 100vh;
 }
+main section#login .container .logo-wrapper {
+  width: 100%;
+  padding: 0 60px 40px;
+}
+main section#login .container .card button.btn {
+  background-color: #e20177;
+  color: #fff;
+  border: 1px solid #e20177;
+  border-radius: 7px;
+  letter-spacing: 1.5px;
+}
 main section#login .disabled-login {
   padding: 40px 0;
 }
@@ -10141,17 +10152,6 @@ main section#login .disabled-login h2 {
 }
 main section#login .disabled-login h2 span {
   padding: 20px 0;
-}
-main section#login .disabled-login .logo-wrapper {
-  width: 100%;
-  padding: 0 60px 40px;
-}
-main section#login .disabled-login .card button.btn {
-  background-color: #e20177;
-  color: #fff;
-  border: 1px solid #e20177;
-  border-radius: 7px;
-  letter-spacing: 1.5px;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
@@ -10172,6 +10172,10 @@ main section#login .disabled-login .card button.btn {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+  }
+  main section#login .disabled-login {
+    padding-top: 60px;
+    padding-bottom: 0;
   }
   main section#login .disabled-login h2 {
     padding: 120px 0;
