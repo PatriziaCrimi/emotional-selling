@@ -5,14 +5,29 @@ main section#errors {
   h1 {
     color: $blue;
     font-weight: bold;
+    font-size: $title_size + 5;
   }
 
-  a.btn {
+  h2 {
+    padding: $padding_unit * 4 0;
+  }
+
+  a.btn.btn-lg {
     @include input-button($fuxia);
+    font-weight: bold;
   }
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
+
+/* Breakpoint Medium 768px md */
+@media screen and (min-width: 768px) {
+  main section#errors {
+    h1 {
+      font-size: $title_size * 2;
+    }
+  }
+}
 
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {

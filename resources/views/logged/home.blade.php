@@ -16,7 +16,7 @@
                 <h1>Benvenuto,</h1>
                 <h2>
                   <span>{{Auth::user()->name}}</span>
-                  <span>{{Auth::user()->lastname}}</span>
+                  {{-- <span>{{Auth::user()->lastname}}</span> --}}
                 </h2>
               </div>
               <div class="text-center">
