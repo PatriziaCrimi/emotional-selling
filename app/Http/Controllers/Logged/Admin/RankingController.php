@@ -56,6 +56,14 @@ class RankingController extends Controller
        $votesRank = json_decode(json_encode($votesCount),true);
        */
 
+       $dm = DB::table("votes")
+       ->join('teams','teams.id','=','votes.team_id')
+       ->select(DB::raw('sum(value / 2) as valore','votes.team_id'),'teams.name')
+       ->where('team_vote',3)->groupBy('votes.team_id','teams.name')
+       ->orderBy('valore','DESC')->get();
+
+
+
       // ---------------------- QUERY PER SOMMA TEAM ---------------------- //
 
       $votesCount = DB::table("votes")
@@ -64,7 +72,8 @@ class RankingController extends Controller
       ->where('team_vote',2)->groupBy('votes.team_id','teams.name')
       ->orderBy('valore','DESC')->get();
 
-      $votesRank = json_decode(json_encode($votesCount),true);
+      $final= [$dm,$votesCount];
+      $votesRank = json_decode(json_encode($final),true);
 
       return view('logged.admin.rankings',compact('votesRank','round','button1','button2', 'button3'));
 

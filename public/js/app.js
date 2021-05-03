@@ -50000,6 +50000,7 @@ var app = new Vue({
       axios.post("/logged/admin/votingLive/", this.form2).then(function (response) {
         _this2.reset();
 
+        alert('prova');
         _this2.liveArray = response.data;
 
         _this2.alertSuccess();
