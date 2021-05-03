@@ -23,6 +23,12 @@ main section#votes-show, {
 
     form {
 
+      h4 {
+        color: $fuxia;
+        font-size: $tablet_font;
+        padding: $padding_unit 0;
+      }
+
       .category-wrapper {
         padding-bottom: $padding_unit;
 
@@ -78,10 +84,12 @@ main section#votes-show, {
           }
         }
 
-        p.comment-message {
+        p.comment-message,
+        p.comment-empty {
           color: $fuxia;
           margin: 0;
           padding-top: $padding_unit / 2;
+          font-size: $mobile_font;
         }
 
         .form-control {

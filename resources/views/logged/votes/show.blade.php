@@ -47,7 +47,7 @@
                 $categories_quantity = App\Category::all();
               @endphp
               @if(count($currentVotes) != count($categories_quantity))
-                  <h3 class="text-center">Non hai votato una o più categorie.</h3>
+                  <h4 class="text-center">Non hai votato una o più categorie.</h4>
               @endif
 
               @foreach ($currentVotes as $key => $vote)
@@ -83,7 +83,7 @@
                       @endif
                       <textarea readonly rows="3" cols="80" class="form-control readonly">{{ $vote->comment }}</textarea>
                     @else
-                      <p>Non hai aggiunto alcun commento.</p>
+                      <p class="comment-empty">Non hai aggiunto alcun commento.</p>
                     @endif
                   </div>
                 </div>

@@ -10236,39 +10236,39 @@ main section#groups .groups-wrapper h2 {
   padding-top: 26px;
   padding-bottom: 20px;
 }
-main section#groups .groups-wrapper table.table_xs {
+main section#groups .groups-wrapper .table-wrapper {
+  padding-bottom: 20px;
+}
+main section#groups .groups-wrapper .table-wrapper table.table_xs {
   display: block;
 }
-main section#groups .groups-wrapper table.table {
+main section#groups .groups-wrapper .table-wrapper table.table {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 15px;
   color: #1b4298;
 }
-main section#groups .groups-wrapper table.table tr,
-main section#groups .groups-wrapper table.table th,
-main section#groups .groups-wrapper table.table td {
+main section#groups .groups-wrapper .table-wrapper table.table tr,
+main section#groups .groups-wrapper .table-wrapper table.table th,
+main section#groups .groups-wrapper .table-wrapper table.table td {
   border: 0px !important;
 }
-main section#groups .groups-wrapper table.table thead {
+main section#groups .groups-wrapper .table-wrapper table.table thead {
   text-transform: uppercase;
   color: #e20177;
 }
-main section#groups .groups-wrapper table.table tbody tr th.team_xs {
+main section#groups .groups-wrapper .table-wrapper table.table tbody tr th.team_xs {
   display: none;
 }
-main section#groups .groups-wrapper table.table tbody tr td.player {
+main section#groups .groups-wrapper .table-wrapper table.table tbody tr td.player {
   width: 40%;
 }
-main section#groups .groups-wrapper table.table tbody tr td {
+main section#groups .groups-wrapper .table-wrapper table.table tbody tr td {
   width: 30%;
 }
-main section#groups .groups-wrapper table.table tbody tr .active {
+main section#groups .groups-wrapper .table-wrapper table.table tbody tr .active {
   font-weight: bold;
   color: #e20177;
   background-color: rgba(0, 157, 204, 0.4);
-}
-main section#groups .buttons-wrapper {
-  padding: 20px 0;
 }
 main section#groups .buttons-wrapper p:last-of-type {
   padding-bottom: 20px;
@@ -10290,13 +10290,13 @@ main section#groups .buttons-wrapper a.btn.btn-lg, main section#groups .buttons-
   main section#groups .groups-wrapper h2 {
     padding-top: 0;
   }
-  main section#groups .groups-wrapper table {
+  main section#groups .groups-wrapper .table-wrapper table {
     font-size: 26px;
   }
-  main section#groups .groups-wrapper table.table_xs {
+  main section#groups .groups-wrapper .table-wrapper table.table_xs {
     display: none;
   }
-  main section#groups .groups-wrapper table.table tbody tr th.team_xs {
+  main section#groups .groups-wrapper .table-wrapper table.table tbody tr th.team_xs {
     display: block;
   }
 }
@@ -10319,6 +10319,9 @@ main section#groups .buttons-wrapper a.btn.btn-lg, main section#groups .buttons-
   }
   main section#groups .groups-wrapper h2 {
     font-size: 30px;
+  }
+  main section#groups .groups-wrapper .table-wrapper {
+    padding-bottom: 40px;
   }
   main section#groups .buttons-wrapper a.btn.btn-lg, main section#groups .buttons-wrapper .btn-group-lg > a.btn {
     background-color: #e20177;
@@ -10350,33 +10353,52 @@ main section#groups .buttons-wrapper a.btn.btn-lg, main section#groups .buttons-
     padding-top: 20px;
     padding-bottom: 30px;
   }
+  main section#groups .groups-wrapper .table-wrapper {
+    padding-bottom: 60px;
+  }
 }
-main section#votes-index {
+main section#votes-index,
+main section#sede-index {
   background-image: url("../storage/img/sfondo_generale_tablet.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-main section#votes-index h1 {
+main section#votes-index h1,
+main section#sede-index h1 {
   color: #1b4298;
 }
-main section#votes-index h2.sede {
+main section#votes-index h2.sede,
+main section#sede-index h2.sede {
   color: #1b4298;
   font-size: 26px;
   padding: 20px 0;
 }
-main section#votes-index .sede-info {
+main section#votes-index .sede-info,
+main section#sede-index .sede-info {
   padding: 20px 0;
   color: #1b4298;
 }
-main section#votes-index .groups-wrapper.sede {
+main section#votes-index .groups-wrapper.sede,
+main section#sede-index .groups-wrapper.sede {
   padding: 20px 0;
 }
-main section#votes-index .groups-wrapper.sede h2 {
-  color: #1b4298;
-  padding-bottom: 10px;
+main section#votes-index .groups-wrapper.sede .group-col,
+main section#sede-index .groups-wrapper.sede .group-col {
+  height: 100%;
+  padding: 10px;
 }
-main section#votes-index .groups-wrapper a.btn {
+main section#votes-index .groups-wrapper.sede .group-col h2,
+main section#sede-index .groups-wrapper.sede .group-col h2 {
+  color: #1b4298;
+  padding: 0;
+}
+main section#votes-index .groups-wrapper.sede .group-col a.btn.sede,
+main section#sede-index .groups-wrapper.sede .group-col a.btn.sede {
+  margin: 0;
+}
+main section#votes-index .groups-wrapper a.btn,
+main section#sede-index .groups-wrapper a.btn {
   background-color: #e20177;
   color: #fff;
   border: 1px solid #e20177;
@@ -10386,48 +10408,61 @@ main section#votes-index .groups-wrapper a.btn {
   font-weight: bold;
   margin: 30px 0;
 }
-main section#votes-index .groups-wrapper a.btn.voted {
+main section#votes-index .groups-wrapper a.btn.voted,
+main section#sede-index .groups-wrapper a.btn.voted {
   background-color: #54b948;
   color: #fff;
   border: 1px solid #54b948;
   border-radius: 7px;
   letter-spacing: 1.5px;
 }
-main section#votes-index .groups-wrapper a.btn.to-vote {
+main section#votes-index .groups-wrapper a.btn.to-vote,
+main section#sede-index .groups-wrapper a.btn.to-vote {
   background-color: #1b4298;
   color: #fff;
   border: 1px solid #1b4298;
   border-radius: 7px;
   letter-spacing: 1.5px;
 }
-main section#votes-index .groups-wrapper h2 {
+main section#votes-index .groups-wrapper h2,
+main section#sede-index .groups-wrapper h2 {
   padding-top: 26px;
   padding-bottom: 20px;
 }
-main section#votes-index .groups-wrapper table.table {
+main section#votes-index .groups-wrapper table.table,
+main section#sede-index .groups-wrapper table.table {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 15px;
   color: #1b4298;
 }
 main section#votes-index .groups-wrapper table.table tr,
 main section#votes-index .groups-wrapper table.table th,
-main section#votes-index .groups-wrapper table.table td {
+main section#votes-index .groups-wrapper table.table td,
+main section#sede-index .groups-wrapper table.table tr,
+main section#sede-index .groups-wrapper table.table th,
+main section#sede-index .groups-wrapper table.table td {
   border: 0px !important;
 }
-main section#votes-index .groups-wrapper table.table thead {
+main section#votes-index .groups-wrapper table.table thead,
+main section#sede-index .groups-wrapper table.table thead {
   text-transform: uppercase;
   color: #e20177;
 }
-main section#votes-index .groups-wrapper table.table tbody tr td.player {
+main section#votes-index .groups-wrapper table.table tbody tr td.player,
+main section#sede-index .groups-wrapper table.table tbody tr td.player {
   width: 40%;
 }
-main section#votes-index .groups-wrapper table.table tbody tr td {
+main section#votes-index .groups-wrapper table.table tbody tr td,
+main section#sede-index .groups-wrapper table.table tbody tr td {
   width: 30%;
 }
-main section#votes-index .buttons-wrapper p {
+main section#votes-index .buttons-wrapper p,
+main section#sede-index .buttons-wrapper p {
   padding: 20px 0;
 }
-main section#votes-index .buttons-wrapper a.btn.btn-lg, main section#votes-index .buttons-wrapper .btn-group-lg > a.btn {
+main section#votes-index .buttons-wrapper a.btn.btn-lg, main section#votes-index .buttons-wrapper .btn-group-lg > a.btn,
+main section#sede-index .buttons-wrapper a.btn.btn-lg,
+main section#sede-index .buttons-wrapper .btn-group-lg > a.btn {
   background-color: #e20177;
   color: #fff;
   border: 1px solid #e20177;
@@ -10442,38 +10477,57 @@ main section#votes-index .buttons-wrapper a.btn.btn-lg, main section#votes-index
 /* ------------------- MEDIA QUERY ------------------- */
 /* Breakpoint Small 576px sm */
 @media screen and (min-width: 577px) {
-  table {
+  main section#votes-index table,
+main section#sede-index table {
     font-size: 26px;
   }
-  table.table tr th.team_xs {
+  main section#votes-index table.table tr th.team_xs,
+main section#sede-index table.table tr th.team_xs {
     display: block;
   }
 }
 /* Breakpoint Medium 768px md */
 @media screen and (min-width: 768px) {
   main section#votes-index h1,
-main section#votes-index h2.sede {
+main section#votes-index h2.sede,
+main section#sede-index h1,
+main section#sede-index h2.sede {
     font-size: 36px;
   }
-  main section#votes-index .groups-wrapper {
+  main section#votes-index .groups-wrapper,
+main section#sede-index .groups-wrapper {
     padding: 40px 0;
   }
-  main section#votes-index .groups-wrapper h2 {
+  main section#votes-index .groups-wrapper h2,
+main section#sede-index .groups-wrapper h2 {
     font-size: 30px;
     padding-top: 0;
   }
-  main section#votes-index .groups-wrapper.sede {
+  main section#votes-index .groups-wrapper.sede,
+main section#sede-index .groups-wrapper.sede {
     padding: 40px 0;
   }
-  main section#votes-index .groups-wrapper.sede h2 {
+  main section#votes-index .groups-wrapper.sede .group-col,
+main section#sede-index .groups-wrapper.sede .group-col {
+    padding: 20px 10px;
+  }
+  main section#votes-index .groups-wrapper.sede h2,
+main section#sede-index .groups-wrapper.sede h2 {
     padding-bottom: 20px;
   }
-  main section#votes-index .groups-wrapper a.btn {
+  main section#votes-index .groups-wrapper .table-wrapper,
+main section#sede-index .groups-wrapper .table-wrapper {
+    padding-bottom: 20px;
+  }
+  main section#votes-index .groups-wrapper a.btn,
+main section#sede-index .groups-wrapper a.btn {
     margin-top: 40px;
     margin-bottom: 30px;
     font-size: 26px;
   }
-  main section#votes-index .buttons-wrapper a.btn.btn-lg, main section#votes-index .buttons-wrapper .btn-group-lg > a.btn {
+  main section#votes-index .buttons-wrapper a.btn.btn-lg, main section#votes-index .buttons-wrapper .btn-group-lg > a.btn,
+main section#sede-index .buttons-wrapper a.btn.btn-lg,
+main section#sede-index .buttons-wrapper .btn-group-lg > a.btn {
     background-color: #e20177;
     color: #fff;
     border: 1px solid #e20177;
@@ -10487,25 +10541,28 @@ main section#votes-index h2.sede {
 }
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
-  main section#votes-index {
+  main section#votes-index,
+main section#sede-index {
     background-image: url("../storage/img/sfondo_generale_desktop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
   }
-  main section#votes-index .groups-wrapper.sede {
+  main section#votes-index .groups-wrapper .table-wrapper,
+main section#sede-index .groups-wrapper .table-wrapper {
+    padding-bottom: 60px;
+  }
+  main section#votes-index .groups-wrapper.sede,
+main section#sede-index .groups-wrapper.sede {
     padding: 80px 0;
   }
-  main section#votes-index .groups-wrapper.sede h2 {
+  main section#votes-index .groups-wrapper.sede h2,
+main section#sede-index .groups-wrapper.sede h2 {
     padding-bottom: 40px;
   }
 }
 /* Breakpoint Small max-width 576px sm */
 @media screen and (max-width: 576px) {
-  h1 {
-    margin-top: 30px;
-  }
-
   table.table tr th.team_xs {
     display: none;
   }
@@ -10536,6 +10593,12 @@ main section#votes-show .players-wrapper h2.player-name span {
 main section#votes-form .form-wrapper,
 main section#votes-show .form-wrapper {
   padding-bottom: 20px;
+}
+main section#votes-form .form-wrapper form h4,
+main section#votes-show .form-wrapper form h4 {
+  color: #e20177;
+  font-size: 26px;
+  padding: 20px 0;
 }
 main section#votes-form .form-wrapper form .category-wrapper,
 main section#votes-show .form-wrapper form .category-wrapper {
@@ -10598,10 +10661,13 @@ main section#votes-show .form-wrapper form .category-wrapper .form-group textare
   margin-top: 10px;
 }
 main section#votes-form .form-wrapper form .category-wrapper p.comment-message,
-main section#votes-show .form-wrapper form .category-wrapper p.comment-message {
+main section#votes-form .form-wrapper form .category-wrapper p.comment-empty,
+main section#votes-show .form-wrapper form .category-wrapper p.comment-message,
+main section#votes-show .form-wrapper form .category-wrapper p.comment-empty {
   color: #e20177;
   margin: 0;
   padding-top: 10px;
+  font-size: 18px;
 }
 main section#votes-form .form-wrapper form .category-wrapper .form-control,
 main section#votes-show .form-wrapper form .category-wrapper .form-control {

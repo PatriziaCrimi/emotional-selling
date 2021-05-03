@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-  <section id="votes-index">
+  <section id="sede-index">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12">
           <h1 class="text-center">
             Stai votando per il Round
-            {{$round -> name}}
+            {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
           </h1>
         </div>
       </div>
@@ -91,18 +91,16 @@
             @if ($button2 -> status == 0)
               <p>Attendi per procedere</p>
             @else
-              <div class="buttons-wrapper">
-                {{-- Se l'utente loggato è Admin --}}
-                @if ($comboAuth->role->name == 'Admin')
-                  <a class="btn" href="{{ route('logged.rankings.index')}}">
-                    Guarda la classifica provvisoria
-                  </a>
-                @else
-                  <a class="btn" href="{{route('logged.votes.index')}}">
-                    Torna indietro
-                  </a>
-                @endif
-              </div>
+              {{-- Se l'utente loggato è Admin --}}
+              @if ($comboAuth->role->name == 'Admin')
+                <a class="btn" href="{{ route('logged.rankings.index')}}">
+                  Guarda la classifica provvisoria
+                </a>
+              @else
+                <a class="btn btn-lg" href="{{route('logged.votes.index')}}">
+                  Torna indietro
+                </a>
+              @endif
             @endif
           </div>
         </div>

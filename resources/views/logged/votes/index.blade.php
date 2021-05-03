@@ -14,26 +14,31 @@
               in corso
             </h2>
             {{-- Groups List --}}
-            <div class="row">
-              <div class="col-12">
-                <div class="groups-wrapper sede">
-                  @foreach ($usersGroups as $userGroup => $users)
-                    <div class="d-flex justify-content-center align-items-center">
-                      <h2 class="text-center text-uppercase font-weight-bold">
+            <div class="groups-wrapper sede">
+              @foreach ($usersGroups as $userGroup => $users)
+                <div class="row">
+                  <div class="col-6 p-0">
+                    <div class="group-col d-flex justify-content-end align-items-center">
+                      <h2 class="text-uppercase font-weight-bold">
                         @php
                         $group = \App\Group::find($userGroup);
                         $user = \App\User::where('id',$auth->user_id)->first();
                         @endphp
                         {{$group -> name}}
                       </h2>
+                    </div>
+                  </div>
+                  <div class="col-6 p-0">
+                    <div class="group-col d-flex justify-content-start align-items-center">
                       @foreach ($user -> groups as $group)
-                       @if ($group -> id == $userGroup)
-                         <a href="{{ route('logged.votes.sedeShowGroup',$group->id)}}" class="btn">
-                           Vota
-                         </a>
-                       @endif
+                        @if ($group -> id == $userGroup)
+                          <a href="{{ route('logged.votes.sedeShowGroup',$group->id)}}" class="btn sede">
+                            Vota
+                          </a>
+                        @endif
                       @endforeach
                     </div>
+                  </div>
 
                     {{-- <div v-if="isTeamShown" class="content d-flex justify-content-center">
                       @foreach ($users as $key => $user)
@@ -56,9 +61,9 @@
                         @endif
                       @endforeach
                     </div> --}}
-                  @endforeach
+
                 </div>
-              </div>
+              @endforeach
             </div>
           @else
           {{-- fine sede admin  --}}
@@ -150,18 +155,16 @@
             @if ($button2 -> status == 0)
               <p class="font-weight-bold">Attendi per procedere</p>
             @else
-              <div class="buttons-wrapper">
-                {{-- Se l'utente loggato è Admin --}}
-                @if ($auth->role->name == 'Admin')
-                  <a class="btn btn-lg" href="{{ route('logged.rankings.index')}}">
-                    Guarda la classifica provvisoria
-                  </a>
-                @else
-                  <a href="{{route('logged.home')}}" class="btn btn-lg">
-                    Torna alla home
-                  </a>
-                @endif
-              </div>
+              {{-- Se l'utente loggato è Admin --}}
+              @if ($auth->role->name == 'Admin')
+                <a class="btn btn-lg" href="{{ route('logged.rankings.index')}}">
+                  Guarda la classifica provvisoria
+                </a>
+              @else
+                <a href="{{route('logged.home')}}" class="btn btn-lg">
+                  Torna alla home
+                </a>
+              @endif
             @endif
           </div>
         </div>

@@ -1,4 +1,5 @@
-main section#votes-index {
+main section#votes-index,
+main section#sede-index {
   @include background-img($bg_general_tablet);
 
   h1 {
@@ -21,9 +22,18 @@ main section#votes-index {
     &.sede {
       padding: $padding_unit 0;
 
-      h2 {
-        color: $blue;
-        padding-bottom: $padding_unit / 2;
+      .group-col {
+        height: 100%;
+        padding: $padding_unit / 2;
+
+        h2 {
+          color: $blue;
+          padding: 0;
+        }
+
+        a.btn.sede {
+          margin: 0;
+        }
       }
     }
 
@@ -83,6 +93,7 @@ main section#votes-index {
   }
 
   .buttons-wrapper {
+    
     p {
       padding: $padding_unit 0;
     }
@@ -101,13 +112,16 @@ main section#votes-index {
 
 /* Breakpoint Small 576px sm */
 @media screen and (min-width: 577px) {
+  main section#votes-index,
+  main section#sede-index {
 
-  table {
-    font-size: $tablet_font;
+    table {
+      font-size: $tablet_font;
 
-    &.table tr {
-      th.team_xs  {
-        display:block;
+      &.table tr {
+        th.team_xs  {
+          display:block;
+        }
       }
     }
   }
@@ -115,7 +129,8 @@ main section#votes-index {
 
 /* Breakpoint Medium 768px md */
 @media screen and (min-width: 768px) {
-  main section#votes-index {
+  main section#votes-index,
+  main section#sede-index {
 
     h1,
     h2.sede {
@@ -133,9 +148,17 @@ main section#votes-index {
       &.sede {
         padding: $padding_unit * 2 0;
 
+        .group-col {
+          padding: $padding_unit $padding_unit / 2;
+        }
+
         h2 {
           padding-bottom: $padding_unit;
         }
+      }
+
+      .table-wrapper {
+        padding-bottom: $padding_unit;
       }
 
       a.btn {
@@ -161,14 +184,22 @@ main section#votes-index {
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
 
-  main section#votes-index {
+  main section#votes-index,
+  main section#sede-index {
     @include background-img($bg_general_desktop);
 
-    .groups-wrapper.sede {
-      padding: $padding_unit * 4 0;
+    .groups-wrapper {
 
-      h2 {
-        padding-bottom: $padding_unit * 2;
+      .table-wrapper {
+        padding-bottom: $padding_unit * 3;
+      }
+
+      &.sede {
+        padding: $padding_unit * 4 0;
+
+        h2 {
+          padding-bottom: $padding_unit * 2;
+        }
       }
     }
   }
@@ -176,10 +207,6 @@ main section#votes-index {
 
 /* Breakpoint Small max-width 576px sm */
 @media screen and (max-width: 576px) {
-  h1 {
-    margin-top: 30px;
-  }
-
   table.table tr {
     th.team_xs  {
       display: none;

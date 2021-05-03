@@ -25,53 +25,57 @@ main section#groups {
       padding-bottom: $padding_unit;
     }
 
-    table {
+    .table-wrapper {
+      padding-bottom: $padding_unit;
 
-      &.table_xs {
-        display:block;
-      }
+      table {
 
-      &.table {
-        background-color: $white_opacity;
-        border-radius: 15px;
-        color: $blue;
-
-        tr,
-        th,
-        td {
-          border: 0px!important;
+        &.table_xs {
+          display:block;
         }
 
-        thead {
-          text-transform: uppercase;
-          color: $fuxia;
-        }
+        &.table {
+          background-color: $white_opacity;
+          border-radius: 15px;
+          color: $blue;
 
-        tbody {
+          tr,
+          th,
+          td {
+            border: 0px!important;
+          }
 
-          tr {
+          thead {
+            text-transform: uppercase;
+            color: $fuxia;
+          }
 
-            th.team_xs  {
-              display: none;
-            }
+          tbody {
 
-            td.player {
-              width: 40%;
-            }
-            td {
-              width: 30%;
-            }
-            .active {
-              @include active-user;
+            tr {
+
+              th.team_xs  {
+                display: none;
+              }
+
+              td.player {
+                width: 40%;
+              }
+              td {
+                width: 30%;
+              }
+              .active {
+                @include active-user;
+              }
             }
           }
         }
       }
     }
+
   }
 
   .buttons-wrapper {
-    padding: $padding_unit 0;
 
     p:last-of-type {
       padding-bottom: $padding_unit;
@@ -99,7 +103,7 @@ main section#groups {
         padding-top: 0;
       }
 
-      table {
+      .table-wrapper table {
         font-size: $tablet_font;
 
         &.table_xs {
@@ -143,6 +147,10 @@ main section#groups {
       h2 {
         font-size: $title_size / 1.2;
       }
+
+      .table-wrapper {
+        padding-bottom: $padding_unit * 2;
+      }
     }
 
     .buttons-wrapper {
@@ -177,6 +185,10 @@ main section#groups {
         font-size: $title_size;
         padding-top: $padding_unit;
         padding-bottom: $padding_unit * 1.5;
+      }
+
+      .table-wrapper {
+        padding-bottom: $padding_unit * 3;
       }
     }
   }
