@@ -21,7 +21,8 @@ class HomeController extends Controller
     $round = Round::find(4);
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
+    $button3 = Button::find(3); // inizia Workshop
 
-    return view('logged.home',compact('user','round','button1','button2'));
+    return view('logged.home',compact('user','round','button1','button2', 'button3'));
   }
 }

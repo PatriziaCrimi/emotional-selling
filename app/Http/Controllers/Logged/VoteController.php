@@ -21,6 +21,7 @@ class VoteController extends Controller
     $round = Round::find(4); // valore del round
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
+    $button3 = Button::find(3); // inizia Workshop
     $idAuth = Auth::user()->id; // mi prendo l'id dell'utente autenticato
 
     // Prendo gli ID dei ruoli
@@ -68,10 +69,10 @@ class VoteController extends Controller
       $voteCheck = Vote::where('info_voter_id',$auth->id)->first();
       if(!is_null($voteCheck)){
         $voteCheckId = $voteCheck -> info_voter_id;
-        return view('logged.votes.index',compact('voteCheck','voteCheckId','usersGroups','round','auth', 'button1','button2'));
+        return view('logged.votes.index',compact('voteCheck','voteCheckId','usersGroups','round','auth', 'button1','button2', 'button3'));
       } else {
         $voteCheckId = 0;
-        return view('logged.votes.index',compact('voteCheckId','usersGroups','round','auth', 'button1','button2'));
+        return view('logged.votes.index',compact('voteCheckId','usersGroups','round','auth', 'button1','button2', 'button3'));
       }
     } else {
       abort(403);
@@ -83,6 +84,7 @@ class VoteController extends Controller
     $round = Round::find(4); // valore del round
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
+    $button3 = Button::find(3); // inizia Workshop
     $group_exist = GroupRoleRoundUser::where('group_id',$idGroup)->where('round_id',$round->name)->first();
 
     // Prendo gli ID dei ruoli
@@ -126,10 +128,10 @@ class VoteController extends Controller
         $voteCheck = Vote::where('info_voter_id',$comboAuth->id)->first();
         if(!is_null($voteCheck)){
           $voteCheckId = $voteCheck -> info_voter_id;
-          return view('logged.votes.sedeshowgroup',compact('voteCheck','voteCheckId','usersGroups','round','comboAuth', 'button1','button2'));
+          return view('logged.votes.sedeshowgroup',compact('voteCheck','voteCheckId','usersGroups','round','comboAuth', 'button1','button2', 'button3'));
         } else {
           $voteCheckId = 0;
-          return view('logged.votes.sedeshowgroup',compact('voteCheckId','usersGroups','round','comboAuth', 'button1','button2'));
+          return view('logged.votes.sedeshowgroup',compact('voteCheckId','usersGroups','round','comboAuth', 'button1','button2', 'button3'));
         }
       } else {
         // Se non ha i permessi
@@ -151,6 +153,7 @@ class VoteController extends Controller
     $round = Round::find(4); // valore round attuale
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
+    $button3 = Button::find(3); // inizia Workshop
     $team_exist = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->first();
 
     // Prendo gli ID dei ruoli
@@ -184,7 +187,7 @@ class VoteController extends Controller
         $user = null; // user null per controllo view votes.show
         $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
 
-        return view('logged.votes.create',compact('team','user','id','comboAuth', 'round','button1','button2'));
+        return view('logged.votes.create',compact('team','user','id','comboAuth', 'round','button1','button2', 'button3'));
 
       // Controllo se è Osservatore o DM/DM Junior e se abbia i permessi per votare il team cliccato
       } else if (($comboAuth->role_id == $idOsservatore || $comboAuth->role_id == $idDM || $comboAuth->role_id == $idDMjunior)
@@ -193,7 +196,7 @@ class VoteController extends Controller
         $user = null; // user null per controllo view votes.show
         $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
 
-        return view('logged.votes.create',compact('team','user','id','comboAuth', 'button1','button2'));
+        return view('logged.votes.create',compact('team','user','id','comboAuth', 'button1','button2', 'button3'));
 
       // Se non ha i permessi
       } else {
@@ -529,6 +532,7 @@ class VoteController extends Controller
     $round = Round::find(4); // valore round attuale
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
+    $button3 = Button::find(3); // inizia Workshop
     $team_exist = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->first();
 
     // Prendo gli ID dei ruoli
@@ -570,7 +574,7 @@ class VoteController extends Controller
           $user = null; // user null per controllo view votes.show
           $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
 
-          return view('logged.votes.show',compact('team','user','id','comboAuth', 'round','button1','button2', 'currentVotes'));
+          return view('logged.votes.show',compact('team','user','id','comboAuth', 'round','button1','button2', 'button3', 'currentVotes'));
 
         // Controllo se è Osservatore o DM/DM Junior e se abbia i permessi per visualizzare il team cliccato
         } else if (($comboAuth->role_id == $idOsservatore || $comboAuth->role_id == $idDM || $comboAuth->role_id == $idDMjunior)
@@ -578,7 +582,7 @@ class VoteController extends Controller
           $user = null; // user null per controllo view votes.show
           $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
 
-          return view('logged.votes.show',compact('team','user','id','comboAuth', 'button1','button2', 'currentVotes'));
+          return view('logged.votes.show',compact('team','user','id','comboAuth', 'button1','button2', 'button3', 'currentVotes'));
         }
 
       // Se non ha i permessi

@@ -71,6 +71,28 @@
                         </div>
                       </div>
 
+                      {{-- Select Inizia il Workshop (mostra il Login form) --}}
+
+                      <div class="dropdown admin-select">
+                        <button class="btn  dropdown-toggle" type="button" id="start-workshop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Inizia il Workshop
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="start-workshop">
+                          <form class="" action="{{ route('logged.button.startWorkshop')}}" method="post">
+                            @csrf
+                            @method('post')
+                            <select class="" name="button3">
+                              <span>Inizia il Workshop</span>
+                              <option  value="0" {{ $button1->status == 0 ? 'selected' : '' }}>Nascondi Login</option>
+                              <option  value="1"{{ $button1->status == 1 ? 'selected' : '' }}>Mostra Login</option>
+                            </select>
+
+                            <input type="submit" name="" value="Salva">
+                          </form>
+                        </div>
+                      </div>
+
+
                       {{-- Selezione Round --}}
 
                       <div class="dropdown admin-select">

@@ -6,6 +6,20 @@ main section#login {
   .container {
     height: 100%;
     min-height: 100vh;
+    }
+
+  .disabled-login {
+    padding: $padding_unit * 2 0;
+
+    h2 {
+      color: $fuxia;
+      padding: $padding_unit * 3 0;
+      text-shadow: 1px 1px #fff;
+
+      span {
+        padding: $padding_unit 0;
+      }
+    }
 
     .logo-wrapper {
       width: 100%;
@@ -22,10 +36,32 @@ main section#login {
 
 /* ------------------- MEDIA QUERY ------------------- */
 
+/* Breakpoint Medium 768px md */
+@media screen and (min-width: 768px) {
+main section#login {
+
+    .disabled-login {
+      padding: $padding_unit * 3 0;
+
+      h2 {
+        padding: $padding_unit * 5 0;
+        font-size: $title_size;
+      }
+    }
+  }
+}
+
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
 
   main section#login {
     @include background-img($bg_login_desktop);
+
+    .disabled-login {
+
+      h2 {
+        padding: $padding_unit * 6 0;
+      }
+    }
   }
 }
