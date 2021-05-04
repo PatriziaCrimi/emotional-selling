@@ -50,16 +50,32 @@ const app = new Vue({
   },
   methods: {
     toggleExplanation1: function() {
-      this.isExplanation1 = true;
+      if(this.isExplanation1 == false) {
+        this.isExplanation1 = true;
+      } else {
+        this.isExplanation1 = false;
+      }
     },
     toggleExplanation2: function() {
-      this.isExplanation2 = true;
+      if(this.isExplanation2 == false) {
+        this.isExplanation2 = true;
+      } else {
+        this.isExplanation2 = false;
+      }
     },
     toggleExplanation3: function() {
-      this.isExplanation3 = true;
+      if(this.isExplanation3 == false) {
+        this.isExplanation3 = true;
+      } else {
+        this.isExplanation3 = false;
+      }
     },
     toggleExplanation4: function() {
-      this.isExplanation4 = true;
+      if(this.isExplanation4 == false) {
+        this.isExplanation4 = true;
+      } else {
+        this.isExplanation4 = false;
+      }
     },
     cancelVotes: function() {
       this.radio1 = '';
