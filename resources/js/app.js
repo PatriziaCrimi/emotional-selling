@@ -7,6 +7,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
   el: '#app',
   data: {
+    isExplanation1: false,
+    isExplanation2: false,
+    isExplanation3: false,
+    isExplanation4: false,
     commentMessage1: '',
     commentMessage2: '',
     commentMessage3: '',
@@ -45,6 +49,18 @@ const app = new Vue({
     error:false,
   },
   methods: {
+    toggleExplanation1: function() {
+      this.isExplanation1 = true;
+    },
+    toggleExplanation2: function() {
+      this.isExplanation2 = true;
+    },
+    toggleExplanation3: function() {
+      this.isExplanation3 = true;
+    },
+    toggleExplanation4: function() {
+      this.isExplanation4 = true;
+    },
     cancelVotes: function() {
       this.radio1 = '';
       this.radio2 = '';

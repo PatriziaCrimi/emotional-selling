@@ -53,10 +53,18 @@
 
               {{-- Voto TEAM Categoria 1 --}}
 
+              @php
+                if($team[1]->role_id == $idISF) {
+                  $category = \App\Category::where('number', 1)->where('role_id', $idISF)->first();
+                } else if($team[1]->role_id == $idMedico) {
+                  $category = \App\Category::where('number', 1)->where('role_id', $idMedico)->first();
+                }
+              @endphp
+
               <div class="category-wrapper">
                 <div class="d-none form-group">
                   <label for="category1_id"></label>
-                  <input type="hidden" name="category1_id" value="1" class="form-control">
+                  <input type="hidden" name="category1_id" value="{{$category->id}}" class="form-control">
                 </div>
 
                 <div class="d-none form-group">
@@ -65,16 +73,10 @@
                 </div>
 
                 <div class="form-group">
-                  @php
-                    if($team[1]->role_id == $idISF) {
-                      $category = \App\Category::where('number', 1)->where('role_id', $idISF)->first();
-                    } else if($team[1]->role_id == $idMedico) {
-                      $category = \App\Category::where('number', 1)->where('role_id', $idMedico)->first();
-                    }
-                  @endphp
                   <h3>
                     {{$category->question}}
                   </h3>
+                  <a @click="toggleExplanation1()" href="#">SPIEGAZIONE</a>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                       <input :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
@@ -84,7 +86,7 @@
                     </div>
                   </div>
 
-                  <div class="explanation">
+                  <div v-if="isExplanation1" class="explanation">
                     <p>
                       {{$category->explanation}}
                     </p>
@@ -102,23 +104,25 @@
 
               {{-- Voto TEAM Categoria 2 --}}
 
+              @php
+                if($team[1]->role_id == $idISF) {
+                  $category = \App\Category::where('number', 2)->where('role_id', $idISF)->first();
+                } else if($team[1]->role_id == $idMedico) {
+                  $category = \App\Category::where('number', 2)->where('role_id', $idMedico)->first();
+                }
+              @endphp
+
               <div class="category-wrapper">
                 <div class="d-none form-group">
                   <label for="category2_id"></label>
-                  <input type="hidden" name="category2_id" value="2" class="form-control">
+                  <input type="hidden" name="category2_id" value="{{$category->id}}" class="form-control">
                 </div>
 
                 <div class="form-group">
-                  @php
-                    if($team[1]->role_id == $idISF) {
-                      $category = \App\Category::where('number', 2)->where('role_id', $idISF)->first();
-                    } else if($team[1]->role_id == $idMedico) {
-                      $category = \App\Category::where('number', 2)->where('role_id', $idMedico)->first();
-                    }
-                  @endphp
                   <h3>
                     {{$category->question}}
                   </h3>
+                  <a @click="toggleExplanation2()" href="#">SPIEGAZIONE</a>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                       <input :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
@@ -128,7 +132,7 @@
                     </div>
                   </div>
 
-                  <div class="explanation">
+                  <div v-if="isExplanation2" class="explanation">
                     <p>
                       {{$category->explanation}}
                     </p>
@@ -146,23 +150,25 @@
 
               {{-- Voto TEAM Categoria 3 --}}
 
+              @php
+                if($team[1]->role_id == $idISF) {
+                  $category = \App\Category::where('number', 3)->where('role_id', $idISF)->first();
+                } else if($team[1]->role_id == $idMedico) {
+                  $category = \App\Category::where('number', 3)->where('role_id', $idMedico)->first();
+                }
+              @endphp
+
               <div class="category-wrapper">
                 <div class="d-none form-group">
                   <label for="category3_id"></label>
-                  <input type="hidden" name="category3_id" value="3" class="form-control">
+                  <input type="hidden" name="category3_id" value="{{$category->id}}" class="form-control">
                 </div>
 
                 <div class="form-group">
-                  @php
-                    if($team[1]->role_id == $idISF) {
-                      $category = \App\Category::where('number', 3)->where('role_id', $idISF)->first();
-                    } else if($team[1]->role_id == $idMedico) {
-                      $category = \App\Category::where('number', 3)->where('role_id', $idMedico)->first();
-                    }
-                  @endphp
                   <h3>
                     {{$category->question}}
                   </h3>
+                  <a @click="toggleExplanation3()" href="#">SPIEGAZIONE</a>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                       <input :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
@@ -172,7 +178,7 @@
                     </div>
                   </div>
 
-                  <div class="explanation">
+                  <div v-if="isExplanation3" class="explanation">
                     <p>
                       {{$category->explanation}}
                     </p>
@@ -190,23 +196,25 @@
 
               {{-- Voto TEAM Categoria 4 --}}
 
+              @php
+                if($team[1]->role_id == $idISF) {
+                  $category = \App\Category::where('number', 4)->where('role_id', $idISF)->first();
+                } else if($team[1]->role_id == $idMedico) {
+                  $category = \App\Category::where('number', 4)->where('role_id', $idMedico)->first();
+                }
+              @endphp
+
               <div class="category-wrapper">
                 <div class="d-none form-group">
                   <label for="category4_id"></label>
-                  <input type="hidden" name="category4_id" value="4" class="form-control">
+                  <input type="hidden" name="category4_id" value="{{$category->id}}" class="form-control">
                 </div>
 
                 <div class="form-group">
-                  @php
-                    if($team[1]->role_id == $idISF) {
-                      $category = \App\Category::where('number', 4)->where('role_id', $idISF)->first();
-                    } else if($team[1]->role_id == $idMedico) {
-                      $category = \App\Category::where('number', 4)->where('role_id', $idMedico)->first();
-                    }
-                  @endphp
                   <h3>
                     {{$category->question}}
                   </h3>
+                  <a @click="toggleExplanation4()" href="#">SPIEGAZIONE</a>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                       <input :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
@@ -216,7 +224,7 @@
                     </div>
                   </div>
 
-                  <div class="explanation">
+                  <div v-if="isExplanation4" class="explanation">
                     <p>
                       {{$category->explanation}}
                     </p>

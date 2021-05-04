@@ -38,8 +38,7 @@ a:hover {
 }
 
 .card {
-  background-color: $white_opacity;
-  border-radius: 15px;
+  @include card-box;
   padding: $padding_unit;
 }
 

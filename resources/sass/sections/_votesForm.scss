@@ -38,6 +38,11 @@ main section#votes-show, {
             padding-bottom: $padding_unit / 2;
           }
 
+          .explanation {
+            color: red;
+            @include card-box;
+          }
+
           .radio-wrapper {
             display: flex;
             justify-content: center;

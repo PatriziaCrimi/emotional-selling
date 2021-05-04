@@ -44,7 +44,7 @@
           <div class="form-wrapper">
             <form class="form">
               @php
-                $categories = App\Category::all();
+                $categories = App\Category::where('role_id', $team[1]->role_id)->get();
               @endphp
               @if(count($currentVotes) != count($categories))
                   <h4 class="text-center font-weight-bold">Non hai votato una o più categorie.</h4>
@@ -54,7 +54,7 @@
                 <div class="category-wrapper">
                   <div class="form-group">
                     @php
-                    $category = \App\Category::where('number', $vote->category_id)->where('role_id', $team[1]->role_id)->first();
+                    $category = \App\Category::find($vote->category_id);
                     @endphp
                     <h3>
                       {{$category->question}}
