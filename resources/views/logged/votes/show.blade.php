@@ -47,12 +47,12 @@
         <div class="col-12">
           <div class="form-wrapper">
             <form class="form">
-              @php
+              {{-- @php
                 $categories = App\Category::where('role_id', $team[1]->role_id)->get();
               @endphp
               @if(count($currentVotes) != count($categories))
                   <h4 class="text-center font-weight-bold">Non hai votato una o più categorie.</h4>
-              @endif
+              @endif --}}
 
               @foreach ($currentVotes as $key => $vote)
                 <div class="category-wrapper">
@@ -62,7 +62,13 @@
                     @endphp
                     <h3>
                       {{$category->question}}
+                      <i @click="toggleExplanation{{$key+1}}()" class="far fa-question-circle"></i>
                     </h3>
+                    <div v-if="isExplanation{{$key+1}}" class="explanation">
+                      <p>
+                        {{$category->explanation}}
+                      </p>
+                    </div>
                     <div class="radio-wrapper">
                       <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                         <input disabled="disabled" class="d-none" :id="'radio{{$vote->category_id}}'+index" type="radio" name="voteTeam{{$vote->category_id}}" :value="index" v-model="{{$vote->value}}">

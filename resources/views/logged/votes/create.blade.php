@@ -50,6 +50,12 @@
               @csrf
               @method('post')
 
+              <div class="row">
+                <div class="col-12">
+                  <h4 class="text-center font-weight-bold">Tutte le categorie sono obbligatorie.</h4>
+                </div>
+              </div>
+
               <div class="d-none form-group">
                 <label for="info_voter_id"></label>
                 <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}" class="form-control">
@@ -77,10 +83,10 @@
                 </div>
 
                 <div class="form-group">
-                  <h3 class="d-inline-block">
+                  <h3>
                     {{$category->question}}
+                    <i @click="toggleExplanation1()" class="far fa-question-circle"></i>
                   </h3>
-                  <i @click="toggleExplanation1()" class="far fa-question-circle"></i>
                   <div v-if="isExplanation1" class="explanation">
                     <p>
                       {{$category->explanation}}
@@ -88,7 +94,7 @@
                   </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
+                      <input required :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
                       <label class="radio-label" :for="'radio1'+index">
                         @{{index}}
                       </label>
@@ -122,10 +128,10 @@
                 </div>
 
                 <div class="form-group">
-                  <h3 class="d-inline-block">
+                  <h3>
                     {{$category->question}}
+                    <i @click="toggleExplanation2()" class="far fa-question-circle"></i>
                   </h3>
-                  <i @click="toggleExplanation2()" class="far fa-question-circle"></i>
                   <div v-if="isExplanation2" class="explanation">
                     <p>
                       {{$category->explanation}}
@@ -133,7 +139,7 @@
                   </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
+                      <input required :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
                       <label class="radio-label" :for="'radio2'+index">
                         @{{index}}
                       </label>
@@ -167,10 +173,11 @@
                 </div>
 
                 <div class="form-group">
-                  <h3 class="d-inline-block">
+                  <h3>
                     {{$category->question}}
+                    <i @click="toggleExplanation3()" class="far fa-question-circle"></i>
                   </h3>
-                  <i @click="toggleExplanation3()" class="far fa-question-circle"></i>
+
                   <div v-if="isExplanation3" class="explanation">
                     <p>
                       {{$category->explanation}}
@@ -178,7 +185,7 @@
                   </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
+                      <input required :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
                       <label class="radio-label" :for="'radio3'+index">
                         @{{index}}
                       </label>
@@ -212,10 +219,10 @@
                 </div>
 
                 <div class="form-group">
-                  <h3 class="d-inline-block">
+                  <h3>
                     {{$category->question}}
+                    <i @click="toggleExplanation4()" class="far fa-question-circle"></i>
                   </h3>
-                  <i @click="toggleExplanation4()" class="far fa-question-circle"></i>
                   <div v-if="isExplanation4" class="explanation">
                     <p>
                       {{$category->explanation}}
@@ -223,7 +230,7 @@
                   </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
+                      <input required :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
                       <label class="radio-label" :for="'radio4'+index">
                         @{{index}}
                       </label>

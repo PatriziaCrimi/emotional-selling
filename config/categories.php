@@ -35,7 +35,7 @@
       "role_id" => $isf,
       "number" => 4,
       "question" => "In chiusura di intervista c’è stata la call to action per la neocorteccia (cervello limbico)?",
-      "explanation" => "Indicare l'aspetto razionale usato in chiusura (rispoetto alle evidenze scientifiche o alle caratteristiche concordate) e la call to action.",
+      "explanation" => "Indicare l'aspetto razionale usato in chiusura (rispetto alle evidenze scientifiche o alle caratteristiche concordate) e la call to action.",
     ],
 
     // ---------------- MEDICO Categories ----------------

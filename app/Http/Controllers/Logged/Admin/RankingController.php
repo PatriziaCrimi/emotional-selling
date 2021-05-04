@@ -93,6 +93,7 @@ class RankingController extends Controller
       }
 
       $votesRank = json_decode(json_encode($scoresArray),true);
+      array_multisort( array_column($votesRank, "score"), SORT_DESC, $votesRank );
 
       return view('logged.admin.rankings',compact('votesRank','round','button1','button2', 'button3'));
 
