@@ -22,10 +22,15 @@ main section#login {
   .disabled-login {
     padding: $padding_unit * 2 0;
 
-    h2 {
+    .logo-lg {
+      margin-bottom: $margin_unit * 4;
+    }
+
+    h2.card {
       color: $fuxia;
-      padding: $padding_unit * 3 0;
+      padding: $padding_unit 0;
       text-shadow: 1px 1px #fff;
+      font-size: $mobile_font;
 
       span {
         padding: $padding_unit 0;
@@ -43,7 +48,11 @@ main section#login {
     .disabled-login {
       padding: $padding_unit * 3 0;
 
-      h2 {
+      .logo-lg {
+        margin-bottom: $margin_unit * 6;
+      }
+
+      h2.card {
         padding: $padding_unit * 5 0;
         font-size: $title_size;
       }
@@ -61,7 +70,7 @@ main section#login {
       padding-top: $padding_unit * 3;
       padding-bottom: 0;
 
-      h2 {
+      h2.card {
         padding: $padding_unit * 6 0;
       }
     }

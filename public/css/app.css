@@ -10145,12 +10145,16 @@ main section#login .container .card button.btn {
 main section#login .disabled-login {
   padding: 40px 0;
 }
-main section#login .disabled-login h2 {
-  color: #e20177;
-  padding: 60px 0;
-  text-shadow: 1px 1px #fff;
+main section#login .disabled-login .logo-lg {
+  margin-bottom: 40px;
 }
-main section#login .disabled-login h2 span {
+main section#login .disabled-login h2.card {
+  color: #e20177;
+  padding: 20px 0;
+  text-shadow: 1px 1px #fff;
+  font-size: 18px;
+}
+main section#login .disabled-login h2.card span {
   padding: 20px 0;
 }
 
@@ -10160,7 +10164,10 @@ main section#login .disabled-login h2 span {
   main section#login .disabled-login {
     padding: 60px 0;
   }
-  main section#login .disabled-login h2 {
+  main section#login .disabled-login .logo-lg {
+    margin-bottom: 60px;
+  }
+  main section#login .disabled-login h2.card {
     padding: 100px 0;
     font-size: 36px;
   }
@@ -10177,7 +10184,7 @@ main section#login .disabled-login h2 span {
     padding-top: 60px;
     padding-bottom: 0;
   }
-  main section#login .disabled-login h2 {
+  main section#login .disabled-login h2.card {
     padding: 120px 0;
   }
 }

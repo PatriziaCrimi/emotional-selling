@@ -47,7 +47,7 @@
                 $categories_quantity = App\Category::all();
               @endphp
               @if(count($currentVotes) != count($categories_quantity))
-                  <h4 class="text-center">Non hai votato una o più categorie.</h4>
+                  <h4 class="text-center font-weight-bold">Non hai votato una o più categorie.</h4>
               @endif
 
               @foreach ($currentVotes as $key => $vote)
