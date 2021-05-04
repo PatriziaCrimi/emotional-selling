@@ -27,7 +27,7 @@
           <div class="col-12">
             <div class="sede-info text-center">
               {{$auth -> user -> name}}
-              {{$auth -> user -> lastname}}:
+              {{$auth -> user -> lastname}} - 
               {{$auth -> role -> name}}
             </div>
           </div>

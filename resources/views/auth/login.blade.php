@@ -14,8 +14,8 @@
               <div class="logo-lg text-center">
                 <img class="img-fluid" src="{{asset('storage/img/logo-emotional-selling.png')}}" alt="Logo Strategic Connections">
               </div>
-              <h2 class="text-center">
-                Siamo spiacenti,
+              <h2 class="card text-center">
+                Si prega di attendere,
                 <span class="font-weight-bold d-block">l'app verrà abilitata il giorno del Workshop.</span>
               </h2>
             </div>

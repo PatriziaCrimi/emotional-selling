@@ -6,29 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateButtonsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('buttons', function (Blueprint $table) {
-            $table->id();
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('buttons', function (Blueprint $table) {
+      $table->id();
+      $table->boolean('status')->unsigned()->nullable();
+      $table->string('name', 50)->nullable();
+      $table->timestamps();
+    });
+  }
 
-            $table->boolean('status')->unsigned()->nullable();
-
-            $table->timestamps();
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('buttons');
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::dropIfExists('buttons');
+  }
 }
