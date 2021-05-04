@@ -44,20 +44,20 @@
           <div class="form-wrapper">
             <form class="form">
               @php
-                $categories_quantity = App\Category::all();
+                $categories = App\Category::all();
               @endphp
-              @if(count($currentVotes) != count($categories_quantity))
+              @if(count($currentVotes) != count($categories))
                   <h4 class="text-center font-weight-bold">Non hai votato una o più categorie.</h4>
               @endif
 
               @foreach ($currentVotes as $key => $vote)
                 <div class="category-wrapper">
                   <div class="form-group">
-                    <h3> Come valuti
-                      @php
-                      $category = \App\Category::find($vote->category_id);
-                      @endphp
-                      {{$category->name}}
+                    @php
+                    $category = \App\Category::where('number', $vote->category_id)->where('role_id', $team[1]->role_id)->first();
+                    @endphp
+                    <h3>
+                      {{$category->question}}
                     </h3>
                     <div class="radio-wrapper">
                       <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
