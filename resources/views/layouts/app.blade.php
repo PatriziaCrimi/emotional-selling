@@ -14,6 +14,7 @@
       @yield('scripts')
 
       <!-- Styles -->
+      @yield('links')
       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
   <body>

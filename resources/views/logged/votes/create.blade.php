@@ -4,6 +4,10 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 @endsection
 
+@section('links')
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+@endsection
+
 @section('content')
   <section id="votes-form">
     <div class="container">
@@ -73,10 +77,15 @@
                 </div>
 
                 <div class="form-group">
-                  <h3>
+                  <h3 class="d-inline-block">
                     {{$category->question}}
                   </h3>
-                  <a @click="toggleExplanation1()" href="#">SPIEGAZIONE</a>
+                  <i @click="toggleExplanation1()" class="far fa-question-circle"></i>
+                  <div v-if="isExplanation1" class="explanation">
+                    <p>
+                      {{$category->explanation}}
+                    </p>
+                  </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                       <input :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
@@ -84,12 +93,6 @@
                         @{{index}}
                       </label>
                     </div>
-                  </div>
-
-                  <div v-if="isExplanation1" class="explanation">
-                    <p>
-                      {{$category->explanation}}
-                    </p>
                   </div>
 
                   <div class="text" v-if="showComment1">
@@ -119,10 +122,15 @@
                 </div>
 
                 <div class="form-group">
-                  <h3>
+                  <h3 class="d-inline-block">
                     {{$category->question}}
                   </h3>
-                  <a @click="toggleExplanation2()" href="#">SPIEGAZIONE</a>
+                  <i @click="toggleExplanation2()" class="far fa-question-circle"></i>
+                  <div v-if="isExplanation2" class="explanation">
+                    <p>
+                      {{$category->explanation}}
+                    </p>
+                  </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                       <input :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
@@ -130,12 +138,6 @@
                         @{{index}}
                       </label>
                     </div>
-                  </div>
-
-                  <div v-if="isExplanation2" class="explanation">
-                    <p>
-                      {{$category->explanation}}
-                    </p>
                   </div>
 
                   <div v-if="showComment2">
@@ -165,10 +167,15 @@
                 </div>
 
                 <div class="form-group">
-                  <h3>
+                  <h3 class="d-inline-block">
                     {{$category->question}}
                   </h3>
-                  <a @click="toggleExplanation3()" href="#">SPIEGAZIONE</a>
+                  <i @click="toggleExplanation3()" class="far fa-question-circle"></i>
+                  <div v-if="isExplanation3" class="explanation">
+                    <p>
+                      {{$category->explanation}}
+                    </p>
+                  </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                       <input :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
@@ -176,12 +183,6 @@
                         @{{index}}
                       </label>
                     </div>
-                  </div>
-
-                  <div v-if="isExplanation3" class="explanation">
-                    <p>
-                      {{$category->explanation}}
-                    </p>
                   </div>
 
                   <div v-if="showComment3">
@@ -211,10 +212,15 @@
                 </div>
 
                 <div class="form-group">
-                  <h3>
+                  <h3 class="d-inline-block">
                     {{$category->question}}
                   </h3>
-                  <a @click="toggleExplanation4()" href="#">SPIEGAZIONE</a>
+                  <i @click="toggleExplanation4()" class="far fa-question-circle"></i>
+                  <div v-if="isExplanation4" class="explanation">
+                    <p>
+                      {{$category->explanation}}
+                    </p>
+                  </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
                       <input :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
@@ -222,12 +228,6 @@
                         @{{index}}
                       </label>
                     </div>
-                  </div>
-
-                  <div v-if="isExplanation4" class="explanation">
-                    <p>
-                      {{$category->explanation}}
-                    </p>
                   </div>
 
                   <div v-if="showComment4">

@@ -39,8 +39,9 @@ main section#votes-show, {
           }
 
           .explanation {
-            color: red;
+            color: $blue;
             @include card-box;
+            padding: 0 $padding_unit;
           }
 
           .radio-wrapper {
