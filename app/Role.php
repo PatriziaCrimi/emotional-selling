@@ -12,4 +12,9 @@ class Role extends Model
   public function users() {
     return $this->hasMany('App\User');
   }
+
+  // One to Many between Roles and Categories tables
+  public function categories() {
+    return $this->hasMany('App\Category');
+  }
 }

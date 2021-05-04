@@ -12,6 +12,7 @@ use App\User;
 use App\Role;
 use App\Vote;
 use App\Button;
+use App\Category;
 
 class VoteController extends Controller
 {
@@ -187,7 +188,7 @@ class VoteController extends Controller
         $user = null; // user null per controllo view votes.show
         $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
 
-        return view('logged.votes.create',compact('team','user','id','comboAuth', 'round','button1','button2', 'button3'));
+        return view('logged.votes.create',compact('team','user','id','comboAuth', 'round','button1','button2', 'button3', 'idISF', 'idMedico'));
 
       // Controllo se è Osservatore o DM/DM Junior e se abbia i permessi per votare il team cliccato
       } else if (($comboAuth->role_id == $idOsservatore || $comboAuth->role_id == $idDM || $comboAuth->role_id == $idDMjunior)
@@ -196,7 +197,7 @@ class VoteController extends Controller
         $user = null; // user null per controllo view votes.show
         $team = GroupRoleRoundUser::where('team_id',$id)->where('round_id',$round->name)->get(); //team da visualizzare
 
-        return view('logged.votes.create',compact('team','user','id','comboAuth', 'button1','button2', 'button3'));
+        return view('logged.votes.create',compact('team','user','id','comboAuth', 'button1','button2', 'button3', 'idISF', 'idMedico'));
 
       // Se non ha i permessi
       } else {

@@ -16,7 +16,10 @@ class CategoriesTableSeeder extends Seeder
 
     foreach ($categories as $category) {
       $new_category_obj = new Category();
-      $new_category_obj->name = $category['name'];
+      $new_category_obj->role_id = $category['role_id'];
+      $new_category_obj->number = $category['number'];
+      $new_category_obj->question = $category['question'];
+      $new_category_obj->explanation = $category['explanation'];
       $new_category_obj->save();
     }
   }

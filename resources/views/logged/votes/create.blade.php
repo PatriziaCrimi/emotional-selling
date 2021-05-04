@@ -65,11 +65,15 @@
                 </div>
 
                 <div class="form-group">
-                  <h3> Come valuti
-                    @php
-                      $category = \App\Category::find(1);
-                    @endphp
-                    {{$category->name}}
+                  @php
+                    if($team[1]->role_id == $idISF) {
+                      $category = \App\Category::where('number', 1)->where('role_id', $idISF)->first();
+                    } else if($team[1]->role_id == $idMedico) {
+                      $category = \App\Category::where('number', 1)->where('role_id', $idMedico)->first();
+                    }
+                  @endphp
+                  <h3>
+                    {{$category->question}}
                   </h3>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
@@ -78,6 +82,12 @@
                         @{{index}}
                       </label>
                     </div>
+                  </div>
+
+                  <div class="explanation">
+                    <p>
+                      {{$category->explanation}}
+                    </p>
                   </div>
 
                   <div class="text" v-if="showComment1">
@@ -99,11 +109,15 @@
                 </div>
 
                 <div class="form-group">
-                  <h3> Come valuti
-                    @php
-                      $category = \App\Category::find(2);
-                    @endphp
-                    {{$category->name}}
+                  @php
+                    if($team[1]->role_id == $idISF) {
+                      $category = \App\Category::where('number', 2)->where('role_id', $idISF)->first();
+                    } else if($team[1]->role_id == $idMedico) {
+                      $category = \App\Category::where('number', 2)->where('role_id', $idMedico)->first();
+                    }
+                  @endphp
+                  <h3>
+                    {{$category->question}}
                   </h3>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
@@ -112,6 +126,12 @@
                         @{{index}}
                       </label>
                     </div>
+                  </div>
+
+                  <div class="explanation">
+                    <p>
+                      {{$category->explanation}}
+                    </p>
                   </div>
 
                   <div v-if="showComment2">
@@ -133,11 +153,15 @@
                 </div>
 
                 <div class="form-group">
-                  <h3> Come valuti
-                    @php
-                      $category = \App\Category::find(3);
-                    @endphp
-                    {{$category->name}}
+                  @php
+                    if($team[1]->role_id == $idISF) {
+                      $category = \App\Category::where('number', 3)->where('role_id', $idISF)->first();
+                    } else if($team[1]->role_id == $idMedico) {
+                      $category = \App\Category::where('number', 3)->where('role_id', $idMedico)->first();
+                    }
+                  @endphp
+                  <h3>
+                    {{$category->question}}
                   </h3>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
@@ -146,6 +170,12 @@
                         @{{index}}
                       </label>
                     </div>
+                  </div>
+
+                  <div class="explanation">
+                    <p>
+                      {{$category->explanation}}
+                    </p>
                   </div>
 
                   <div v-if="showComment3">
@@ -167,11 +197,15 @@
                 </div>
 
                 <div class="form-group">
-                  <h3> Come valuti
-                    @php
-                      $category = \App\Category::find(4);
-                    @endphp
-                    {{$category->name}}
+                  @php
+                    if($team[1]->role_id == $idISF) {
+                      $category = \App\Category::where('number', 4)->where('role_id', $idISF)->first();
+                    } else if($team[1]->role_id == $idMedico) {
+                      $category = \App\Category::where('number', 4)->where('role_id', $idMedico)->first();
+                    }
+                  @endphp
+                  <h3>
+                    {{$category->question}}
                   </h3>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
@@ -180,6 +214,12 @@
                         @{{index}}
                       </label>
                     </div>
+                  </div>
+
+                  <div class="explanation">
+                    <p>
+                      {{$category->explanation}}
+                    </p>
                   </div>
 
                   <div v-if="showComment4">
