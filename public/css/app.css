@@ -10643,6 +10643,12 @@ main section#votes-form .form-wrapper form .category-wrapper .form-group h3,
 main section#votes-show .form-wrapper form .category-wrapper .form-group h3 {
   padding-bottom: 10px;
 }
+main section#votes-form .form-wrapper form .category-wrapper .form-group .explanation,
+main section#votes-show .form-wrapper form .category-wrapper .form-group .explanation {
+  color: red;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 15px;
+}
 main section#votes-form .form-wrapper form .category-wrapper .form-group .radio-wrapper,
 main section#votes-show .form-wrapper form .category-wrapper .form-group .radio-wrapper {
   display: flex;

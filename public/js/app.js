@@ -49848,6 +49848,10 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
+    isExplanation1: false,
+    isExplanation2: false,
+    isExplanation3: false,
+    isExplanation4: false,
     commentMessage1: '',
     commentMessage2: '',
     commentMessage3: '',
@@ -49886,6 +49890,18 @@ var app = new Vue({
     error: false
   },
   methods: {
+    toggleExplanation1: function toggleExplanation1() {
+      this.isExplanation1 = true;
+    },
+    toggleExplanation2: function toggleExplanation2() {
+      this.isExplanation2 = true;
+    },
+    toggleExplanation3: function toggleExplanation3() {
+      this.isExplanation3 = true;
+    },
+    toggleExplanation4: function toggleExplanation4() {
+      this.isExplanation4 = true;
+    },
     cancelVotes: function cancelVotes() {
       this.radio1 = '';
       this.radio2 = '';

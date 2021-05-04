@@ -5,6 +5,11 @@
   background-position: center;
 }
 
+@mixin card-box {
+  background-color: $white_opacity;
+  border-radius: 15px;
+}
+
 @mixin active-user {
   font-weight: bold;
   color: $fuxia;
