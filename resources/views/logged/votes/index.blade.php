@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
   <section id="votes-index">
     <div class="container">
       <div class="row justify-content-center">

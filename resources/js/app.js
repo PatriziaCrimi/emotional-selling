@@ -26,10 +26,10 @@ const app = new Vue({
     isRequired2: false,
     isRequired3: false,
     isRequired4: false,
-    radio1: '',
-    radio2: '',
-    radio3: '',
-    radio4: '',
+    radio1: null,
+    radio2: null,
+    radio3: null,
+    radio4: null,
     textarea1: '',
     textarea2: '',
     textarea3: '',
@@ -47,6 +47,7 @@ const app = new Vue({
     liveArray: [],
     success:false,
     error:false,
+
   },
   methods: {
     toggleExplanation1: function() {
@@ -161,10 +162,20 @@ const app = new Vue({
       Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Oops...',
-        text: 'Qualcosa è andato storto!',
+        title: 'ATTENZIONE!',
+        text: 'Qualcosa è andato storto',
         showConfirmButton: false,
-        timer: 1500
+        timer: 2000
+      });
+    },
+    alertWrongVote() {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'ATTENZIONE!',
+        text: 'Devi votare tutte le categorie.',
+        showConfirmButton: false,
+        timer: 2000
       });
     },
     alertSuccess() {
@@ -218,6 +229,18 @@ const app = new Vue({
       this.votesArray = [];
       this.liveArray = [];
     },
+    checkForm: function (e) {
+      if (this.radio1 && this.radio2 && this.radio3 && this.radio4) {
+        this.alertVoted();
+        return true;
+      }
+
+      if (!this.radio1 || !this.radio2 || !this.radio3 || !this.radio4) {
+        this.alertWrongVote();
+      }
+
+      e.preventDefault();
+    }
     // getUser(id){
     //     axios
     //       .get("/logged/votes/user/" + id ).
