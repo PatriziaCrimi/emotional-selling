@@ -84,10 +84,12 @@ class RankingController extends Controller
             DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '2' THEN value / 2 ELSE 0 END) as `obiezioniHalfVote`", 'votes.team_id'),
             DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '4' THEN value ELSE 0 END) as `calltoaction`", 'votes.team_id'),
             DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '4' THEN value / 2 ELSE 0 END) as `calltoactionHalfVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '1' AND category_id = '2' AND category_id = '4' AND category_id = '4' THEN value ELSE 0 END) as `isf`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '1' AND category_id = '2' AND category_id = '3' AND category_id = '4' THEN value / 2 ELSE 0 END) as `isfHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND categories.role_id = '7' THEN value ELSE 0 END) as `isf`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND categories.role_id = '7' THEN value / 2 ELSE 0 END) as `isfHalfVote`", 'votes.team_id'),
         )->groupBy('votes.team_id', 'teams.name')
       ->get();
+
+      dd($votesCollection);
 
       foreach ($votesCollection as $key => $voteTeam) {
         $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
