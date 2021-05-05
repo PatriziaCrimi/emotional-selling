@@ -82,6 +82,7 @@ class RankingController extends Controller
         )->groupBy('votes.team_id', 'teams.name')
       ->get();
 
+
       foreach ($votesCollection as $key => $voteTeam) {
         $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
         $teamName = $voteTeam->name;
@@ -91,11 +92,42 @@ class RankingController extends Controller
           'score' => $sumTeam
         );
       }
+      // dd($categoryIsf);
 
       $votesRank = json_decode(json_encode($scoresArray),true);
       array_multisort( array_column($votesRank, "score"), SORT_DESC, $votesRank );
 
-      return view('logged.admin.rankings',compact('votesRank','round','button1','button2', 'button3'));
+      $votesObiezioni = DB::table('votes')
+      ->join('teams','teams.id','=','votes.team_id')
+      ->join('categories','categories.id','=','votes.category_id')
+      ->select('votes.team_id', 'teams.name',
+            DB::raw("SUM(CASE WHEN team_vote = '2' THEN value ELSE 0 END) as `normalVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' THEN value / 2 ELSE 0 END) as `halfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '2' THEN value ELSE 0 END) as `category`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '2' THEN value / 2 ELSE 0 END) as `categoryHalfVote`", 'votes.team_id')
+        )->groupBy('votes.team_id', 'teams.name')
+      ->get();
+
+
+      foreach ($votesObiezioni as $key => $voteTeam) {
+        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
+        $sumCategory = $voteTeam->category + $voteTeam->categoryHalfVote;
+        $teamName = $voteTeam->name;
+        $scoresArrayObiezioni[$teamName] = array(
+          'team_id' => $voteTeam->team_id,
+          'name' => $teamName,
+          'score' => $sumTeam,
+          'scoreObiezioni' => $sumCategory
+        );
+      }
+
+
+      $votesObiezioni = json_decode(json_encode($scoresArrayObiezioni),true);
+      array_multisort( array_column($votesObiezioni, "score"), SORT_DESC, $votesObiezioni );
+
+
+      // dd($votesObiezioni);
+      return view('logged.admin.rankings',compact('votesRank','votesObiezioni','round','button1','button2', 'button3'));
 
     } else {
       abort(403);
