@@ -89,8 +89,6 @@ class RankingController extends Controller
         )->groupBy('votes.team_id', 'teams.name')
       ->get();
 
-      dd($votesCollection);
-
       foreach ($votesCollection as $key => $voteTeam) {
         $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
         $teamName = $voteTeam->name;
