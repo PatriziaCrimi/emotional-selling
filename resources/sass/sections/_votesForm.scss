@@ -1,6 +1,5 @@
 main section#votes-form,
 main section#votes-show, {
-  @include background-img($bg_general_tablet);
 
   h1 {
     color: $blue;
@@ -26,7 +25,7 @@ main section#votes-show, {
       h4 {
         color: $fuxia;
         font-size: $tablet_font;
-        padding: $padding_unit 0;
+        padding-bottom: $padding_unit;
       }
 
       .category-wrapper {
@@ -36,16 +35,29 @@ main section#votes-show, {
 
           h3 {
             padding-bottom: $padding_unit / 2;
+            cursor: help;
+            font-size: $tablet_font - 1;
+
+            i.fa-question-circle {
+              color: $blue;
+              margin-left: $margin_unit / 2;
+            }
           }
 
           .explanation {
             color: $blue;
-            @include card-box;
-            padding: 0 $padding_unit;
-          }
 
-          i.far.fa-question-circle {
-            //
+            p {
+              display: inline-block;
+              padding: 0 $padding_unit;
+              @include card-box;
+
+              i.fa-times-circle {
+                color: $blue;
+                margin-left: $margin_unit / 2;
+                cursor: pointer;
+              }
+            }
           }
 
           .radio-wrapper {
@@ -78,7 +90,7 @@ main section#votes-show, {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin: 0 $margin_unit;
+                margin: 0 $margin_unit / 2;
                 @include to-vote-button;
                 @include transition_hover;
               }
@@ -128,7 +140,7 @@ main section#votes-show, {
   .buttons-wrapper {
 
     a.btn {
-      margin: 0 $margin_unit;
+      margin: $margin_unit;
 
       &.btn-back {
         @include input-button($light_blue);
@@ -142,6 +154,20 @@ main section#votes-show, {
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
+
+/* Breakpoint Small 576px sm */
+@media screen and (min-width: 577px) {
+  main section#votes-form,
+  main section#votes-show {
+
+    .form-wrapper form .category-wrapper .form-group .radio-wrapper .radio-toolbar {
+      label.radio-label,
+      label.radio-label-disabled {
+        margin: 0 $margin_unit;
+      }
+    }
+  }
+}
 
 /* Breakpoint Medium 768px md */
 @media screen and (min-width: 768px) {
@@ -179,7 +205,6 @@ main section#votes-show, {
 @media screen and (min-width: 992px) {
   main section#votes-form,
   main section#votes-show {
-    @include background-img($bg_general_desktop);
 
     .form-wrapper form {
       padding-bottom: $padding_unit;

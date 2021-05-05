@@ -1,5 +1,4 @@
 main section#groups {
-  @include background-img($bg_general_tablet);
 
   h1 {
     color: $blue;
@@ -169,7 +168,6 @@ main section#groups {
 @media screen and (min-width: 992px) {
 
   main section#groups {
-    @include background-img($bg_general_desktop);
 
     h1 {
       font-size: $title_size * 1.2;

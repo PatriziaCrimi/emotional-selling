@@ -60,13 +60,14 @@
                     @php
                     $category = \App\Category::find($vote->category_id);
                     @endphp
-                    <h3>
+                    <h3 @click="toggleExplanation{{$key+1}}()">
                       {{$category->question}}
-                      <i @click="toggleExplanation{{$key+1}}()" class="far fa-question-circle"></i>
+                      <i class="far fa-question-circle fa-sm"></i>
                     </h3>
                     <div v-if="isExplanation{{$key+1}}" class="explanation">
                       <p>
                         {{$category->explanation}}
+                        <i @click="closeExplanation{{$key+1}}()" class="far fa-times-circle fa-sm"></i>
                       </p>
                     </div>
                     <div class="radio-wrapper">
