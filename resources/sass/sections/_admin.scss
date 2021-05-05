@@ -1,13 +1,3 @@
 main section.admin {
-  @include background-img($bg_general_tablet);
   min-height: 100vh;
-}
-
-/* ------------------- MEDIA QUERY ------------------- */
-
-@media screen and (min-width: 992px) {
-
-  main section.admin {
-    @include background-img($bg_general_desktop);
-  }
 }

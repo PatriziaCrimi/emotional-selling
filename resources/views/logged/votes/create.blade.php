@@ -84,13 +84,14 @@
                 </div>
 
                 <div class="form-group">
-                  <h3>
+                  <h3 @click="toggleExplanation1()">
                     {{$category->question}}
-                    <i @click="toggleExplanation1()" class="far fa-question-circle"></i>
+                    <i class="far fa-question-circle fa-sm"></i>
                   </h3>
                   <div v-if="isExplanation1" class="explanation">
                     <p>
                       {{$category->explanation}}
+                      <i @click="closeExplanation1()" class="far fa-times-circle fa-sm"></i>
                     </p>
                   </div>
                   <div class="radio-wrapper">
@@ -129,13 +130,14 @@
                 </div>
 
                 <div class="form-group">
-                  <h3>
+                  <h3 @click="toggleExplanation2()" >
                     {{$category->question}}
-                    <i @click="toggleExplanation2()" class="far fa-question-circle"></i>
+                    <i class="far fa-question-circle fa-sm"></i>
                   </h3>
                   <div v-if="isExplanation2" class="explanation">
                     <p>
                       {{$category->explanation}}
+                      <i @click="closeExplanation2()" class="far fa-times-circle fa-sm"></i>
                     </p>
                   </div>
                   <div class="radio-wrapper">
@@ -174,14 +176,15 @@
                 </div>
 
                 <div class="form-group">
-                  <h3>
+                  <h3 @click="toggleExplanation3()" >
                     {{$category->question}}
-                    <i @click="toggleExplanation3()" class="far fa-question-circle"></i>
+                    <i class="far fa-question-circle fa-sm"></i>
                   </h3>
 
                   <div v-if="isExplanation3" class="explanation">
                     <p>
                       {{$category->explanation}}
+                      <i @click="closeExplanation3()" class="far fa-times-circle fa-sm"></i>
                     </p>
                   </div>
                   <div class="radio-wrapper">
@@ -220,13 +223,14 @@
                 </div>
 
                 <div class="form-group">
-                  <h3>
+                  <h3 @click="toggleExplanation4()">
                     {{$category->question}}
-                    <i @click="toggleExplanation4()" class="far fa-question-circle"></i>
+                    <i class="far fa-question-circle fa-sm"></i>
                   </h3>
                   <div v-if="isExplanation4" class="explanation">
                     <p>
                       {{$category->explanation}}
+                      <i @click="closeExplanation4()" class="far fa-times-circle fa-sm"></i>
                     </p>
                   </div>
                   <div class="radio-wrapper">

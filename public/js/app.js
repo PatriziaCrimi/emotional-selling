@@ -49918,6 +49918,18 @@ var app = new Vue({
         this.isExplanation4 = false;
       }
     },
+    closeExplanation1: function closeExplanation1() {
+      this.isExplanation1 = false;
+    },
+    closeExplanation2: function closeExplanation2() {
+      this.isExplanation2 = false;
+    },
+    closeExplanation3: function closeExplanation3() {
+      this.isExplanation3 = false;
+    },
+    closeExplanation4: function closeExplanation4() {
+      this.isExplanation4 = false;
+    },
     cancelVotes: function cancelVotes() {
       this.radio1 = null;
       this.radio2 = null;

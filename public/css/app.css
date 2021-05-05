@@ -10026,6 +10026,10 @@ body {
 }
 
 main section {
+  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
   height: 100%;
   min-height: calc(100vh - 88px);
@@ -10069,6 +10073,10 @@ a:hover {
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
   main section {
+    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     padding: 100px 0;
   }
 }
@@ -10188,12 +10196,6 @@ main section#login .disabled-login h2.card span {
     padding: 120px 0;
   }
 }
-main section#home {
-  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 main section#home .card {
   padding: 10px;
 }
@@ -10232,12 +10234,6 @@ main section#home .card a.btn {
 }
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
-  main section#home {
-    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
   main section#home .card h1, main section#home .card h2 {
     font-size: 54px;
     margin: 10px 0;
@@ -10248,12 +10244,6 @@ main section#home .card a.btn {
   main section#home .card a.btn {
     font-weight: bold;
   }
-}
-main section#groups {
-  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 main section#groups h1 {
   color: #1b4298;
@@ -10371,12 +10361,6 @@ main section#groups .buttons-wrapper a.btn.btn-lg, main section#groups .buttons-
 }
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
-  main section#groups {
-    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
   main section#groups h1 {
     font-size: 43.2px;
   }
@@ -10391,13 +10375,6 @@ main section#groups .buttons-wrapper a.btn.btn-lg, main section#groups .buttons-
   main section#groups .groups-wrapper .table-wrapper {
     padding-bottom: 60px;
   }
-}
-main section#votes-index,
-main section#sede-index {
-  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 main section#votes-index h1,
 main section#sede-index h1 {
@@ -10576,13 +10553,6 @@ main section#sede-index .buttons-wrapper .btn-group-lg > a.btn {
 }
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
-  main section#votes-index,
-main section#sede-index {
-    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
   main section#votes-index .groups-wrapper .table-wrapper,
 main section#sede-index .groups-wrapper .table-wrapper {
     padding-bottom: 60px;
@@ -10601,13 +10571,6 @@ main section#sede-index .groups-wrapper.sede h2 {
   table.table tr th.team_xs {
     display: none;
   }
-}
-main section#votes-form,
-main section#votes-show {
-  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 main section#votes-form h1,
 main section#votes-show h1 {
@@ -10633,7 +10596,7 @@ main section#votes-form .form-wrapper form h4,
 main section#votes-show .form-wrapper form h4 {
   color: #e20177;
   font-size: 26px;
-  padding: 20px 0;
+  padding-bottom: 20px;
 }
 main section#votes-form .form-wrapper form .category-wrapper,
 main section#votes-show .form-wrapper form .category-wrapper {
@@ -10642,13 +10605,30 @@ main section#votes-show .form-wrapper form .category-wrapper {
 main section#votes-form .form-wrapper form .category-wrapper .form-group h3,
 main section#votes-show .form-wrapper form .category-wrapper .form-group h3 {
   padding-bottom: 10px;
+  cursor: help;
+  font-size: 25px;
+}
+main section#votes-form .form-wrapper form .category-wrapper .form-group h3 i.fa-question-circle,
+main section#votes-show .form-wrapper form .category-wrapper .form-group h3 i.fa-question-circle {
+  color: #1b4298;
+  margin-left: 5px;
 }
 main section#votes-form .form-wrapper form .category-wrapper .form-group .explanation,
 main section#votes-show .form-wrapper form .category-wrapper .form-group .explanation {
   color: #1b4298;
+}
+main section#votes-form .form-wrapper form .category-wrapper .form-group .explanation p,
+main section#votes-show .form-wrapper form .category-wrapper .form-group .explanation p {
+  display: inline-block;
+  padding: 0 20px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 15px;
-  padding: 0 20px;
+}
+main section#votes-form .form-wrapper form .category-wrapper .form-group .explanation p i.fa-times-circle,
+main section#votes-show .form-wrapper form .category-wrapper .form-group .explanation p i.fa-times-circle {
+  color: #1b4298;
+  margin-left: 5px;
+  cursor: pointer;
 }
 main section#votes-form .form-wrapper form .category-wrapper .form-group .radio-wrapper,
 main section#votes-show .form-wrapper form .category-wrapper .form-group .radio-wrapper {
@@ -10685,7 +10665,7 @@ main section#votes-show .form-wrapper form .category-wrapper .form-group .radio-
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 10px;
+  margin: 0 5px;
   color: #fff;
   border: 2px solid #fff;
   background: #1b4298;
@@ -10737,7 +10717,7 @@ main section#votes-show .form-wrapper form .submit-wrapper button[type=submit] {
 }
 main section#votes-form .buttons-wrapper a.btn,
 main section#votes-show .buttons-wrapper a.btn {
-  margin: 0 10px;
+  margin: 10px;
 }
 main section#votes-form .buttons-wrapper a.btn.btn-back,
 main section#votes-show .buttons-wrapper a.btn.btn-back {
@@ -10757,6 +10737,15 @@ main section#votes-show .buttons-wrapper a.btn.btn-cancel {
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
+/* Breakpoint Small 576px sm */
+@media screen and (min-width: 577px) {
+  main section#votes-form .form-wrapper form .category-wrapper .form-group .radio-wrapper .radio-toolbar label.radio-label,
+main section#votes-form .form-wrapper form .category-wrapper .form-group .radio-wrapper .radio-toolbar label.radio-label-disabled,
+main section#votes-show .form-wrapper form .category-wrapper .form-group .radio-wrapper .radio-toolbar label.radio-label,
+main section#votes-show .form-wrapper form .category-wrapper .form-group .radio-wrapper .radio-toolbar label.radio-label-disabled {
+    margin: 0 10px;
+  }
+}
 /* Breakpoint Medium 768px md */
 @media screen and (min-width: 768px) {
   main section#votes-form h1,
@@ -10784,13 +10773,6 @@ main section#votes-show .buttons-wrapper a.btn {
 }
 /* Breakpoint Large 992px lg */
 @media screen and (min-width: 992px) {
-  main section#votes-form,
-main section#votes-show {
-    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
   main section#votes-form .form-wrapper form,
 main section#votes-show .form-wrapper form {
     padding-bottom: 20px;
@@ -10808,45 +10790,11 @@ main section#votes-show a.btn {
     font-weight: bold;
   }
 }
-main section#rankings {
-  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/* ------------------- MEDIA QUERY ------------------- */
-/* Breakpoint Large 992px lg */
-@media screen and (min-width: 992px) {
-  main section#rankings {
-    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-}
 main section.admin {
-  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   min-height: 100vh;
 }
 
-/* ------------------- MEDIA QUERY ------------------- */
-@media screen and (min-width: 992px) {
-  main section.admin {
-    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-}
 main section#errors {
-  background-image: url("../storage/img/sfondo_generale_tablet.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   min-height: 100vh;
 }
 main section#errors h1 {
@@ -10871,14 +10819,5 @@ main section#errors a.btn.btn-lg, main section#errors .btn-group-lg > a.btn {
 @media screen and (min-width: 768px) {
   main section#errors h1 {
     font-size: 72px;
-  }
-}
-/* Breakpoint Large 992px lg */
-@media screen and (min-width: 992px) {
-  main section#errors {
-    background-image: url("../storage/img/sfondo_generale_desktop.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
   }
 }

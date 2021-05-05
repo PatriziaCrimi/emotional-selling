@@ -1,5 +1,4 @@
 main section#errors {
-  @include background-img($bg_general_tablet);
   min-height: 100vh;
 
   h1 {
@@ -26,13 +25,5 @@ main section#errors {
     h1 {
       font-size: $title_size * 2;
     }
-  }
-}
-
-/* Breakpoint Large 992px lg */
-@media screen and (min-width: 992px) {
-
-  main section#errors {
-    @include background-img($bg_general_desktop);
   }
 }

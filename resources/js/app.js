@@ -78,6 +78,18 @@ const app = new Vue({
         this.isExplanation4 = false;
       }
     },
+    closeExplanation1: function() {
+      this.isExplanation1 = false;
+    },
+    closeExplanation2: function() {
+      this.isExplanation2 = false;
+    },
+    closeExplanation3: function() {
+      this.isExplanation3 = false;
+    },
+    closeExplanation4: function() {
+      this.isExplanation4 = false;
+    },
     cancelVotes: function() {
       this.radio1 = null;
       this.radio2 = null;

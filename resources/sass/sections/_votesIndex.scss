@@ -1,6 +1,5 @@
 main section#votes-index,
 main section#sede-index {
-  @include background-img($bg_general_tablet);
 
   h1 {
     color: $blue;
@@ -93,7 +92,7 @@ main section#sede-index {
   }
 
   .buttons-wrapper {
-    
+
     p {
       padding: $padding_unit 0;
     }
@@ -186,7 +185,6 @@ main section#sede-index {
 
   main section#votes-index,
   main section#sede-index {
-    @include background-img($bg_general_desktop);
 
     .groups-wrapper {
 

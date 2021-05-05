@@ -1,5 +1,4 @@
 main section#home {
-  @include background-img($bg_general_tablet);
 
   .card {
     padding: $padding_unit / 2;
@@ -50,7 +49,6 @@ main section#home {
 @media screen and (min-width: 992px) {
 
   main section#home {
-    @include background-img($bg_general_desktop);
 
     .card {
 
