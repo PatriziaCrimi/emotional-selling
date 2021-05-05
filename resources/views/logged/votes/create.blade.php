@@ -46,7 +46,8 @@
       <div class="row">
         <div class="col-12">
           <div class="form-wrapper">
-            <form @submit="alertVoted()" @change="isFormEmpty()" class="form" action="{{ route('logged.team.voted')}}" method="post">
+            <form @submit="checkForm" class="form" action="{{ route('logged.team.voted')}}" method="post">
+
               @csrf
               @method('post')
 
@@ -94,7 +95,7 @@
                   </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input required :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
+                      <input :id="'radio1'+index" type="radio" name="voteTeam1" :value="index" @click="checkVoteComment1(index)" v-model="radio1">
                       <label class="radio-label" :for="'radio1'+index">
                         @{{index}}
                       </label>
@@ -139,7 +140,7 @@
                   </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input required :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
+                      <input :id="'radio2'+index" type="radio" name="voteTeam2" :value="index" @click="checkVoteComment2(index)" v-model="radio2">
                       <label class="radio-label" :for="'radio2'+index">
                         @{{index}}
                       </label>
@@ -185,7 +186,7 @@
                   </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input required :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
+                      <input :id="'radio3'+index" type="radio" name="voteTeam3" :value="index" @click="checkVoteComment3(index)" v-model="radio3">
                       <label class="radio-label" :for="'radio3'+index">
                         @{{index}}
                       </label>
@@ -230,7 +231,7 @@
                   </div>
                   <div class="radio-wrapper">
                     <div v-for="index in 10" :key="index" class="radio-toolbar d-inline-block">
-                      <input required :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
+                      <input :id="'radio4'+index" type="radio" name="voteTeam4" :value="index" @click="checkVoteComment4(index)" v-model="radio4">
                       <label class="radio-label" :for="'radio4'+index">
                         @{{index}}
                       </label>
@@ -248,7 +249,7 @@
               </div>
 
               <div class="submit-wrapper text-center">
-                <button :disabled="isDisabled ? true : false" id="submit" type="submit" class="btn btn-lg">
+                <button  id="submit" type="submit" class="btn btn-lg">
                   Invia il voto
                 </button>
               </div>

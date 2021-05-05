@@ -49867,10 +49867,10 @@ var app = new Vue({
     isRequired2: false,
     isRequired3: false,
     isRequired4: false,
-    radio1: '',
-    radio2: '',
-    radio3: '',
-    radio4: '',
+    radio1: null,
+    radio2: null,
+    radio3: null,
+    radio4: null,
     textarea1: '',
     textarea2: '',
     textarea3: '',
@@ -49990,10 +49990,20 @@ var app = new Vue({
       Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Oops...',
-        text: 'Qualcosa è andato storto!',
+        title: 'ATTENZIONE!',
+        text: 'Qualcosa è andato storto',
         showConfirmButton: false,
-        timer: 1500
+        timer: 2000
+      });
+    },
+    alertWrongVote: function alertWrongVote() {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'ATTENZIONE!',
+        text: 'Devi votare tutte le categorie.',
+        showConfirmButton: false,
+        timer: 2000
       });
     },
     alertSuccess: function alertSuccess() {
@@ -50052,6 +50062,18 @@ var app = new Vue({
     resetTable: function resetTable() {
       this.votesArray = [];
       this.liveArray = [];
+    },
+    checkForm: function checkForm(e) {
+      if (this.radio1 && this.radio2 && this.radio3 && this.radio4) {
+        this.alertVoted();
+        return true;
+      }
+
+      if (!this.radio1 || !this.radio2 || !this.radio3 || !this.radio4) {
+        this.alertWrongVote();
+      }
+
+      e.preventDefault();
     } // getUser(id){
     //     axios
     //       .get("/logged/votes/user/" + id ).
@@ -50208,8 +50230,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
