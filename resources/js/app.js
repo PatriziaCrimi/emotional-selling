@@ -79,10 +79,10 @@ const app = new Vue({
       }
     },
     cancelVotes: function() {
-      this.radio1 = '';
-      this.radio2 = '';
-      this.radio3 = '';
-      this.radio4 = '';
+      this.radio1 = null;
+      this.radio2 = null;
+      this.radio3 = null;
+      this.radio4 = null;
       this.textarea1 = '';
       this.textarea2 = '';
       this.textarea3 = '';
@@ -187,9 +187,6 @@ const app = new Vue({
         timer: 1500
       });
     },
-    isFormEmpty: function() {
-      this.isDisabled = false;
-    },
     getVotes: function(){
       axios.post("/logged/admin/getList/",this.form).
       then(response => {
@@ -199,7 +196,7 @@ const app = new Vue({
           console.log(this.votesArray);
       }).catch((error) => {
           this.reset();
-          this.alertWrong();
+          this.alertWrong(this.alertWrongAdmin);
           console.log(error);
       }).finally(() => {
 
@@ -216,7 +213,7 @@ const app = new Vue({
           console.log(this.liveArray);
       }).catch((error) => {
           this.reset();
-          this.alertWrong();
+          this.alertWrong(this.alertWrongAdmin);
           console.log(error);
       }).finally(() => {
 

@@ -49919,10 +49919,10 @@ var app = new Vue({
       }
     },
     cancelVotes: function cancelVotes() {
-      this.radio1 = '';
-      this.radio2 = '';
-      this.radio3 = '';
-      this.radio4 = '';
+      this.radio1 = null;
+      this.radio2 = null;
+      this.radio3 = null;
+      this.radio4 = null;
       this.textarea1 = '';
       this.textarea2 = '';
       this.textarea3 = '';
@@ -50015,9 +50015,6 @@ var app = new Vue({
         timer: 1500
       });
     },
-    isFormEmpty: function isFormEmpty() {
-      this.isDisabled = false;
-    },
     getVotes: function getVotes() {
       var _this = this;
 
@@ -50031,7 +50028,7 @@ var app = new Vue({
       })["catch"](function (error) {
         _this.reset();
 
-        _this.alertWrong();
+        _this.alertWrong(_this.alertWrongAdmin);
 
         console.log(error);
       })["finally"](function () {});
@@ -50051,7 +50048,7 @@ var app = new Vue({
       })["catch"](function (error) {
         _this2.reset();
 
-        _this2.alertWrong();
+        _this2.alertWrong(_this2.alertWrongAdmin);
 
         console.log(error);
       })["finally"](function () {});
@@ -50230,8 +50227,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\boolean esercizi\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\emotional-selling\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
