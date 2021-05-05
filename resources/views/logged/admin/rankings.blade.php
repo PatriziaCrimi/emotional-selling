@@ -9,12 +9,15 @@
     <section id="rankings">
       <div class="container">
         <div class="row justify-content-center">
-          <button onclick="classificaGenerale()" class="btn btn-primary" type="button" name="button">Classifica Generale</button>
-          <button onclick="categoriaIsf()" class="btn btn-primary" type="button" name="button">Categoria ISF</button>
-          <button onclick="gestioneObiezioni()" class="btn btn-primary" type="button" name="button">Gestione Obiezioni</button>
-          <button onclick="callToAction()" class="btn btn-primary" type="button" name="button">Call to Action</button>
+          <button onclick="classificaGenerale()" class="btn btn-primary m-2" type="button" name="button">Classifica Generale</button>
+          <button onclick="categoriaIsf()" class="btn btn-primary m-2" type="button" name="button">Categoria ISF</button>
+          <button onclick="gestioneObiezioni()" class="btn btn-primary m-2" type="button" name="button">Gestione Obiezioni</button>
+          <button onclick="callToAction()" class="btn btn-primary m-2" type="button" name="button">Call to Action</button>
           <div class="col-12">
-            <h1 class="text-center">Classifica</h1>
+            <h1 id="class_gen" class="text-center">Classifica Generale</h1>
+            <h1 id="class_isf" class="text-center">Classifica ISF</h1>
+            <h1 id="class_obi" class="text-center">Classifica Obiezioni</h1>
+            <h1 id="class_cta" class="text-center">Classifica CTA</h1>
           </div>
         </div>
         <div class="row">
@@ -102,7 +105,7 @@
     type: 'bar',
     data: {
       labels: [@php
-      foreach ($votesRank as $key => $score) {
+      foreach ($votesIsf as $key => $score) {
         echo "'".
         $score['name'] .
         "'".
@@ -112,8 +115,8 @@
       datasets: [{
         label: 'Voti',
         data: [@php
-        foreach ($votesRank as $key => $score) {
-          echo $score['score'].
+        foreach ($votesIsf as $key => $score) {
+          echo $score['isf'].
           ',';
         }
         @endphp],
@@ -194,7 +197,7 @@
     type: 'bar',
     data: {
       labels: [@php
-      foreach ($votesRank as $key => $score) {
+      foreach ($votesCta as $key => $score) {
         echo "'".
         $score['name'] .
         "'".
@@ -204,8 +207,8 @@
       datasets: [{
         label: 'Voti',
         data: [@php
-        foreach ($votesRank as $key => $score) {
-          echo $score['score'].
+        foreach ($votesCta as $key => $score) {
+          echo $score['cta'].
           ',';
         }
         @endphp],
@@ -248,12 +251,20 @@
   document.getElementById('categoriaIsf').style.display = 'none' ;
   document.getElementById('gestioneObiezioni').style.display = 'none' ;
   document.getElementById('callToAction').style.display = 'none' ;
+  document.getElementById('class_gen').style.display = 'none' ;
+  document.getElementById('class_isf').style.display = 'none' ;
+  document.getElementById('class_obi').style.display = 'none' ;
+  document.getElementById('class_cta').style.display = 'none' ;
 
   function classificaGenerale() {
     document.getElementById('classificaGenerale').style.display = 'block' ;
     document.getElementById('categoriaIsf').style.display = 'none' ;
     document.getElementById('gestioneObiezioni').style.display = 'none' ;
     document.getElementById('callToAction').style.display = 'none' ;
+    document.getElementById('class_gen').style.display = 'block' ;
+    document.getElementById('class_isf').style.display = 'none' ;
+    document.getElementById('class_obi').style.display = 'none' ;
+    document.getElementById('class_cta').style.display = 'none' ;
     console.log('classificaGenerale');
   }
   function categoriaIsf() {
@@ -261,6 +272,10 @@
     document.getElementById('categoriaIsf').style.display = 'block' ;
     document.getElementById('gestioneObiezioni').style.display = 'none' ;
     document.getElementById('callToAction').style.display = 'none' ;
+    document.getElementById('class_gen').style.display = 'none' ;
+    document.getElementById('class_isf').style.display = 'block' ;
+    document.getElementById('class_obi').style.display = 'none' ;
+    document.getElementById('class_cta').style.display = 'none' ;
     console.log('categoriaIsf');
   }
   function gestioneObiezioni() {
@@ -268,6 +283,10 @@
     document.getElementById('categoriaIsf').style.display = 'none' ;
     document.getElementById('gestioneObiezioni').style.display = 'block' ;
     document.getElementById('callToAction').style.display = 'none' ;
+    document.getElementById('class_gen').style.display = 'none' ;
+    document.getElementById('class_isf').style.display = 'none' ;
+    document.getElementById('class_obi').style.display = 'block' ;
+    document.getElementById('class_cta').style.display = 'none' ;
     console.log('gestioneObiezioni');
   }
   function callToAction() {
@@ -275,6 +294,10 @@
     document.getElementById('categoriaIsf').style.display = 'none' ;
     document.getElementById('gestioneObiezioni').style.display = 'none' ;
     document.getElementById('callToAction').style.display = 'block' ;
+    document.getElementById('class_gen').style.display = 'none' ;
+    document.getElementById('class_isf').style.display = 'none' ;
+    document.getElementById('class_obi').style.display = 'none' ;
+    document.getElementById('class_cta').style.display = 'block' ;
     console.log('callToAction');
   }
 

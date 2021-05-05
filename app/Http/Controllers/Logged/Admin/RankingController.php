@@ -76,12 +76,18 @@ class RankingController extends Controller
 
       $votesCollection = DB::table('votes')
       ->join('teams','teams.id','=','votes.team_id')
+      ->join('categories','categories.id','=','votes.category_id')
       ->select('votes.team_id', 'teams.name',
             DB::raw("SUM(CASE WHEN team_vote = '2' THEN value ELSE 0 END) as `normalVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' THEN value / 2 ELSE 0 END) as `halfVote`", 'votes.team_id')
+            DB::raw("SUM(CASE WHEN team_vote = '3' THEN value / 2 ELSE 0 END) as `halfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '2' THEN value ELSE 0 END) as `obiezioni`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '2' THEN value / 2 ELSE 0 END) as `obiezioniHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '4' THEN value ELSE 0 END) as `calltoaction`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '4' THEN value / 2 ELSE 0 END) as `calltoactionHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '1' AND category_id = '2' AND category_id = '4' AND category_id = '4' THEN value ELSE 0 END) as `isf`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '1' AND category_id = '2' AND category_id = '3' AND category_id = '4' THEN value / 2 ELSE 0 END) as `isfHalfVote`", 'votes.team_id'),
         )->groupBy('votes.team_id', 'teams.name')
       ->get();
-
 
       foreach ($votesCollection as $key => $voteTeam) {
         $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
@@ -92,42 +98,58 @@ class RankingController extends Controller
           'score' => $sumTeam
         );
       }
-      // dd($categoryIsf);
 
       $votesRank = json_decode(json_encode($scoresArray),true);
       array_multisort( array_column($votesRank, "score"), SORT_DESC, $votesRank );
 
-      $votesObiezioni = DB::table('votes')
-      ->join('teams','teams.id','=','votes.team_id')
-      ->join('categories','categories.id','=','votes.category_id')
-      ->select('votes.team_id', 'teams.name',
-            DB::raw("SUM(CASE WHEN team_vote = '2' THEN value ELSE 0 END) as `normalVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' THEN value / 2 ELSE 0 END) as `halfVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '2' THEN value ELSE 0 END) as `category`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '2' THEN value / 2 ELSE 0 END) as `categoryHalfVote`", 'votes.team_id')
-        )->groupBy('votes.team_id', 'teams.name')
-      ->get();
-
-
-      foreach ($votesObiezioni as $key => $voteTeam) {
+      foreach ($votesCollection as $key => $voteTeam) {
         $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
-        $sumCategory = $voteTeam->category + $voteTeam->categoryHalfVote;
+        $sumIsf = $voteTeam->isf + $voteTeam->isfHalfVote;
+        $teamName = $voteTeam->name;
+        $scoresArrayIsf[$teamName] = array(
+          'team_id' => $voteTeam->team_id,
+          'name' => $teamName,
+          'score' => $sumTeam,
+          'isf' => $sumIsf
+        );
+      }
+
+      $votesIsf = json_decode(json_encode($scoresArrayIsf),true);
+      array_multisort( array_column($votesIsf, "score"), SORT_DESC, $votesIsf );
+
+      foreach ($votesCollection as $key => $voteTeam) {
+        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
+        $sumObiezioni = $voteTeam->obiezioni + $voteTeam->obiezioniHalfVote;
         $teamName = $voteTeam->name;
         $scoresArrayObiezioni[$teamName] = array(
           'team_id' => $voteTeam->team_id,
           'name' => $teamName,
           'score' => $sumTeam,
-          'scoreObiezioni' => $sumCategory
+          'scoreObiezioni' => $sumObiezioni
         );
       }
-
 
       $votesObiezioni = json_decode(json_encode($scoresArrayObiezioni),true);
       array_multisort( array_column($votesObiezioni, "score"), SORT_DESC, $votesObiezioni );
 
+      foreach ($votesCollection as $key => $voteTeam) {
+        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
+        $sumCta = $voteTeam->calltoaction + $voteTeam->calltoactionHalfVote;
+        $teamName = $voteTeam->name;
+        $scoresArrayCta[$teamName] = array(
+          'team_id' => $voteTeam->team_id,
+          'name' => $teamName,
+          'score' => $sumTeam,
+          'cta' => $sumCta
+        );
+      }
+
+      $votesCta = json_decode(json_encode($scoresArrayCta),true);
+      array_multisort( array_column($votesCta, "score"), SORT_DESC, $votesCta );
+
 
       // dd($votesObiezioni);
-      return view('logged.admin.rankings',compact('votesRank','votesObiezioni','round','button1','button2', 'button3'));
+      return view('logged.admin.rankings',compact('votesRank','votesObiezioni','votesIsf','votesCta','round','button1','button2', 'button3'));
 
     } else {
       abort(403);
