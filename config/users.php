@@ -636,66 +636,66 @@
 
     // DM
     [
-      "name" => "UnoDM",
+      "name" => "Angelo",
       "lastname" => "Cariati",
       "username" => "dm.cariati",
-      "password" => "nome.cariati$1",
+      "password" => "angelo.cariati1",
       "team_id" => null
     ],
     [
-      "name" => "DueDM",
+      "name" => "Ferdinando",
       "lastname" => "Marino",
       "username" => "dm.marino",
-      "password" => "nome.marino$2",
+      "password" => "ferdinando.marino2",
       "team_id" => null
     ],
     [
-      "name" => "TreDM",
+      "name" => "Simone",
       "lastname" => "Sinicato",
       "username" => "dm.sinicato",
-      "password" => "nome.sinicato$3",
+      "password" => "simone.sinicato3",
       "team_id" => null
     ],
     [
-      "name" => "QuattroDM",
+      "name" => "Pietro",
       "lastname" => "Carapellucci",
       "username" => "dm.carapellucci",
-      "password" => "nome.carapellucci$4",
+      "password" => "pietro.carapellucci4",
       "team_id" => null
     ],
     [
-      "name" => "CinqueDM",
+      "name" => "Giancarlo",
       "lastname" => "Leone",
       "username" => "dm.leone",
-      "password" => "nome.leone$5",
+      "password" => "giancarlo.leone$5",
       "team_id" => null
     ],
     [
-      "name" => "SeiDM",
+      "name" => "Alberto",
       "lastname" => "Pittaluga",
       "username" => "dm.pittaluga",
-      "password" => "nome.pittaluga$6",
+      "password" => "alberto.pittaluga$6",
       "team_id" => null
     ],
     [
-      "name" => "SetteDM",
+      "name" => "Fabrizio",
       "lastname" => "Polidori",
       "username" => "dm.polidori",
-      "password" => "nome.polidori$7",
+      "password" => "fabrizio.polidori$7",
       "team_id" => null
     ],
     [
-      "name" => "OttoDM",
+      "name" => "Luigi",
       "lastname" => "Ebraico",
       "username" => "dm.ebraico",
-      "password" => "nome.ebraico$8",
+      "password" => "luigi.ebraico$8",
       "team_id" => null
     ],
     [
-      "name" => "NoveDM",
+      "name" => "Salvatore",
       "lastname" => "Rizzo",
       "username" => "dm.rizzo",
-      "password" => "nome.rizzo$9",
+      "password" => "salvatore.rizzo$9",
       "team_id" => null
     ],
 
