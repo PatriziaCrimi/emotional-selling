@@ -704,35 +704,56 @@
       "name" => "UnoSede",
       "lastname" => "Unosedecognome",
       "username" => "sede.unosede",
-      "password" => "nome.unosede#1",
+      "password" => "nome.unosede.1",
       "team_id" => null
     ],
     [
       "name" => "DueSede",
       "lastname" => "Duesedecognome",
       "username" => "sede.duesede",
-      "password" => "nome.duesede#2",
+      "password" => "nome.duesede.2",
       "team_id" => null
     ],
     [
       "name" => "TreSede",
       "lastname" => "Tresedecognome",
       "username" => "sede.tresede",
-      "password" => "nome.tresede#3",
+      "password" => "nome.tresede.3",
       "team_id" => null
     ],
     [
       "name" => "QuattroSede",
       "lastname" => "Quattrosedecognome",
       "username" => "sede.quattrosede",
-      "password" => "nome.quattrosede#4",
+      "password" => "nome.quattrosede.4",
       "team_id" => null
     ],
     [
       "name" => "CinqueSede",
       "lastname" => "Cinquesedecognome",
       "username" => "sede.cinquesede",
-      "password" => "nome.cinquesede#5",
+      "password" => "nome.cinquesede.5",
+      "team_id" => null
+    ],
+    [
+      "name" => "SeiSede",
+      "lastname" => "Seisedecognome",
+      "username" => "sede.seisede",
+      "password" => "nome.seisede.6",
+      "team_id" => null
+    ],
+    [
+      "name" => "SetteSede",
+      "lastname" => "Settesedecognome",
+      "username" => "sede.settesede",
+      "password" => "nome.settesede.7",
+      "team_id" => null
+    ],
+    [
+      "name" => "OttoSede",
+      "lastname" => "Ottosedecognome",
+      "username" => "sede.ottosede",
+      "password" => "nome.ottosede.8",
       "team_id" => null
     ],
 

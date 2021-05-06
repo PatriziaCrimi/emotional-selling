@@ -2315,6 +2315,27 @@
       "round_id" => 1,
       "team_id" => null
     ],
+    [
+      "user_id" => 105,  // Seisede
+      "group_id" => null,
+      "role_id" => $sede,
+      "round_id" => 1,
+      "team_id" => null
+    ],
+    [
+      "user_id" => 106,  // Settesede
+      "group_id" => null,
+      "role_id" => $sede,
+      "round_id" => 1,
+      "team_id" => null
+    ],
+    [
+      "user_id" => 107,  // Ottosede
+      "group_id" => null,
+      "role_id" => $sede,
+      "round_id" => 1,
+      "team_id" => null
+    ],
 
     // ------------------- Round 2 -------------------
     [
@@ -2347,6 +2368,27 @@
     ],
     [
       "user_id" => 104,  // Cinquesede
+      "group_id" => null,
+      "role_id" => $sede,
+      "round_id" => 2,
+      "team_id" => null
+    ],
+    [
+      "user_id" => 105,  // Seisede
+      "group_id" => null,
+      "role_id" => $sede,
+      "round_id" => 2,
+      "team_id" => null
+    ],
+    [
+      "user_id" => 106,  // Settesede
+      "group_id" => null,
+      "role_id" => $sede,
+      "round_id" => 2,
+      "team_id" => null
+    ],
+    [
+      "user_id" => 107,  // Ottosede
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 2,
@@ -2389,34 +2431,55 @@
       "round_id" => 3,
       "team_id" => null
     ],
+    [
+      "user_id" => 105,  // Seisede
+      "group_id" => null,
+      "role_id" => $sede,
+      "round_id" => 3,
+      "team_id" => null
+    ],
+    [
+      "user_id" => 106,  // Settesede
+      "group_id" => null,
+      "role_id" => $sede,
+      "round_id" => 3,
+      "team_id" => null
+    ],
+    [
+      "user_id" => 107,  // Ottosede
+      "group_id" => null,
+      "role_id" => $sede,
+      "round_id" => 3,
+      "team_id" => null
+    ],
 
     // ############################ ADMIN ############################
 
     // ------------------- Round 1 -------------------
 
     [
-      "user_id" => 105,  // Pucci
+      "user_id" => 108,  // Pucci
       "group_id" => null,
       "role_id" => $admin,
       "round_id" => null,
       "team_id" => null
     ],
     [
-      "user_id" => 106,  // Crimi
+      "user_id" => 109,  // Crimi
       "group_id" => null,
       "role_id" => $admin,
       "round_id" => null,
       "team_id" => null
     ],
     [
-      "user_id" => 107,  // Fabrizio (Alessia)
+      "user_id" => 110,  // Fabrizio (Alessia)
       "group_id" => null,
       "role_id" => $admin,
       "round_id" => null,
       "team_id" => null
     ],
     [
-      "user_id" => 108,  // Valentini
+      "user_id" => 111,  // Valentini
       "group_id" => null,
       "role_id" => $admin,
       "round_id" => null,
