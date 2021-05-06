@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('links')
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+@endsection
+
 {{-- Controllo se l'utente loggato è Sede o Admin per attivare funzione jQuery per visualizzare i gruppi solo al click --}}
 @if ($auth->role->name == 'Admin' || $auth->role->name == 'Sede')
   @section('scripts')
@@ -107,7 +111,7 @@
         <div class="col-12">
           <div class="buttons-wrapper text-center">
             @if ($button1 -> status == 0)
-              <p class="font-weight-bold">Attendi per procedere</p>
+              <p class="font-weight-bold wait">Attendi per procedere</p>
             @else
               {{-- Se sono ISF o MEDICI  --}}
               @if ($auth->role->name == 'ISF' || $auth->role->name == 'Medico')

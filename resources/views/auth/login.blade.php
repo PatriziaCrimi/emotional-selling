@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-12 col-sm-6">
                           <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn">
+                            <button type="submit" class="btn font-weight-bold">
                               {{ __('Accedi') }}
                             </button>
                           </div>

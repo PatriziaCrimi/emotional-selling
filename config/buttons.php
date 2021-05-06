@@ -5,19 +5,19 @@
      // Bottone attivazione votazione
     [
       "status" => 0,
-      "name" => "Attivazione votazione"
+      "name" => "Votazione"
     ],
 
-    // Bottone termina votazione
+    // Bottone di visualizzazione pulsante Home a fine votazione
     [
       "status" => 0,
-      "name" => "Termine votazione"
+      "name" => "Home"
     ],
 
-    // Bottone attivazione Webapp (login)
+    // Bottone attivazione Webapp (visualizzazione login)
     [
       "status" => 0,
-      "name" => "Attivazione Login"
+      "name" => "Login"
     ],
 
   ];

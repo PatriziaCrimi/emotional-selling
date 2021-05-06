@@ -67,13 +67,6 @@
       "team_id" => 15
     ],
     [
-      "name" => "Matteo",
-      "lastname" => "Annese",
-      "username" => "annese",
-      "password" => "matteo.annese51",
-      "team_id" => 9
-    ],
-    [
       "name" => "Giulio",
       "lastname" => "Califano",
       "username" => "califano",
@@ -270,13 +263,6 @@
       "team_id" => 14
     ],
     [
-      "name" => "Federica",
-      "lastname" => "Angelucci",
-      "username" => "angelucci",
-      "password" => "federica.angelucci73",
-      "team_id" => 7
-    ],
-    [
       "name" => "Bruno",
       "lastname" => "Barsuglia",
       "username" => "barsuglia",
@@ -464,13 +450,6 @@
       "username" => "marchiani",
       "password" => "roberto.marchiani4",
       "team_id" => 17
-    ],
-    [
-      "name" => "Mario",
-      "lastname" => "Medaglia",
-      "username" => "medaglia",
-      "password" => "mario.medaglia5",
-      "team_id" => 9
     ],
     [
       "name" => "Alessia",
@@ -667,35 +646,35 @@
       "name" => "Giancarlo",
       "lastname" => "Leone",
       "username" => "dm.leone",
-      "password" => "giancarlo.leone$5",
+      "password" => "giancarlo.leone5",
       "team_id" => null
     ],
     [
       "name" => "Alberto",
       "lastname" => "Pittaluga",
       "username" => "dm.pittaluga",
-      "password" => "alberto.pittaluga$6",
+      "password" => "alberto.pittaluga6",
       "team_id" => null
     ],
     [
       "name" => "Fabrizio",
       "lastname" => "Polidori",
       "username" => "dm.polidori",
-      "password" => "fabrizio.polidori$7",
+      "password" => "fabrizio.polidori7",
       "team_id" => null
     ],
     [
       "name" => "Luigi",
       "lastname" => "Ebraico",
       "username" => "dm.ebraico",
-      "password" => "luigi.ebraico$8",
+      "password" => "luigi.ebraico8",
       "team_id" => null
     ],
     [
       "name" => "Salvatore",
       "lastname" => "Rizzo",
       "username" => "dm.rizzo",
-      "password" => "salvatore.rizzo$9",
+      "password" => "salvatore.rizzo9",
       "team_id" => null
     ],
 

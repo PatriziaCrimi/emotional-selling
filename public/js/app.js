@@ -50005,7 +50005,7 @@ var app = new Vue({
         title: 'ATTENZIONE!',
         text: 'Qualcosa è andato storto',
         showConfirmButton: false,
-        timer: 2000
+        timer: 1500
       });
     },
     alertWrongVote: function alertWrongVote() {
@@ -50015,7 +50015,7 @@ var app = new Vue({
         title: 'ATTENZIONE!',
         text: 'Devi votare tutte le categorie.',
         showConfirmButton: false,
-        timer: 2000
+        timer: 1500
       });
     },
     alertSuccess: function alertSuccess() {

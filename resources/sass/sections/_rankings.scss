@@ -1,1 +1,6 @@
-
+main section#rankings {
+  .btn.btn-lg {
+    @include input-button($fuxia);
+    font-weight: bold;
+  }
+}

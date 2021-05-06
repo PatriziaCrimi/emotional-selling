@@ -44,7 +44,8 @@
   display: flex;
 }
 
-@mixin before-after {
+@mixin before-after($code) {
+  content: $code;
   font-weight: bold;
   font-family: $font_awesome;
 }
