@@ -12,8 +12,17 @@ header {
     }
 
     .admin-select {
-      padding-right: $padding_unit * 2;
+      padding-right: $padding_unit;
       text-align: center;
+
+      small.status {
+        color: $blue;
+
+        span {
+          color: $light_blue;
+          font-weight: bold;
+        }
+      }
 
       &.rankings {
 
@@ -66,11 +75,11 @@ header {
     li.nav-item {
 
       span {
-        font-size: $tablet_font;
+        font-size: $tablet_font - 5;
       }
 
       a.logout {
-        font-size: $tablet_font;
+        font-size: $tablet_font - 5;
       }
     }
   }

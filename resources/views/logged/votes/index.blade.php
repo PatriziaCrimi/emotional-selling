@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('links')
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+@endsection
+
 @section('content')
 
   <section id="votes-index">
@@ -154,7 +158,7 @@
         <div class="col-12">
           <div class="buttons-wrapper text-center">
             @if ($button2 -> status == 0)
-              <p class="font-weight-bold">Attendi per procedere</p>
+              <p class="font-weight-bold wait">Attendi per procedere</p>
             @else
               {{-- Se l'utente loggato è Admin --}}
               @if ($auth->role->name == 'Admin')

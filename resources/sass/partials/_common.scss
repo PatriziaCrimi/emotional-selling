@@ -38,17 +38,29 @@ a:hover {
   text-decoration: none;
 }
 
+p.wait {
+  padding: $padding_unit;
+
+  &.wait::before,
+  &.wait::after {
+    @include before-after('\f252');
+  }
+
+  &.wait::before {
+    margin-right: $margin_unit;
+  }
+
+  &.wait::after {
+    margin-left: $margin_unit;
+  }
+}
+
 .card {
   @include card-box;
   padding: $padding_unit;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
-
-/* Breakpoint Small 576px sm */
-@media screen and (min-width: 576px) {
-  //
-}
 
 /* Breakpoint Medium 768px md */
 @media screen and (min-width: 768px) {
@@ -58,6 +70,17 @@ a:hover {
     p {
       font-size: $tablet_font;
     }
+
+    p.wait {
+
+      &.wait::before {
+        margin-right: $margin_unit * 3;
+      }
+
+      &.wait::after {
+        margin-left: $margin_unit * 3;
+      }
+    }
   }
 }
 
@@ -66,6 +89,17 @@ a:hover {
   main section {
     @include background-img($bg_general_desktop);
     padding: $padding_unit * 5 0;
+
+    p.wait {
+
+      &.wait::before {
+        margin-right: $margin_unit * 5;
+      }
+
+      &.wait::after {
+        margin-left: $margin_unit * 5;
+      }
+    }
   }
 }
 

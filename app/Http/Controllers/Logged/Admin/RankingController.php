@@ -23,6 +23,11 @@ class RankingController extends Controller
     $idAuth = Auth::user() -> id;
     $idCombo = GroupRoleRoundUser::where('user_id',$idAuth)->first();
 
+    $scoresArray = array();
+    $scoresArrayIsf = array();
+    $scoresArrayCta = array();
+    $scoresArrayParoleTossiche = array();
+
     if ($idCombo->role->name == "Admin") {
 
       // ---------------------- QUERY PER USER ----------------------

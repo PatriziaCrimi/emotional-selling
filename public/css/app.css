@@ -10053,6 +10053,21 @@ a:hover {
   text-decoration: none;
 }
 
+p.wait {
+  padding: 20px;
+}
+p.wait.wait::before, p.wait.wait::after {
+  content: "\F252";
+  font-weight: bold;
+  font-family: "Font Awesome 5 Free";
+}
+p.wait.wait::before {
+  margin-right: 10px;
+}
+p.wait.wait::after {
+  margin-left: 10px;
+}
+
 .card {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 15px;
@@ -10060,7 +10075,6 @@ a:hover {
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
-/* Breakpoint Small 576px sm */
 /* Breakpoint Medium 768px md */
 @media screen and (min-width: 768px) {
   main section {
@@ -10068,6 +10082,12 @@ a:hover {
   }
   main section p {
     font-size: 26px;
+  }
+  main section p.wait.wait::before {
+    margin-right: 30px;
+  }
+  main section p.wait.wait::after {
+    margin-left: 30px;
   }
 }
 /* Breakpoint Large 992px lg */
@@ -10079,6 +10099,12 @@ a:hover {
     background-position: center;
     padding: 100px 0;
   }
+  main section p.wait.wait::before {
+    margin-right: 50px;
+  }
+  main section p.wait.wait::after {
+    margin-left: 50px;
+  }
 }
 /* Breakpoint Extra Large 1200px xl */
 header nav.navbar .img-logo {
@@ -10089,8 +10115,15 @@ header nav.navbar .img-logo img {
   height: auto;
 }
 header nav.navbar .admin-select {
-  padding-right: 40px;
+  padding-right: 20px;
   text-align: center;
+}
+header nav.navbar .admin-select small.status {
+  color: #1b4298;
+}
+header nav.navbar .admin-select small.status span {
+  color: #009dcc;
+  font-weight: bold;
 }
 header nav.navbar .admin-select.rankings p {
   margin-bottom: 5px;
@@ -10121,10 +10154,10 @@ header nav.navbar li.nav-item a.logout {
 /* Breakpoint Medium 768px md */
 @media screen and (min-width: 768px) {
   header nav.navbar li.nav-item span {
-    font-size: 26px;
+    font-size: 21px;
   }
   header nav.navbar li.nav-item a.logout {
-    font-size: 26px;
+    font-size: 21px;
   }
 }
 main section#login {
@@ -10812,6 +10845,15 @@ main section#votes-show a.btn {
     font-weight: bold;
   }
 }
+main section#rankings .btn.btn-lg, main section#rankings .btn-group-lg > .btn {
+  background-color: #e20177;
+  color: #fff;
+  border: 1px solid #e20177;
+  border-radius: 7px;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+}
+
 main section.admin {
   min-height: 100vh;
 }

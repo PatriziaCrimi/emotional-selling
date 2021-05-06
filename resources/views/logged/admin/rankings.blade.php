@@ -8,45 +8,56 @@
   <main>
     <section id="rankings">
       <div class="container">
-        <div class="row justify-content-center">
-          <button onclick="classificaGenerale()" class="btn btn-primary m-2" type="button" name="button">Classifica Generale</button>
-          <button onclick="categoriaIsf()" class="btn btn-primary m-2" type="button" name="button">Categoria ISF</button>
-          <button onclick="callToAction()" class="btn btn-primary m-2" type="button" name="button">Call to Action</button>
-          <button onclick="paroleTossiche()" class="btn btn-primary m-2" type="button" name="button">Parole Tossiche</button>
-          <div class="col-12">
-            <h1 id="class_gen" class="text-center">Classifica Generale</h1>
-            <h1 id="class_isf" class="text-center">Classifica ISF</h1>
-            <h1 id="class_cta" class="text-center">Classifica CTA</h1>
-            <h1 id="class_tox" class="text-center">Classifica Parole Tossiche</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            {{-- Grafico --}}
-            <canvas id="classificaGenerale" width="400" height="400"></canvas>
-            <canvas id="categoriaIsf" width="400" height="400"></canvas>
-            <canvas id="callToAction" width="400" height="400"></canvas>
-            <canvas id="paroleTossiche" width="400" height="400"></canvas>
 
-            {{-- Elenco nomi --}}
-            @foreach ($votesRank as $key => $score)
-              <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">
-                    @php
-                    echo($score['name'] . ':' . $score['score']);
-                    // echo $score['name'].':'.$result['valore'] ;
-                    @endphp
-                  </li>
-                </ul>
-              </div>
-            @endforeach
-
-            <div class="text-center">
-              <a href="{{route('logged.home')}}" class="btn btn-lg">Torna alla home</a>
+        @if ($votesRank)
+          <div class="row justify-content-center">
+            <button onclick="classificaGenerale()" class="btn btn-primary m-2" type="button" name="button">Classifica Generale</button>
+            <button onclick="categoriaIsf()" class="btn btn-primary m-2" type="button" name="button">Categoria ISF</button>
+            <button onclick="callToAction()" class="btn btn-primary m-2" type="button" name="button">Call to Action</button>
+            <button onclick="paroleTossiche()" class="btn btn-primary m-2" type="button" name="button">Parole Tossiche</button>
+            <div class="col-12">
+              <h1 id="class_gen" class="text-center">Classifica Generale</h1>
+              <h1 id="class_isf" class="text-center">Classifica ISF</h1>
+              <h1 id="class_cta" class="text-center">Classifica CTA</h1>
+              <h1 id="class_tox" class="text-center">Classifica Parole Tossiche</h1>
             </div>
           </div>
-        </div>
+          <div class="row">
+            <div class="col-12">
+              {{-- Grafico --}}
+              <canvas id="classificaGenerale" width="400" height="400"></canvas>
+              <canvas id="categoriaIsf" width="400" height="400"></canvas>
+              <canvas id="callToAction" width="400" height="400"></canvas>
+              <canvas id="paroleTossiche" width="400" height="400"></canvas>
+
+              {{-- Elenco nomi --}}
+              @foreach ($votesRank as $key => $score)
+                <div class="card" style="width: 18rem;">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      @php
+                      echo($score['name'] . ':' . $score['score']);
+                      // echo $score['name'].':'.$result['valore'] ;
+                      @endphp
+                    </li>
+                  </ul>
+                </div>
+              @endforeach
+
+              <div class="text-center">
+                <a href="{{route('logged.home')}}" class="btn btn-lg">Torna alla home</a>
+              </div>
+            </div>
+          </div>
+        @else
+          <div class="row">
+            <div class="col-12">
+              <div class="card m-2">
+                <h2 class="text-center p-2">Non ci sono votazioni.</h2>
+              </div>
+            </div>
+          </div>
+        @endif
       </div>  {{-- Closing Container --}}
     </section>
   </main>

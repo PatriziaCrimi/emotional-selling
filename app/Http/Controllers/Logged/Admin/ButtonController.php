@@ -30,7 +30,7 @@ class ButtonController extends Controller
 
   public function updateStartVote(Request $request) {
 
-    // funzione per modificare il round attuale SOLO lato ADMIN
+    // Visualizzazione pulsante "Vota" a inizio votazione
     $data = $request->input('button1');
     $round = Button::find(1);
     $round -> status = $data;
@@ -41,7 +41,7 @@ class ButtonController extends Controller
 
   public function updateStopVote(Request $request) {
 
-    // funzione per modificare il round attuale SOLO lato ADMIN
+    // Visualizzazione pulsante "Home" a fine votazione
     $data = $request->input('button2');
     $round = Button::find(2);
     $round -> status = $data;
