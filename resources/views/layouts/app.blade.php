@@ -168,10 +168,11 @@
                       @endphp
                       @if ($id_combo->role->name == 'Sede' ||
                         $id_combo->role->name == 'Admin' ||
-                        $id_combo->role->name == 'DM' ||
-                        $id_combo->role->name == 'DM Junior')
+                        $id_combo->role->name == 'DM')
 
                         <span class="font-weight-bold">{{$id_combo->role->name}}</span>
+                      @elseif ($id_combo->role->name == 'DM Junior')
+                        <span>DM</span>
                       @else
                         <span class="font-weight-bold team">Team {{ Auth::user()->team->name }}</span>
                       @endif

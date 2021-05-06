@@ -23,12 +23,20 @@
           </h1>
         </div>
         {{-- Showing Sede or DM memeber details --}}
-        @if ($auth->role->name == 'Sede' || $auth->role->name == 'DM' || $auth->role->name == 'DM Junior')
+        @if ($auth->role->name == 'Sede' || $auth->role->name == 'DM')
           <div class="col-12">
             <div class="sede-info text-center">
               {{$auth -> user -> name}}
-              {{$auth -> user -> lastname}} - 
+              {{$auth -> user -> lastname}} -
               {{$auth -> role -> name}}
+            </div>
+          </div>
+        @elseif ($auth->role->name == 'DM Junior')
+          <div class="col-12">
+            <div class="sede-info text-center">
+              {{$auth -> user -> name}}
+              {{$auth -> user -> lastname}} -
+              DM
             </div>
           </div>
         @endif
@@ -38,7 +46,7 @@
         <div class="col-12">
           <div class="groups-wrapper {{$auth->role->name == 'Sede' || $auth->role->name == 'Admin' ? 'sede' : ''}}">
             @if ($auth->role->name == 'Sede')
-              <p class="text-center">Clicca sulle Stanze per vedere Team e giocatori</p>
+              <p class="text-center">Clicca sulle Stanze per vedere i Team</p>
             @endif
             @foreach ($usersGroups as $userGroup => $users)
               <h2 class="show text-center text-uppercase">
