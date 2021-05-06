@@ -701,59 +701,59 @@
 
     // Sede
     [
-      "name" => "UnoSede",
-      "lastname" => "Unosedecognome",
-      "username" => "sede.unosede",
-      "password" => "nome.unosede.1",
+      "name" => "Michela",
+      "lastname" => "Aucello",
+      "username" => "sede.aucello",
+      "password" => "michela.aucello.1",
       "team_id" => null
     ],
     [
-      "name" => "DueSede",
-      "lastname" => "Duesedecognome",
-      "username" => "sede.duesede",
-      "password" => "nome.duesede.2",
+      "name" => "Federico",
+      "lastname" => "Silvagni",
+      "username" => "sede.silvagni",
+      "password" => "federico.silvagni.2",
       "team_id" => null
     ],
     [
-      "name" => "TreSede",
-      "lastname" => "Tresedecognome",
-      "username" => "sede.tresede",
-      "password" => "nome.tresede.3",
+      "name" => "Loredana",
+      "lastname" => "Orsini",
+      "username" => "sede.orsini",
+      "password" => "loredana.orsini.3",
       "team_id" => null
     ],
     [
-      "name" => "QuattroSede",
-      "lastname" => "Quattrosedecognome",
-      "username" => "sede.quattrosede",
-      "password" => "nome.quattrosede.4",
+      "name" => "Annalisa",
+      "lastname" => "Santucci",
+      "username" => "sede.santucci",
+      "password" => "annalisa.santucci.4",
       "team_id" => null
     ],
     [
-      "name" => "CinqueSede",
-      "lastname" => "Cinquesedecognome",
-      "username" => "sede.cinquesede",
-      "password" => "nome.cinquesede.5",
+      "name" => "Raffaela",
+      "lastname" => "Cutarelli",
+      "username" => "sede.cutarelli",
+      "password" => "raffaela.cutarelli.5",
       "team_id" => null
     ],
     [
-      "name" => "SeiSede",
-      "lastname" => "Seisedecognome",
-      "username" => "sede.seisede",
-      "password" => "nome.seisede.6",
+      "name" => "Luca Maria",
+      "lastname" => "Pellegrini",
+      "username" => "sede.pellegrini",
+      "password" => "lucamaria.pellegrini.6",
       "team_id" => null
     ],
     [
-      "name" => "SetteSede",
-      "lastname" => "Settesedecognome",
-      "username" => "sede.settesede",
-      "password" => "nome.settesede.7",
+      "name" => "Mirco",
+      "lastname" => "Maggi",
+      "username" => "sede.mirco",
+      "password" => "mirco.maggi.7",
       "team_id" => null
     ],
     [
-      "name" => "OttoSede",
-      "lastname" => "Ottosedecognome",
-      "username" => "sede.ottosede",
-      "password" => "nome.ottosede.8",
+      "name" => "Umberto",
+      "lastname" => "Berto",
+      "username" => "sede.berto",
+      "password" => "umberto.berto.8",
       "team_id" => null
     ],
 

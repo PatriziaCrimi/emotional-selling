@@ -2281,56 +2281,56 @@
 
     // ------------------- Round 1 -------------------
     [
-      "user_id" => 100,  // Unosede
+      "user_id" => 100,  // Michela Aucello
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 1,
       "team_id" => null
     ],
     [
-      "user_id" => 101,  // Duesede
+      "user_id" => 101,  // Federico Silvagni
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 1,
       "team_id" => null
     ],
     [
-      "user_id" => 102,  // Tresede
+      "user_id" => 102,  // Loredana Orsini
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 1,
       "team_id" => null
     ],
     [
-      "user_id" => 103,  // Quattrosede
+      "user_id" => 103,  // Santucci Annalisa
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 1,
       "team_id" => null
     ],
     [
-      "user_id" => 104,  // Cinquesede
+      "user_id" => 104,  // Raffaela Cutarelli
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 1,
       "team_id" => null
     ],
     [
-      "user_id" => 105,  // Seisede
+      "user_id" => 105,  // Luca Maria Pellegrini
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 1,
       "team_id" => null
     ],
     [
-      "user_id" => 106,  // Settesede
+      "user_id" => 106,  // Mirco Maggi
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 1,
       "team_id" => null
     ],
     [
-      "user_id" => 107,  // Ottosede
+      "user_id" => 107,  // Umberto Berto
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 1,
@@ -2339,56 +2339,56 @@
 
     // ------------------- Round 2 -------------------
     [
-      "user_id" => 100,  // Unosede
+      "user_id" => 100,  // Michela Aucello
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 2,
       "team_id" => null
     ],
     [
-      "user_id" => 101,  // Duesede
+      "user_id" => 101,  // Federico Silvagni
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 2,
       "team_id" => null
     ],
     [
-      "user_id" => 102,  // Tresede
+      "user_id" => 102,  // Loredana Orsini
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 2,
       "team_id" => null
     ],
     [
-      "user_id" => 103,  // Quattrosede
+      "user_id" => 103,  // Santucci Annalisa
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 2,
       "team_id" => null
     ],
     [
-      "user_id" => 104,  // Cinquesede
+      "user_id" => 104,  // Raffaela Cutarelli
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 2,
       "team_id" => null
     ],
     [
-      "user_id" => 105,  // Seisede
+      "user_id" => 105,  // Luca Maria Pellegrini
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 2,
       "team_id" => null
     ],
     [
-      "user_id" => 106,  // Settesede
+      "user_id" => 106,  // Mirco Maggi
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 2,
       "team_id" => null
     ],
     [
-      "user_id" => 107,  // Ottosede
+      "user_id" => 107,  // Umberto Berto
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 2,
@@ -2397,56 +2397,56 @@
 
     // ------------------- Round 3 -------------------
     [
-      "user_id" => 100,  // Unosede
+      "user_id" => 100,  // Michela Aucello
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 3,
       "team_id" => null
     ],
     [
-      "user_id" => 101,  // Duesede
+      "user_id" => 101,  // Federico Silvagni
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 3,
       "team_id" => null
     ],
     [
-      "user_id" => 102,  // Tresede
+      "user_id" => 102,  // Loredana Orsini
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 3,
       "team_id" => null
     ],
     [
-      "user_id" => 103,  // Quattrosede
+      "user_id" => 103,  // Santucci Annalisa
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 3,
       "team_id" => null
     ],
     [
-      "user_id" => 104,  // Cinquesede
+      "user_id" => 104,  // Raffaela Cutarelli
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 3,
       "team_id" => null
     ],
     [
-      "user_id" => 105,  // Seisede
+      "user_id" => 105,  // Luca Maria Pellegrini
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 3,
       "team_id" => null
     ],
     [
-      "user_id" => 106,  // Settesede
+      "user_id" => 106,  // Mirco Maggi
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 3,
       "team_id" => null
     ],
     [
-      "user_id" => 107,  // Ottosede
+      "user_id" => 107,  // Umberto Berto
       "group_id" => null,
       "role_id" => $sede,
       "round_id" => 3,
