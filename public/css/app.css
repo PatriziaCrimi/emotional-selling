@@ -10598,6 +10598,10 @@ main section#votes-show .form-wrapper form h4 {
   font-size: 26px;
   padding-bottom: 20px;
 }
+main section#votes-form .form-wrapper form .details,
+main section#votes-show .form-wrapper form .details {
+  color: #009dcc;
+}
 main section#votes-form .form-wrapper form .category-wrapper,
 main section#votes-show .form-wrapper form .category-wrapper {
   padding-bottom: 20px;
@@ -10620,14 +10624,14 @@ main section#votes-show .form-wrapper form .category-wrapper .form-group .explan
 main section#votes-form .form-wrapper form .category-wrapper .form-group .explanation p,
 main section#votes-show .form-wrapper form .category-wrapper .form-group .explanation p {
   display: inline-block;
-  padding: 0 20px;
+  text-align: center;
+  padding: 0 10px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 15px;
 }
 main section#votes-form .form-wrapper form .category-wrapper .form-group .explanation p i.fa-times-circle,
 main section#votes-show .form-wrapper form .category-wrapper .form-group .explanation p i.fa-times-circle {
   color: #1b4298;
-  margin-left: 5px;
   cursor: pointer;
 }
 main section#votes-form .form-wrapper form .category-wrapper .form-group .radio-wrapper,
@@ -10739,6 +10743,16 @@ main section#votes-show .buttons-wrapper a.btn.btn-cancel {
 /* ------------------- MEDIA QUERY ------------------- */
 /* Breakpoint Small 576px sm */
 @media screen and (min-width: 577px) {
+  main section#votes-form .form-wrapper form .category-wrapper .form-group .explanation p,
+main section#votes-show .form-wrapper form .category-wrapper .form-group .explanation p {
+    padding: 0 20px;
+    font-size: 22px;
+    text-align: left;
+  }
+  main section#votes-form .form-wrapper form .category-wrapper .form-group .explanation p i.fa-times-circle,
+main section#votes-show .form-wrapper form .category-wrapper .form-group .explanation p i.fa-times-circle {
+    margin-left: 5px;
+  }
   main section#votes-form .form-wrapper form .category-wrapper .form-group .radio-wrapper .radio-toolbar label.radio-label,
 main section#votes-form .form-wrapper form .category-wrapper .form-group .radio-wrapper .radio-toolbar label.radio-label-disabled,
 main section#votes-show .form-wrapper form .category-wrapper .form-group .radio-wrapper .radio-toolbar label.radio-label,
@@ -10751,6 +10765,14 @@ main section#votes-show .form-wrapper form .category-wrapper .form-group .radio-
   main section#votes-form h1,
 main section#votes-show h1 {
     font-size: 36px;
+  }
+  main section#votes-form .form-wrapper form h4,
+main section#votes-show .form-wrapper form h4 {
+    padding: 20px 0;
+  }
+  main section#votes-form .form-wrapper form .details,
+main section#votes-show .form-wrapper form .details {
+    padding: 20px 0;
   }
   main section#votes-form .form-wrapper form .category-wrapper .form-group,
 main section#votes-show .form-wrapper form .category-wrapper .form-group {

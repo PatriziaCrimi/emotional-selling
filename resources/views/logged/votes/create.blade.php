@@ -57,6 +57,16 @@
                 </div>
               </div>
 
+              <div class="row">
+                <div class="col-12">
+                  <p class="text-center details">
+                    Clicca su
+                    <i class="far fa-question-circle fa-sm font"></i>
+                    per maggiori dettagli sulla domanda.
+                  </p>
+                </div>
+              </div>
+
               <div class="d-none form-group">
                 <label for="info_voter_id"></label>
                 <input type="hidden" name="info_voter_id" value="{{$comboAuth->id}}" class="form-control">
