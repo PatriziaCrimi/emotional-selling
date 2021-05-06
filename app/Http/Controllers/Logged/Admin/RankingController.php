@@ -56,23 +56,26 @@ class RankingController extends Controller
        $votesRank = json_decode(json_encode($votesCount),true);
        */
 
-       // $dm = DB::table("votes")
-       // ->join('teams','teams.id','=','votes.team_id')
-       // ->select(DB::raw('sum(value / 2) as valore','votes.team_id'),'teams.name')
-       // ->where('team_vote',3)->groupBy('votes.team_id','teams.name')
-       // ->orderBy('valore','DESC')->get();
+       /*
+       $dm = DB::table("votes")
+       ->join('teams','teams.id','=','votes.team_id')
+       ->select(DB::raw('sum(value / 2) as valore','votes.team_id'),'teams.name')
+       ->where('team_vote',3)->groupBy('votes.team_id','teams.name')
+       ->orderBy('valore','DESC')->get();
+       */
 
       // ---------------------- QUERY PER SOMMA TEAM ---------------------- //
 
-      // $votesCount = DB::table("votes")
-      // ->join('teams','teams.id','=','votes.team_id')
-      // ->select(DB::raw('sum(value) as valore','votes.team_id'),'teams.name')
-      // ->where('team_vote',2)->groupBy('votes.team_id','teams.name')
-      // ->orderBy('valore','DESC')->get();
-      //
+      /*
+      $votesCount = DB::table("votes")
+      ->join('teams','teams.id','=','votes.team_id')
+      ->select(DB::raw('sum(value) as valore','votes.team_id'),'teams.name')
+      ->where('team_vote',2)->groupBy('votes.team_id','teams.name')
+      ->orderBy('valore','DESC')->get();
 
-      // $final= [$dm,$votesCount];
-      // $votesRank = json_decode(json_encode($final),true);
+      $final= [$dm,$votesCount];
+      $votesRank = json_decode(json_encode($final),true);
+      */
 
       $votesCollection = DB::table('votes')
       ->join('teams','teams.id','=','votes.team_id')
@@ -80,12 +83,13 @@ class RankingController extends Controller
       ->select('votes.team_id', 'teams.name',
             DB::raw("SUM(CASE WHEN team_vote = '2' THEN value ELSE 0 END) as `normalVote`", 'votes.team_id'),
             DB::raw("SUM(CASE WHEN team_vote = '3' THEN value / 2 ELSE 0 END) as `halfVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '2' THEN value ELSE 0 END) as `obiezioni`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '2' THEN value / 2 ELSE 0 END) as `obiezioniHalfVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '4' THEN value ELSE 0 END) as `calltoaction`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '4' THEN value / 2 ELSE 0 END) as `calltoactionHalfVote`", 'votes.team_id'),
             DB::raw("SUM(CASE WHEN team_vote = '2' AND categories.role_id = '7' THEN value ELSE 0 END) as `isf`", 'votes.team_id'),
             DB::raw("SUM(CASE WHEN team_vote = '3' AND categories.role_id = '7' THEN value / 2 ELSE 0 END) as `isfHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '4' THEN value ELSE 0 END) as `calltoaction`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '4' THEN value / 2 ELSE 0 END) as `calltoactionHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '3' THEN value ELSE 0 END) as `paroleTossiche`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '3' THEN value / 2 ELSE 0 END) as `paroleTossicheHalfVote`", 'votes.team_id'),
+
         )->groupBy('votes.team_id', 'teams.name')
       ->get();
 
@@ -102,6 +106,7 @@ class RankingController extends Controller
       $votesRank = json_decode(json_encode($scoresArray),true);
       array_multisort( array_column($votesRank, "score"), SORT_DESC, $votesRank );
 
+      // Ex aequo ISF
       foreach ($votesCollection as $key => $voteTeam) {
         $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
         $sumIsf = $voteTeam->isf + $voteTeam->isfHalfVote;
@@ -117,21 +122,7 @@ class RankingController extends Controller
       $votesIsf = json_decode(json_encode($scoresArrayIsf),true);
       array_multisort( array_column($votesIsf, "score"), SORT_DESC, $votesIsf );
 
-      foreach ($votesCollection as $key => $voteTeam) {
-        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
-        $sumObiezioni = $voteTeam->obiezioni + $voteTeam->obiezioniHalfVote;
-        $teamName = $voteTeam->name;
-        $scoresArrayObiezioni[$teamName] = array(
-          'team_id' => $voteTeam->team_id,
-          'name' => $teamName,
-          'score' => $sumTeam,
-          'scoreObiezioni' => $sumObiezioni
-        );
-      }
-
-      $votesObiezioni = json_decode(json_encode($scoresArrayObiezioni),true);
-      array_multisort( array_column($votesObiezioni, "score"), SORT_DESC, $votesObiezioni );
-
+      // Ex aequo Call To Action
       foreach ($votesCollection as $key => $voteTeam) {
         $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
         $sumCta = $voteTeam->calltoaction + $voteTeam->calltoactionHalfVote;
@@ -147,9 +138,23 @@ class RankingController extends Controller
       $votesCta = json_decode(json_encode($scoresArrayCta),true);
       array_multisort( array_column($votesCta, "score"), SORT_DESC, $votesCta );
 
+      // Ex aequo Parole Tossiche
+      foreach ($votesCollection as $key => $voteTeam) {
+        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
+        $sumParoleTossiche = $voteTeam->paroleTossiche + $voteTeam->paroleTossicheHalfVote;
+        $teamName = $voteTeam->name;
+        $scoresArrayParoleTossiche[$teamName] = array(
+          'team_id' => $voteTeam->team_id,
+          'name' => $teamName,
+          'score' => $sumTeam,
+          'paroleTossiche' => $sumParoleTossiche
+        );
+      }
 
-      // dd($votesObiezioni);
-      return view('logged.admin.rankings',compact('votesRank','votesObiezioni','votesIsf','votesCta','round','button1','button2', 'button3'));
+      $votesParoleTossiche = json_decode(json_encode($scoresArrayParoleTossiche),true);
+      array_multisort( array_column($votesParoleTossiche, "score"), SORT_DESC, $votesParoleTossiche );
+
+      return view('logged.admin.rankings',compact('votesRank','votesIsf', 'votesCta', 'votesParoleTossiche', 'round','button1','button2', 'button3'));
 
     } else {
       abort(403);
