@@ -47,6 +47,17 @@
         <div class="col-12">
           <div class="form-wrapper">
             <form class="form">
+
+              <div class="row">
+                <div class="col-12">
+                  <p class="text-center details">
+                    Clicca su
+                    <i class="far fa-question-circle fa-sm font"></i>
+                    per maggiori dettagli sulla domanda.
+                  </p>
+                </div>
+              </div>
+
               {{-- @php
                 $categories = App\Category::where('role_id', $team[1]->role_id)->get();
               @endphp

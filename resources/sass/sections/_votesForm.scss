@@ -1,5 +1,5 @@
 main section#votes-form,
-main section#votes-show, {
+main section#votes-show {
 
   h1 {
     color: $blue;
@@ -28,6 +28,10 @@ main section#votes-show, {
         padding-bottom: $padding_unit;
       }
 
+      .details {
+        color: $light_blue;
+      }
+
       .category-wrapper {
         padding-bottom: $padding_unit;
 
@@ -49,12 +53,12 @@ main section#votes-show, {
 
             p {
               display: inline-block;
-              padding: 0 $padding_unit;
+              text-align: center;
+              padding: 0 $padding_unit / 2;
               @include card-box;
 
               i.fa-times-circle {
                 color: $blue;
-                margin-left: $margin_unit / 2;
                 cursor: pointer;
               }
             }
@@ -160,10 +164,25 @@ main section#votes-show, {
   main section#votes-form,
   main section#votes-show {
 
-    .form-wrapper form .category-wrapper .form-group .radio-wrapper .radio-toolbar {
-      label.radio-label,
-      label.radio-label-disabled {
-        margin: 0 $margin_unit;
+    .form-wrapper form .category-wrapper .form-group {
+
+      .explanation {
+        p {
+          padding: 0 $padding_unit;
+          font-size: $tablet_font - 4px;
+          text-align: left;
+
+          i.fa-times-circle {
+            margin-left: $margin_unit / 2;
+          }
+        }
+      }
+
+      .radio-wrapper .radio-toolbar {
+        label.radio-label,
+        label.radio-label-disabled {
+          margin: 0 $margin_unit;
+        }
       }
     }
   }
@@ -178,16 +197,27 @@ main section#votes-show, {
       font-size: $title_size;
     }
 
-    .form-wrapper form .category-wrapper .form-group {
-      padding-top: $padding_unit;
+    .form-wrapper form {
 
-      .radio-wrapper {
-       display: block;
+      h4 {
+        padding: $padding_unit 0;
       }
 
-      textarea.readonly {
-        margin-top: $margin_unit * 2;
+      .details {
+        padding: $padding_unit 0;
       }
+
+      .category-wrapper .form-group {
+       padding-top: $padding_unit;
+
+       .radio-wrapper {
+        display: block;
+       }
+
+       textarea.readonly {
+         margin-top: $margin_unit * 2;
+       }
+     }
     }
 
     .buttons-wrapper {
