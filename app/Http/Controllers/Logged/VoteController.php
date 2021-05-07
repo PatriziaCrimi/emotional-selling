@@ -294,6 +294,7 @@ class VoteController extends Controller
         }
       }
 
+      /*
       // Controllo se il valore del voto della Categoria 4 non è nullo (è stata votata)
       if($request->voteTeam4) {
         // per ogni membro del team creo il voto della Categoria 4
@@ -312,6 +313,7 @@ class VoteController extends Controller
           $newVote4->save();
         }
       }
+      */
 
       // Queste 4 istanze sono necessarie per la QUERY per la Classifica per Team
 
@@ -364,6 +366,7 @@ class VoteController extends Controller
         $newVote3->save();
       }
 
+      /*
       // Categoria 4
       if($request->voteTeam4) {
         $newVote4 = new Vote();
@@ -379,8 +382,11 @@ class VoteController extends Controller
 
         $newVote4->save();
       }
+      */
+
     } else {   // SE L'UTENTE NON E' UN DM
 
+      // Controllo se il valore del voto della Categoria 1 non è nullo (è stata votata)
       if($request->voteTeam1) {
         // per ogni membro del team creo il voto della Categoria 1
         foreach ($teamMembers as $i => $member) {
@@ -437,6 +443,7 @@ class VoteController extends Controller
         }
       }
 
+      /*
       // Controllo se il valore del voto della Categoria 4 non è nullo (è stata votata)
       if($request->voteTeam4) {
         // per ogni membro del team creo il voto della Categoria 4
@@ -455,6 +462,7 @@ class VoteController extends Controller
           $newVote4->save();
         }
       }
+      */
 
       // Queste 4 istanze sono necessarie per la QUERY per la Classifica per Team
 
@@ -507,6 +515,7 @@ class VoteController extends Controller
         $newVote3->save();
       }
 
+      /*
       // Categoria 4
       if($request->voteTeam4) {
         $newVote4 = new Vote();
@@ -522,7 +531,7 @@ class VoteController extends Controller
 
         $newVote4->save();
       }
-
+      */
     }
     return Redirect::route('logged.votes.index');
   }

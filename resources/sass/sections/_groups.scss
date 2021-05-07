@@ -12,6 +12,9 @@ main section#groups {
   .groups-wrapper {
 
     &.sede {
+      padding-top: $padding_unit;
+      padding-bottom: $padding_unit * 2;
+
       h2 {
         color: $blue;
         font-weight: bold;
@@ -136,7 +139,7 @@ main section#groups {
       padding: $padding_unit *2 0;
 
       &.sede {
-        padding: $padding_unit;
+        padding: $padding_unit * 3 0;
 
         p {
           padding-bottom: $padding_unit;
