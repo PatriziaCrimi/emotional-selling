@@ -39,6 +39,7 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
 
   //Rankings
   Route::get('/admin/rankings', 'Admin\RankingController@index')->name('rankings.index');
+  Route::get('/admin/rankingsAvg', 'Admin\RankingController@indexAvg')->name('rankings.indexAvg');
 
   //Sede options
   Route::get('/admin/sedeoptions','Admin\ButtonController@sedeOptions')->name('sede.options');
