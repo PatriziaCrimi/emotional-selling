@@ -10,7 +10,7 @@
       <div class="container">
 
 
-        {{-- @if (empty($avg))s --}}
+        @if ($votesRankAvg)
           <div class="row justify-content-center">
             <button onclick="classificaGenerale()" class="btn btn-primary m-2" type="button" name="button">Classifica Generale Avg</button>
             <button onclick="categoriaIsf()" class="btn btn-primary m-2" type="button" name="button">Categoria ISF Avg</button>
@@ -32,7 +32,18 @@
               <canvas id="paroleTossiche" width="400" height="400"></canvas>
 
               {{-- Elenco nomi --}}
-              @foreach ($avg as  $score)
+              @foreach ($votesRankAvg as $key => $score)
+                <div class="card" style="width: 18rem;">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      @php
+                      echo($score['name'] . ':' . $score['avg']);
+                      @endphp
+                    </li>
+                  </ul>
+                </div>
+              @endforeach
+              {{-- @foreach ($avg as  $score)
                 <div class="card" style="width: 18rem;">
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">
@@ -42,17 +53,14 @@
                     </li>
                   </ul>
                 </div>
-              @endforeach
+              @endforeach --}}
 
               <div class="text-center">
                 <a href="{{route('logged.home')}}" class="btn btn-lg">Torna alla home</a>
               </div>
             </div>
           </div>
-          
-          {{-- DA IMPLEMENTARE --}}
-
-        {{-- @else
+        @else
           <div class="row">
             <div class="col-12">
               <div class="card m-2">
@@ -60,22 +68,22 @@
               </div>
             </div>
           </div>
-        @endif --}}
+        @endif
       </div>  {{-- Closing Container --}}
     </section>
   </main>
   <script>
 
-  // CLASSIFICA GENERALE CHART
+  // MEDIA - CLASSIFICA GENERALE CHART
 
   var ctx = document.getElementById('classificaGenerale').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: [@php
-      foreach ($avg as $score) {
+      foreach ($votesRankAvg as $score) {
         echo "'".
-        $score-> team -> name .
+        $score['name'] .
         "'".
         ',';
       }
@@ -83,8 +91,8 @@
       datasets: [{
         label: 'Voti',
         data: [@php
-        foreach ($avg as $score) {
-          echo $score->avg.
+        foreach ($votesRankAvg as $score) {
+          echo $score['avg'].
           ',';
         }
         @endphp],
@@ -112,16 +120,16 @@
     }
   });
 
-  // CATEGORIA ISF CHART
+  // MEDIA - CATEGORIA ISF CHART
 
   var ctx2 = document.getElementById('categoriaIsf').getContext('2d');
   var myChartIsf = new Chart(ctx2, {
     type: 'bar',
     data: {
       labels: [@php
-      foreach ($avgIsf as  $score) {
+      foreach ($votesAvgIsf as $score) {
         echo "'".
-        $score->team->name .
+        $score['name'] .
         "'".
         ',';
       }
@@ -129,8 +137,8 @@
       datasets: [{
         label: 'Voti',
         data: [@php
-        foreach ($avgIsf as  $score) {
-          echo $score->avg.
+        foreach ($votesAvgIsf as  $score) {
+          echo $score['avgIsf'].
           ',';
         }
         @endphp],
@@ -158,16 +166,16 @@
     }
   });
 
-  // CALL TO ACTION CHART
+  // MEDIA - CALL TO ACTION CHART
 
   var ctx3 = document.getElementById('callToAction').getContext('2d');
   var myChartCta = new Chart(ctx3, {
     type: 'bar',
     data: {
       labels: [@php
-      foreach ($avgCta as $score) {
+      foreach ($votesAvgCta as $score) {
         echo "'".
-        $score->team->name .
+        $score['name'] .
         "'".
         ',';
       }
@@ -175,8 +183,8 @@
       datasets: [{
         label: 'Voti',
         data: [@php
-        foreach ($avgCta as $score) {
-          echo $score->avg.
+        foreach ($votesAvgCta as $score) {
+          echo $score['avgCta'].
           ',';
         }
         @endphp],
@@ -204,16 +212,16 @@
     }
   });
 
-  // PAROLE TOSSICHE CHART
+  // MEDIA - PAROLE TOSSICHE CHART
 
   var ctx4 = document.getElementById('paroleTossiche').getContext('2d');
   var myChartTox = new Chart(ctx4, {
     type: 'bar',
     data: {
       labels: [@php
-      foreach ($avgTox as $score) {
+      foreach ($votesAvgTox as $score) {
         echo "'".
-        $score->team->name .
+        $score['name'] .
         "'".
         ',';
       }
@@ -221,8 +229,8 @@
       datasets: [{
         label: 'Voti',
         data: [@php
-        foreach ($avgTox as $score) {
-          echo $score->avg.
+        foreach ($votesAvgTox as $score) {
+          echo $score['avgTox'].
           ',';
         }
         @endphp],
@@ -249,18 +257,6 @@
       indexAxis: 'y',
     }
   });
-
-
-  function init() {
-    myChart.update();
-    myChartIsf.update();
-    myChartCta.update();
-    myChartTox.update();
-  }
-  setInterval(function() {
-    init();
-    console.log('chart is updating');
-  }, 2000);
 
   document.getElementById('classificaGenerale').style.display = 'none' ;
   document.getElementById('categoriaIsf').style.display = 'none' ;
