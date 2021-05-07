@@ -10285,6 +10285,10 @@ main section#groups .sede-info {
   padding: 20px 0;
   color: #1b4298;
 }
+main section#groups .groups-wrapper.sede {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
 main section#groups .groups-wrapper.sede h2 {
   color: #1b4298;
   font-weight: bold;
@@ -10370,7 +10374,7 @@ main section#groups .buttons-wrapper a.btn.btn-lg, main section#groups .buttons-
     padding: 40px 0;
   }
   main section#groups .groups-wrapper.sede {
-    padding: 20px;
+    padding: 60px 0;
   }
   main section#groups .groups-wrapper.sede p {
     padding-bottom: 20px;

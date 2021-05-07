@@ -218,7 +218,7 @@
 
               {{-- Voto TEAM Categoria 4 --}}
 
-              @php
+              {{-- @php
                 if($team[1]->role_id == $idISF) {
                   $category = \App\Category::where('number', 4)->where('role_id', $idISF)->first();
                 } else if($team[1]->role_id == $idMedico) {
@@ -260,7 +260,7 @@
                     <textarea :required="isRequired4 ? true : false" v-model="textarea4" name="comment4" rows="3" cols="80" maxlength="450" :placeholder="isRequired4 ? 'Inserisci la motivazione' : 'Inserisci il commento'" class="form-control">{{ old('comment4')}}</textarea>
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
               <div class="submit-wrapper text-center">
                 <button  id="submit" type="submit" class="btn btn-lg">

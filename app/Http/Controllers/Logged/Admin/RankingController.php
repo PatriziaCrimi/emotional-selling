@@ -90,10 +90,10 @@ class RankingController extends Controller
             DB::raw("SUM(CASE WHEN team_vote = '3' THEN value / 2 ELSE 0 END) as `halfVote`", 'votes.team_id'),
             DB::raw("SUM(CASE WHEN team_vote = '2' AND categories.role_id = '7' THEN value ELSE 0 END) as `isf`", 'votes.team_id'),
             DB::raw("SUM(CASE WHEN team_vote = '3' AND categories.role_id = '7' THEN value / 2 ELSE 0 END) as `isfHalfVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '4' THEN value ELSE 0 END) as `calltoaction`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '4' THEN value / 2 ELSE 0 END) as `calltoactionHalfVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '3' THEN value ELSE 0 END) as `paroleTossiche`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '3' THEN value / 2 ELSE 0 END) as `paroleTossicheHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '3' THEN value ELSE 0 END) as `calltoaction`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '3' THEN value / 2 ELSE 0 END) as `calltoactionHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '2' THEN value ELSE 0 END) as `paroleTossiche`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '2' THEN value / 2 ELSE 0 END) as `paroleTossicheHalfVote`", 'votes.team_id'),
 
         )->groupBy('votes.team_id', 'teams.name')
       ->get();
@@ -192,10 +192,10 @@ class RankingController extends Controller
             DB::raw("SUM(CASE WHEN team_vote = '3' THEN value / 2 ELSE 0 END) as `halfVote`", 'votes.team_id'),
             DB::raw("SUM(CASE WHEN team_vote = '2' AND categories.role_id = '7' THEN value ELSE 0 END) as `isf`", 'votes.team_id'),
             DB::raw("SUM(CASE WHEN team_vote = '3' AND categories.role_id = '7' THEN value / 2 ELSE 0 END) as `isfHalfVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '4' THEN value ELSE 0 END) as `calltoaction`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '4' THEN value / 2 ELSE 0 END) as `calltoactionHalfVote`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '3' THEN value ELSE 0 END) as `paroleTossiche`", 'votes.team_id'),
-            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '3' THEN value / 2 ELSE 0 END) as `paroleTossicheHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '3' THEN value ELSE 0 END) as `calltoaction`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '3' THEN value / 2 ELSE 0 END) as `calltoactionHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '2' THEN value ELSE 0 END) as `paroleTossiche`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '2' THEN value / 2 ELSE 0 END) as `paroleTossicheHalfVote`", 'votes.team_id'),
 
         )->groupBy('votes.team_id', 'teams.name')
       ->get();
@@ -321,7 +321,7 @@ class RankingController extends Controller
       ->select('votes.team_id', 'teams.name',
         DB::raw('count(*) as `votesCount`')
       ) ->whereIn('team_vote',[2,3])
-      ->where('category_id', 4)
+      ->where('category_id', 3)
       ->groupBy('votes.team_id', 'teams.name')
       ->get();
 
@@ -373,7 +373,7 @@ class RankingController extends Controller
       ->select('votes.team_id', 'teams.name',
         DB::raw('count(*) as `votesCount`')
       ) ->whereIn('team_vote',[2,3])
-      ->where('category_id', 3)
+      ->where('category_id', 2)
       ->groupBy('votes.team_id', 'teams.name')
       ->get();
 

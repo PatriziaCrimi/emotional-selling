@@ -49851,30 +49851,24 @@ var app = new Vue({
     isExplanation1: false,
     isExplanation2: false,
     isExplanation3: false,
-    isExplanation4: false,
     commentMessage1: '',
     commentMessage2: '',
     commentMessage3: '',
-    commentMessage4: '',
     lowGradeMessage: 'Il tuo voto è molto basso, è richiesta una motivazione',
     highGradeMessage: 'Il tuo voto è molto alto, è richiesta una motivazione',
     normalGradeMessage: 'Puoi aggiungere un commento al tuo voto (facoltativo)',
     showComment1: false,
     showComment2: false,
     showComment3: false,
-    showComment4: false,
     isRequired1: false,
     isRequired2: false,
     isRequired3: false,
-    isRequired4: false,
     radio1: null,
     radio2: null,
     radio3: null,
-    radio4: null,
     textarea1: '',
     textarea2: '',
     textarea3: '',
-    textarea4: '',
     isDisabled: true,
     isTeamShown: false,
     form: {
@@ -49911,13 +49905,6 @@ var app = new Vue({
         this.isExplanation3 = false;
       }
     },
-    toggleExplanation4: function toggleExplanation4() {
-      if (this.isExplanation4 == false) {
-        this.isExplanation4 = true;
-      } else {
-        this.isExplanation4 = false;
-      }
-    },
     closeExplanation1: function closeExplanation1() {
       this.isExplanation1 = false;
     },
@@ -49927,23 +49914,17 @@ var app = new Vue({
     closeExplanation3: function closeExplanation3() {
       this.isExplanation3 = false;
     },
-    closeExplanation4: function closeExplanation4() {
-      this.isExplanation4 = false;
-    },
     cancelVotes: function cancelVotes() {
       this.radio1 = null;
       this.radio2 = null;
       this.radio3 = null;
-      this.radio4 = null;
       this.textarea1 = '';
       this.textarea2 = '';
       this.textarea3 = '';
-      this.textarea4 = '';
       this.showComment1 = false;
       this.showComment2 = false;
       this.showComment3 = false;
-      this.showComment4 = false;
-      this.isRequired1 = false, this.isRequired2 = false, this.isRequired3 = false, this.isRequired4 = false, this.isDisabled = true;
+      this.isRequired1 = false, this.isRequired2 = false, this.isRequired3 = false, this.isDisabled = true;
     },
     checkVoteComment1: function checkVoteComment1(voteValue) {
       this.showComment1 = true;
@@ -49976,17 +49957,6 @@ var app = new Vue({
         this.isRequired3 = true, this.commentMessage3 = this.highGradeMessage;
       } else {
         this.isRequired3 = false, this.commentMessage3 = this.normalGradeMessage;
-      }
-    },
-    checkVoteComment4: function checkVoteComment4(voteValue) {
-      this.showComment4 = true;
-
-      if (voteValue <= 5) {
-        this.isRequired4 = true, this.commentMessage4 = this.lowGradeMessage;
-      } else if (voteValue >= 9) {
-        this.isRequired4 = true, this.commentMessage4 = this.highGradeMessage;
-      } else {
-        this.isRequired4 = false, this.commentMessage4 = this.normalGradeMessage;
       }
     },
     alertVoted: function alertVoted() {
@@ -50073,12 +50043,12 @@ var app = new Vue({
       this.liveArray = [];
     },
     checkForm: function checkForm(e) {
-      if (this.radio1 && this.radio2 && this.radio3 && this.radio4) {
+      if (this.radio1 && this.radio2 && this.radio3) {
         this.alertVoted();
         return true;
       }
 
-      if (!this.radio1 || !this.radio2 || !this.radio3 || !this.radio4) {
+      if (!this.radio1 || !this.radio2 || !this.radio3) {
         this.alertWrongVote();
       }
 
