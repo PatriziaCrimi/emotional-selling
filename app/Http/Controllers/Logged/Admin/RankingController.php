@@ -165,4 +165,20 @@ class RankingController extends Controller
       abort(403);
     }
   }
+
+  public function indexAvg() {
+    $round = Round::find(4);
+    $button1 = Button::find(1); // attivazione votazione
+    $button2 = Button::find(2); // stop votazione
+    $button3 = Button::find(3); // inizia Workshop
+
+    $idAuth = Auth::user() -> id;
+    $idCombo = GroupRoleRoundUser::where('user_id',$idAuth)->first();
+
+    if ($idCombo->role->name == "Admin") {
+
+    }else {
+      abort(403);
+    }
+  }
 }
