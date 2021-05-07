@@ -176,17 +176,82 @@ class RankingController extends Controller
     $idAuth = Auth::user() -> id;
     $idCombo = GroupRoleRoundUser::where('user_id',$idAuth)->first();
 
-    $avg = array();
+    $scoresArray = array();
+    $scoresArrayIsf = array();
+    $scoresArrayCta = array();
+    $scoresArrayParoleTossiche = array();
 
     if ($idCombo->role->name == "Admin") {
 
+      // Collection per Punteggi dei Voti ricevuti per Team divisi tra normali e dimezzati
+      $votesCollection = DB::table('votes')
+      ->join('teams','teams.id','=','votes.team_id')
+      ->join('categories','categories.id','=','votes.category_id')
+      ->select('votes.team_id', 'teams.name',
+            DB::raw("SUM(CASE WHEN team_vote = '2' THEN value ELSE 0 END) as `normalVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' THEN value / 2 ELSE 0 END) as `halfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND categories.role_id = '7' THEN value ELSE 0 END) as `isf`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND categories.role_id = '7' THEN value / 2 ELSE 0 END) as `isfHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '4' THEN value ELSE 0 END) as `calltoaction`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '4' THEN value / 2 ELSE 0 END) as `calltoactionHalfVote`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '2' AND category_id = '3' THEN value ELSE 0 END) as `paroleTossiche`", 'votes.team_id'),
+            DB::raw("SUM(CASE WHEN team_vote = '3' AND category_id = '3' THEN value / 2 ELSE 0 END) as `paroleTossicheHalfVote`", 'votes.team_id'),
+
+        )->groupBy('votes.team_id', 'teams.name')
+      ->get();
+
+      // ------------------------------ MEDIA PER CLASSIFICA GENERALE ------------------------------
+
+      // Collection per Numero dei Voti ricevuti per Team
+      $votesQuantityCollection = DB::table('votes')
+      ->join('teams','teams.id','=','votes.team_id')
+      ->join('categories','categories.id','=','votes.category_id')
+      ->select('votes.team_id', 'teams.name',
+        DB::raw('count(*) as `votesCount`')
+      ) ->whereIn('team_vote',[2,3])
+      ->groupBy('votes.team_id', 'teams.name')
+      ->get();
+
+      // Array per Punteggio totale dei Voti ricevuti per Team
+      foreach ($votesCollection as $key => $voteTeam) {
+        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
+        $teamName = $voteTeam->name;
+        $scoresArray[$teamName] = array(
+          'team_id' => $voteTeam->team_id,
+          'name' => $teamName,
+          'score' => $sumTeam,
+        );
+      }
+
+      // Array per la media per Team
+      foreach ($scoresArray as $key => $team) {
+        foreach ($votesQuantityCollection as $index => $quantity) {
+          if($team['team_id'] == $quantity->team_id) {
+            $avgTeam = $team['score'] / $quantity->votesCount;
+            $avgArray[$quantity->name] = array(
+              'team_id' => $quantity->team_id,
+              'name' => $quantity->name,
+              'avg' => $avgTeam,
+            );
+          }
+        }
+      }
+
+      $votesRankAvg = json_decode(json_encode($avgArray),true);
+      array_multisort( array_column($votesRankAvg, "avg"), SORT_DESC, $votesRankAvg );
+
+      /*
       // Classifica media generale
       $avg = Vote::select('team_id', \DB::raw('avg(value) as avg'))
               ->whereIn('team_vote',[2,3])
               ->groupBy('team_id')
               ->orderBy('avg','DESC')
               ->get();
+      */
 
+      // ------------------------------ EX-AEQUO PER ISF ------------------------------
+
+      /*
       // Classifica media ISF
       $avgIsf = Vote::select('team_id', \DB::raw('avg(value) as avg'))
                 ->join('categories','categories.id','=','votes.category_id')
@@ -195,7 +260,52 @@ class RankingController extends Controller
                 ->groupBy('team_id')
                 ->orderBy('avg','DESC')
                 ->get();
+      */
 
+      // Collection per Numero dei Voti ricevuti per Team per ISF
+      $isfQuantityCollection = DB::table('votes')
+      ->join('teams','teams.id','=','votes.team_id')
+      ->join('categories','categories.id','=','votes.category_id')
+      ->select('votes.team_id', 'teams.name',
+        DB::raw('count(*) as `votesCount`')
+      ) ->whereIn('team_vote',[2,3])
+      ->where('categories.role_id', 7)
+      ->groupBy('votes.team_id', 'teams.name')
+      ->get();
+
+      // Array per Punteggio totale dei Voti ricevuti per Team per ISF
+      foreach ($votesCollection as $key => $voteTeam) {
+        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
+        $sumIsf = $voteTeam->isf + $voteTeam->isfHalfVote;
+        $scoresArrayIsf[$voteTeam->name] = array(
+          'team_id' => $voteTeam->team_id,
+          'name' => $teamName,
+          'score' => $sumTeam,
+          'sumIsf' => $sumIsf
+        );
+      }
+
+      // Array per la media ISF per Team
+      foreach ($scoresArrayIsf as $key => $team) {
+        foreach ($isfQuantityCollection as $index => $quantity) {
+          if($team['team_id'] == $quantity->team_id) {
+            $avgIsf = $team['sumIsf'] / $quantity->votesCount;
+            $avgArrayIsf[$quantity->name] = array(
+              'team_id' => $quantity->team_id,
+              'name' => $quantity->name,
+              'score' => $team['score'],
+              'avgIsf' => $avgIsf,
+            );
+          }
+        }
+      }
+
+      $votesAvgIsf = json_decode(json_encode($avgArrayIsf),true);
+      array_multisort( array_column($votesAvgIsf, "score"), SORT_DESC, $votesAvgIsf );
+
+// ------------------------- EX-AEQUO PER CALL TO ACTION -------------------------
+
+      /*
       // Classifica media Call to action
       $avgCta =  Vote::select('team_id', \DB::raw('avg(value) as avg'))
                 ->whereIn('team_vote',[2,3])
@@ -203,7 +313,51 @@ class RankingController extends Controller
                 ->groupBy('team_id')
                 ->orderBy('avg','DESC')
                 ->get();
+      */
 
+      // Collection per Numero dei Voti ricevuti per Team per CTA
+      $ctaQuantityCollection = DB::table('votes')
+      ->join('teams','teams.id','=','votes.team_id')
+      ->select('votes.team_id', 'teams.name',
+        DB::raw('count(*) as `votesCount`')
+      ) ->whereIn('team_vote',[2,3])
+      ->where('category_id', 4)
+      ->groupBy('votes.team_id', 'teams.name')
+      ->get();
+
+      // Array per Punteggio totale dei Voti ricevuti per Team per CTA
+      foreach ($votesCollection as $key => $voteTeam) {
+        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
+        $sumCta = $voteTeam->calltoaction + $voteTeam->calltoactionHalfVote;
+        $scoresArrayCta[$voteTeam->name] = array(
+          'team_id' => $voteTeam->team_id,
+          'name' => $teamName,
+          'score' => $sumTeam,
+          'sumCta' => $sumCta
+        );
+      }
+
+      // Array per la media ISF per Team per CTA
+      foreach ($scoresArrayCta as $key => $team) {
+        foreach ($ctaQuantityCollection as $index => $quantity) {
+          if($team['team_id'] == $quantity->team_id) {
+            $avgCta = $team['sumCta'] / $quantity->votesCount;
+            $avgArrayCta[$quantity->name] = array(
+              'team_id' => $quantity->team_id,
+              'name' => $quantity->name,
+              'score' => $team['score'],
+              'avgCta' => $avgCta,
+            );
+          }
+        }
+      }
+
+      $votesAvgCta = json_decode(json_encode($avgArrayCta),true);
+      array_multisort( array_column($votesAvgCta, "score"), SORT_DESC, $votesAvgCta );
+
+// ------------------------- EX-AEQUO PER PAROLE TOSSICHE -------------------------
+
+      /*
       // Classifica media Tossica
       $avgTox =  Vote::select('team_id', \DB::raw('avg(value) as avg'))
                 ->whereIn('team_vote',[2,3])
@@ -211,11 +365,51 @@ class RankingController extends Controller
                 ->groupBy('team_id')
                 ->orderBy('avg','DESC')
                 ->get();
+      */
 
+      // Collection per Numero dei Voti ricevuti per Team per PAROLE TOSSICHE
+      $toxQuantityCollection = DB::table('votes')
+      ->join('teams','teams.id','=','votes.team_id')
+      ->select('votes.team_id', 'teams.name',
+        DB::raw('count(*) as `votesCount`')
+      ) ->whereIn('team_vote',[2,3])
+      ->where('category_id', 3)
+      ->groupBy('votes.team_id', 'teams.name')
+      ->get();
 
-     return view('logged.admin.rankingsAvg',compact('avg','avgIsf','avgCta','avgTox','round','button1','button2', 'button3'));
+      // Array per Punteggio totale dei Voti ricevuti per Team per PAROLE TOSSICHE
+      foreach ($votesCollection as $key => $voteTeam) {
+        $sumTeam = $voteTeam->normalVote + $voteTeam->halfVote;
+        $sumTox = $voteTeam->paroleTossiche + $voteTeam->paroleTossicheHalfVote;
+        $scoresArrayTox[$voteTeam->name] = array(
+          'team_id' => $voteTeam->team_id,
+          'name' => $teamName,
+          'score' => $sumTeam,
+          'sumTox' => $sumTox
+        );
+      }
 
-    }else {
+      // Array per la media ISF per Team per PAROLE TOSSICHE
+      foreach ($scoresArrayTox as $key => $team) {
+        foreach ($toxQuantityCollection as $index => $quantity) {
+          if($team['team_id'] == $quantity->team_id) {
+            $avgTox = $team['sumTox'] / $quantity->votesCount;
+            $avgArrayTox[$quantity->name] = array(
+              'team_id' => $quantity->team_id,
+              'name' => $quantity->name,
+              'score' => $team['score'],
+              'avgTox' => $avgTox,
+            );
+          }
+        }
+      }
+
+      $votesAvgTox = json_decode(json_encode($avgArrayTox),true);
+      array_multisort( array_column($votesAvgTox, "score"), SORT_DESC, $votesAvgTox );
+
+     return view('logged.admin.rankingsAvg',compact('votesRankAvg','votesAvgIsf','votesAvgCta','votesAvgTox','round','button1','button2', 'button3'));
+
+    } else {
       abort(403);
     }
   }
