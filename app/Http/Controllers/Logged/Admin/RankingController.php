@@ -167,6 +167,7 @@ class RankingController extends Controller
   }
 
   public function indexAvg() {
+
     $round = Round::find(4);
     $button1 = Button::find(1); // attivazione votazione
     $button2 = Button::find(2); // stop votazione
@@ -175,7 +176,44 @@ class RankingController extends Controller
     $idAuth = Auth::user() -> id;
     $idCombo = GroupRoleRoundUser::where('user_id',$idAuth)->first();
 
+    $avg = array();
+
     if ($idCombo->role->name == "Admin") {
+
+      // Classifica media generale
+      $avg = Vote::select('team_id', \DB::raw('avg(value) as avg'))
+              ->whereIn('team_vote',[2,3])
+              ->groupBy('team_id')
+              ->orderBy('avg','DESC')
+              ->get();
+
+      // Classifica media ISF
+      $avgIsf = Vote::select('team_id', \DB::raw('avg(value) as avg'))
+                ->join('categories','categories.id','=','votes.category_id')
+                ->whereIn('team_vote',[2,3])
+                ->where('categories.role_id',7)
+                ->groupBy('team_id')
+                ->orderBy('avg','DESC')
+                ->get();
+
+      // Classifica media Call to action
+      $avgCta =  Vote::select('team_id', \DB::raw('avg(value) as avg'))
+                ->whereIn('team_vote',[2,3])
+                ->where('category_id',4)
+                ->groupBy('team_id')
+                ->orderBy('avg','DESC')
+                ->get();
+
+      // Classifica media Tossica
+      $avgTox =  Vote::select('team_id', \DB::raw('avg(value) as avg'))
+                ->whereIn('team_vote',[2,3])
+                ->where('category_id',3)
+                ->groupBy('team_id')
+                ->orderBy('avg','DESC')
+                ->get();
+
+
+     return view('logged.admin.rankingsAvg',compact('avg','avgIsf','avgCta','avgTox','round','button1','button2', 'button3'));
 
     }else {
       abort(403);

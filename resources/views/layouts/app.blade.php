@@ -173,6 +173,7 @@
                           <a class="btn" href="{{ route('logged.admin.votes')}}">Guarda votazioni</a>
                           <a class="btn" href="{{ route('logged.admin.voting')}}">Guarda votazioni live</a>
                           <a class="btn" href="{{ route('logged.rankings.index')}}">Guarda classifica</a>
+                          <a class="btn" href="{{ route('logged.rankings.indexAvg')}}">Guarda classifica Avg</a>
                           <a class="dropdown-item" href="{{ route('logged.sede.options') }}">Operazioni SEDE</a>
                         </div>
                       </div>
