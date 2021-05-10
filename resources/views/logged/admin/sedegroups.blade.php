@@ -25,7 +25,7 @@
           <div class="form-group">
             <select name="user_id"class="form-control">
               @foreach ($users as $user)
-                <option value="{{$user -> user -> id}}">{{$user -> user -> name}}</option>
+                <option value="{{$user -> user -> id}}">{{$user -> user -> name}} {{$user -> user -> lastname}}</option>
               @endforeach
             </select>
           </div>
