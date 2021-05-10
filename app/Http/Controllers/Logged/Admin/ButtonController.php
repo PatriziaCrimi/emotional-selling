@@ -84,6 +84,16 @@ class ButtonController extends Controller
     return redirect()->back();
   }
 
+  public function sedeOptionsDetach() {
+
+    //cancello tutte le associazioni delle sedi
+    $users = User::all();
+    foreach ($users as $user) {
+      $user -> groups() -> detach();
+    }
+    return redirect()->back();
+  }
+
   public function showVotes(){
     $round = Round::find(4);
     $button1 = Button::find(1);

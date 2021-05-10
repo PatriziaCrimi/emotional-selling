@@ -44,6 +44,7 @@ Route::middleware('auth')->namespace('Logged')->prefix('logged')->name('logged.'
   //Sede options
   Route::get('/admin/sedeoptions','Admin\ButtonController@sedeOptions')->name('sede.options');
   Route::post('/admin/sedeOptionsReq','Admin\ButtonController@sedeOptionsReq')->name('sede.options.req');
+  Route::get('/admin/sedeOptionsDetach','Admin\ButtonController@sedeOptionsDetach')->name('sede.options.detach');
 
   //Admin votes
   Route::get('/admin/votes','Admin\ButtonController@showVotes')->name('admin.votes');
