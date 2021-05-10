@@ -352,6 +352,13 @@
       "round_id" => 1,
       "team_id" => $maxalt  // Team 9
     ],
+    [
+      "user_id" => 35,  // Pirrone
+      "group_id" => 3,
+      "role_id" => $osservatore,
+      "round_id" => 1,
+      "team_id" => $maxalt  // Team 13
+    ],
 
     //  -------- Gruppo 4 --------
 
@@ -471,13 +478,6 @@
     // ISF
     [
       "user_id" => 46,  // Peretti
-      "group_id" => 5,
-      "role_id" => $isf,
-      "round_id" => 1,
-      "team_id" => $hyzaar  // Team 13
-    ],
-    [
-      "user_id" => 35,  // Pirrone
       "group_id" => 5,
       "role_id" => $isf,
       "round_id" => 1,
@@ -962,13 +962,6 @@
       "team_id" => $hyzaar  // Team 13
     ],
     [
-      "user_id" => 35,  // Pirrone
-      "group_id" => 3,
-      "role_id" => $medico,
-      "round_id" => 2,
-      "team_id" => $hyzaar  // Team 13
-    ],
-    [
       "user_id" => 28,  // Sorvillo
       "group_id" => 3,
       "role_id" => $medico,
@@ -1201,6 +1194,13 @@
       "round_id" => 2,
       "team_id" => $maxalt  // Team 9
     ],
+    [
+      "user_id" => 35,  // Pirrone
+      "group_id" => 5,
+      "role_id" => $medico,
+      "round_id" => 2,
+      "team_id" => $maxalt  // Team 13
+    ],
 
     // Osservatore
     [
@@ -1377,6 +1377,13 @@
       "role_id" => $isf,
       "round_id" => 3,
       "team_id" => $maxalt  // Team 9
+    ],
+    [
+      "user_id" => 35,  // Pirrone
+      "group_id" => 1,
+      "role_id" => $isf,
+      "round_id" => 3,
+      "team_id" => $maxalt  // Team 13
     ],
 
     // Medico
@@ -1864,13 +1871,6 @@
     // Osservatore
     [
       "user_id" => 46,  // Peretti
-      "group_id" => 5,
-      "role_id" => $osservatore,
-      "round_id" => 3,
-      "team_id" => $hyzaar  // Team 13
-    ],
-    [
-      "user_id" => 35,  // Pirrone
       "group_id" => 5,
       "role_id" => $osservatore,
       "round_id" => 3,

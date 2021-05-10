@@ -187,7 +187,6 @@ const app = new Vue({
       axios.post("/logged/admin/votingLive/",this.form2).
       then(response => {
           this.reset();
-          alert('prova');
           this.liveArray = response.data;
           this.alertSuccess();
           console.log(this.liveArray);

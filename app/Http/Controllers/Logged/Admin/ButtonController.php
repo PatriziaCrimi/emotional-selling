@@ -101,7 +101,7 @@ class ButtonController extends Controller
     $votes = Vote::where('info_voter_id',$query->id)->where('team_vote',2)->get();
     foreach ($votes as $vote) {
       $array = [];
-      $category = $vote -> category -> name;
+      $category = $vote -> category -> question;
       $info_voter_id = GroupRoleRoundUser::where('id',$vote -> info_voter_id)->first();
       $role = Role::where('id',$info_voter_id -> role_id)->first();
       $round = Round::where('id',$info_voter_id -> round_id)->first();

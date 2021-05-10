@@ -49,7 +49,8 @@
               $userCurrent = \App\User::where('id',$user -> user_id)->first();
               // dd($userCurrent);
               @endphp
-              {{$userCurrent -> name}}
+              {{$userCurrent -> name}} {{$userCurrent -> lastname}}
+
             </div>
             <ul class="list-group list-group-flush">
               @if (!is_null($userCurrent -> groups))
