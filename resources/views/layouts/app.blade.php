@@ -1,4 +1,4 @@
-<!doctype html>
+d<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
       <meta charset="utf-8">
@@ -81,7 +81,7 @@
                         <small class="d-block status">
                           status:
                           <span>
-                            {{ $button1->status == 0 ? 'Nascosto' : 'Visibile' }}
+                            {{ $button3->status == 0 ? 'Nascosto' : 'Visibile' }}
                           </span>
                         </small>
                       </div>
