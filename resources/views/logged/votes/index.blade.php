@@ -75,7 +75,9 @@
           {{-- Se l'utente autenticato non è Sede né Admin --}}
             <h1 class="text-center">
               Stai votando per il Round
-              {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
+              <span class="font-weight-bold">
+               {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
+              </span>
             </h1>
             {{-- Groups List --}}
             <div class="row">
@@ -157,9 +159,9 @@
       <div class="row">
         <div class="col-12">
           <div class="buttons-wrapper text-center">
-            @if ($button2 -> status == 0)
+            {{-- @if ($button2 -> status == 0)
               <p class="font-weight-bold wait">Attendi per procedere</p>
-            @else
+            @else --}}
               {{-- Se l'utente loggato è Admin --}}
               @if ($auth->role->name == 'Admin')
                 <a class="btn btn-lg" href="{{ route('logged.rankings.index')}}">
@@ -170,7 +172,7 @@
                   Torna alla home
                 </a>
               @endif
-            @endif
+            {{-- @endif --}}
           </div>
         </div>
       </div>

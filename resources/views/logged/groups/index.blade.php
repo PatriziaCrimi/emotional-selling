@@ -20,7 +20,7 @@
         <div class="col-12">
           <h1 class="text-center">
             <span>Round n&deg;</span>
-            <span>
+            <span class="font-weight-bold">
               {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
             </span>
             <span>in corso</span>

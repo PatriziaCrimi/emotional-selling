@@ -19,6 +19,21 @@
                   {{-- <span>{{Auth::user()->lastname}}</span> --}}
                 </h2>
               </div>
+
+              @if ($button2 -> status == 0)
+
+              <div class="text-center">
+                <p>Sei in attesa che tutti i giocatori finiscano di votare <br> Clicca su aggiorna per controllare</p>
+                {{-- <p>Clicca su aggiorna per controllare</p> --}}
+              </div>
+              <div>
+                <a class="btn btn-block" href="{{route('logged.home')}}">
+                  Aggiorna
+                </a>
+              </div>
+
+              @else
+
               <div class="text-center">
                 <p>Clicca il pulsante per vedere il Round in corso</p>
               </div>
@@ -27,6 +42,9 @@
                   Vedi Round in corso
                 </a>
               </div>
+
+              @endif
+
             </div>
           </div>
         </div>

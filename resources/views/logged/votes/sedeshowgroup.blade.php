@@ -88,9 +88,9 @@
       <div class="row">
         <div class="col-12">
           <div class="buttons-wrapper text-center">
-            @if ($button2 -> status == 0)
+            {{-- @if ($button2 -> status == 0)
               <p>Attendi per procedere</p>
-            @else
+            @else --}}
               {{-- Se l'utente loggato è Admin --}}
               @if ($comboAuth->role->name == 'Admin')
                 <a class="btn" href="{{ route('logged.rankings.index')}}">
@@ -101,7 +101,7 @@
                   Torna indietro
                 </a>
               @endif
-            @endif
+            {{-- @endif --}}
           </div>
         </div>
       </div>

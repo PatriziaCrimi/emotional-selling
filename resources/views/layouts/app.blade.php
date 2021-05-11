@@ -1,4 +1,4 @@
-d<!doctype html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
       <meta charset="utf-8">
@@ -143,7 +143,7 @@ d<!doctype html>
 
                       <div class="dropdown admin-select">
                         <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Pulsante Home
+                          Pulsante Benvenuto
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <form class="" action="{{ route('logged.button.updateStopVote')}}" method="post">

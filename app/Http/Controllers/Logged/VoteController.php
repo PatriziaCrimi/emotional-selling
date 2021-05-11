@@ -76,7 +76,7 @@ class VoteController extends Controller
         return view('logged.votes.index',compact('voteCheckId','usersGroups','round','auth', 'button1','button2', 'button3'));
       }
     } else {
-      abort(403);
+      return redirect()->route('home');
     }
   }
 
@@ -136,7 +136,7 @@ class VoteController extends Controller
         }
       } else {
         // Se non ha i permessi
-        abort(403);
+        return redirect()->route('home');
       }
     // Se l'id del Gruppo non esiste
     } else {
@@ -201,7 +201,7 @@ class VoteController extends Controller
 
       // Se non ha i permessi
       } else {
-        abort(403);
+        return redirect()->route('home');
       }
 
     // Se l'id del Team non esiste
@@ -598,7 +598,7 @@ class VoteController extends Controller
 
       // Se non ha i permessi
       } else {
-        abort(403);
+        return redirect()->route('home');
       }
     // Se l'id del Team non esiste
     } else {
