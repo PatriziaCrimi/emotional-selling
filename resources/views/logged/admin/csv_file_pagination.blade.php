@@ -13,6 +13,7 @@
           <th>Cognome Votante</th>
           <th>Voto</th>
           <th>Categoria</th>
+          <th>Team votato</th>
           <th>Commento</th>
         </tr>
 
@@ -39,7 +40,10 @@
             {{$vote -> value}}
           </td>
           <td>
-            {{$vote -> category -> name }}
+            {{$vote -> category -> question }}
+          </td>
+          <td>
+            {{$vote -> team -> name}}
           </td>
           <td>
             @if ($vote -> comment == null)
@@ -53,8 +57,12 @@
       @endforeach
 
     </table>
+    <div class="container">
+      <div class="row m-4">
+        <a class="btn btn-primary"href="{{ route('logged.export2')}}">Export CSV</a>
+      </div>
+    </div>
     {{-- <a href="{{ route('logged.export')}}">Export CSV</a> --}}
-    <a href="{{ route('logged.export2')}}">Export CSV</a>
 
   </section>
 @endsection

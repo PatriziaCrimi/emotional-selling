@@ -27,7 +27,8 @@ class CsvfileController extends Controller
 
     // Controllo se l'utente loggato è un Admin
     if(in_array($idAuth, $idAdminsArray)) {
-      $data = Vote::latest()->paginate(10);
+      $data = Vote::latest()->whereIn('team_vote',[2,3])->paginate(10);
+      // dd($data);
 
       return view('logged.admin.csv_file_pagination',compact('data','round','button1','button2', 'button3'))
              ->with('i',(request()->input('page',1) -1) *10);
@@ -49,7 +50,7 @@ class CsvfileController extends Controller
     if(in_array($idAuth, $idAdminsArray)) {
 
       $fileName = 'voti.csv';
-      $votes = Vote::all();
+      $votes = Vote::whereIn('team_vote',[2,3])->get();
 
       $headers = array(
         "Content-type"        => "text/csv",
@@ -59,7 +60,7 @@ class CsvfileController extends Controller
         "Expires"             => "0"
       );
 
-      $columns = array('Nome_votato', 'Cognome_Votato', 'Commento', 'Categoria', 'Voto');
+      $columns = array('Nome_votante','    Cognome_Votante', '     Commento', '     Team_votato','    Categoria', '     Voto');
 
       $callback = function() use($votes, $columns) {
         $file = fopen('php://output', 'w');
@@ -72,17 +73,23 @@ class CsvfileController extends Controller
           $userVoterLastName = \App\GroupRoleRoundUser::where('id',$vote -> info_voter_id)->first();
           // echo $userVoterLastName -> user -> lastname;
 
-          $row['Nome_votato']  = $userVoterName -> user -> name;
-          $row['Cognome_Votato']    = $userVoterLastName -> user -> lastname;
-          $row['Commento']    = $vote->comment;
-          $row['Categoria']  = $vote->category -> name;
+          $row['Nome_votante']  = $userVoterName -> user -> name;
+          $row['Cognome_Votante']    = $userVoterLastName -> user -> lastname;
+          if (is_null($vote->comment)) {
+            $row['Commento'] = 'Nessun commento dato';
+          }else {
+            $row['Commento'] = $vote->comment;
+          }
+          $row['Categoria']  = $vote->category -> question;
+          $row['Team_votato'] = $vote->team -> name;
           $row['Voto']  = $vote->value;
 
-          fputcsv($file, array($row['Nome_votato'],
-          $row['Cognome_Votato'],
-          $row['Commento'],
-          $row['Categoria'],
-          $row['Voto']));
+          fputcsv($file, array($row['Nome_votante'],
+          '        '.$row['Cognome_Votante'],
+          '        '.$row['Commento'],
+          '        '.$row['Team_votato'],
+          '        '.$row['Categoria'],
+          '        '.$row['Voto']));
         }
 
         fclose($file);
