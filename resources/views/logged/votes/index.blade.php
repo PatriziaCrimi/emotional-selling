@@ -15,7 +15,9 @@
             <h1 class="font-weight-bold text-center sede">Votazione sede</h1>
             <h2 class="text-center sede">
               Round n&deg;
-              {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
+               <span class="font-weight-bold">
+                 {{str_pad($round -> name, 2, "0", STR_PAD_LEFT)}}
+               </span>
               in corso
             </h2>
             {{-- Groups List --}}

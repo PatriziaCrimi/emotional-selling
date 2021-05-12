@@ -95,14 +95,26 @@ class ButtonController extends Controller
   }
 
   public function showVotes(){
-    $round = Round::find(4);
-    $button1 = Button::find(1);
-    $button2 = Button::find(2);
-    $button3 = Button::find(3); // inizia Workshop
-    $users = User::orderBy('lastname','ASC')->get();
-    $rounds = Round::where('id','!=',4)->get();
 
-    return view('logged.admin.votes',compact('round','button1','button2', 'button3', 'users','rounds'));
+    $idAuth = Auth::user()->id;
+    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    foreach ($idAdmins as $key => $admin) {
+      $idAdminsArray[] = $admin->user_id;
+    }
+
+    if(in_array($idAuth, $idAdminsArray)) {
+      $round = Round::find(4);
+      $button1 = Button::find(1);
+      $button2 = Button::find(2);
+      $button3 = Button::find(3); // inizia Workshop
+      $users = User::orderBy('lastname','ASC')->get();
+      $rounds = Round::where('id','!=',4)->get();
+
+      return view('logged.admin.votes',compact('round','button1','button2', 'button3', 'users','rounds'));
+    } else {
+      abort(403);
+    }
+
   }
 
   public function getListVotes(Request $request) {
@@ -138,14 +150,26 @@ class ButtonController extends Controller
   }
 
   public function getVoting(){
-    $round = Round::find(4);
-    $button1 = Button::find(1);
-    $button2 = Button::find(2);
-    $button3 = Button::find(3); // inizia Workshop
-    $users = User::orderBy('lastname','ASC')->get();
-    $rounds = Round::where('id','!=',4)->get();
 
-    return view('logged.admin.voting',compact('round','button1','button2', 'button3', 'users','rounds'));
+    $idAuth = Auth::user()->id;
+    $idAdmins = GroupRoleRoundUser::where('role_id',1)->get();
+    foreach ($idAdmins as $key => $admin) {
+      $idAdminsArray[] = $admin->user_id;
+    }
+
+    if(in_array($idAuth, $idAdminsArray)) {
+
+      $round = Round::find(4);
+      $button1 = Button::find(1);
+      $button2 = Button::find(2);
+      $button3 = Button::find(3); // inizia Workshop
+      $users = User::orderBy('lastname','ASC')->get();
+      $rounds = Round::where('id','!=',4)->get();
+
+      return view('logged.admin.voting',compact('round','button1','button2', 'button3', 'users','rounds'));
+    } else {
+      abort(403);
+    }
   }
 
   public function getVotingLive(Request $request) {
