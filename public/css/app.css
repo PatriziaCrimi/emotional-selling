@@ -10327,7 +10327,7 @@ main section#groups .groups-wrapper .table-wrapper table.table tbody tr td.playe
 main section#groups .groups-wrapper .table-wrapper table.table tbody tr td {
   width: 30%;
 }
-main section#groups .groups-wrapper .table-wrapper table.table tbody tr.active {
+main section#groups .groups-wrapper .table-wrapper table.table tbody tr .active {
   font-weight: bold;
   color: #e20177;
   background-color: rgba(0, 157, 204, 0.4);
