@@ -107,17 +107,19 @@
 
                       <tbody>
                       @foreach ($user as $n => $player)
-                        <tr>
                           @if ($player -> user -> id == Auth::user() -> id)
-                            <th scope="row" class="active team_xs">{{$n+1}}</th>
-                            <td class="active player">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
-                            <td class="active">{{ $player -> role -> name}}</td>
+                            <tr class="active" >
+                              <th scope="row" class=" team_xs">{{$n+1}}</th>
+                              <td class=" player">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
+                              <td class="">{{ $player -> role -> name}}</td>
+                            </tr>
                           @else
-                            <th class="team_xs" scope="row">{{$n+1}}</th>
-                            <td class="player">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
-                            <td>{{ $player -> role -> name}}</td>
+                            <tr>
+                              <th class="team_xs" scope="row">{{$n+1}}</th>
+                              <td class="player">{{ $player -> user -> name}} {{$player -> user -> lastname}}</td>
+                              <td>{{ $player -> role -> name}}</td>
+                            </tr>
                           @endif
-                        </tr>
                       @endforeach
                     </tbody>
 
