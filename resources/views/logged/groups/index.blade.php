@@ -26,6 +26,29 @@
             <span>in corso</span>
           </h1>
         </div>
+
+        <div class="row mt-4">
+          <div class="col-12">
+            <div class="buttons-wrapper text-center">
+              @if ($button1 -> status == 0)
+                <p class="font-weight-bold wait">Attendi per procedere</p>
+              @else
+                {{-- Se sono ISF o MEDICI  --}}
+                @if ($auth->role->name == 'ISF' || $auth->role->name == 'Medico')
+                  <p class="font-weight-bold">Possono votare solo gli Osservatori</p>
+                  <a class="btn btn-lg" href="{{route('logged.home')}}">
+                    Home
+                  </a>
+                @else
+                {{-- Se sono OSSERVATORI o SEDE  --}}
+                  <a class="btn btn-lg font-weight-bold" href="{{route('logged.votes.index')}}">
+                    Vota
+                  </a>
+                @endif
+              @endif
+            </div>
+          </div>
+        </div>
         {{-- Showing Sede or DM memeber details --}}
         @if ($auth->role->name == 'Sede' || $auth->role->name == 'DM')
           <div class="col-12">

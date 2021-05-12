@@ -23,12 +23,12 @@
               @if ($button2 -> status == 0)
 
               <div class="text-center">
-                <p>Sei in attesa che tutti i giocatori finiscano di votare <br> Clicca su aggiorna per controllare</p>
+                <p>Sei in attesa che tutti i giocatori finiscano di votare</p>
                 {{-- <p>Clicca su aggiorna per controllare</p> --}}
               </div>
               <div>
                 <a class="btn btn-block" href="{{route('logged.home')}}">
-                  Aggiorna
+                  Riprova
                 </a>
               </div>
 
@@ -39,7 +39,7 @@
               </div>
               <div>
                 <a class="btn btn-block" href="{{route('logged.groups.index')}}">
-                  Vedi Round in corso
+                  Round in corso
                 </a>
               </div>
 
