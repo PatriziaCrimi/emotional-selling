@@ -25,7 +25,7 @@
           <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
               <div class="img-logo">
-                <img src="{{asset('storage/img/logo-emotional-selling.png')}}" alt="Logo Strategic Connections">
+                <a href="{{route('logged.home')}}"><img src="{{asset('storage/img/logo-emotional-selling.png')}}" alt="Logo Strategic Connections"></a>
               </div>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                   <span class="navbar-toggler-icon"></span>
