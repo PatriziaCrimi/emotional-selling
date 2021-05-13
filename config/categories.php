@@ -28,7 +28,7 @@
     [
       "role_id" => $isf,
       "number" => 3,
-      "question" => "In chiusura di intervista c’è stata la call to action per la neocorteccia (cervello limbico)?",
+      "question" => "In chiusura di intervista c’è stata la call to action adatta alla neocorteccia (cervello Razionale)?",
       "explanation" => "Se utile per il feedback indicare l'aspetto razionale usato.",
     ],
 
